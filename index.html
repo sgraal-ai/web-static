@@ -1,468 +1,589 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optic Is No Longer Maintained — Here's How to Keep Catching Breaking API Changes | CodeRifts Blog</title>
+    <meta name="description" content="Optic's GitHub repository was archived in January 2026. Here's what happened, what alternatives exist, and how CodeRifts provides zero-config API governance as a replacement.">
+    <meta name="keywords" content="optic alternative, openapi breaking changes, api governance, openapi diff, coderifts">
+    <link rel="canonical" href="https://coderifts.com/blog/optic-alternative/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Optic Is No Longer Maintained — Here's How to Keep Catching Breaking API Changes">
+    <meta property="og:description" content="Optic's GitHub repository was archived in January 2026. Here's what happened and what alternatives exist for OpenAPI governance.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://coderifts.com/blog/optic-alternative/">
+    <meta property="og:site_name" content="CodeRifts">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Optic Is No Longer Maintained — Alternatives for API Governance">
+    <meta name="twitter:description" content="Optic archived Jan 2026. Here's how to keep catching breaking API changes.">
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sgraal | Memory Governance Protocol</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary-fixed": "#ffdf9b",
-              "secondary-fixed": "#e4e2e2",
-              "on-secondary": "#ffffff",
-              "on-error": "#ffffff",
-              "inverse-primary": "#e4c279",
-              "outline": "#7f7667",
-              "on-primary-fixed-variant": "#5a4303",
-              "surface-container-low": "#f4f3f0",
-              "on-tertiary": "#ffffff",
-              "tertiary-container": "#aaadb4",
-              "on-primary-fixed": "#251a00",
-              "on-tertiary-fixed-variant": "#43474d",
-              "tertiary": "#5b5f65",
-              "on-surface": "#1a1c1a",
-              "surface-container-lowest": "#ffffff",
-              "tertiary-fixed-dim": "#c3c6ce",
-              "surface-container-highest": "#e3e2df",
-              "surface-container": "#efeeeb",
-              "secondary-fixed-dim": "#c7c6c6",
-              "outline-variant": "#d0c5b4",
-              "secondary": "#5e5e5e",
-              "background": "#faf9f6",
-              "on-tertiary-fixed": "#181c21",
-              "on-background": "#1a1c1a",
-              "on-secondary-fixed": "#1b1c1c",
-              "on-error-container": "#93000a",
-              "surface-dim": "#dbdad7",
-              "error-container": "#ffdad6",
-              "on-primary": "#ffffff",
-              "primary-fixed-dim": "#e4c279",
-              "on-secondary-container": "#626262",
-              "inverse-on-surface": "#f2f1ee",
-              "primary": "#745b1c",
-              "on-secondary-fixed-variant": "#464747",
-              "secondary-container": "#e1dfdf",
-              "primary-container": "#c9a962",
-              "surface": "#faf9f6",
-              "on-tertiary-container": "#3d4147",
-              "on-primary-container": "#533d00",
-              "error": "#ba1a1a",
-              "surface-container-high": "#e9e8e5",
-              "surface-tint": "#745b1c",
-              "surface-variant": "#e3e2df",
-              "on-surface-variant": "#4d4639",
-              "inverse-surface": "#2f312f",
-              "tertiary-fixed": "#e0e2ea",
-              "surface-bright": "#faf9f6"
-            },
-            fontFamily: {
-              "headline": ["Manrope", "sans-serif"],
-              "body": ["Inter", "sans-serif"],
-              "label": ["Inter", "sans-serif"]
-            },
-            borderRadius: {
-              "DEFAULT": "0.125rem",
-              "lg": "0.25rem",
-              "xl": "0.5rem",
-              "full": "0.75rem",
-              "md": "0.375rem"
-            },
-          },
-        },
-      }
-    </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .gold-gradient-bg {
-        background: linear-gradient(135deg, #745b1c 0%, #c9a962 100%);
-      }
-      .text-balance { text-wrap: balance; }
+    <!-- Article metadata -->
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:author" content="CodeRifts">
+    <meta property="article:tag" content="api">
+    <meta property="article:tag" content="openapi">
+    <meta property="article:tag" content="devops">
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --bg-primary: #0f1724;
+            --bg-secondary: #131c2e;
+            --bg-card: rgba(255,255,255,0.04);
+            --bg-card-hover: rgba(255,255,255,0.07);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-coral: #ff6b6b;
+            --accent-blue: #38bdf8;
+            --accent-green: #4ade80;
+            --accent-yellow: #fbbf24;
+            --border-subtle: rgba(255,255,255,0.08);
+            --border-card: rgba(255,255,255,0.1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            --max-width-content: 720px;
+            --max-width-page: 1200px;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent-blue); text-decoration: none; transition: opacity 0.2s; }
+        a:hover { opacity: 0.85; }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 36, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: var(--max-width-page);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+        .nav-logo-icon {
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+        }
+        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-cta {
+            background: var(--accent-coral);
+            color: #fff !important;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-cta:hover { opacity: 0.9; }
+
+        /* ── Article Layout ── */
+        .article-header {
+            max-width: var(--max-width-content);
+            margin: 0 auto;
+            padding: 4rem 1.5rem 2rem;
+        }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .article-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .article-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+        .article-subtitle {
+            margin-top: 1rem;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── Article Content ── */
+        .article-body {
+            max-width: var(--max-width-content);
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+        .article-body h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+        .article-body h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+        .article-body p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+        .article-body strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+        .article-body code {
+            background: rgba(255,255,255,0.06);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.88em;
+            color: var(--accent-blue);
+        }
+        .article-body pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        .article-body pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .article-body blockquote {
+            border-left: 3px solid var(--accent-blue);
+            padding: 0.75rem 1.25rem;
+            margin: 1.5rem 0;
+            background: rgba(56, 189, 248, 0.04);
+            border-radius: 0 8px 8px 0;
+        }
+        .article-body blockquote p {
+            margin-bottom: 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ── Comparison Table ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-card);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .comparison-table td {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+        }
+        .comparison-table tr:hover td {
+            background: var(--bg-card);
+        }
+        .comparison-table .highlight-col {
+            background: rgba(56, 189, 248, 0.04);
+        }
+
+        /* ── CTA Box ── */
+        .cta-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+        .cta-box h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+        .cta-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .cta-btn-primary {
+            background: var(--accent-coral);
+            color: #fff;
+        }
+        .cta-btn-primary:hover { opacity: 0.9; color: #fff; }
+        .cta-btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-card);
+        }
+        .cta-btn-secondary:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+        /* ── Steps List ── */
+        .steps-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: steps;
+        }
+        .steps-list li {
+            counter-increment: steps;
+            padding-left: 2.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        .steps-list li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+            width: 1.6rem;
+            height: 1.6rem;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* ── Author Box ── */
+        .author-box {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-links a:hover { color: var(--text-secondary); }
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+            .article-header { padding: 2.5rem 1rem 1.5rem; }
+            .article-body { padding: 0 1rem 3rem; }
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table th, .comparison-table td { padding: 0.5rem; }
+            .cta-links { flex-direction: column; align-items: center; }
+        }
     </style>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Optic Is No Longer Maintained — Here's How to Keep Catching Breaking API Changes",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Organization",
+            "name": "CodeRifts"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "CodeRifts",
+            "url": "https://coderifts.com"
+        },
+        "description": "Optic's GitHub repository was archived in January 2026. Here's what happened, what alternatives exist, and how CodeRifts provides zero-config API governance.",
+        "mainEntityOfPage": "https://coderifts.com/blog/optic-alternative/"
+    }
+    </script>
 </head>
-<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
-<!-- Section 1: TopAppBar (Shared Component) -->
-<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/90 backdrop-blur-md dark:bg-[#1a1c1a]/90 shadow-[0_12px_40px_rgba(11,15,20,0.04)]">
-<nav class="flex justify-between items-center px-8 md:px-16 max-w-[1440px] mx-auto h-20">
-<div class="flex items-center gap-12">
-<a class="text-2xl font-bold tracking-tighter text-[#1a1c1a] dark:text-[#faf9f6] font-headline" href="/">Sgraal</a>
-<div class="hidden lg:flex items-center gap-8 font-manrope tracking-tight text-sm font-medium">
-<a class="text-[#6b6b6b] dark:text-[#d0c5b4] hover:text-[#1a1c1a] dark:hover:text-[#faf9f6] transition-colors" href="/decide">DECIDE</a>
-<a class="text-[#6b6b6b] dark:text-[#d0c5b4] hover:text-[#1a1c1a] dark:hover:text-[#faf9f6] transition-colors" href="/protect">PROTECT</a>
-<a class="text-[#6b6b6b] dark:text-[#d0c5b4] hover:text-[#1a1c1a] dark:hover:text-[#faf9f6] transition-colors" href="/comply">COMPLY</a>
-<a class="text-[#6b6b6b] dark:text-[#d0c5b4] hover:text-[#1a1c1a] dark:hover:text-[#faf9f6] transition-colors" href="/scale">SCALE</a>
-<a class="text-[#6b6b6b] dark:text-[#d0c5b4] hover:text-[#1a1c1a] dark:hover:text-[#faf9f6] transition-colors" href="/#pricing">Pricing</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="hidden sm:flex items-center gap-6 mr-4 text-sm font-medium text-secondary">
-<a class="hover:text-on-surface transition-colors" href="https://github.com/sgraal-ai" target="_blank">GitHub</a>
-<a class="hover:text-on-surface transition-colors" href="https://x.com/sgraal_ai" target="_blank">X</a>
-</div>
-<a class="px-5 py-2 text-sm font-medium text-on-surface hover:bg-surface-container-high rounded-md transition-all active:scale-[0.98]" href="/playground">Playground</a>
-<a class="gold-gradient-bg px-5 py-2 text-sm font-semibold text-white rounded-md transition-all active:scale-[0.98] shadow-sm" href="https://app.sgraal.com">Get API Key</a>
-</div>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <span class="nav-logo-icon">{&gt;}</span> CodeRifts
+        </a>
+        <div class="nav-links">
+            <a href="/features/">Features</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/blog/">Blog</a>
+            <a href="https://app.coderifts.com/api/docs" target="_blank">Docs</a>
+            <a href="https://app.coderifts.com/try" target="_blank">Try Now</a>
+            <a href="https://github.com/apps/coderifts" target="_blank" class="nav-cta">Install on GitHub — Free</a>
+        </div>
+    </div>
 </nav>
+
+<!-- Article Header -->
+<header class="article-header">
+    <div class="article-meta">
+        <span class="article-date">February 28, 2026</span>
+        <span class="article-tag">API Governance</span>
+        <span class="article-tag">OpenAPI</span>
+        <span class="article-tag">DevOps</span>
+    </div>
+    <h1>Optic Is No Longer Maintained — Here's How to Keep Catching Breaking API Changes</h1>
+    <p class="article-subtitle">The popular OpenAPI governance tool was archived on January 12, 2026. If you relied on it, here's what happened and what your options are now.</p>
 </header>
-<main class="pt-20">
-<!-- Section 2: Hero -->
-<section class="relative overflow-hidden px-8 md:px-16 py-32 lg:py-48 flex flex-col items-center text-center max-w-[1440px] mx-auto">
-<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 text-[10px] uppercase tracking-[0.2em] font-bold text-secondary mb-12">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                MEMORY GOVERNANCE PROTOCOL
-            </div>
-<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-on-background max-w-5xl leading-[1.05] mb-8 text-balance">
-                AI agents act on memory. Sgraal decides if that memory is <span class="text-primary-container">safe to act on.</span>
-</h1>
-<p class="text-xl md:text-2xl text-secondary max-w-2xl mb-12 font-light leading-relaxed">
-                The memory governance protocol between AI agent memory and AI agent action.
-            </p>
-<div class="flex flex-col sm:flex-row items-center gap-6 mb-20">
-<a class="gold-gradient-bg px-8 py-4 text-lg font-bold text-white rounded-md shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all" href="/playground">
-Try it now — no signup
-</a>
-<a class="px-8 py-4 text-lg font-bold text-on-surface hover:bg-surface-container-high rounded-md transition-all" href="https://docs.sgraal.com">
-Read the docs
-</a>
-</div>
-<div class="flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm font-label uppercase tracking-widest text-secondary/60">
-<span class="flex items-center gap-2"><span class="text-primary-container">1,834</span> tests</span>
-<span class="flex items-center gap-2"><span class="text-primary-container">0</span> failures</span>
-<span class="flex items-center gap-2">production ready</span>
-</div>
-<!-- Background Decorative Element -->
-<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl aspect-square opacity-[0.03] pointer-events-none">
-<div class="w-full h-full border-[60px] border-primary-container rounded-full blur-3xl"></div>
-</div>
-</section>
-<!-- Section 3: Problem -->
-<section class="bg-surface-container-low px-8 md:px-16 py-32 lg:py-40">
-<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-start">
-<div class="lg:w-1/2">
-<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-background mb-8 leading-tight text-balance">
-                        One wrong memory. <br/><span class="text-primary-container">One wrong decision.</span>
-</h2>
-<div class="space-y-8">
-<p class="text-lg md:text-xl leading-relaxed text-secondary/80">
-                            Your AI agent is about to act. It has 47 memories to draw from. One of them is 54 days old, conflicts with two newer sources, and carries a commercial bias from a sponsored article it summarized last month.
-                        </p>
-<a class="inline-flex items-center gap-2 text-lg font-semibold text-primary group" href="#how-it-works">
-                            Without Sgraal, it acts anyway.
-                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-<div class="pt-12 border-t border-outline-variant/10">
-<p class="text-xs font-label uppercase tracking-wider text-secondary/60 max-w-md">
-                                OWASP Agentic AI Top 10 (2026): memory poisoning is the #1 threat in agentic systems.
-                            </p>
-</div>
-</div>
-</div>
-<div class="lg:w-1/2 w-full">
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/5">
-<div class="flex justify-between items-center mb-6">
-<div class="flex gap-1.5">
-<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
-<div class="w-2.5 h-2.5 rounded-full bg-primary-container/40"></div>
-<div class="w-2.5 h-2.5 rounded-full bg-on-surface-variant/20"></div>
-</div>
-<span class="text-[10px] font-mono text-secondary/40">MEMORY_INSPECTION_BUFFER</span>
-</div>
-<div class="space-y-4 font-mono text-sm">
-<div class="p-3 bg-surface-container text-on-surface-variant rounded-md border-l-2 border-primary-container">
-<span class="text-secondary opacity-50 block mb-1">ID: mem_8422 // T-minus 54d</span>
-                                "Apply 15% discount for premium users..."
-                            </div>
-<div class="p-3 bg-surface-container-high text-on-surface-variant rounded-md">
-<span class="text-secondary opacity-50 block mb-1">ID: mem_9001 // T-minus 2h</span>
-                                "All legacy discounts are deprecated as of Jan 1..."
-                            </div>
-<div class="flex justify-center py-4">
-<span class="material-symbols-outlined text-error animate-pulse">warning</span>
-</div>
-<div class="p-3 bg-error/5 text-error rounded-md border border-error/20 flex justify-between items-center">
-<span>CONFLICT_DETECTED</span>
-<span class="text-[10px] px-1.5 py-0.5 bg-error text-white rounded">BLOCK</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 4: How it works -->
-<section class="bg-background px-8 md:px-16 py-32 lg:py-48">
-<div class="max-w-7xl mx-auto">
-<div class="mb-24">
-<p class="text-primary font-semibold text-lg mb-4">Memory poisoning is invisible — <span class="text-primary-container">until Sgraal.</span></p>
-<h2 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">How Sgraal works</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-<!-- Connector line (visual only, hidden on mobile) -->
-<div class="hidden md:block absolute top-10 left-0 w-full h-[1px] bg-outline-variant/20 -z-10"></div>
-<div class="space-y-6">
-<div class="w-14 h-14 rounded-full border-2 border-primary-container bg-background flex items-center justify-center text-2xl font-bold text-primary shrink-0 shadow-sm shadow-primary-container/20">1</div>
-<h3 class="text-2xl font-bold font-headline">An agent is about to act on memory.</h3>
-<p class="text-secondary leading-relaxed">Before execution, it calls Sgraal with its memory state and intended action.</p>
-</div>
-<div class="space-y-6">
-<div class="w-14 h-14 rounded-full border-2 border-primary-container bg-background flex items-center justify-center text-2xl font-bold text-primary shrink-0 shadow-sm shadow-primary-container/20">2</div>
-<h3 class="text-2xl font-bold font-headline">Sgraal validates.</h3>
-<p class="text-secondary leading-relaxed">108 models evaluate freshness, drift, provenance, conflict, compliance, and intent. Under 10ms.</p>
-</div>
-<div class="space-y-6">
-<div class="w-14 h-14 rounded-full border-2 border-primary-container bg-background flex items-center justify-center text-2xl font-bold text-primary shrink-0 shadow-sm shadow-primary-container/20">3</div>
-<h3 class="text-2xl font-bold font-headline">The agent acts safely — or stops.</h3>
-<p class="text-secondary leading-relaxed">USE_MEMORY · WARN · ASK_USER · BLOCK. Every decision logged, traced, and explainable.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 5: Four Pillars -->
-<section class="bg-surface-container-low px-8 md:px-16 py-32 lg:py-48">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-24 space-y-4">
-<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight">One API. 15 capabilities. <span class="text-primary-container">Four pillars</span> of memory governance.</h2>
-<p class="text-xl text-secondary">Before every agent action, Sgraal decides, protects, complies, and scales.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Pillar Cards -->
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 group hover:-translate-y-1 transition-transform">
-<div class="text-primary-container mb-6 font-bold tracking-widest text-xs">DECIDE</div>
-<h4 class="font-headline text-xl font-bold mb-4">Conflict Resolution</h4>
-<ul class="text-sm text-secondary space-y-3 mb-8">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Temporal decay weighting</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Multi-source consensus</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Uncertainty flagging</li>
-</ul>
-<a class="text-primary font-semibold text-sm inline-flex items-center gap-1" href="/decide">Learn more <span class="material-symbols-outlined text-sm">chevron_right</span></a>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 group hover:-translate-y-1 transition-transform">
-<div class="text-primary-container mb-6 font-bold tracking-widest text-xs">PROTECT</div>
-<h4 class="font-headline text-xl font-bold mb-4">Poison Detection</h4>
-<ul class="text-sm text-secondary space-y-3 mb-8">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Injection filtering</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Bias triangulation</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Adversarial buffer</li>
-</ul>
-<a class="text-primary font-semibold text-sm inline-flex items-center gap-1" href="/protect">Learn more <span class="material-symbols-outlined text-sm">chevron_right</span></a>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 group hover:-translate-y-1 transition-transform">
-<div class="text-primary-container mb-6 font-bold tracking-widest text-xs">COMPLY</div>
-<h4 class="font-headline text-xl font-bold mb-4">Policy Guardrails</h4>
-<ul class="text-sm text-secondary space-y-3 mb-8">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> PII isolation</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Regional siloing</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Audit trail exports</li>
-</ul>
-<a class="text-primary font-semibold text-sm inline-flex items-center gap-1" href="/comply">Learn more <span class="material-symbols-outlined text-sm">chevron_right</span></a>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 group hover:-translate-y-1 transition-transform">
-<div class="text-primary-container mb-6 font-bold tracking-widest text-xs">SCALE</div>
-<h4 class="font-headline text-xl font-bold mb-4">High Availability</h4>
-<ul class="text-sm text-secondary space-y-3 mb-8">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> &lt; 10ms latency</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Edge deployment</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span> Global sync</li>
-</ul>
-<a class="text-primary font-semibold text-sm inline-flex items-center gap-1" href="/scale">Learn more <span class="material-symbols-outlined text-sm">chevron_right</span></a>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 6: Social Proof -->
-<section class="bg-background px-8 md:px-16 py-32 lg:py-48 text-center relative overflow-hidden">
-<div class="max-w-4xl mx-auto relative z-10">
-<span class="material-symbols-outlined text-7xl text-primary-container/20 mb-8 select-none">format_quote</span>
-<blockquote class="font-headline text-3xl md:text-5xl font-bold tracking-tight mb-12 italic leading-tight">
-                    "Ran 300+ step regulated test with zero drift."
-                </blockquote>
-<div class="flex items-center justify-center gap-3 mb-16">
-<img alt="grok" class="w-10 h-10 rounded-full grayscale" data-alt="minimalist tech logo icon in grayscale for social proof attribution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0QGm9IOMLHTxZ2M0UpYviPdNPLjgTgAM0c2-8mIf67CozEhdNTu2DVHYclre4e8nWfnl6x2Gnhag1sLVp5uaIFmgEUl3NSqHOapreIjJdYKEVq1jAaSr4Opss-286xvOoldCB2OERUZhGuvAb2ADQnnsmrLLGvTCFDx3UDJBJ892ue0RgqjrCCEOGrv33DWLdiExDuVVekeiiB--pBA3uA4_ln35aZlq9PNkGjMlfDN8y5pwGXLSufAr47w_tm6AN_5_FnpMmA"/>
-<span class="font-bold text-on-surface">@grok</span>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-outline-variant/10">
-<div class="flex flex-col gap-1">
-<span class="text-2xl font-bold font-headline text-primary-container">1,834</span>
-<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Tests</span>
-</div>
-<div class="flex flex-col gap-1">
-<span class="text-2xl font-bold font-headline text-primary-container">0</span>
-<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Failures</span>
-</div>
-<div class="flex flex-col gap-1">
-<span class="text-2xl font-bold font-headline text-primary-container">300+</span>
-<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Steps</span>
-</div>
-<div class="flex flex-col gap-1">
-<span class="text-2xl font-bold font-headline text-primary-container">Zero</span>
-<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Drift</span>
-</div>
-</div>
-<p class="mt-12 text-secondary/60 italic font-light text-lg">
-                    When memory governance is visible, manipulation becomes accountable.
-                </p>
-</div>
-</section>
-<!-- Section 7: Integrations -->
-<section class="bg-surface-container-low px-8 md:px-16 py-24 text-center">
-<div class="max-w-7xl mx-auto">
-<span class="text-[10px] font-bold tracking-[0.3em] text-secondary/50 block mb-12">WORKS WITH</span>
-<div class="flex flex-wrap justify-center gap-4">
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">LangChain</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">CrewAI</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">AutoGen</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">LlamaIndex</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">mem0</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">MCP</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">OpenAI</span>
-<span class="px-6 py-2.5 bg-surface-container-lowest border border-outline-variant/10 rounded-full text-sm font-medium text-on-surface-variant hover:border-primary-container transition-colors">Anthropic</span>
-</div>
-</div>
-</section>
-<!-- Section 8: Pricing -->
-<section class="bg-background px-8 md:px-16 py-32 lg:py-48">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-24">
-<h2 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight mb-6">Simple <span class="text-primary-container">pricing</span></h2>
-<p class="text-xl text-secondary">Start free. Scale when you need to.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- FREE Card -->
-<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 flex flex-col">
-<div class="mb-10">
-<h3 class="font-headline text-xl font-bold mb-2">FREE</h3>
-<div class="flex items-baseline gap-1">
-<span class="text-4xl font-extrabold tracking-tight">$0</span>
-<span class="text-secondary/60 text-sm">/ mo</span>
-</div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                1,000 checks / mo
-                            </li>
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Community Support
-                            </li>
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Basic Trace Logs
-                            </li>
-</ul>
-<button class="w-full py-4 font-bold border-2 border-primary-container text-primary rounded-md hover:bg-primary/5 transition-all">Start Free</button>
-</div>
-<!-- PRO Card -->
-<div class="bg-surface-container p-10 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.08)] border-2 border-primary-container relative flex flex-col scale-105 z-10">
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container px-4 py-1 rounded-full text-[10px] font-bold text-on-primary-container tracking-widest uppercase">MOST POPULAR</div>
-<div class="mb-10">
-<h3 class="font-headline text-xl font-bold mb-2">PRO</h3>
-<div class="flex items-baseline gap-1">
-<span class="text-4xl font-extrabold tracking-tight">$0.001</span>
-<span class="text-secondary/60 text-sm">/ call</span>
-</div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm text-on-surface">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Unlimited volume
-                            </li>
-<li class="flex items-center gap-3 text-sm text-on-surface">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Advanced drift analysis
-                            </li>
-<li class="flex items-center gap-3 text-sm text-on-surface">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                PII filtering (Global)
-                            </li>
-<li class="flex items-center gap-3 text-sm text-on-surface">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Priority 24/7 support
-                            </li>
-</ul>
-<button class="gold-gradient-bg w-full py-4 font-bold text-white rounded-md shadow-lg shadow-primary/20 hover:brightness-110 transition-all">Go Pro</button>
-</div>
-<!-- ENTERPRISE Card -->
-<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_12px_40px_rgba(11,15,20,0.04)] border border-outline-variant/10 flex flex-col">
-<div class="mb-10">
-<h3 class="font-headline text-xl font-bold mb-2">ENTERPRISE</h3>
-<div class="flex items-baseline gap-1">
-<span class="text-4xl font-extrabold tracking-tight">Custom</span>
-</div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                VPC / On-prem deployment
-                            </li>
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Dedicated model tuning
-                            </li>
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                SOC2 / HIPAA Compliance
-                            </li>
-<li class="flex items-center gap-3 text-sm text-secondary">
-<span class="material-symbols-outlined text-primary text-lg">check</span>
-                                Custom SLA
-                            </li>
-</ul>
-<button class="w-full py-4 font-bold bg-surface-container-highest text-on-surface rounded-md hover:bg-surface-dim transition-all">Contact Sales</button>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Section 9: Footer (Shared Component) -->
-<footer class="bg-[#1a1c1a] dark:bg-[#0b0f14] w-full border-t border-[#d0c5b4]/10">
-<div class="flex flex-col md:flex-row justify-between items-start py-20 px-12 max-w-7xl mx-auto space-y-12 md:space-y-0">
-<div class="space-y-6">
-<div class="font-manrope font-bold text-[#faf9f6] text-3xl tracking-tighter">Sgraal</div>
-<p class="font-inter text-xs uppercase tracking-[0.1em] text-[#d0c5b4]">Memory Governance Protocol</p>
-<div class="flex gap-4 pt-4">
-<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high/10 text-white hover:bg-primary-container transition-colors" href="https://github.com/sgraal-ai" target="_blank">
-<span class="material-symbols-outlined text-sm">code</span>
-</a>
-<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high/10 text-white hover:bg-primary-container transition-colors" href="https://x.com/sgraal_ai" target="_blank">
-<span class="material-symbols-outlined text-sm">terminal</span>
-</a>
-</div>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-16">
-<div class="space-y-4">
-<h5 class="text-[#faf9f6] text-sm font-semibold">Developers</h5>
-<nav class="flex flex-col gap-3 font-inter text-xs uppercase tracking-[0.1em] text-[#d0c5b4]">
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com">Docs</a>
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com/api">API Reference</a>
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="https://github.com/sgraal-ai" target="_blank">GitHub</a>
-</nav>
-</div>
-<div class="space-y-4">
-<h5 class="text-[#faf9f6] text-sm font-semibold">Protocol</h5>
-<nav class="flex flex-col gap-3 font-inter text-xs uppercase tracking-[0.1em] text-[#d0c5b4]">
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="https://x.com/sgraal_ai" target="_blank">X</a>
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="https://app.sgraal.com">Dashboard</a>
-<a class="text-[#6b6b6b] hover:text-[#c9a962] transition-colors" href="/security">Security</a>
-</nav>
-</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-12 pb-12">
-<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="font-inter text-xs uppercase tracking-[0.1em] text-[#6b6b6b]">© 2026 Sgraal Protocol · Apache 2.0</p>
-<div class="flex gap-8 font-inter text-xs uppercase tracking-[0.1em] text-[#6b6b6b]">
-<a class="hover:text-[#faf9f6] transition-colors" href="/privacy">Privacy</a>
-<a class="hover:text-[#faf9f6] transition-colors" href="/terms">Terms</a>
-<a class="hover:text-[#faf9f6] transition-colors" href="/security">Security</a>
-</div>
-</div>
-</div>
+
+<!-- Article Body -->
+<article class="article-body">
+
+    <p>If you've been using Optic to catch breaking changes in your OpenAPI specs, you've probably noticed: the <a href="https://github.com/opticdev/optic" target="_blank">repository was archived</a> on January 12, 2026. The last issue, titled "No Longer Maintained," was opened four days earlier. The final release (v10.3.0) shipped, and that was it.</p>
+
+    <p>Optic was a good tool. It was backed by Y Combinator, had 1,500+ GitHub stars, and companies like Snyk used it in production. But it required a CLI setup, a config file, CI pipeline integration, and custom rulesets written in TypeScript. For many teams, that setup cost meant the tool never made it past the "we should try this" stage.</p>
+
+    <p>So what now?</p>
+
+    <h2>The problem hasn't gone away</h2>
+
+    <p>Breaking API changes still ship to production every day. A field gets renamed, an endpoint gets removed, a required parameter becomes optional — and downstream services break silently. If you've ever debugged a 500 error that turned out to be someone else's schema change slipping through code review, you know the pain.</p>
+
+    <p>The need for automated breaking change detection in pull requests is arguably stronger than ever, with more teams adopting API-first development and microservice architectures.</p>
+
+    <h2>What Optic did well</h2>
+
+    <p>Optic brought several important ideas to the API governance space: diffing OpenAPI specs to find breaking changes, integrating results into code review, and applying custom linting rules to API design. It also supported generating OpenAPI specs from traffic, which was a unique feature for teams without existing specs.</p>
+
+    <h2>What made it hard to adopt</h2>
+
+    <p>For teams that just wanted "tell me if my PR breaks the API," Optic required significant setup:</p>
+
+    <ul>
+        <li>Install the CLI globally (<code>npm install -g @useoptic/optic</code>)</li>
+        <li>Create an <code>optic.yml</code> configuration file</li>
+        <li>Set up a GitHub Action or CI pipeline step</li>
+        <li>Write custom rulesets in TypeScript for anything beyond defaults</li>
+        <li>Manage API tokens and cloud connections</li>
+    </ul>
+
+    <p>This was powerful for platform teams with dedicated API governance roles. But for most engineering teams — the ones with 5–20 services, a few OpenAPI specs, and no dedicated API platform engineer — it was too much friction.</p>
+
+    <h2>What I built instead</h2>
+
+    <p>I ran into this exact problem at work. We had 4 microservices with OpenAPI specs, and breaking changes kept slipping through PRs. I tried Optic, spent an afternoon configuring it, and thought: why does this need a CI pipeline and a config file?</p>
+
+    <p>So I built <strong>CodeRifts</strong> — a GitHub App that does one thing well: it posts a full API governance report as a PR comment every time someone modifies an OpenAPI spec.</p>
+
+    <p>The setup is literally:</p>
+
+    <ol class="steps-list">
+        <li>Install the GitHub App (one click)</li>
+        <li>Open a pull request</li>
+    </ol>
+
+    <p>That's it. No config file. No CI changes. No CLI. It auto-discovers your OpenAPI specs (YAML or JSON, versions 2.0, 3.0, and 3.1) and analyzes them on every PR.</p>
+
+    <h2>What the report includes</h2>
+
+    <p>Every PR that touches a spec gets a comment with:</p>
+
+    <ul>
+        <li><strong>Risk Score (0–100)</strong> across 4 dimensions: revenue impact, blast radius, app compatibility, and security</li>
+        <li><strong>Breaking change detection</strong> for 10 types: removed endpoints, deleted fields, type changes, enum value removal, and more</li>
+        <li><strong>Policy violations</strong> — configurable rules like "never delete a <code>/payments/*</code> endpoint" or "maximum 3 breaking changes per PR"</li>
+        <li><strong>Security analysis</strong> — auth removal detection, OAuth scope changes, sensitive field exposure (OWASP-aligned)</li>
+        <li><strong>Semver suggestion</strong> — concrete MAJOR/MINOR/PATCH recommendation based on what actually changed</li>
+        <li><strong>Auto-generated changelog</strong> — grouped by Breaking, Added, Changed, Deprecated</li>
+    </ul>
+
+    <p>See a real example: <a href="https://github.com/coderifts/demo/pull/1" target="_blank">Demo PR with full governance report →</a></p>
+
+    <h2>Comparison: Optic vs CodeRifts</h2>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Optic (archived)</th>
+                <th class="highlight-col">CodeRifts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Setup time</strong></td>
+                <td>30–60 minutes</td>
+                <td class="highlight-col">30 seconds</td>
+            </tr>
+            <tr>
+                <td><strong>Config required</strong></td>
+                <td><code>optic.yml</code> + CI pipeline</td>
+                <td class="highlight-col">None (optional <code>.coderifts.yml</code>)</td>
+            </tr>
+            <tr>
+                <td><strong>Delivery</strong></td>
+                <td>CLI + GitHub Action</td>
+                <td class="highlight-col">GitHub App (+ Web UI, API, CLI)</td>
+            </tr>
+            <tr>
+                <td><strong>Breaking changes</strong></td>
+                <td>Yes</td>
+                <td class="highlight-col">Yes (10 types)</td>
+            </tr>
+            <tr>
+                <td><strong>Risk scoring</strong></td>
+                <td>No</td>
+                <td class="highlight-col">Yes (0–100, 4 dimensions)</td>
+            </tr>
+            <tr>
+                <td><strong>Policy engine</strong></td>
+                <td>TypeScript rulesets</td>
+                <td class="highlight-col">YAML config-as-code</td>
+            </tr>
+            <tr>
+                <td><strong>Security analysis</strong></td>
+                <td>No</td>
+                <td class="highlight-col">Yes (OWASP-aligned)</td>
+            </tr>
+            <tr>
+                <td><strong>Maintenance</strong></td>
+                <td>Archived Jan 2026</td>
+                <td class="highlight-col">Actively developed</td>
+            </tr>
+            <tr>
+                <td><strong>Pricing</strong></td>
+                <td>Free (open source)</td>
+                <td class="highlight-col">Free tier + Pro $49/repo/mo<br><small>(free during beta)</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Other alternatives</h2>
+
+    <p>If you liked Optic's CLI-first approach and want something you fully control, there are other options worth considering:</p>
+
+    <ul>
+        <li><strong>oasdiff</strong> — an open source OpenAPI diff tool, solid for CI pipelines, but no GitHub integration or governance features beyond diffing</li>
+        <li><strong>Swagger diff</strong> — basic diffing, limited to Swagger 2.0</li>
+        <li><strong>Fork Optic</strong> — it's MIT licensed, though maintaining a fork solo is a significant commitment</li>
+    </ul>
+
+    <p>Each has tradeoffs. If all you need is a raw diff, oasdiff is great. If you want governance — risk scoring, policies, security checks, team routing — without the setup overhead, that's the gap CodeRifts fills.</p>
+
+    <!-- CTA -->
+    <div class="cta-box">
+        <h3>Try CodeRifts — free during beta</h3>
+        <p>All Pro features unlocked. No credit card required. Works in 30 seconds.</p>
+        <div class="cta-links">
+            <a href="https://github.com/apps/coderifts" target="_blank" class="cta-btn cta-btn-primary">Install GitHub App</a>
+            <a href="https://app.coderifts.com/try" target="_blank" class="cta-btn cta-btn-secondary">Try in Browser</a>
+            <a href="https://github.com/coderifts/demo/pull/1" target="_blank" class="cta-btn cta-btn-secondary">See Demo PR</a>
+        </div>
+    </div>
+
+    <div class="author-box">
+        <p>I'm the developer behind CodeRifts. If you've been using Optic and are looking for an alternative, I'd love to hear about your setup — what worked, what didn't, and what you'd want in a replacement. Reach out at <a href="mailto:hello@coderifts.com">hello@coderifts.com</a>.</p>
+    </div>
+
+</article>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://app.coderifts.com/try" target="_blank">Try Now</a>
+        <a href="/features/">Features</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://app.coderifts.com/api/docs" target="_blank">API Docs</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://github.com/apps/coderifts" target="_blank">GitHub</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 CodeRifts. All rights reserved.</p>
 </footer>
-</body></html>
+
+</body>
+</html>
