@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playground — Sgraal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = { theme: { extend: { colors: { "primary": "#c9a962" }, fontFamily: { "headline": ["Manrope"] } } } }</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
+textarea, select { outline: none; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-12 px-6">
+<div class="max-w-3xl mx-auto text-center">
+<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">PLAYGROUND</span>
+<h1 class="text-4xl md:text-6xl font-extrabold text-[#0B0F14] tracking-tighter mb-6 leading-[1.1]">
+  Try Sgraal <span style="color:#c9a962">live.</span>
+</h1>
+<p class="text-slate-600 text-lg max-w-xl mx-auto mb-4">No signup. No API key needed. Real scoring.</p>
+<div class="inline-flex items-center gap-2 bg-[#c9a962]/10 border border-[#c9a962]/30 px-4 py-2 rounded-full">
+  <span class="text-slate-600 text-sm">Demo key:</span>
+  <span class="font-mono text-sm font-bold text-[#c9a962]">sg_demo_playground</span>
+</div>
+</div>
+</section>
+
+<!-- Playground -->
+<section class="pb-24 px-6">
+<div class="max-w-3xl mx-auto">
+
+  <!-- Memory Input -->
+  <div class="mb-5">
+    <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Memory State (JSON)</label>
+    <textarea id="memoryInput" rows="7"
+      class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm font-mono text-[#0B0F14] resize-y focus:border-[#c9a962] transition-colors"
+    >[
+  {
+    "id": "mem_payment_history",
+    "type": "tool_state",
+    "timestamp_age_days": 54,
+    "source_trust": 0.6,
+    "source_conflict": 0.4
+  }
+]</textarea>
+  </div>
+
+  <!-- Action + Domain -->
+  <div class="grid grid-cols-2 gap-4 mb-5">
+    <div>
+      <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Action Type</label>
+      <select id="actionType" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-[#0B0F14] focus:border-[#c9a962] transition-colors">
+        <option value="read">read</option>
+        <option value="write">write</option>
+        <option value="financial">financial</option>
+        <option value="irreversible" selected>irreversible</option>
+      </select>
+    </div>
+    <div>
+      <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Domain</label>
+      <select id="domain" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-[#0B0F14] focus:border-[#c9a962] transition-colors">
+        <option value="general">general</option>
+        <option value="fintech" selected>fintech</option>
+        <option value="medical">healthcare</option>
+        <option value="legal">legal</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Run Button -->
+  <button id="runBtn" onclick="runPreflight()"
+    class="w-full py-4 rounded-lg text-white font-bold text-base transition-all"
+    style="background: linear-gradient(135deg, #745b1c, #c9a962)">
+    Run Preflight
+  </button>
+
+  <!-- Error -->
+  <p id="errorMsg" class="text-red-500 text-sm text-center mt-4 hidden"></p>
+
+  <!-- Result -->
+  <div id="result" class="hidden mt-10">
+    <div class="flex items-center justify-center gap-12 mb-8">
+      <!-- Omega gauge -->
+      <div class="text-center">
+        <svg id="gauge" width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+          <circle id="gaugeFill" cx="60" cy="60" r="52" fill="none" stroke="#c9a962" stroke-width="8"
+            stroke-dasharray="0 327" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          <text id="gaugeValue" x="60" y="56" text-anchor="middle" fill="#0B0F14" font-size="28" font-weight="bold" font-family="Manrope">0</text>
+          <text x="60" y="74" text-anchor="middle" fill="#6b7280" font-size="10">omega</text>
+        </svg>
+      </div>
+      <!-- Decision badge -->
+      <div>
+        <span id="actionBadge" class="inline-block px-6 py-3 rounded-lg text-white text-sm font-bold font-mono bg-slate-400">
+          —
+        </span>
+      </div>
+    </div>
+
+    <!-- Show JSON toggle -->
+    <div class="text-center">
+      <button onclick="toggleJson()" class="text-sm text-slate-500 hover:text-[#c9a962] transition-colors">
+        Show full response JSON
+      </button>
+      <pre id="jsonOutput" class="hidden mt-4 bg-[#0b0f14] rounded-xl p-5 text-xs text-[#e2e8f0] font-mono text-left overflow-x-auto max-h-96 overflow-y-auto"></pre>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-50 py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-4">Sgraal</div>
+<p class="text-slate-500 text-sm">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Product</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Resources</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Legal</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-500 text-sm">© 2026 Sgraal Protocol · Apache 2.0</p>
+<p class="text-slate-400 text-sm">Free to start · No signup required</p>
+</div>
+</div>
+</footer>
+
+<script>
+const ACTION_COLORS = {
+  USE_MEMORY: "#16a34a",
+  WARN: "#ca8a04",
+  ASK_USER: "#ea580c",
+  BLOCK: "#dc2626"
+};
+
+function omegaColor(v) {
+  if (v <= 30) return "#16a34a";
+  if (v <= 60) return "#ca8a04";
+  return "#dc2626";
+}
+
+async function runPreflight() {
+  const btn = document.getElementById("runBtn");
+  const errorMsg = document.getElementById("errorMsg");
+  const result = document.getElementById("result");
+
+  btn.textContent = "Running...";
+  btn.disabled = true;
+  errorMsg.classList.add("hidden");
+  result.classList.add("hidden");
+
+  try {
+    const memory = JSON.parse(document.getElementById("memoryInput").value);
+    const actionType = document.getElementById("actionType").value;
+    const domain = document.getElementById("domain").value;
+
+    const res = await fetch("https://api.sgraal.com/v1/preflight", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer sg_demo_playground",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ memory_state: memory, action_type: actionType, domain })
+    });
+
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    const data = await res.json();
+
+    const omega = data.omega_mem_final || 0;
+    const action = data.recommended_action || "—";
+
+    // Update gauge
+    document.getElementById("gaugeValue").textContent = Math.round(omega);
+    document.getElementById("gaugeFill").setAttribute("stroke", omegaColor(omega));
+    document.getElementById("gaugeFill").setAttribute("stroke-dasharray", `${omega * 3.27} 327`);
+
+    // Update badge
+    const badge = document.getElementById("actionBadge");
+    badge.textContent = action;
+    badge.style.backgroundColor = ACTION_COLORS[action] || "#6b7280";
+
+    // Store JSON
+    document.getElementById("jsonOutput").textContent = JSON.stringify(data, null, 2);
+
+    result.classList.remove("hidden");
+  } catch (e) {
+    errorMsg.textContent = e.message || "Something went wrong.";
+    errorMsg.classList.remove("hidden");
+  } finally {
+    btn.textContent = "Run Preflight";
+    btn.disabled = false;
+  }
+}
+
+function toggleJson() {
+  const el = document.getElementById("jsonOutput");
+  el.classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>

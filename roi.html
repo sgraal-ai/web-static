@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROI Calculator — Sgraal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script>tailwind.config = { theme: { extend: { colors: { "primary": "#c9a962" }, fontFamily: { "headline": ["Manrope"] } } } }</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+input[type=range] { accent-color: #c9a962; }
+input[type=number] { outline: none; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-16 px-6 text-center">
+<div class="max-w-3xl mx-auto">
+<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">ROI CALCULATOR</span>
+<h1 class="text-4xl md:text-6xl font-extrabold text-[#0B0F14] tracking-tighter mb-6 leading-[1.1]">
+  What does a bad<br/>memory decision cost you?
+</h1>
+<p class="text-slate-600 text-lg max-w-xl mx-auto">
+  Enter your numbers and see how much Sgraal saves you in prevented errors, downtime, and compliance failures.
+</p>
+</div>
+</section>
+
+<!-- Calculator -->
+<section class="pb-32 px-6">
+<div class="max-w-4xl mx-auto">
+<div class="grid md:grid-cols-2 gap-8 items-start">
+
+  <!-- Inputs -->
+  <div class="bg-[#f5f4f0] rounded-2xl p-8 space-y-8">
+    <h2 class="text-xl font-bold">Your numbers</h2>
+
+    <!-- Decisions per month -->
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <label class="text-sm font-semibold text-slate-700">Decisions / month</label>
+        <span id="decisionsVal" class="text-[#c9a962] font-bold font-mono">10,000</span>
+      </div>
+      <input type="range" id="decisions" min="1000" max="1000000" step="1000" value="10000"
+        oninput="update()" class="w-full"/>
+      <div class="flex justify-between text-xs text-slate-400 mt-1">
+        <span>1K</span><span>1M</span>
+      </div>
+    </div>
+
+    <!-- Cost per error -->
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <label class="text-sm font-semibold text-slate-700">Avg. cost per error ($)</label>
+        <span id="costVal" class="text-[#c9a962] font-bold font-mono">$500</span>
+      </div>
+      <input type="range" id="costPerError" min="10" max="50000" step="10" value="500"
+        oninput="update()" class="w-full"/>
+      <div class="flex justify-between text-xs text-slate-400 mt-1">
+        <span>$10</span><span>$50K</span>
+      </div>
+    </div>
+
+    <!-- Number of agents -->
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <label class="text-sm font-semibold text-slate-700">Number of agents</label>
+        <span id="agentsVal" class="text-[#c9a962] font-bold font-mono">5</span>
+      </div>
+      <input type="range" id="agents" min="1" max="500" step="1" value="5"
+        oninput="update()" class="w-full"/>
+      <div class="flex justify-between text-xs text-slate-400 mt-1">
+        <span>1</span><span>500</span>
+      </div>
+    </div>
+
+    <!-- Error rate assumption -->
+    <div class="bg-white rounded-xl p-4 border border-[#c9a962]/20">
+      <p class="text-xs text-slate-500 leading-relaxed">
+        Based on industry data: <strong>34% of agent memories are unreliable</strong>. 
+        Sgraal catches ~94% of memory errors before they cause downstream damage.
+      </p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="space-y-4">
+    <h2 class="text-xl font-bold">Your ROI with Sgraal</h2>
+
+    <div class="bg-[#f5f4f0] rounded-2xl p-6">
+      <p class="text-sm text-slate-500 mb-1">Errors prevented / month</p>
+      <p id="errorsPrevented" class="text-3xl font-bold text-[#0B0F14] font-mono">3,400</p>
+    </div>
+
+    <div class="bg-[#f5f4f0] rounded-2xl p-6">
+      <p class="text-sm text-slate-500 mb-1">Cost of errors without Sgraal</p>
+      <p id="costWithout" class="text-3xl font-bold text-red-500 font-mono">$1,700,000</p>
+    </div>
+
+    <div class="bg-[#f5f4f0] rounded-2xl p-6">
+      <p class="text-sm text-slate-500 mb-1">Sgraal cost / month</p>
+      <p id="sgraalCost" class="text-3xl font-bold text-slate-600 font-mono">$10</p>
+    </div>
+
+    <div class="rounded-2xl p-6" style="background: linear-gradient(135deg, #745b1c, #c9a962)">
+      <p class="text-sm text-white/80 mb-1">Monthly savings</p>
+      <p id="savings" class="text-4xl font-extrabold text-white font-mono">$1,699,990</p>
+      <p id="roi" class="text-white/80 text-sm mt-2">ROI: 169,999x</p>
+    </div>
+
+    <a href="https://app.sgraal.com" class="block text-center bg-[#0B0F14] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#1a2030] transition-all">
+      Start free — no credit card →
+    </a>
+    <p class="text-center text-slate-400 text-sm">10,000 free decisions/month · No signup needed</p>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-50 py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-4">Sgraal</div>
+<p class="text-slate-500 text-sm">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Product</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Resources</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Legal</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-500 text-sm">© 2026 Sgraal Protocol · Apache 2.0</p>
+<p class="text-slate-400 text-sm">Free to start · No signup required</p>
+</div>
+</div>
+</footer>
+
+<script>
+function fmt(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + (n/1000).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function fmtNum(n) {
+  return n.toLocaleString();
+}
+
+function update() {
+  const decisions = parseInt(document.getElementById('decisions').value);
+  const costPerError = parseInt(document.getElementById('costPerError').value);
+  const agents = parseInt(document.getElementById('agents').value);
+
+  // Update display values
+  document.getElementById('decisionsVal').textContent = fmtNum(decisions);
+  document.getElementById('costVal').textContent = '$' + fmtNum(costPerError);
+  document.getElementById('agentsVal').textContent = agents;
+
+  // Calculations
+  const errorRate = 0.34; // 34% of memories unreliable
+  const catchRate = 0.94; // Sgraal catches 94%
+  const errorsPerMonth = Math.round(decisions * errorRate);
+  const errorsPrevented = Math.round(errorsPerMonth * catchRate);
+  const costWithout = errorsPerMonth * costPerError;
+  
+  // Sgraal cost: $0.001/decision after 10K free
+  const billableDecisions = Math.max(0, decisions - 10000);
+  const sgraalCost = billableDecisions * 0.001;
+  
+  const savings = (errorsPrevented * costPerError) - sgraalCost;
+  const roiMultiple = sgraalCost > 0 ? Math.round(savings / sgraalCost) : '∞';
+
+  document.getElementById('errorsPrevented').textContent = fmtNum(errorsPrevented);
+  document.getElementById('costWithout').textContent = fmt(costWithout);
+  document.getElementById('sgraalCost').textContent = sgraalCost < 1 ? 'Free' : fmt(sgraalCost);
+  document.getElementById('savings').textContent = fmt(Math.max(0, savings));
+  document.getElementById('roi').textContent = `ROI: ${typeof roiMultiple === 'number' ? fmtNum(roiMultiple) + 'x' : roiMultiple}`;
+}
+
+update();
+</script>
+
+</body>
+</html>

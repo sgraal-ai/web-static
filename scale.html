@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scale — Sgraal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = { theme: { extend: { colors: { "primary": "#c9a962" }, fontFamily: { "headline": ["Manrope"] } } } }</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-[#c9a962] font-semibold border-b-2 border-[#c9a962] pb-1" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-24 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">SCALE</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
+  Learn, adapt,<br/>and grow autonomously.
+</h1>
+<p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+  Self-improving thresholds, autonomous healing, 6 SDKs, 14 frameworks — Sgraal runs itself so your agents can run anything.
+</p>
+<a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
+  Try it free <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+</div>
+</section>
+
+<!-- How It Works -->
+<section class="py-24 bg-[#f5f4f0]">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="relative">
+<div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">1</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold mb-4">Every decision outcome trains the system</h3>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Reinforcement learning records every outcome. Calibrated thresholds improve automatically.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">2</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold mb-4">The system heals itself</h3>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Predictive health forecasts 30 days ahead. Autonomous heal triggers before problems surface.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">3</div>
+<div class="relative z-10 pt-4">
+<h3 class="text-xl font-bold mb-4">Works inside any stack</h3>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">pip install sgraal · langchain-sgraal · @sgraal/mcp. Zero-config. 14 framework integrations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Capabilities -->
+<section class="py-32 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-4xl font-bold tracking-tight mb-16 text-center">Capabilities</h2>
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+<div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962]">psychology</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Learning & Calibration</h3>
+<p class="text-slate-600 text-sm leading-relaxed">RL Q-table: every decision outcome improves thresholds. Meta-learning: cross-agent patterns. Calibrated thresholds per domain, action type, memory type. Weight export/import.</p>
+</div>
+<div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962]">auto_fix_high</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Autonomous Intelligence</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Predictive Health: first_block_day forecast 30 days ahead. Autonomous Immune: auto-heal after 3+ BLOCKs. Autonomous Rollback: wrong email → revoke. Autonomous Pruning: Shapley-weighted removal.</p>
+</div>
+<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962]">integration_instructions</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Integrations & SDKs</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Python SDK: async + sync, Pydantic v2. LangChain: pip install langchain-sgraal. MCP Server: npm install @sgraal/mcp — Claude Desktop, Cursor, Windsurf. Also: CrewAI · AutoGen · LlamaIndex · mem0 · CLI.</p>
+</div>
+<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962]">speed</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Performance</h3>
+<p class="text-slate-600 text-sm leading-relaxed">p50 latency: 12ms. p99: under 50ms. 166+ API endpoints. Global edge deployment. Zero cold start. Upstash Redis for state management.</p>
+</div>
+<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962]">hub</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Multi-Agent Fleet</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Coordinate unlimited agents. Cross-agent memory sharing with RBAC. Fleet-wide health dashboard. Agent lineage tracking. Memory inheritance between agent generations.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Code Example -->
+<section class="py-24 bg-[#f5f4f0]">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
+<div class="bg-[#0b0f14] rounded-xl p-8">
+<p class="text-[#6b6b6b] text-xs mb-4 font-mono">scale_integration.py</p>
+<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto">pip install sgraal
+pip install langchain-sgraal
+npm install @sgraal/mcp
+
+from sgraal import SgraalClient
+client = SgraalClient(api_key="sg_demo_playground")
+
+# Autonomous healing
+client.heal.autonomous(agent_id="agent_001")
+
+# Subscribe to truth updates
+client.truth.subscribe(
+    agent_id="agent_001",
+    on_drift=lambda e: print(f"Drift detected: {e.memory_id}")
+)
+
+# Export learned weights
+weights = client.learning.export_weights(domain="fintech")
+weights.save("fintech_weights_v2.json")</pre>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 bg-white text-center">
+<h2 class="text-4xl font-bold mb-6">Ready to scale your agent fleet?</h2>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">Get API Key →</a>
+<a href="/" class="text-slate-600 px-8 py-4 rounded-lg font-bold text-lg hover:text-[#c9a962] transition-colors">← Back to overview</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-50 py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-4">Sgraal</div>
+<p class="text-slate-500 text-sm">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Product</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Resources</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://docs.sgraal.com/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Legal</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-500 text-sm">© 2026 Sgraal Protocol · Apache 2.0</p>
+<p class="text-slate-400 text-sm">Free to start · No signup required</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
