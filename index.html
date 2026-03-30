@@ -313,6 +313,33 @@
 sg = sgraal.<span class="text-gold">Client</span>("<span class="text-gold">API_KEY</span>")
 ok, report = sg.<span class="text-gold">evaluate</span>(intent="update_schema")</pre>
 </div>
+
+<div class="quickstart-content hidden" id="content-node">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js SDK</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Use Sgraal in your Node.js or TypeScript agent projects.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">npm install @sgraal/sdk
+
+const sgraal = require('@sgraal/sdk');
+const sg = new sgraal.Client('API_KEY');
+const { decision } = await sg.evaluate({
+  intent: 'delete_user_data',
+  context: 'Agent requested cleanup'
+});
+console.log(decision); // BLOCK</pre>
+</div>
+<div class="quickstart-content hidden" id="content-rest">
+<h3 class="text-xl font-bold mb-4 text-obsidian">REST API</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Call Sgraal directly via HTTPS from any language or platform.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">curl -X POST https://api.sgraal.com/v1/preflight \
+  -H "Authorization: Bearer sg_demo_playground" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memory_state": [{"id": "mem_001", "type": "tool_state",
+      "timestamp_age_days": 54, "source_trust": 0.6}],
+    "action_type": "irreversible",
+    "domain": "fintech"
+  }'</pre>
+</div>
 </div>
 </div>
 </div>
