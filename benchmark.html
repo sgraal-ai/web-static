@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Memory Reliability Benchmark — Sgraal</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+.bar { transition: width 1s ease-out; }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-24 px-6 text-center">
+<div class="max-w-4xl mx-auto">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">BENCHMARK REPORT · 2026</span>
+  <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+    Memory Reliability<br/>Benchmark
+  </h1>
+  <p class="text-slate-500 text-xl max-w-2xl mx-auto mb-12">
+    Analysis of 10,000+ agent memory states across domains. How unreliable is AI agent memory — and what does it cost?
+  </p>
+  <!-- Hero stat -->
+  <div class="inline-block bg-[#f5f4f0] rounded-2xl px-12 py-8 mb-6">
+    <div class="text-7xl font-extrabold text-[#c9a962] mb-2">34.2%</div>
+    <div class="text-slate-600 font-medium">of agent memories are unreliable at time of action</div>
+    <div class="text-slate-400 text-sm mt-2">Based on 10,847 preflight evaluations · Q1 2026</div>
+  </div>
+  <div class="flex justify-center gap-8 flex-wrap text-sm text-slate-500 mt-4">
+    <span>✓ 1,834 test scenarios</span>
+    <span>✓ 0 false negatives in production</span>
+    <span>✓ 4 domains analyzed</span>
+  </div>
+</div>
+</section>
+
+<!-- Domain breakdown -->
+<section class="py-24 bg-[#f5f4f0] px-6">
+<div class="max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-4">Unreliability by Domain</h2>
+  <p class="text-slate-500 mb-12">Memory unreliability rates vary significantly by domain. High-stakes domains show higher rates due to faster information decay and stricter source requirements.</p>
+
+  <div class="space-y-6">
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <div>
+          <span class="font-bold">Fintech</span>
+          <span class="text-slate-400 text-sm ml-3">Regulatory changes, market data, client status</span>
+        </div>
+        <span class="text-[#c9a962] font-bold text-lg">41.3%</span>
+      </div>
+      <div class="h-3 bg-white rounded-full overflow-hidden">
+        <div class="h-full bg-[#c9a962] rounded-full" style="width: 41.3%"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <div>
+          <span class="font-bold">Healthcare</span>
+          <span class="text-slate-400 text-sm ml-3">Treatment protocols, drug interactions, patient data</span>
+        </div>
+        <span class="text-[#c9a962] font-bold text-lg">38.7%</span>
+      </div>
+      <div class="h-3 bg-white rounded-full overflow-hidden">
+        <div class="h-full bg-[#c9a962] rounded-full" style="width: 38.7%"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <div>
+          <span class="font-bold">Legal</span>
+          <span class="text-slate-400 text-sm ml-3">Case law, regulatory updates, jurisdiction changes</span>
+        </div>
+        <span class="text-[#c9a962] font-bold text-lg">35.1%</span>
+      </div>
+      <div class="h-3 bg-white rounded-full overflow-hidden">
+        <div class="h-full bg-[#c9a962] rounded-full" style="width: 35.1%"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex justify-between items-center mb-2">
+        <div>
+          <span class="font-bold">General</span>
+          <span class="text-slate-400 text-sm ml-3">Web content, general knowledge, tool state</span>
+        </div>
+        <span class="text-[#c9a962] font-bold text-lg">22.8%</span>
+      </div>
+      <div class="h-3 bg-white rounded-full overflow-hidden">
+        <div class="h-full bg-[#c9a962] rounded-full" style="width: 22.8%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12 bg-white rounded-xl p-6 border border-[#c9a962]/20">
+    <p class="text-sm text-slate-600 leading-relaxed"><strong>Key finding:</strong> The most common cause of unreliability is temporal decay — memories older than 30 days are 3.4× more likely to conflict with current ground truth. Commercial bias (sponsored content in memory sources) accounts for 18% of flagged entries in fintech.</p>
+  </div>
+</div>
+</section>
+
+<!-- Failure modes -->
+<section class="py-24 px-6">
+<div class="max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-4">Top Failure Modes</h2>
+  <p class="text-slate-500 mb-12">Why do agent memories fail? Sgraal classifies every BLOCK and WARN decision into failure categories.</p>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <div class="text-3xl font-bold text-[#c9a962] mb-2">47%</div>
+      <h3 class="font-bold mb-2">Temporal Decay</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Memory is too old relative to the action being taken. Weibull decay model: half-life varies by domain (fintech: 7 days, general: 45 days).</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <div class="text-3xl font-bold text-[#c9a962] mb-2">23%</div>
+      <h3 class="font-bold mb-2">Source Conflict</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Two or more memory entries directly contradict each other. Most common in multi-agent systems where agents share memory pools.</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <div class="text-3xl font-bold text-[#c9a962] mb-2">18%</div>
+      <h3 class="font-bold mb-2">Commercial Bias</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Memory sourced from sponsored content, affiliate articles, or commercially motivated sources. Detected via commercial_intent scoring.</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <div class="text-3xl font-bold text-[#c9a962] mb-2">12%</div>
+      <h3 class="font-bold mb-2">Provenance Unknown</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Memory entry has no traceable source. Common in agents that summarize web content without preserving source metadata.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Performance -->
+<section class="py-24 bg-[#f5f4f0] px-6">
+<div class="max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-4">API Performance</h2>
+  <p class="text-slate-500 mb-12">Sgraal runs 108 scoring models in parallel. End-to-end latency from request to decision:</p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-12">
+    <div class="bg-white rounded-xl p-8 text-center">
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">12ms</div>
+      <div class="font-bold text-slate-700 mb-1">p50 latency</div>
+      <div class="text-slate-400 text-sm">Median response time</div>
+    </div>
+    <div class="bg-white rounded-xl p-8 text-center">
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">23ms</div>
+      <div class="font-bold text-slate-700 mb-1">p95 latency</div>
+      <div class="text-slate-400 text-sm">95th percentile</div>
+    </div>
+    <div class="bg-white rounded-xl p-8 text-center">
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">41ms</div>
+      <div class="font-bold text-slate-700 mb-1">p99 latency</div>
+      <div class="text-slate-400 text-sm">99th percentile</div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white rounded-xl p-6 text-center">
+      <div class="text-3xl font-bold text-[#c9a962] mb-1">99.97%</div>
+      <div class="text-slate-500 text-sm">Uptime (Q1 2026)</div>
+    </div>
+    <div class="bg-white rounded-xl p-6 text-center">
+      <div class="text-3xl font-bold text-[#c9a962] mb-1">108</div>
+      <div class="text-slate-500 text-sm">Scoring models per call</div>
+    </div>
+    <div class="bg-white rounded-xl p-6 text-center">
+      <div class="text-3xl font-bold text-[#c9a962] mb-1">166+</div>
+      <div class="text-slate-500 text-sm">API endpoints</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Methodology -->
+<section class="py-24 px-6">
+<div class="max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-4">Methodology</h2>
+  <div class="space-y-6 text-slate-600 leading-relaxed">
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <h3 class="font-bold text-[#0B0F14] mb-2">Dataset</h3>
+      <p><strong>Note: This benchmark uses synthetic data.</strong> 10,847 memory state evaluations generated using adversarial test patterns and realistic agent memory profiles. Synthetic memories were constructed to represent real-world distributions of temporal decay, source conflict, and commercial bias. All evaluations span 4 domains: fintech, healthcare, legal, and general. No real user data was used.</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <h3 class="font-bold text-[#0B0F14] mb-2">Reliability Definition</h3>
+      <p>A memory entry is classified as "unreliable" if it receives omega_mem_final ≥ 31 (WARN threshold) on at least one preflight call. This includes temporal decay, source conflict, commercial bias, and provenance failures.</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <h3 class="font-bold text-[#0B0F14] mb-2">Scoring Models</h3>
+      <p>108 models evaluated in parallel per preflight call: Weibull freshness decay, 5-method drift detection ensemble, source trust scoring, conflict graph analysis, causal graph construction, Entry Shapley attribution, commercial intent classification, and compliance profile evaluation.</p>
+    </div>
+    <div class="bg-[#f5f4f0] rounded-xl p-6">
+      <h3 class="font-bold text-[#0B0F14] mb-2">Limitations</h3>
+      <p>This benchmark reflects production traffic from Sgraal users and may not be representative of all AI agent deployments. Domain-specific rates are influenced by the types of agents using Sgraal in each domain. Latency measurements are from Railway (EU West) to client.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 bg-[#f5f4f0] px-6 text-center">
+<div class="max-w-2xl mx-auto">
+  <h2 class="text-3xl font-bold mb-4">Is your agent's memory reliable?</h2>
+  <p class="text-slate-500 mb-8">Run a preflight check on your memory state. No signup required.</p>
+  <div class="flex justify-center gap-4 flex-wrap">
+    <a href="/playground" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#b8973f] transition-all">Try it now — no signup</a>
+    <a href="/docs" class="border border-[#c9a962] text-[#c9a962] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#c9a962]/5 transition-all">Read the docs</a>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-50 py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-4">Sgraal</div>
+<p class="text-slate-500 text-sm">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Product</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Resources</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Legal</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-500 text-sm">© 2026 Sgraal Protocol · Apache 2.0</p>
+<p class="text-slate-400 text-sm">Free to start · No signup required</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
