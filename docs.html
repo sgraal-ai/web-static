@@ -3,46 +3,338 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta http-equiv="refresh" content="3;url=https://github.com/sgraal-ai/core/blob/main/README.md"/>
 <title>Documentation — Sgraal</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
-h1 { font-family: 'Manrope', sans-serif; }
+h1,h2,h3,h4 { font-family: 'Manrope', sans-serif; }
+pre { overflow-x: auto; }
+.tab-btn { cursor: pointer; transition: all 0.2s; }
+.tab-btn.active { background: #c9a962; color: #fff; border-color: #c9a962; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 </style>
 </head>
 <body>
+
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
 <a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
-<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm">Open Dashboard</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
 </div>
 </nav>
 
-<main class="pt-40 pb-32 px-6 text-center">
-<div class="max-w-xl mx-auto">
-<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">DOCUMENTATION</span>
-<h1 class="text-4xl font-extrabold tracking-tight mb-6">Redirecting to docs...</h1>
-<p class="text-slate-500 mb-8">Full documentation is available on GitHub. You will be redirected in 3 seconds.</p>
-<a href="https://github.com/sgraal-ai/core/blob/main/README.md" class="inline-block bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#b8973f] transition-all">
-  Go to Documentation →
-</a>
-<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-  <a href="https://github.com/sgraal-ai/core/blob/main/README.md" class="bg-[#f5f4f0] rounded-xl p-6 hover:shadow-md transition-all">
-    <h3 class="font-bold mb-2">Getting Started</h3>
-    <p class="text-slate-500 text-sm">Install the SDK and make your first preflight call in under 5 minutes.</p>
-  </a>
-  <a href="/playground" class="bg-[#f5f4f0] rounded-xl p-6 hover:shadow-md transition-all">
-    <h3 class="font-bold mb-2">Playground</h3>
-    <p class="text-slate-500 text-sm">Try the API live with no signup. Real scoring, demo key included.</p>
-  </a>
-  <a href="https://github.com/sgraal-ai/core" class="bg-[#f5f4f0] rounded-xl p-6 hover:shadow-md transition-all">
-    <h3 class="font-bold mb-2">GitHub</h3>
-    <p class="text-slate-500 text-sm">Open source SDKs, examples, and the MCP server on GitHub.</p>
-  </a>
+<div class="flex pt-20 min-h-screen">
+
+  <aside class="hidden lg:block w-64 shrink-0 border-r border-slate-200 h-screen sticky top-20 overflow-y-auto py-8 px-6">
+    <div class="space-y-6">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Getting Started</p>
+        <nav class="space-y-1">
+          <a href="#quickstart" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Quick Start (5 min)</a>
+          <a href="#concepts" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Core Concepts</a>
+          <a href="#auth" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Authentication</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Integrations</p>
+        <nav class="space-y-1">
+          <a href="#mcp" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MCP (Claude / Cursor)</a>
+          <a href="#sdks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">All SDKs</a>
+          <a href="#webhooks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Webhooks</a>
+          <a href="#compliance" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Compliance Profiles</a>
+          <a href="#rate-limits" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Rate Limits</a>
+          <a href="#errors" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Error Codes</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Reference</p>
+        <nav class="space-y-1">
+          <a href="/docs/api" class="block text-sm font-semibold text-[#c9a962] py-1">API Reference (166+ endpoints) →</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 max-w-3xl mx-auto px-6 py-12">
+
+    <div class="mb-12">
+      <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-4">DOCUMENTATION</span>
+      <h1 class="text-4xl font-extrabold tracking-tight mb-4">Sgraal Documentation</h1>
+      <p class="text-slate-500 text-lg">Memory Governance Protocol — preflight validation for AI agents.</p>
+      <div class="flex gap-3 mt-6 flex-wrap">
+        <a href="#quickstart" class="bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Get Started</a>
+        <a href="/playground" class="border border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#c9a962]/5 transition-all">Try Playground</a>
+        <a href="/docs/api" class="border border-slate-200 text-slate-600 px-5 py-2.5 rounded-lg font-semibold text-sm hover:border-slate-400 transition-all">API Reference</a>
+      </div>
+    </div>
+
+    <section id="quickstart" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Quick Start — 5 minutes</h2>
+
+      <div class="mb-6">
+        <h3 class="font-bold text-lg mb-3">1. Get your demo key</h3>
+        <p class="text-slate-600 mb-3">No signup required:</p>
+        <div class="bg-[#f5f4f0] rounded-lg px-4 py-3 font-mono text-sm flex items-center justify-between">
+          <span class="text-[#c9a962] font-bold">sg_demo_playground</span>
+          <span class="text-slate-400 text-xs">10,000 free decisions/month</span>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="font-bold text-lg mb-3">2. Choose your integration</h3>
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <button onclick="switchDocTab('mcp-qs')" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold border border-slate-200" id="tab-mcp-qs">MCP</button>
+          <button onclick="switchDocTab('python-qs')" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold border border-slate-200" id="tab-python-qs">Python</button>
+          <button onclick="switchDocTab('node-qs')" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold border border-slate-200" id="tab-node-qs">Node.js</button>
+          <button onclick="switchDocTab('rest-qs')" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold border border-slate-200" id="tab-rest-qs">REST</button>
+        </div>
+
+        <div class="tab-content active" id="content-mcp-qs">
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">{
+  "mcpServers": {
+    "sgraal": {
+      "command": "npx",
+      "args": ["-y", "@sgraal/mcp"],
+      "env": { "SGRAAL_API_KEY": "sg_demo_playground" }
+    }
+  }
+}</pre>
+        </div>
+
+        <div class="tab-content" id="content-python-qs">
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">pip install sgraal
+
+from sgraal import SgraalClient
+client = SgraalClient(api_key="sg_demo_playground")
+
+result = client.preflight(
+    memory_state=[{
+        "id": "mem_001", "type": "tool_state",
+        "timestamp_age_days": 54, "source_trust": 0.6
+    }],
+    action_type="irreversible",
+    domain="fintech"
+)
+print(result.recommended_action)  # BLOCK
+print(result.omega_mem_final)      # 78.4</pre>
+        </div>
+
+        <div class="tab-content" id="content-node-qs">
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">npm install @sgraal/sdk
+
+const { SgraalClient } = require('@sgraal/sdk');
+const client = new SgraalClient({ apiKey: 'sg_demo_playground' });
+
+const result = await client.preflight({
+  memory_state: [{ id: 'mem_001', type: 'tool_state',
+    timestamp_age_days: 54, source_trust: 0.6 }],
+  action_type: 'irreversible', domain: 'fintech'
+});
+console.log(result.recommended_action); // BLOCK</pre>
+        </div>
+
+        <div class="tab-content" id="content-rest-qs">
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">curl -X POST https://api.sgraal.com/v1/preflight \
+  -H "X-API-Key: sg_demo_playground" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memory_state": [{"id": "mem_001", "type": "tool_state",
+      "timestamp_age_days": 54, "source_trust": 0.6}],
+    "action_type": "irreversible", "domain": "fintech"
+  }'</pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-3">3. Interpret the response</h3>
+<pre class="bg-[#f5f4f0] rounded-xl p-6 text-sm font-mono leading-relaxed">{
+  "recommended_action": "BLOCK",
+  "omega_mem_final": 78.4,
+  "confidence": 0.94,
+  "explanation": "Memory entry mem_001 is 54 days old...",
+  "repair_plan": [{ "id": "mem_001", "action": "REFRESH" }],
+  "compliance_result": { "compliant": false }
+}</pre>
+      </div>
+    </section>
+
+    <section id="concepts" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Core Concepts</h2>
+      <div class="space-y-4">
+        <div class="bg-[#f5f4f0] rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">omega_mem_final</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-3">Risk score 0–100. Combines freshness decay, source trust, conflict detection, provenance, and commercial intent.</p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">0–30: USE_MEMORY</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">31–60: WARN</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-700">61–75: ASK_USER</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700">76–100: BLOCK</span>
+          </div>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Action Types</h3>
+          <p class="text-slate-600 text-sm mb-2">Multiplier applied to base omega score:</p>
+          <div class="font-mono text-sm space-y-1 text-slate-600">
+            <div><span class="text-[#c9a962]">read</span> — 0.5× (low risk)</div>
+            <div><span class="text-[#c9a962]">write</span> — 1.0× (standard)</div>
+            <div><span class="text-[#c9a962]">financial</span> — 2.0× (elevated)</div>
+            <div><span class="text-[#c9a962]">irreversible</span> — 2.5× (highest)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="auth" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Authentication</h2>
+      <pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-4">X-API-Key: sg_demo_playground</pre>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-[#f5f4f0] rounded-xl p-4">
+          <p class="font-bold text-sm mb-1">Demo</p>
+          <p class="text-slate-500 text-xs">Public key, rate limited. No signup needed.</p>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-4">
+          <p class="font-bold text-sm mb-1">Pro</p>
+          <p class="text-slate-500 text-xs">From app.sgraal.com. $0.001/call after 10K.</p>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-4">
+          <p class="font-bold text-sm mb-1">Enterprise</p>
+          <p class="text-slate-500 text-xs">Custom limits, compliance, SLA.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mcp" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">MCP Setup</h2>
+      <p class="text-slate-600 mb-4">Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible host.</p>
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-4">{
+  "mcpServers": {
+    "sgraal": {
+      "command": "npx",
+      "args": ["-y", "@sgraal/mcp"],
+      "env": { "SGRAAL_API_KEY": "sg_demo_playground" }
+    }
+  }
+}</pre>
+      <div class="bg-[#c9a962]/10 border border-[#c9a962]/30 rounded-xl p-4">
+        <p class="text-sm text-slate-600">Add to <code class="bg-white px-1 rounded text-xs font-mono">~/Library/Application Support/Claude/claude_desktop_config.json</code> and restart Claude Desktop.</p>
+      </div>
+    </section>
+
+    <section id="sdks" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">All SDKs</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">Python</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install sgraal</code><p class="text-slate-500 text-xs">Async + sync, Pydantic v2</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">Node.js / TypeScript</p><code class="text-xs font-mono text-[#c9a962] block mb-1">npm install @sgraal/sdk</code><p class="text-slate-500 text-xs">Full TypeScript support</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">LangChain</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install langchain-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory validator</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">Go</p><code class="text-xs font-mono text-[#c9a962] block mb-1">go get github.com/sgraal-ai/sgraal-go</code><p class="text-slate-500 text-xs">Lightweight, zero deps</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">Rust</p><code class="text-xs font-mono text-[#c9a962] block mb-1">cargo add sgraal</code><p class="text-slate-500 text-xs">Async/tokio support</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">C# / .NET</p><code class="text-xs font-mono text-[#c9a962] block mb-1">dotnet add package Sgraal</code><p class="text-slate-500 text-xs">.NET 6+ compatible</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">Java</p><code class="text-xs font-mono text-[#c9a962] block mb-1">implementation 'ai.sgraal:sdk:1.0'</code><p class="text-slate-500 text-xs">Spring Boot compatible</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">MCP Server</p><code class="text-xs font-mono text-[#c9a962] block mb-1">npm install @sgraal/mcp</code><p class="text-slate-500 text-xs">Claude, Cursor, Windsurf</p></div>
+      </div>
+    </section>
+
+    <section id="webhooks" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Webhooks</h2>
+      <p class="text-slate-600 mb-4">Sgraal sends a POST to your endpoint for every BLOCK, WARN, or ASK_USER decision.</p>
+<pre class="bg-[#f5f4f0] rounded-xl p-6 text-sm font-mono mb-4">{
+  "event": "decision.block",
+  "timestamp": "2026-03-30T23:00:00Z",
+  "agent_id": "agent_001",
+  "omega": 78.4,
+  "action": "BLOCK",
+  "domain": "fintech",
+  "repair_plan": [{ "id": "mem_001", "action": "REFRESH" }]
+}</pre>
+      <div class="grid md:grid-cols-3 gap-3">
+        <div class="bg-[#f5f4f0] rounded-xl p-4"><p class="font-mono text-xs font-bold text-[#c9a962] mb-1">decision.block</p><p class="text-slate-500 text-xs">Agent blocked</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-4"><p class="font-mono text-xs font-bold text-[#c9a962] mb-1">decision.warn</p><p class="text-slate-500 text-xs">Memory flagged</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-4"><p class="font-mono text-xs font-bold text-[#c9a962] mb-1">memory.healed</p><p class="text-slate-500 text-xs">Repair executed</p></div>
+      </div>
+    </section>
+
+
+    <section id="rate-limits" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Rate Limits</h2>
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-[#f5f4f0] rounded-xl p-5">
+          <p class="font-bold text-sm mb-1">Demo</p>
+          <p class="text-2xl font-bold text-[#c9a962] mb-1">100</p>
+          <p class="text-slate-500 text-xs">requests / minute</p>
+          <p class="text-slate-400 text-xs mt-2">10,000 decisions / month total</p>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5">
+          <p class="font-bold text-sm mb-1">Pro</p>
+          <p class="text-2xl font-bold text-[#c9a962] mb-1">1,000</p>
+          <p class="text-slate-500 text-xs">requests / minute</p>
+          <p class="text-slate-400 text-xs mt-2">Unlimited decisions / month</p>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5">
+          <p class="font-bold text-sm mb-1">Enterprise</p>
+          <p class="text-2xl font-bold text-[#c9a962] mb-1">Custom</p>
+          <p class="text-slate-500 text-xs">requests / minute</p>
+          <p class="text-slate-400 text-xs mt-2">Dedicated capacity, SLA</p>
+        </div>
+      </div>
+      <div class="bg-[#f5f4f0] rounded-xl p-5">
+        <p class="font-semibold text-sm mb-2">Rate limit headers</p>
+        <pre class="font-mono text-xs text-slate-600">X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 87
+X-RateLimit-Reset: 1711843200
+Retry-After: 13  # only on 429</pre>
+      </div>
+    </section>
+
+    <section id="compliance" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Compliance Profiles</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-mono font-bold text-[#c9a962] mb-1">EU_AI_ACT</p><p class="text-slate-600 text-sm">Article 9, 12, 13, 14, 17. Auto conformity declaration.</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-mono font-bold text-[#c9a962] mb-1">HIPAA</p><p class="text-slate-600 text-sm">§164.312 safeguards. PII isolation.</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-mono font-bold text-[#c9a962] mb-1">MIFID2</p><p class="text-slate-600 text-sm">Financial decision validation. Full audit trail.</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-mono font-bold text-[#c9a962] mb-1">BASEL4</p><p class="text-slate-600 text-sm">Banking risk model validation.</p></div>
+      </div>
+    </section>
+
+    <section id="errors" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Error Codes</h2>
+      <div class="space-y-2">
+        <div class="flex gap-4 p-4 bg-[#f5f4f0] rounded-xl"><span class="font-mono font-bold w-12 shrink-0">400</span><div><p class="font-semibold text-sm">Bad Request</p><p class="text-slate-500 text-xs">Invalid memory_state or missing fields.</p></div></div>
+        <div class="flex gap-4 p-4 bg-[#f5f4f0] rounded-xl"><span class="font-mono font-bold w-12 shrink-0">401</span><div><p class="font-semibold text-sm">Unauthorized</p><p class="text-slate-500 text-xs">Missing or invalid API key.</p></div></div>
+        <div class="flex gap-4 p-4 bg-[#f5f4f0] rounded-xl"><span class="font-mono font-bold w-12 shrink-0">403</span><div><p class="font-semibold text-sm">Forbidden</p><p class="text-slate-500 text-xs">Feature not available on your plan.</p></div></div>
+        <div class="flex gap-4 p-4 bg-[#f5f4f0] rounded-xl"><span class="font-mono font-bold w-12 shrink-0">429</span><div><p class="font-semibold text-sm">Rate Limited</p><p class="text-slate-500 text-xs">Too many requests. Retry-After header included.</p></div></div>
+        <div class="flex gap-4 p-4 bg-[#f5f4f0] rounded-xl"><span class="font-mono font-bold w-12 shrink-0">500</span><div><p class="font-semibold text-sm">Internal Error</p><p class="text-slate-500 text-xs">Contact support if persistent.</p></div></div>
+      </div>
+    </section>
+
+    <div class="bg-[#c9a962]/10 border border-[#c9a962]/30 rounded-2xl p-8 text-center">
+      <h3 class="text-xl font-bold mb-2">Full API Reference</h3>
+      <p class="text-slate-600 mb-4">166+ endpoints with request/response examples, powered by Swagger UI.</p>
+      <a href="/docs/api" class="inline-block bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#b8973f] transition-all">View API Reference →</a>
+    </div>
+
+  </main>
 </div>
-</div>
-</main>
+
+<footer class="bg-slate-50 py-8 border-t border-slate-200 text-center">
+<p class="text-slate-400 text-sm">© 2026 Sgraal Protocol · Apache 2.0 · <a href="/privacy" class="hover:text-[#c9a962]">Privacy</a> · <a href="/terms" class="hover:text-[#c9a962]">Terms</a></p>
+</footer>
+
+<script>
+function switchDocTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('content-' + name).classList.add('active');
+}
+</script>
 </body>
 </html>
