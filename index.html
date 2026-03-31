@@ -90,14 +90,15 @@
 <span class="material-symbols-outlined text-on-surface-variant group-hover:text-gold transition-colors">content_copy</span>
 </div>
 </div>
-<div class="mb-8">
-<div class="inline-flex flex-col">
-<div class="flex items-center gap-2 bg-gold/[0.08] border border-gold/[0.2] px-4 py-2 rounded-full mb-2">
-<span class="text-on-surface-variant text-sm">Your demo key:</span>
-<span class="font-mono text-sm font-bold text-gold">sg_demo_playground</span>
-</div>
-<span class="text-[12px] text-on-surface-variant px-1">10,000 free decisions/decision after 10K freenth · No signup needed</span>
-</div>
+<div class="mb-8" id="hero-register">
+<form id="register-form" class="flex items-center gap-3 max-w-md" onsubmit="return handleRegister(event)">
+<input type="email" id="register-email" placeholder="you@company.com" required
+  class="flex-1 bg-white border border-black/[0.12] rounded-xl px-4 py-3 text-sm font-body text-obsidian placeholder:text-on-surface-variant/50 focus:outline-none focus:border-gold transition-colors" />
+<button type="submit" id="register-btn" class="bg-gold text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-[#b8973f] transition-all whitespace-nowrap">Get API Key</button>
+</form>
+<p id="register-error" class="hidden mt-2 text-sm" style="color:#e24b4a"></p>
+<p id="register-success" class="hidden mt-2 font-semibold" style="color:#c9a962;font-size:16px"></p>
+<span class="text-[12px] text-on-surface-variant px-1 mt-2 inline-block">Free tier: 10,000 decisions/month · No credit card required</span>
 </div>
 <div class="flex flex-wrap gap-6 items-center text-sm font-medium">
 <a class="text-gold hover:underline transition-colors" href="/benchmark">See benchmark -&gt;</a>
@@ -492,6 +493,48 @@ console.log(decision); // BLOCK</pre>
     ['roi-decisions', 'roi-error-cost'].forEach(id => {
         document.getElementById(id).addEventListener('input', calculateROI);
     });
+
+    async function handleRegister(e) {
+        e.preventDefault();
+        const email = document.getElementById('register-email').value.trim();
+        const btn = document.getElementById('register-btn');
+        const errEl = document.getElementById('register-error');
+        const successEl = document.getElementById('register-success');
+        const form = document.getElementById('register-form');
+
+        errEl.classList.add('hidden');
+        successEl.classList.add('hidden');
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errEl.textContent = 'Please enter a valid email address.';
+            errEl.classList.remove('hidden');
+            return false;
+        }
+
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('https://api.sgraal.com/v1/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email }),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.detail || 'Registration failed');
+            }
+            form.classList.add('hidden');
+            successEl.textContent = '\u2713 Check your email for your API key';
+            successEl.classList.remove('hidden');
+        } catch (err) {
+            errEl.textContent = err.message || 'Something went wrong. Please try again.';
+            errEl.classList.remove('hidden');
+            btn.textContent = 'Get API Key';
+            btn.disabled = false;
+        }
+        return false;
+    }
 </script>
 <script>lucide.createIcons();</script>
 </body></html>
