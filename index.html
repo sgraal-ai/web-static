@@ -54,6 +54,7 @@
         h1, h2, h3 { font-family: 'Manrope', sans-serif; color: #0B0F14; }
         .code-accent { color: #c9a962; }
     </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body class="selection:bg-gold selection:text-white">
 <!-- TopNavBar -->
@@ -197,25 +198,25 @@
 <section class="max-w-7xl mx-auto px-8 mb-32">
 <div class="grid md:grid-cols-2 gap-px bg-outline-variant rounded-2xl overflow-hidden border border-outline-variant">
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
-<span class="text-4xl mb-6 block">⚖️</span>
+<i data-lucide="scale" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Decide</h3>
 <p class="text-on-surface-variant mb-8">Real-time arbitration of agent memory-to-action pathways using deterministic policy engines.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/decide">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
 </div>
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
-<span class="text-4xl mb-6 block">🛡️</span>
+<i data-lucide="shield-check" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Protect</h3>
 <p class="text-on-surface-variant mb-8">Hardened guardrails against prompt injections that attempt to bypass your agent's safety training.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/protect">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
 </div>
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
-<span class="text-4xl mb-6 block">📜</span>
+<i data-lucide="file-check-2" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Comply</h3>
 <p class="text-on-surface-variant mb-8">Generate verifiable audit trails for every agentic decision to satisfy SOC2 and HIPAA requirements.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/comply">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
 </div>
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
-<span class="text-4xl mb-6 block">🚀</span>
+<i data-lucide="zap" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Scale</h3>
 <p class="text-on-surface-variant mb-8">Distribute Sgraal nodes across your entire agentic swarm without performance degradation.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/scale">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
@@ -492,4 +493,5 @@ console.log(decision); // BLOCK</pre>
         document.getElementById(id).addEventListener('input', calculateROI);
     });
 </script>
+<script>lucide.createIcons();</script>
 </body></html>
