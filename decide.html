@@ -110,6 +110,29 @@
 </div>
 </div>
 </section>
+<!-- Failure Strip -->
+<section class="py-12 bg-[#0B0F14] text-white">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <p class="text-red-400 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
+      <ul class="space-y-3 text-slate-400 text-sm">
+        <li>&rarr; Agent uses stale memory from 54 days ago</li>
+        <li>&rarr; Makes irreversible financial decision</li>
+        <li>&rarr; No visibility into what went wrong</li>
+        <li>&rarr; No rollback possible</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-green-400 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
+      <ul class="space-y-3 text-slate-300 text-sm">
+        <li>&rarr; Risk detected before execution</li>
+        <li>&rarr; Unsafe action BLOCKED automatically</li>
+        <li>&rarr; Exact entry causing the risk identified</li>
+        <li>&rarr; Repair plan provided in the same response</li>
+      </ul>
+    </div>
+  </div>
+</section>
 <!-- How It Works -->
 <section class="py-24 bg-surface-container-low">
 <div class="max-w-7xl mx-auto px-6">
@@ -166,6 +189,7 @@
 <span class="px-3 py-1 bg-error-container text-on-error-container rounded text-xs font-bold uppercase">BLOCK</span>
 </div>
 <p class="text-sm text-slate-500">Action multiplier: informational 0.5× · irreversible 1.5× · destructive 2.5×. Assurance score + confidence intervals.</p>
+<p class="text-sm text-slate-500 italic mt-3">Stop dangerous actions before they happen — not after.</p>
 </div>
 </div>
 <!-- Card 2: Full Explanation -->
@@ -175,6 +199,7 @@
 </div>
 <h3 class="text-2xl font-bold mb-4 tracking-tight">Full Explanation</h3>
 <p class="text-slate-600 mb-4">Entry Shapley: which exact memory entry causes the risk. Causal graph: which entry caused drift.</p>
+<p class="text-sm text-slate-500 italic">Know exactly which memory to fix. Debug in minutes, not hours.</p>
 <div class="flex items-center space-x-3 text-sm font-semibold text-primary">
 <span>EN</span> <span class="text-slate-300">|</span> <span>DE</span> <span class="text-slate-300">|</span> <span>FR</span>
 </div>
@@ -186,6 +211,7 @@
 </div>
 <h3 class="text-xl font-bold mb-3 tracking-tight">Repair Plan</h3>
 <p class="text-sm text-slate-600 mb-4">REFRESH / DELETE / VERIFY / KEEP / WAIT per entry. Heal + re-preflight in one call.</p>
+<p class="text-sm text-slate-500 italic">Don't just detect problems. Resolve them in the same API call.</p>
 <div class="text-xs font-mono text-slate-400">MTTR prediction: p95 convergence steps.</div>
 </div>
 <!-- Card 4: Time Machine -->
@@ -195,6 +221,7 @@
 </div>
 <h3 class="text-xl font-bold mb-3 tracking-tight">Time Machine</h3>
 <p class="text-sm text-slate-600">Restore to any previous validated state. Shadow execution with Decision Twins.</p>
+<p class="text-sm text-slate-500 italic mt-3">No blind debugging. Roll back to any validated state instantly.</p>
 </div>
 <!-- Card 5: AI Advertising Integrity -->
 <div class="md:col-span-2 bg-surface-dim p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all opacity-50">
