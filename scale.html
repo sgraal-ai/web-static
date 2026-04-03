@@ -42,7 +42,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   Self-improving thresholds, autonomous healing, 6 SDKs, 14 frameworks — Sgraal runs itself so your agents can run anything.
 </p>
 <a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
-  Try it free <span class="material-symbols-outlined ml-2">arrow_forward</span>
+  Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
 </section>
@@ -107,7 +107,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">speed</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Performance</h3>
-<p class="text-slate-600 text-sm leading-relaxed">p50 latency: 12ms. p99: under 50ms. 166+ API endpoints. Global edge deployment. Zero cold start. Upstash Redis for state management.</p>
+<p class="text-slate-600 text-sm leading-relaxed">p50 latency: ~1.8s. p99: ~2.5s. Full 83-module scoring pipeline. 166+ API endpoints. Upstash Redis for state management.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -126,25 +126,30 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
 <div class="bg-[#0b0f14] rounded-xl p-8">
 <p class="text-[#6b6b6b] text-xs mb-4 font-mono">scale_integration.py</p>
-<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto">pip install sgraal
-pip install langchain-sgraal
-npm install @sgraal/mcp
+<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Install
+# pip install sgraal
+# npm install @sgraal/mcp
 
 from sgraal import SgraalClient
 client = SgraalClient(api_key="sg_demo_playground")
 
-# Autonomous healing
-client.heal.autonomous(agent_id="agent_001")
-
-# Subscribe to truth updates
-client.truth.subscribe(
-    agent_id="agent_001",
-    on_drift=lambda e: print(f"Drift detected: {e.memory_id}")
+# Preflight with RL-calibrated thresholds
+result = client.preflight(
+    memory_state=[{"id": "mem_001", "content": "...",
+        "type": "fact", "timestamp_age_days": 5}],
+    action_type="irreversible",
+    domain="fintech"
 )
+print(result.recommended_action)   # USE_MEMORY
+print(result.rl_adjustment)        # {"rl_adjusted_action": "USE_MEMORY", "confidence": 0.91}
 
-# Export learned weights
-weights = client.learning.export_weights(domain="fintech")
-weights.save("fintech_weights_v2.json")</pre>
+# Report outcome to train the RL model
+import requests
+requests.post(
+    "https://api.sgraal.com/v1/outcome",
+    headers={"Authorization": "Bearer sg_demo_playground"},
+    json={"outcome_id": result.outcome_id, "status": "success"}
+)</pre>
 </div>
 </div>
 </section>
