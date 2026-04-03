@@ -97,8 +97,9 @@
 <div class="max-w-4xl mx-auto text-center">
 <span class="text-primary font-bold tracking-[0.2em] text-xs uppercase block mb-6">DECIDE</span>
 <h1 class="text-5xl md:text-7xl font-extrabold text-on-surface tracking-tighter mb-8 leading-[1.1]">
-                What the agent <br/>should do.
+                Your agent is about to act on memory.<br/>Sgraal decides if that action is safe.
             </h1>
+<p class="text-red-500 font-semibold text-sm mb-4">Irreversible decisions. Unverified memory. Zero visibility. Until now.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
                 Before every memory-based action, get a risk score, a decision, and a full explanation. Typically 1–2 seconds for full scoring.
             </p>
@@ -188,6 +189,7 @@
 <span class="px-3 py-1 bg-white rounded text-xs font-bold border border-outline-variant uppercase">ASK_USER</span>
 <span class="px-3 py-1 bg-error-container text-on-error-container rounded text-xs font-bold uppercase">BLOCK</span>
 </div>
+<p class="text-xs text-red-400 font-mono mt-2">BLOCK = execution never happens</p>
 <p class="text-sm text-slate-500">Action multiplier: informational 0.5× · irreversible 1.5× · destructive 2.5×. Assurance score + confidence intervals.</p>
 <p class="text-sm text-slate-500 italic mt-3">Stop dangerous actions before they happen — not after.</p>
 </div>
