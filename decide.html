@@ -111,11 +111,11 @@
 </div>
 </section>
 <!-- Failure Strip -->
-<section class="py-12 bg-[#0B0F14] text-white">
+<section class="py-12 bg-surface-container-low">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
-      <p class="text-red-400 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
-      <ul class="space-y-3 text-slate-400 text-sm">
+      <p class="text-red-500 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
+      <ul class="space-y-3 text-slate-600 text-sm">
         <li>&rarr; Agent uses stale memory from 54 days ago</li>
         <li>&rarr; Makes irreversible financial decision</li>
         <li>&rarr; No visibility into what went wrong</li>
@@ -123,8 +123,8 @@
       </ul>
     </div>
     <div>
-      <p class="text-green-400 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
-      <ul class="space-y-3 text-slate-300 text-sm">
+      <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
+      <ul class="space-y-3 text-slate-700 text-sm">
         <li>&rarr; Risk detected before execution</li>
         <li>&rarr; Unsafe action BLOCKED automatically</li>
         <li>&rarr; Exact entry causing the risk identified</li>
@@ -143,7 +143,7 @@
 <div class="relative z-10 pt-4">
 <h3 class="text-xl font-bold mb-4 text-on-surface">Send your memory state and action type</h3>
 <p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-outline-variant/50">
-                            POST /v1/preflight with memory entries, action_type (informational/reversible/irreversible/destructive), and domain.
+                            POST /v1/preflight · memory_state + action_type + domain
                         </p>
 </div>
 </div>
