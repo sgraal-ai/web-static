@@ -133,23 +133,25 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
 <div class="bg-[#0b0f14] rounded-xl p-8">
 <p class="text-[#6b6b6b] text-xs mb-4 font-mono">write_firewall_check.py</p>
-<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Write firewall — block before storage
-result = client.write_check(
-    entry={"content": "...", "source": "external"},
-    namespace="payments"
+<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Store with write firewall — blocks before storage
+result = client.store(
+    content="User account balance: $50,000",
+    agent_id="agent-payments",
+    domain="fintech"
 )
-if result.firewall_blocked:
-    print(result.block_reason)  # SLEEPER_PATTERN_DETECTED
-    print(result.threat_score)  # 0.94
+if result.write_firewall_triggered:
+    print(result.block_reason)   # SLEEPER_PATTERN_DETECTED
+    print(result.threat_score)   # 0.94
 
-# Read scan — detect poisoning
+# Preflight scan — detect poisoning at read time
 preflight = client.preflight(
-    memory_state=[{"id": "mem_001", "source": "external_feed"}],
+    memory_state=[{"id": "mem_001", "content": "...",
+        "type": "fact", "timestamp_age_days": 1}],
     action_type="financial",
     domain="fintech"
 )
-print(preflight.poisoning_suspected)  # True
-print(preflight.recommended_action)   # BLOCK</pre>
+print(preflight.poisoning_suspected)   # True
+print(preflight.recommended_action)    # BLOCK</pre>
 </div>
 </div>
 </section>
