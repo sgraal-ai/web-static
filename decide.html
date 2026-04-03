@@ -252,15 +252,16 @@
 </div>
 </section>
 <!-- Quickstart Section -->
-<section class="py-16 bg-[#faf9f6]">
+<section class="py-24 bg-surface-container-low">
 <div class="max-w-5xl mx-auto px-6">
-<div class="border-b border-outline-variant mb-6 flex space-x-8">
+<div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
+<div class="bg-surface-container border-b border-black/[0.06] px-6 pt-4 flex space-x-8">
 <button class="tab-btn active pb-4 text-sm font-semibold text-[#c9a962] border-b-2 border-[#c9a962]" onclick="switchTab(event, 'python')">Python</button>
 <button class="tab-btn pb-4 text-sm font-semibold text-[#6b7280] hover:text-[#c9a962] transition-colors" onclick="switchTab(event, 'nodejs')">Node.js</button>
 <button class="tab-btn pb-4 text-sm font-semibold text-[#6b7280] hover:text-[#c9a962] transition-colors" onclick="switchTab(event, 'rest')">REST API</button>
 </div>
 <div class="tab-content active" id="python">
-<div class="bg-[#0B0F14] rounded-xl p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
+<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
 <div class="text-slate-500 mb-2">pip install sgraal</div>
 <span class="text-purple-400">from</span> sgraal <span class="text-purple-400">import</span> SgraalClient<br/>
                 client = SgraalClient(api_key=<span class="text-green-400">"sg_demo_playground"</span>)<br/>
@@ -275,7 +276,7 @@
 </div>
 </div>
 <div class="tab-content" id="nodejs">
-<div class="bg-[#0B0F14] rounded-xl p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
+<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
 <div class="text-slate-500 mb-2">npm install sgraal</div>
 <span class="text-purple-400">const</span> { SgraalClient } = <span class="text-blue-400">require</span>(<span class="text-green-400">'sgraal'</span>);<br/>
 <span class="text-purple-400">const</span> client = <span class="text-purple-400">new</span> SgraalClient({ apiKey: <span class="text-green-400">'sg_demo_playground'</span> });<br/>
@@ -289,7 +290,7 @@
 </div>
 </div>
 <div class="tab-content" id="rest">
-<div class="bg-[#0B0F14] rounded-xl p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
+<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
                 curl -X POST https://api.sgraal.com/v1/preflight \<br/>
                   -H <span class="text-green-400">"Authorization: Bearer sg_demo_playground"</span> \<br/>
                   -H <span class="text-green-400">"Content-Type: application/json"</span> \<br/>
@@ -299,6 +300,7 @@
                     "action_type": "irreversible",
                     "domain": "fintech"
                   }'</span>
+</div>
 </div>
 </div>
 </div>
