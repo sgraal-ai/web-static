@@ -322,35 +322,6 @@
         evt.currentTarget.classList.remove("text-[#6b7280]");
     }
 </script>
-<!-- Code Section -->
-<section class="py-24 bg-surface-container-low">
-<div class="max-w-5xl mx-auto px-6">
-<div class="bg-[#0B0F14] rounded-2xl overflow-hidden shadow-2xl">
-<div class="flex items-center px-6 py-4 bg-slate-800/50 border-b border-slate-700">
-<div class="flex space-x-2">
-<div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-<div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-<div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-</div>
-<span class="ml-4 text-xs font-mono text-slate-400">decide_implementation.py</span>
-</div>
-<div class="p-8 font-mono text-sm md:text-base leading-relaxed overflow-x-auto">
-<span class="text-purple-400">from</span> sgraal <span class="text-purple-400">import</span> SgraalClient<br/>
-                    client = SgraalClient(api_key=<span class="text-green-400">"sg_demo_playground"</span>)<br/>
-<br/>
-                    result = client.preflight(<br/>
-                        memory_state=[{<span class="text-green-400">"id"</span>: <span class="text-green-400">"mem_001"</span>, <span class="text-green-400">"content"</span>: <span class="text-green-400">"User communication preference"</span>, <span class="text-green-400">"type"</span>: <span class="text-green-400">"tool_state"</span>,<br/>
-                            <span class="text-green-400">"timestamp_age_days"</span>: <span class="text-blue-300">54</span>, <span class="text-green-400">"source_trust"</span>: <span class="text-blue-300">0.6</span>}],<br/>
-                        action_type=<span class="text-green-400">"irreversible"</span>,<br/>
-                        domain=<span class="text-green-400">"fintech"</span><br/>
-                    )<br/>
-<br/>
-<span class="text-blue-400">print</span>(result.recommended_action)  <span class="text-slate-500"># BLOCK</span><br/>
-<span class="text-blue-400">print</span>(result.omega_mem_final)      <span class="text-slate-500"># 78.4</span>
-</div>
-</div>
-</div>
-</section>
 <!-- CTA Section -->
 <section class="py-32 px-6">
 <div class="max-w-4xl mx-auto text-center">
