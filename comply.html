@@ -42,7 +42,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   EU AI Act, HIPAA, MiFID2, Basel4, FDA, GDPR — built into every preflight call. Full audit trail. Cryptographic proof.
 </p>
 <a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
-  Try it free <span class="material-symbols-outlined ml-2">arrow_forward</span>
+  Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
 </section>
@@ -88,13 +88,6 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <h3 class="text-xl font-bold mb-3">Compliance Engine</h3>
 <p class="text-slate-600 text-sm leading-relaxed">4 built-in profiles: EU AI Act (Article 9, 12, 13), HIPAA §164.312, MiFID2, Basel4. Non-compliant + irreversible = automatic BLOCK.</p>
 </div>
-<div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
-<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-[#c9a962]">passport</span>
-</div>
-<h3 class="text-xl font-bold mb-3">Memory Portability</h3>
-<p class="text-slate-600 text-sm leading-relaxed">Memory Passport: cryptographically signed portable envelope. Cross-LLM Translator: OpenAI ↔ Anthropic ↔ Llama. Memory-DNS: globally unique identifiers.</p>
-</div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-[#c9a962]">groups</span>
@@ -132,17 +125,19 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     compliance_profile="EU_AI_ACT"
 )
 print(result.compliance_result.compliant)   # False
-print(result.recommended_action)            # "BLOCK"
+print(result.recommended_action)            # BLOCK
 print(result.compliance_result.violations)
 # ["Article 9: risk management system required",
 #  "Article 13: transparency obligation"]
 
-# Generate compliance report
-report = client.compliance.report(
-    profile="EU_AI_ACT",
-    format="pdf"
+# Generate compliance report via REST
+import requests
+resp = requests.get(
+    "https://api.sgraal.com/v1/compliance/eu-ai-act/report",
+    headers={"Authorization": "Bearer sg_live_..."}
 )
-report.save("eu_ai_act_conformity.pdf")</pre>
+with open("eu_ai_act_conformity.pdf", "wb") as f:
+    f.write(resp.content)</pre>
 </div>
 </div>
 </section>
