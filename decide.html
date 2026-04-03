@@ -251,75 +251,75 @@
 <p class="text-[12px] text-[#6b7280]">10,000 free decisions/month · No signup needed</p>
 </div>
 </section>
-<!-- Quickstart Section -->
-<section class="py-24 bg-surface-container-low">
-<div class="max-w-5xl mx-auto px-6">
+<!-- Quickstart -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-4xl mx-auto px-8">
 <div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
-<div class="bg-surface-container border-b border-black/[0.06] px-6 pt-4 flex space-x-8">
-<button class="tab-btn active pb-4 text-sm font-semibold text-[#c9a962] border-b-2 border-[#c9a962]" onclick="switchTab(event, 'python')">Python</button>
-<button class="tab-btn pb-4 text-sm font-semibold text-[#6b7280] hover:text-[#c9a962] transition-colors" onclick="switchTab(event, 'nodejs')">Node.js</button>
-<button class="tab-btn pb-4 text-sm font-semibold text-[#6b7280] hover:text-[#c9a962] transition-colors" onclick="switchTab(event, 'rest')">REST API</button>
+<div class="flex border-b border-black/[0.06] bg-surface-container">
+<button class="flex-1 py-4 text-sm font-bold text-gold border-b-2 border-gold transition-all" id="tab-python" onclick="switchTab('python')">Python</button>
+<button class="flex-1 py-4 text-sm font-bold text-on-surface-variant hover:text-gold transition-all" id="tab-node" onclick="switchTab('node')">Node.js</button>
+<button class="flex-1 py-4 text-sm font-bold text-on-surface-variant hover:text-gold transition-all" id="tab-rest" onclick="switchTab('rest')">REST API</button>
 </div>
-<div class="tab-content active" id="python">
-<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
-<div class="text-slate-500 mb-2">pip install sgraal</div>
-<span class="text-purple-400">from</span> sgraal <span class="text-purple-400">import</span> SgraalClient<br/>
-                client = SgraalClient(api_key=<span class="text-green-400">"sg_demo_playground"</span>)<br/>
-                result = client.preflight(<br/>
-                    memory_state=[{<span class="text-green-400">"id"</span>: <span class="text-green-400">"mem_001"</span>, <span class="text-green-400">"content"</span>: <span class="text-green-400">"User communication preference"</span>, <span class="text-green-400">"type"</span>: <span class="text-green-400">"tool_state"</span>,<br/>
-                        <span class="text-green-400">"timestamp_age_days"</span>: <span class="text-blue-300">54</span>, <span class="text-green-400">"source_trust"</span>: <span class="text-blue-300">0.6</span>}],<br/>
-                    action_type=<span class="text-green-400">"irreversible"</span>,<br/>
-                    domain=<span class="text-green-400">"fintech"</span><br/>
-                )<br/>
-<span class="text-blue-400">print</span>(result.recommended_action)  <span class="text-slate-500"># BLOCK</span><br/>
-<span class="text-blue-400">print</span>(result.omega_mem_final)      <span class="text-slate-500"># 78.4</span>
+<div class="p-8">
+<div class="quickstart-content" id="content-python">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Python SDK</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Integrate Sgraal directly into your Python agent workflows.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">pip install <span class="text-gold">sgraal</span>
+
+from sgraal import <span class="text-gold">SgraalClient</span>
+client = SgraalClient(api_key=<span class="text-gold">"sg_demo_playground"</span>)
+result = client.preflight(
+    memory_state=[{"id": "mem_001", "content": "User communication preference",
+        "type": "tool_state", "timestamp_age_days": 54, "source_trust": 0.6}],
+    action_type=<span class="text-gold">"irreversible"</span>,
+    domain=<span class="text-gold">"fintech"</span>
+)
+print(result.recommended_action)  # BLOCK
+print(result.omega_mem_final)     # 78.4</pre>
 </div>
+<div class="quickstart-content hidden" id="content-node">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js SDK</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Use Sgraal in your Node.js or TypeScript agent projects.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">npm install @sgraal/sdk
+
+const { SgraalClient } = require('@sgraal/sdk');
+const client = new SgraalClient({ apiKey: 'sg_demo_playground' });
+const result = await client.preflight({
+  memory_state: [{ id: 'mem_001', type: 'tool_state',
+    timestamp_age_days: 54, source_trust: 0.6 }],
+  action_type: 'irreversible',
+  domain: 'fintech'
+});
+console.log(result.recommended_action); // BLOCK</pre>
 </div>
-<div class="tab-content" id="nodejs">
-<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
-<div class="text-slate-500 mb-2">npm install sgraal</div>
-<span class="text-purple-400">const</span> { SgraalClient } = <span class="text-blue-400">require</span>(<span class="text-green-400">'sgraal'</span>);<br/>
-<span class="text-purple-400">const</span> client = <span class="text-purple-400">new</span> SgraalClient({ apiKey: <span class="text-green-400">'sg_demo_playground'</span> });<br/>
-<span class="text-purple-400">const</span> result = <span class="text-purple-400">await</span> client.preflight({<br/>
-                  memory_state: [{ id: <span class="text-green-400">'mem_001'</span>, type: <span class="text-green-400">'tool_state'</span>,<br/>
-                    timestamp_age_days: <span class="text-blue-300">54</span>, source_trust: <span class="text-blue-300">0.6</span> }],<br/>
-                  action_type: <span class="text-green-400">'irreversible'</span>,<br/>
-                  domain: <span class="text-green-400">'fintech'</span><br/>
-                });<br/>
-<span class="text-blue-400">console.log</span>(result.recommended_action); <span class="text-slate-500">// BLOCK</span>
-</div>
-</div>
-<div class="tab-content" id="rest">
-<div class="bg-[#0B0F14] p-8 font-mono text-sm leading-relaxed overflow-x-auto text-slate-300">
-                curl -X POST https://api.sgraal.com/v1/preflight \<br/>
-                  -H <span class="text-green-400">"Authorization: Bearer sg_demo_playground"</span> \<br/>
-                  -H <span class="text-green-400">"Content-Type: application/json"</span> \<br/>
-                  -d <span class="text-green-400">'{
-                    "memory_state": [{"id": "mem_001", "content": "User communication preference", "type": "tool_state",
-                      "timestamp_age_days": 54, "source_trust": 0.6}],
-                    "action_type": "irreversible",
-                    "domain": "fintech"
-                  }'</span>
+<div class="quickstart-content hidden" id="content-rest">
+<h3 class="text-xl font-bold mb-4 text-obsidian">REST API</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Call Sgraal directly via HTTPS from any language or platform.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">curl -X POST https://api.sgraal.com/v1/preflight \
+  -H "Authorization: Bearer sg_demo_playground" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memory_state": [{"id": "mem_001", "content": "User communication preference",
+      "type": "tool_state", "timestamp_age_days": 54, "source_trust": 0.6}],
+    "action_type": "irreversible",
+    "domain": "fintech"
+  }'</pre>
 </div>
 </div>
 </div>
 </div>
 </section>
 <script>
-    function switchTab(evt, tabId) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active", "text-[#c9a962]", "border-b-2", "border-[#c9a962]");
-            tablinks[i].classList.add("text-[#6b7280]");
-        }
-        document.getElementById(tabId).classList.add("active");
-        evt.currentTarget.classList.add("active", "text-[#c9a962]", "border-b-2", "border-[#c9a962]");
-        evt.currentTarget.classList.remove("text-[#6b7280]");
+    function switchTab(tabName) {
+        document.querySelectorAll('.quickstart-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('[id^="tab-"]').forEach(btn => {
+            btn.classList.remove('text-gold', 'border-b-2', 'border-gold');
+            btn.classList.add('text-on-surface-variant');
+        });
+        document.getElementById('content-' + tabName).classList.remove('hidden');
+        var activeBtn = document.getElementById('tab-' + tabName);
+        activeBtn.classList.add('text-gold', 'border-b-2', 'border-gold');
+        activeBtn.classList.remove('text-on-surface-variant');
     }
 </script>
 <!-- CTA Section -->
