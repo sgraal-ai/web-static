@@ -146,11 +146,14 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </section>
 
 <!-- Code Example -->
-<section class="py-24 bg-[#f5f4f0]">
-<div class="max-w-4xl mx-auto px-6">
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-4xl mx-auto px-8">
 <h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
-<div class="bg-[#0b0f14] rounded-xl p-8">
-<p class="text-[#6b6b6b] text-xs mb-4 font-mono">write_firewall_check.py</p>
+<div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
+<div class="bg-surface-container border-b border-black/[0.06] px-6 py-3">
+<p class="text-xs font-mono text-on-surface-variant">write_firewall_check.py</p>
+</div>
+<div class="bg-[#0b0f14] p-8">
 <pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Store with write firewall — blocks before storage
 result = client.store(
     content="User account balance: $50,000",
@@ -170,6 +173,7 @@ preflight = client.preflight(
 )
 print(preflight.poisoning_suspected)   # True
 print(preflight.recommended_action)    # BLOCK</pre>
+</div>
 </div>
 </div>
 </section>
