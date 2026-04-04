@@ -216,13 +216,13 @@
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
 <i data-lucide="scale" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Decide</h3>
-<p class="text-on-surface-variant mb-8">Real-time arbitration of agent memory-to-action pathways using deterministic policy engines.</p>
+<p class="text-on-surface-variant mb-8">Preflight validation before every agent action. BLOCK, WARN, ASK_USER, or USE_MEMORY — with full explainability.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/decide">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
 </div>
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
 <i data-lucide="shield-check" class="text-gold mb-6" style="width:36px;height:36px;stroke:#c9a962;stroke-width:1.5"></i>
 <h3 class="text-2xl font-bold mb-4 text-obsidian">Protect</h3>
-<p class="text-on-surface-variant mb-8">Hardened guardrails against prompt injections that attempt to bypass your agent's safety training.</p>
+<p class="text-on-surface-variant mb-8">Write firewall, poisoning detection, tamper verification — threats stopped before they reach your agent.</p>
 <a class="text-gold font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="/protect">Learn more <span class="material-symbols-outlined">arrow_forward</span></a>
 </div>
 <div class="bg-surface-container p-12 hover:bg-white transition-all group shadow-hover">
@@ -285,12 +285,13 @@
     "Authorization": "Bearer <span class="text-gold">sg_live_...</span>"
   },
   "body": {
-    "intent": "delete_user_data",
-    "context": "Agent requested cleanup of historical logs",
-    "metadata": {
-      "confidence": 0.98,
-      "source": "memory_cluster_f2"
-    }
+    "agent_id": "<span class="text-gold">agent-payments</span>",
+    "memory_state": [
+      {"id": "mem_001", "content": "User balance: $50,000",
+       "type": "fact", "timestamp_age_days": 3}
+    ],
+    "action_type": "irreversible",
+    "domain": "fintech"
   }
 }</pre>
 </div>
