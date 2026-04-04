@@ -145,16 +145,17 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </section>
 
-<!-- Code Example -->
-<section class="py-24 bg-surface-container-low">
+<!-- Integration -->
+<section class="bg-surface-container-low py-24">
 <div class="max-w-4xl mx-auto px-8">
-<h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
 <div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
-<div class="bg-surface-container border-b border-black/[0.06] px-6 py-3">
-<p class="text-xs font-mono text-on-surface-variant">write_firewall_check.py</p>
+<div class="flex border-b border-black/[0.06] bg-surface-container">
+<button class="flex-1 py-4 text-sm font-bold text-gold border-b-2 border-gold transition-all">Write Firewall</button>
 </div>
-<div class="bg-[#0b0f14] p-8">
-<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Store with write firewall — blocks before storage
+<div class="p-8">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Write Firewall + Poisoning Detection</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Block poisoned memory at write time. Detect tampering at read time.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed"># Store with write firewall — blocks before storage
 result = client.store(
     content="User account balance: $50,000",
     agent_id="agent-payments",
