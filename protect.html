@@ -43,15 +43,39 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="max-w-4xl mx-auto text-center">
 <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">PROTECT</span>
 <h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
-  Stop threats<br/>before they act.
+  Your agent can be manipulated through memory.<br/>Sgraal stops that before it happens.
 </h1>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-  Memory poisoning, prompt injection, hallucination risk, tamper detection — stopped before they reach your agent.
+  Memory poisoning, prompt injection, and tampering are blocked before they reach your agent.
 </p>
 <a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
+</section>
+
+<!-- Before/After -->
+<section class="py-12 bg-surface-container-low">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <p class="text-red-500 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
+      <ul class="space-y-3 text-slate-600 text-sm">
+        <li>&rarr; Attacker injects poisoned memory via external feed</li>
+        <li>&rarr; Agent stores it as trusted fact</li>
+        <li>&rarr; Used in a financial decision 3 weeks later</li>
+        <li>&rarr; Silent manipulation — no trace, no rollback</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
+      <ul class="space-y-3 text-slate-700 text-sm">
+        <li>&rarr; Injection detected at write time</li>
+        <li>&rarr; Memory never stored</li>
+        <li>&rarr; Full threat trace recorded (SHA256)</li>
+        <li>&rarr; Agent remains unaffected</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- How It Works -->
@@ -101,6 +125,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Write-time Protection</h3>
 <p class="text-slate-600 leading-relaxed text-sm">Write firewall: blocks poisoned data before storage — prevention not detection. Sleeper detector: proactive scan for dormant trigger conditions.</p>
+<p class="text-xs italic text-slate-500 mt-3">Never store poisoned memory. Ever.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl hover:border-[#c9a962]/20 border border-transparent transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
