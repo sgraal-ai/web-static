@@ -36,8 +36,9 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="max-w-4xl mx-auto text-center">
 <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">SCALE</span>
 <h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
-  Learn, adapt,<br/>and grow autonomously.
+  You shouldn't have to tune<br/>your AI system.
 </h1>
+<p class="text-slate-500 font-semibold text-sm mb-4">Sgraal learns and adapts automatically. Your agents keep running.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
   Self-improving thresholds, autonomous healing, 6 SDKs, 14 frameworks — Sgraal runs itself so your agents can run anything.
 </p>
@@ -45,6 +46,30 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
+</section>
+
+<!-- Before/After -->
+<section class="py-12 bg-surface-container-low">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <p class="text-red-500 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
+      <ul class="space-y-3 text-slate-600 text-sm">
+        <li>&rarr; Manual threshold tuning per domain and action type</li>
+        <li>&rarr; Agent memory drifts silently — nobody notices</li>
+        <li>&rarr; Repeated incidents with no learning between them</li>
+        <li>&rarr; Engineers babysitting the system 24/7</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
+      <ul class="space-y-3 text-slate-700 text-sm">
+        <li>&rarr; Thresholds calibrate automatically from real outcomes</li>
+        <li>&rarr; System detects drift and heals before problems surface</li>
+        <li>&rarr; Every decision makes future decisions better</li>
+        <li>&rarr; Zero manual tuning required</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- How It Works -->
@@ -87,6 +112,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Learning & Calibration</h3>
 <p class="text-slate-600 text-sm leading-relaxed">RL Q-table: every decision outcome improves thresholds. Meta-learning: cross-agent patterns. Calibrated thresholds per domain, action type, memory type. Weight export/import.</p>
+<p class="text-xs italic text-slate-500 mt-2">No manual tuning. Every outcome makes future decisions more accurate.</p>
 </div>
 <div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -94,6 +120,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Autonomous Intelligence</h3>
 <p class="text-slate-600 text-sm leading-relaxed">Predictive Health: first_block_day forecast 30 days ahead. Autonomous Immune: auto-heal after 3+ BLOCKs. Autonomous Rollback: wrong email → revoke. Autonomous Pruning: Shapley-weighted removal.</p>
+<p class="text-xs italic text-slate-500 mt-2">Problems are resolved before you notice them. Your fleet runs itself.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -101,6 +128,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Integrations & SDKs</h3>
 <p class="text-slate-600 text-sm leading-relaxed">Python SDK: async + sync, Pydantic v2. LangChain: pip install langchain-sgraal. MCP Server: npm install @sgraal/mcp — Claude Desktop, Cursor, Windsurf. Also: CrewAI · AutoGen · LlamaIndex · mem0 · CLI.</p>
+<p class="text-xs italic text-slate-500 mt-2">No migration. No rewrite. Drop into your existing stack in minutes.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -108,6 +136,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Performance</h3>
 <p class="text-slate-600 text-sm leading-relaxed">p50 latency: ~1.8s. p99: ~2.5s. Full 83-module scoring pipeline. 166+ API endpoints. Upstash Redis for state management.</p>
+<p class="text-xs italic text-slate-500 mt-2">Full 83-module scoring on every decision. Worth the 2 seconds for irreversible actions.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -115,18 +144,23 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Multi-Agent Fleet</h3>
 <p class="text-slate-600 text-sm leading-relaxed">Coordinate unlimited agents. Cross-agent memory sharing with RBAC. Fleet-wide health dashboard. Agent lineage tracking. Memory inheritance between agent generations.</p>
+<p class="text-xs italic text-slate-500 mt-2">Scale to any number of agents with shared, governed memory and zero coordination overhead.</p>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Code Example -->
-<section class="py-24 bg-[#f5f4f0]">
-<div class="max-w-4xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
-<div class="bg-[#0b0f14] rounded-xl p-8">
-<p class="text-[#6b6b6b] text-xs mb-4 font-mono">scale_integration.py</p>
-<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto"># Install
+<!-- Integration -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-4xl mx-auto px-8">
+<div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
+<div class="flex border-b border-black/[0.06] bg-surface-container">
+<button class="flex-1 py-4 text-sm font-bold text-gold border-b-2 border-gold transition-all">RL Calibration + Outcome</button>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Self-improving Preflight</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Every outcome trains the RL model. Thresholds improve automatically.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed"># Install
 # pip install sgraal
 # npm install @sgraal/mcp
 
@@ -150,6 +184,7 @@ requests.post(
     headers={"Authorization": "Bearer sg_demo_playground"},
     json={"outcome_id": result.outcome_id, "status": "success"}
 )</pre>
+</div>
 </div>
 </div>
 </section>
