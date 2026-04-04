@@ -42,7 +42,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
   EU AI Act, HIPAA, MiFID2, Basel4, FDA, GDPR — built into every preflight call. Full audit trail. Cryptographic proof.
 </p>
-<a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
@@ -134,15 +134,19 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </section>
 
-<!-- Code Example -->
-<section class="py-24 bg-[#f5f4f0]">
-<div class="max-w-4xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-center">Integration</h2>
-<div class="bg-[#0b0f14] rounded-xl p-8">
-<p class="text-[#6b6b6b] text-xs mb-4 font-mono">compliance_check.py</p>
-<pre class="text-sm text-[#e2e8f0] font-mono leading-relaxed overflow-x-auto">result = client.preflight(
+<!-- Integration -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-4xl mx-auto px-8">
+<div class="bg-white rounded-2xl border border-black/[0.06] overflow-hidden shadow-sm">
+<div class="flex border-b border-black/[0.06] bg-surface-container">
+<button class="flex-1 py-4 text-sm font-bold text-gold border-b-2 border-gold transition-all">Compliance Check</button>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold mb-4 text-obsidian">Compliance Preflight + Report</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Check compliance in real time and generate regulatory reports.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">result = client.preflight(
     memory_state=[...],
-    action_type="financial",
+    action_type="irreversible",
     compliance_profile="EU_AI_ACT"
 )
 print(result.compliance_result.compliant)   # False
@@ -161,13 +165,14 @@ with open("eu_ai_act_conformity.pdf", "wb") as f:
     f.write(resp.content)</pre>
 </div>
 </div>
+</div>
 </section>
 
 <!-- CTA -->
 <section class="py-24 bg-white text-center">
 <h2 class="text-4xl font-bold mb-6">Ready to prove compliance?</h2>
 <div class="flex justify-center gap-4 flex-wrap">
-<a href="https://app.sgraal.com" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">Get API Key →</a>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">Get API Key →</a>
 <a href="/" class="text-slate-600 px-8 py-4 rounded-lg font-bold text-lg hover:text-[#c9a962] transition-colors">← Back to overview</a>
 </div>
 </section>
