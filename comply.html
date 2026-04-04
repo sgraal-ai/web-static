@@ -38,6 +38,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
   Meet every regulation.<br/>Prove it.
 </h1>
+<p class="text-red-500 font-semibold text-sm mb-4">If you cannot prove compliance, you are not compliant.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
   EU AI Act, HIPAA, MiFID2, Basel4, FDA, GDPR — built into every preflight call. Full audit trail. Cryptographic proof.
 </p>
@@ -45,6 +46,30 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
 </div>
+</section>
+
+<!-- Before/After -->
+<section class="py-12 bg-surface-container-low">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <p class="text-red-500 font-bold text-xs uppercase tracking-widest mb-4">Without Sgraal</p>
+      <ul class="space-y-3 text-slate-600 text-sm">
+        <li>&rarr; Agent makes financial decision based on memory</li>
+        <li>&rarr; No compliance validation at decision time</li>
+        <li>&rarr; Regulatory audit arrives 6 months later</li>
+        <li>&rarr; Missing evidence &rarr; weeks of manual reconstruction &rarr; potential fine</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
+      <ul class="space-y-3 text-slate-700 text-sm">
+        <li>&rarr; Every decision checked against EU AI Act / HIPAA / MiFID2 in real time</li>
+        <li>&rarr; Non-compliant + irreversible = automatic BLOCK</li>
+        <li>&rarr; Full cryptographic audit trail recorded</li>
+        <li>&rarr; Compliance report generated in seconds, not months</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- How It Works -->
@@ -87,27 +112,23 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Compliance Engine</h3>
 <p class="text-slate-600 text-sm leading-relaxed">4 built-in profiles: EU AI Act (Article 9, 12, 13), HIPAA §164.312, MiFID2, Basel4. Non-compliant + irreversible = automatic BLOCK.</p>
+<p class="text-xs italic text-slate-500 mt-2">Non-compliant actions never execute. Compliance is enforced, not just logged.</p>
 </div>
-<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
-<div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-[#c9a962]">groups</span>
-</div>
-<h3 class="text-xl font-bold mb-3">Multi-agent Coordination</h3>
-<p class="text-slate-600 text-sm leading-relaxed">ATC: namespace conflict prevention. Memory Court: causal inference + Z3 SMT solver. Memory Commons: shared org memory with RBAC.</p>
-</div>
-<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-[#c9a962]">receipt_long</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Audit Trail & Last Will</h3>
 <p class="text-slate-600 text-sm leading-relaxed">Tamper-proof audit log with SHA256 chain. Memory Last Will: GDPR + EU AI Act 10-year retention. SIEM export.</p>
+<p class="text-xs italic text-slate-500 mt-2">Every decision is provable. Every audit is survivable.</p>
 </div>
-<div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="md:col-span-6 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
 <span class="material-symbols-outlined text-[#c9a962]">verified_user</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Conformity Declaration</h3>
 <p class="text-slate-600 text-sm leading-relaxed">Auto-generated EU AI Act conformity declaration. Article-level evidence mapping. Ready for regulatory submission.</p>
+<p class="text-xs italic text-slate-500 mt-2">Submit to regulators in minutes. Not months.</p>
 </div>
 </div>
 </div>
