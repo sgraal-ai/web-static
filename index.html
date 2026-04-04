@@ -76,12 +76,14 @@
 <section class="relative pt-40 pb-24 px-8 max-w-7xl mx-auto overflow-hidden">
 <div class="grid lg:grid-cols-2 gap-12 items-center">
 <div class="z-10">
+<p class="text-red-500 font-semibold text-sm mb-3">Never let your AI act on unverified memory.</p>
 <h1 class="text-5xl md:text-[3.5rem] font-extrabold tracking-tighter leading-tight mb-6">
                 AI agents act on <span class="text-gold">memory</span>. Sgraal decides if that memory is safe to act on.
             </h1>
-<p class="text-[18px] text-[#6b7280] mb-10 max-w-[560px] leading-relaxed">
+<p class="text-[18px] text-[#6b7280] mb-6 max-w-[560px] leading-relaxed">
                 The execution layer between AI agent memory and AI agent action. Preflight validation before every decision. Every time.
             </p>
+<p class="text-slate-500 text-sm mb-10">One wrong memory. One irreversible action. Sgraal stops it before it happens.</p>
 <div class="flex flex-wrap gap-4 items-center mb-6">
 <button class="bg-gold text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(201,169,98,0.3)] transition-all" onclick="window.location='/playground'">
                     Try it now
@@ -152,8 +154,8 @@
 <div class="text-sm text-on-surface-variant uppercase tracking-widest">Reliability ↑</div>
 </div>
 <div class="text-center">
-<div class="text-3xl font-bold text-gold mb-1">12ms</div>
-<div class="text-sm text-on-surface-variant uppercase tracking-widest">Latency</div>
+<div class="text-3xl font-bold text-gold mb-1">~2s</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest" title="Full 83-module scoring pipeline">Preflight</div>
 </div>
 <div class="text-center">
 <div class="text-3xl font-bold text-gold mb-1">166+</div>
@@ -362,7 +364,7 @@ console.log(decision); // BLOCK</pre>
 <div class="bg-gold/[0.04] p-10 rounded-2xl border-2 border-gold relative flex flex-col transform md:-translate-y-4 shadow-xl">
 <div class="absolute top-0 right-10 -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
 <h3 class="text-xl font-bold mb-2">Pro</h3>
-<div class="text-4xl font-extrabold mb-6">$0.001 <span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<div class="text-4xl font-extrabold mb-6">$0.001 <span class="text-sm font-normal text-on-surface-variant">/ decision</span></div>
 <ul class="space-y-4 mb-10 text-on-surface-variant text-sm flex-grow">
 <li class="flex gap-2"><span class="material-symbols-outlined text-gold text-sm">check</span> Full explainability + repair plan</li>
 <li class="flex gap-2"><span class="material-symbols-outlined text-gold text-sm">check</span> Custom policy engine</li>
