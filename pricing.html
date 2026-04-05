@@ -24,6 +24,9 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
 <a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
 <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
 <a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
 <a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
@@ -32,7 +35,16 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <a class="text-[#c9a962] font-semibold border-b-2 border-[#c9a962] pb-1" href="/pricing">Pricing</a>
 <a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
 </div>
-<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
 </div>
 </nav>
 
