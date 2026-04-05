@@ -31,7 +31,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
 <a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
-<button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
 </button>
 <div class="hidden md:flex items-center space-x-8 font-medium text-sm">

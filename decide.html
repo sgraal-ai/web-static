@@ -92,7 +92,7 @@
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
 <a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
-<button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
 </button>
 <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
@@ -270,7 +270,7 @@
 <span class="text-[#6b7280] text-sm">Your demo key: </span>
 <span class="text-[#c9a962] font-mono font-semibold text-sm">sg_demo_playground</span>
 <button class="ml-2 inline-flex items-center align-middle text-[#6b7280] hover:text-[#c9a962] transition-colors">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
 <p class="text-[12px] text-[#6b7280]">10,000 free decisions/month · No signup needed</p>
@@ -356,7 +356,7 @@ console.log(result.recommended_action); // BLOCK</pre>
                     Get API Key
                     <span class="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1">arrow_forward</span>
 </a>
-<a class="text-slate-600 font-semibold flex items-center hover:text-primary transition-colors" href="#">
+<a class="text-slate-600 font-semibold flex items-center hover:text-primary transition-colors" href="/">
 <span class="material-symbols-outlined mr-2">arrow_back</span>
                     Back to overview
                 </a>
