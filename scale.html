@@ -172,7 +172,7 @@ client = SgraalClient(api_key="sg_demo_playground")
 # Preflight with RL-calibrated thresholds
 result = client.preflight(
     memory_state=[{"id": "mem_001", "content": "...",
-        "type": "fact", "timestamp_age_days": 5}],
+        "type": "semantic", "timestamp_age_days": 5}],
     action_type="irreversible",
     domain="fintech"
 )

@@ -174,7 +174,7 @@ if result.write_firewall_triggered:
 # Preflight scan — detect poisoning at read time
 preflight = client.preflight(
     memory_state=[{"id": "mem_001", "content": "...",
-        "type": "fact", "timestamp_age_days": 1}],
+        "type": "semantic", "timestamp_age_days": 1}],
     action_type="financial",
     domain="fintech"
 )
