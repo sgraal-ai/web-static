@@ -162,8 +162,10 @@ resp = requests.get(
     "https://api.sgraal.com/v1/compliance/eu-ai-act/report",
     headers={"Authorization": "Bearer sg_live_..."}
 )
-with open("eu_ai_act_conformity.pdf", "wb") as f:
-    f.write(resp.content)</pre>
+report = resp.json()
+with open("eu_ai_act_conformity.json", "w") as f:
+    import json
+    json.dump(report, f, indent=2)</pre>
 </div>
 </div>
 </div>
