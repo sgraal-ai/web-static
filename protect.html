@@ -194,7 +194,7 @@ if result.write_firewall_triggered:
 preflight = client.preflight(
     memory_state=[{"id": "mem_001", "content": "...",
         "type": "semantic", "timestamp_age_days": 1}],
-    action_type="financial",
+    action_type="irreversible",
     domain="fintech"
 )
 print(preflight.poisoning_suspected)   # True
