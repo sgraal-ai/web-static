@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Pricing — Sgraal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: { extend: { colors: { "primary": "#c9a962", "surface-container-low": "#f5f4f0", "on-surface": "#0B0F14", "outline-variant": "#e0e2ea", "gold": "#c9a962", "code-bg": "#f0efe9" }, fontFamily: { "headline": ["Manrope"], "body": ["Inter"] } } }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-[#c9a962] font-semibold border-b-2 border-[#c9a962] pb-1" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-16 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">PRICING</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
+  Simple, usage-based pricing.<br/>Start free.
+</h1>
+<p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+  10,000 decisions free every month. No credit card required. Scale as you grow.
+</p>
+</div>
+</section>
+
+<!-- Pricing Cards -->
+<section class="pb-32 px-6">
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+
+<!-- Free -->
+<div class="bg-[#f5f4f0] p-10 rounded-2xl border border-black/[0.06] flex flex-col">
+<h3 class="text-xl font-bold mb-2">Free</h3>
+<div class="text-4xl font-extrabold mb-6">$0 <span class="text-sm font-normal text-slate-500">/mo</span></div>
+<ul class="space-y-4 mb-10 text-slate-600 text-sm flex-grow">
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> 10,000 decisions / month</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Preflight + basic explain</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> 1 API key</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Community support</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Rate limit: 10 req/s</li>
+</ul>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="w-full bg-[#c9a962] text-white py-3 rounded-lg font-semibold text-center hover:bg-[#b8973f] transition-all block">Get API Key</a>
+</div>
+
+<!-- Pro -->
+<div class="bg-white p-10 rounded-2xl border-2 border-[#c9a962] flex flex-col relative">
+<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#c9a962] text-white text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</span>
+<h3 class="text-xl font-bold mb-2">Pro</h3>
+<div class="text-4xl font-extrabold mb-2">$0.001 <span class="text-sm font-normal text-slate-500">/ decision</span></div>
+<p class="text-xs text-slate-500 mb-6">After 10,000 free decisions each month</p>
+<ul class="space-y-4 mb-10 text-slate-600 text-sm flex-grow">
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Everything in Free</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Full explainability + Shapley attribution</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Repair plan in every response</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Compliance profiles (EU AI Act, HIPAA, MiFID2)</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Red Team as a Service</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Memory Passport</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> SIEM export (Splunk, Datadog, Elastic)</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> 5 API keys</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Email support</li>
+</ul>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="w-full bg-[#c9a962] text-white py-3 rounded-lg font-semibold text-center hover:bg-[#b8973f] transition-all block">Get API Key</a>
+</div>
+
+<!-- Enterprise -->
+<div class="bg-[#f5f4f0] p-10 rounded-2xl border border-black/[0.06] flex flex-col">
+<h3 class="text-xl font-bold mb-2">Enterprise</h3>
+<div class="text-4xl font-extrabold mb-6">Custom</div>
+<ul class="space-y-4 mb-10 text-slate-600 text-sm flex-grow">
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Everything in Pro</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Unlimited decisions</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> On-prem deployment</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Custom compliance profiles</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> SLA guarantee</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> Dedicated support</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[#c9a962] text-sm">check</span> SSO + RBAC</li>
+</ul>
+<a href="mailto:hello@sgraal.com" class="w-full bg-[#0B0F14] text-white py-3 rounded-lg font-semibold text-center hover:bg-[#1a1f28] transition-all block">Contact sales</a>
+</div>
+
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-3xl font-bold tracking-tight mb-12 text-center">Frequently asked questions</h2>
+<div class="space-y-8">
+<div>
+<h3 class="text-lg font-bold mb-2">When does billing start?</h3>
+<p class="text-slate-600 text-sm leading-relaxed">After your 10,000 free decisions each month. You only pay for what you use.</p>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-2">What counts as a decision?</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Every POST /v1/preflight call counts as one decision.</p>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-2">Can I set a spending limit?</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Yes — contact <a href="mailto:hello@sgraal.com" class="text-[#c9a962] hover:underline">hello@sgraal.com</a> to set a monthly cap.</p>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-2">Is there a free trial for Pro features?</h3>
+<p class="text-slate-600 text-sm leading-relaxed">The free tier includes basic preflight. Contact <a href="mailto:hello@sgraal.com" class="text-[#c9a962] hover:underline">hello@sgraal.com</a> for a Pro trial.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-4">Sgraal</div>
+<p class="text-slate-500 text-sm">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Product</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Resources</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://api.sgraal.com/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="https://api.sgraal.com/docs">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-4">Legal</h4>
+<ul class="space-y-3 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+<p class="text-slate-400 text-sm">Free to start &middot; No credit card required</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
