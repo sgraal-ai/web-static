@@ -45,6 +45,9 @@ pre { overflow-x: auto; }
         <nav class="space-y-1">
           <a href="#quickstart" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Quick Start (5 min)</a>
           <a href="#concepts" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Core Concepts</a>
+          <a href="#memcube" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MemCube v2 Schema</a>
+          <a href="#smrs" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SMRS v1.0 Score</a>
+          <a href="#sdks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SDK Quick Reference</a>
           <a href="#auth" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Authentication</a>
         </nav>
       </div>
@@ -194,6 +197,108 @@ console.log(result.recommended_action); // BLOCK</pre>
             <div><span class="text-[#c9a962]">irreversible</span> — 2.5× (highest)</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- MemCube v2 -->
+    <section id="memcube" class="mb-16 scroll-mt-24 bg-[#faf9f6] -mx-8 px-8 py-12 rounded-xl">
+      <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">MemCube v2 — Memory Entry Schema</h2>
+      <p class="text-[#374151] mb-6">The standardized format for AI agent memory entries. All Sgraal endpoints accept MemCube v2 formatted memory states.</p>
+
+      <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Required Fields</h3>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden">
+          <thead><tr class="bg-white">
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Field</th>
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Type</th>
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Description</th>
+          </tr></thead>
+          <tbody>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">id</td><td class="px-4 py-2 text-slate-500">string</td><td class="px-4 py-2 text-[#374151]">Unique identifier</td></tr>
+            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">content</td><td class="px-4 py-2 text-slate-500">string</td><td class="px-4 py-2 text-[#374151]">Memory content text</td></tr>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">type</td><td class="px-4 py-2 text-slate-500">enum</td><td class="px-4 py-2 text-[#374151]">One of 7 memory types</td></tr>
+            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">timestamp_age_days</td><td class="px-4 py-2 text-slate-500">float</td><td class="px-4 py-2 text-[#374151]">Age in days</td></tr>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">source_trust</td><td class="px-4 py-2 text-slate-500">float 0-1</td><td class="px-4 py-2 text-[#374151]">Source reliability score</td></tr>
+            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">source_conflict</td><td class="px-4 py-2 text-slate-500">float 0-1</td><td class="px-4 py-2 text-[#374151]">Contradiction level</td></tr>
+            <tr class="bg-white"><td class="px-4 py-2 font-mono font-semibold text-[#c9a962]">downstream_count</td><td class="px-4 py-2 text-slate-500">int</td><td class="px-4 py-2 text-[#374151]">Number of dependent agents</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Memory Types</h3>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">episodic</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">semantic</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">preference</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">tool_state</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">shared_workflow</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">policy</span>
+        <span class="bg-white border border-[#c9a962]/30 text-[#c9a962] px-3 py-1 rounded-full text-sm font-medium">identity</span>
+      </div>
+
+      <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Example</h3>
+      <pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-4">{
+  "id": "mem_001",
+  "content": "User prefers wire transfers under $10,000",
+  "type": "preference",
+  "timestamp_age_days": 14,
+  "source_trust": 0.91,
+  "source_conflict": 0.04,
+  "downstream_count": 3
+}</pre>
+      <p class="text-sm text-[#374151]">Full JSON Schema &rarr; <a href="https://api.sgraal.com/v1/standard/memcube-spec" target="_blank" class="text-[#c9a962] hover:underline">api.sgraal.com/v1/standard/memcube-spec</a></p>
+    </section>
+
+    <!-- SMRS v1.0 -->
+    <section id="smrs" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">SMRS v1.0 — Memory Risk Score</h2>
+      <p class="text-[#374151] mb-6">Formal 0-100 risk score computed from 10 components. Determines the preflight decision.</p>
+
+      <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Decision Thresholds</h3>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden">
+          <thead><tr class="bg-white">
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Range</th>
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Decision</th>
+            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Meaning</th>
+          </tr></thead>
+          <tbody>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-green-600">0–25</td><td class="px-4 py-2 font-bold text-green-600">USE_MEMORY</td><td class="px-4 py-2 text-[#374151]">Safe to proceed</td></tr>
+            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-amber-600">25–50</td><td class="px-4 py-2 font-bold text-amber-600">WARN</td><td class="px-4 py-2 text-[#374151]">Proceed with caution</td></tr>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-orange-600">50–75</td><td class="px-4 py-2 font-bold text-orange-600">ASK_USER</td><td class="px-4 py-2 text-[#374151]">Human approval needed</td></tr>
+            <tr class="bg-[#faf9f6]"><td class="px-4 py-2 font-bold text-red-600">75–100</td><td class="px-4 py-2 font-bold text-red-600">BLOCK</td><td class="px-4 py-2 text-[#374151]">Do not proceed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">10 Components</h3>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-2 mb-6">
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_freshness</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_drift</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_provenance</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_propagation</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">r_recall</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">r_encode</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_interference</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_recovery</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">r_belief</p></div>
+        <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2 text-center"><p class="font-mono text-xs font-semibold text-[#0B0F14]">s_relevance</p></div>
+      </div>
+
+      <p class="text-sm text-[#374151]">Standard body: <strong class="text-[#0B0F14]">Sgraal Governance Working Group</strong> &middot; Version: <strong class="text-[#c9a962]">SMRS v1.0</strong></p>
+      <p class="text-sm text-[#374151] mt-2">Full definition &rarr; <a href="https://api.sgraal.com/v1/standard/score-definition" target="_blank" class="text-[#c9a962] hover:underline">api.sgraal.com/v1/standard/score-definition</a></p>
+    </section>
+
+    <!-- SDK Quick Reference -->
+    <section id="sdks" class="mb-16 scroll-mt-24 bg-[#faf9f6] -mx-8 px-8 py-12 rounded-xl">
+      <h2 class="text-2xl font-bold mb-6 text-[#0B0F14]">SDK Quick Reference</h2>
+      <pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-6">pip install sgraal            <span style="color:#6b7280"># Core Python SDK</span>
+pip install mem0-sgraal       <span style="color:#6b7280"># mem0 integration</span>
+pip install langchain-sgraal  <span style="color:#6b7280"># LangChain integration</span>
+npm install @sgraal/mcp       <span style="color:#6b7280"># Claude Desktop + Cursor MCP server</span></pre>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a href="https://pypi.org/project/sgraal" target="_blank" class="text-[#c9a962] hover:underline">PyPI &rarr; pypi.org/project/sgraal</a>
+        <a href="https://npmjs.com/package/@sgraal/mcp" target="_blank" class="text-[#c9a962] hover:underline">npm &rarr; npmjs.com/package/@sgraal/mcp</a>
       </div>
     </section>
 
