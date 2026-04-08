@@ -421,6 +421,87 @@ console.log(decision); // BLOCK</pre>
 </div>
 <p class="text-center text-sm text-on-surface-variant mt-6"><a href="/pricing" class="text-gold hover:underline">See full pricing details &rarr;</a></p>
 </section>
+<!-- In the Wild — Joint Benchmark with GrokGuard -->
+<section class="py-24 px-8 bg-[#0B0F14]">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Validated in the Wild</h2>
+<p class="text-slate-400 text-lg max-w-2xl mx-auto">Joint benchmark with GrokGuard (xAI) across 3 adversarial corpora. Independent builds, side-by-side results.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<!-- Round 1 -->
+<div class="bg-[#0f1419] border border-[#10b981]/30 rounded-2xl p-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-white">Round 1 — Sponsored Drift</h3>
+<span class="bg-[#10b981]/20 text-[#10b981] text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span>
+</div>
+<p class="text-slate-400 text-sm mb-6">60 cases &middot; affiliate bias &middot; brand manipulation</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">Sgraal</span>
+<span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">GrokGuard</span>
+<span class="text-slate-400 font-mono">F1 = 0.98</span>
+</div>
+</div>
+</div>
+
+<!-- Round 2 -->
+<div class="bg-[#0f1419] border border-[#10b981]/30 rounded-2xl p-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-white">Round 2 — Subtle Drift</h3>
+<span class="bg-[#10b981]/20 text-[#10b981] text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span>
+</div>
+<p class="text-slate-400 text-sm mb-6">59 cases &middot; commercial_intent 0.30–0.55</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">Sgraal</span>
+<span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 &middot; FP=0 &middot; FN=0</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">GrokGuard</span>
+<span class="text-slate-400 font-mono">F1 = 0.98 &middot; 2 false negatives</span>
+</div>
+</div>
+</div>
+
+<!-- Round 3 -->
+<div class="bg-[#0f1419] border border-[#f59e0b]/30 rounded-2xl p-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-white">Round 3 — Hallucination</h3>
+<span class="bg-[#f59e0b]/20 text-[#f59e0b] text-xs font-bold px-3 py-1 rounded-full">IN PROGRESS</span>
+</div>
+<p class="text-slate-400 text-sm mb-6">60 cases &middot; confident fabrication &middot; multi-hop echo &middot; cross-agent amplification</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">Sgraal</span>
+<span class="text-[#c9a962] font-bold font-mono">60/60 green</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-300 text-sm">GrokGuard</span>
+<span class="text-slate-500 font-mono italic">in progress</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Key Insight -->
+<div class="bg-[#0f1419] border-l-4 border-[#c9a962] rounded-r-xl p-8 mb-12">
+<p class="text-white text-lg font-semibold mb-3">"Confidence &ne; truth. The formal verification layer catches what probabilistic systems miss."</p>
+<p class="text-[#c9a962] font-bold font-mono text-xl">239/239 corpus cases green &middot; 0 false negatives</p>
+</div>
+
+<!-- CTAs -->
+<div class="flex flex-wrap justify-center gap-4">
+<a href="https://github.com/sgraal-ai/core/tree/main/tests" target="_blank" class="bg-[#c9a962] text-[#0B0F14] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">View Corpus on GitHub</a>
+<a href="/standard" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the Standard</a>
+</div>
+</div>
+</section>
+
 <!-- Footer -->
 <footer class="bg-surface-container border-t border-black/[0.06]">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
