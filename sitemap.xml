@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sgraal.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://sgraal.com/decide</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/protect</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/comply</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/scale</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/pricing</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/standard</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/docs</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://sgraal.com/playground</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/benchmark</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/compatibility</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/roi</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/blog</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://sgraal.com/blog/grok-benchmark</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/security</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sgraal.com/changelog</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://sgraal.com/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://sgraal.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+</urlset>
