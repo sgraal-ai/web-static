@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Memory Standards — MemCube v2 & SMRS v1.0 | Sgraal</title>
+<meta name="description" content="MemCube v2 and SMRS v1.0 — formal specifications for interoperable, provably safe AI agent memory governance.">
+<meta property="og:title" content="Open Memory Standards — Sgraal">
+<meta property="og:description" content="MemCube v2 and SMRS v1.0 — formal specifications for interoperable, provably safe AI agent memory governance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sgraal.com/standard">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sgraal.com/standard">
+<link rel="icon" href="/favicon.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{font-family:'Manrope',sans-serif}</style>
+</head>
+<body class="bg-white text-[#101419]">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-[#c9a962] font-semibold border-b-2 border-[#c9a962] pb-1" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-[#c9a962] font-semibold" href="/standard">Standard</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Open Memory Standards<br>for AI Agents</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto mb-10">MemCube v2 and SMRS v1.0 — formal specifications for interoperable, provably safe agent memory governance.</p>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="https://api.sgraal.com/v1/standard/memcube-spec" target="_blank" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">View MemCube v2 Spec</a>
+<a href="https://api.sgraal.com/v1/standard/score-definition" target="_blank" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">View SMRS v1.0 Spec</a>
+</div>
+</section>
+
+<!-- MemCube v2 -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-3">MemCube v2 — Memory Entry Schema</h2>
+<p class="text-slate-500 mb-8 max-w-3xl">A standardized JSON Schema for AI agent memory entries. Designed for interoperability across LangChain, CrewAI, AutoGen, LangGraph, mem0, and any agent framework.</p>
+
+<h3 class="text-lg font-bold mb-4">7 Required Fields</h3>
+<div class="overflow-x-auto mb-8">
+<table class="w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
+<thead><tr class="bg-white">
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b">Field</th>
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b">Type</th>
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b">Description</th>
+</tr></thead>
+<tbody class="bg-white">
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">id</td><td class="px-4 py-3 text-slate-500">string</td><td class="px-4 py-3">Unique identifier</td></tr>
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">content</td><td class="px-4 py-3 text-slate-500">string</td><td class="px-4 py-3">Memory content text</td></tr>
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">type</td><td class="px-4 py-3 text-slate-500">enum</td><td class="px-4 py-3">One of 7 memory types</td></tr>
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">timestamp_age_days</td><td class="px-4 py-3 text-slate-500">float</td><td class="px-4 py-3">Age in days since creation</td></tr>
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">source_trust</td><td class="px-4 py-3 text-slate-500">float 0-1</td><td class="px-4 py-3">Source reliability score</td></tr>
+<tr class="border-b"><td class="px-4 py-3 font-mono font-semibold">source_conflict</td><td class="px-4 py-3 text-slate-500">float 0-1</td><td class="px-4 py-3">Contradiction level with other sources</td></tr>
+<tr><td class="px-4 py-3 font-mono font-semibold">downstream_count</td><td class="px-4 py-3 text-slate-500">int</td><td class="px-4 py-3">Number of dependent agents</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="text-lg font-bold mb-4">Memory Types</h3>
+<div class="flex flex-wrap gap-3 mb-10">
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">episodic</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">semantic</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">preference</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">tool_state</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">shared_workflow</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">policy</span>
+<span class="bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-medium">identity</span>
+</div>
+
+<h3 class="text-lg font-bold mb-4">Example Entry</h3>
+<pre class="bg-[#0B0F14] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono overflow-x-auto">{
+  <span style="color:#c792ea">"id"</span>: <span style="color:#a5d6a7">"mem_001"</span>,
+  <span style="color:#c792ea">"content"</span>: <span style="color:#a5d6a7">"User prefers wire transfers under $10,000"</span>,
+  <span style="color:#c792ea">"type"</span>: <span style="color:#a5d6a7">"preference"</span>,
+  <span style="color:#c792ea">"timestamp_age_days"</span>: <span style="color:#f9a825">14</span>,
+  <span style="color:#c792ea">"source_trust"</span>: <span style="color:#f9a825">0.91</span>,
+  <span style="color:#c792ea">"source_conflict"</span>: <span style="color:#f9a825">0.04</span>,
+  <span style="color:#c792ea">"downstream_count"</span>: <span style="color:#f9a825">3</span>
+}</pre>
+</div>
+</section>
+
+<!-- SMRS v1.0 -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-3">SMRS v1.0 — Memory Risk Score</h2>
+<p class="text-slate-500 mb-8 max-w-3xl">A formal risk scoring standard for AI agent memory validation. Computes a 0–100 risk score from 10 components, producing one of four preflight decisions.</p>
+
+<h3 class="text-lg font-bold mb-4">Decision Thresholds</h3>
+<div class="flex flex-wrap gap-4 mb-10">
+<div class="flex items-center gap-3 bg-green-50 border border-green-200 rounded-xl px-6 py-4">
+<span class="text-3xl font-extrabold text-green-600">0-25</span>
+<div><p class="font-bold text-green-700">USE_MEMORY</p><p class="text-xs text-green-600">Safe to proceed</p></div>
+</div>
+<div class="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-6 py-4">
+<span class="text-3xl font-extrabold text-amber-600">25-50</span>
+<div><p class="font-bold text-amber-700">WARN</p><p class="text-xs text-amber-600">Proceed with caution</p></div>
+</div>
+<div class="flex items-center gap-3 bg-orange-50 border border-orange-200 rounded-xl px-6 py-4">
+<span class="text-3xl font-extrabold text-orange-600">50-75</span>
+<div><p class="font-bold text-orange-700">ASK_USER</p><p class="text-xs text-orange-600">Human approval needed</p></div>
+</div>
+<div class="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-6 py-4">
+<span class="text-3xl font-extrabold text-red-600">75-100</span>
+<div><p class="font-bold text-red-700">BLOCK</p><p class="text-xs text-red-600">Do not proceed</p></div>
+</div>
+</div>
+
+<h3 class="text-lg font-bold mb-4">10 Risk Components</h3>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_freshness</p><p class="text-xs text-slate-500">Memory age decay</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_drift</p><p class="text-xs text-slate-500">Semantic drift</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_provenance</p><p class="text-xs text-slate-500">Source reliability</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_propagation</p><p class="text-xs text-slate-500">Blast radius</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">r_recall</p><p class="text-xs text-slate-500">Recall accuracy</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">r_encode</p><p class="text-xs text-slate-500">Encoding quality</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_interference</p><p class="text-xs text-slate-500">Cross-entry conflict</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_recovery</p><p class="text-xs text-slate-500">Recovery capability</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">r_belief</p><p class="text-xs text-slate-500">Model belief alignment</p></div>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg px-4 py-3 text-center"><p class="font-mono text-sm font-semibold">s_relevance</p><p class="text-xs text-slate-500">Intent-drift detection</p></div>
+</div>
+<p class="text-sm text-slate-500">Standard body: <strong class="text-[#101419]">Sgraal Governance Working Group</strong> · Version: <strong class="text-[#c9a962]">SMRS v1.0</strong></p>
+</div>
+</section>
+
+<!-- Benchmark Validation -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-3xl font-extrabold mb-3">Empirically Validated</h2>
+<p class="text-slate-500 mb-10">Joint benchmark with GrokGuard (xAI)</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+<p class="text-5xl font-extrabold text-[#c9a962]">1.000</p>
+<p class="text-sm text-slate-500 mt-2">F1 Score</p>
+<p class="text-xs text-slate-400">Across all 4 corpora</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+<p class="text-5xl font-extrabold text-[#c9a962]">239/239</p>
+<p class="text-sm text-slate-500 mt-2">Corpus Cases</p>
+<p class="text-xs text-slate-400">All green on live API</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+<p class="text-5xl font-extrabold text-green-500">0</p>
+<p class="text-sm text-slate-500 mt-2">False Negatives</p>
+<p class="text-xs text-slate-400">No unsafe memory passed through</p>
+</div>
+</div>
+<a href="https://github.com/sgraal-ai/core" target="_blank" class="text-sm text-[#c9a962] hover:underline">View corpus on GitHub &rarr;</a>
+</div>
+</section>
+
+<!-- Compatible With -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-3xl font-extrabold mb-8">Compatible With</h2>
+<div class="flex flex-wrap justify-center gap-6 mb-10">
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">LangChain</span>
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">CrewAI</span>
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">AutoGen</span>
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">LangGraph</span>
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">mem0</span>
+<span class="bg-[#faf9f6] border border-slate-200 px-6 py-3 rounded-xl text-sm font-semibold">OpenAI Agents SDK</span>
+</div>
+<a href="https://api.sgraal.com/docs" target="_blank" class="text-[#c9a962] font-semibold hover:underline">View Integration Docs &rarr;</a>
+</div>
+</section>
+
+<!-- Footer CTA -->
+<section class="py-24 px-8 bg-[#0B0F14] text-center">
+<h2 class="text-3xl font-extrabold text-white mb-4">Start validating memory today</h2>
+<p class="text-slate-400 mb-8 max-w-lg mx-auto">No signup needed. Use the demo key to try the full 83-module safety pipeline.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+<a href="/pricing" class="bg-[#c9a962] text-[#0B0F14] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Get API Key</a>
+</div>
+<p class="text-slate-500 text-sm">Demo key: <code class="text-[#c9a962] font-mono">sg_demo_playground</code> — no signup needed</p>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#faf9f6] py-24 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-2 md:col-span-1">
+<div class="text-xl font-black text-[#101419] mb-6">Sgraal</div>
+<p class="text-slate-500 text-sm leading-relaxed max-w-xs">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-6">Product</h4>
+<ul class="space-y-4 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/scale">Scale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-6">Resources</h4>
+<ul class="space-y-4 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-opacity" href="https://api.sgraal.com/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/standard">Standards</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/blog">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#101419] mb-6">Legal</h4>
+<ul class="space-y-4 text-slate-500 text-sm">
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-opacity" href="/security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</div>
+</footer>
+
+</body></html>
