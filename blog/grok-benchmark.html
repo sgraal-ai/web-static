@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Building a Joint Memory Governance Benchmark with GrokGuard — Sgraal Blog</title>
-<meta name="description" content="How Sgraal and GrokGuard independently built and validated adversarial memory governance corpora — F1=1.000 across 239 cases.">
+<title>Building a Joint Memory Governance Benchmark with Grok — Sgraal Blog</title>
+<meta name="description" content="How Sgraal and Grok independently built and validated adversarial memory governance corpora — F1=1.000 across 239 cases.">
 <link rel="canonical" href="https://sgraal.com/blog/grok-benchmark">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -35,7 +35,7 @@
 <span class="text-slate-400 text-xs">&middot;</span>
 <span class="text-slate-500 text-xs">April 2026</span>
 </div>
-<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Building a Joint Memory Governance Benchmark with GrokGuard</h1>
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Building a Joint Memory Governance Benchmark with Grok</h1>
 <p class="text-slate-500">Sgraal Team</p>
 </div>
 
@@ -50,7 +50,7 @@
 
 <section>
 <h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Approach</h2>
-<p>Sgraal and GrokGuard were built independently. Different teams, different architectures, different philosophies. GrokGuard uses probabilistic fusion and multi-agent consensus. Sgraal uses a 83-module scoring pipeline with Z3 formal verification.</p>
+<p>Sgraal and Grok were built independently. Different teams, different architectures, different philosophies. Grok uses probabilistic fusion and multi-agent consensus. Sgraal uses a 83-module scoring pipeline with Z3 formal verification.</p>
 <p>We designed three adversarial corpora — each targeting a specific failure mode that conventional systems miss. No shared training data. No coordinated development. Just side-by-side results on the same inputs.</p>
 </section>
 
@@ -84,7 +84,7 @@
 
 <section>
 <h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Why the Gap?</h2>
-<p>GrokGuard uses probabilistic fusion with multi-agent consensus — fast, adaptive, and effective for most cases. It achieved F1 = 0.98 on the sponsored drift corpus, with 2 false negatives on the subtle drift round.</p>
+<p>Grok uses probabilistic fusion with multi-agent consensus — fast, adaptive, and effective for most cases. It achieved F1 = 0.98 on the sponsored drift corpus, with 2 false negatives on the subtle drift round.</p>
 <p>Sgraal uses a different approach: 83 scoring modules feeding into Z3 formal verification. Every decision comes with <code class="text-[#c9a962]">overridable: false</code> and a proof hash. The formal layer catches what probabilistic systems miss — specifically in boundary cases where confidence is high but the underlying fact is fabricated.</p>
 <p class="bg-[#faf9f6] border-l-4 border-[#c9a962] p-4 rounded-r-xl italic text-[#0B0F14]">Confidence does not equal truth. A high-trust, low-conflict, recently-updated memory entry can still be completely fabricated.</p>
 </section>
