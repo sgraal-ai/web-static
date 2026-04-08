@@ -9,16 +9,141 @@
   gtag('js', new Date());
   gtag('config', 'G-K7B978E0HF');
 </script>
-
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta http-equiv="refresh" content="1;url=https://api.sgraal.com/docs"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
 <title>API Reference — Sgraal</title>
+<meta name="description" content="Sgraal API endpoint reference — 255+ endpoints for memory governance.">
+<link rel="canonical" href="https://sgraal.com/docs/api">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; } h1,h2,h3 { font-family: 'Manrope', sans-serif; }</style>
 </head>
-<body style="background:#faf9f6; font-family: sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">
-  <div style="text-align:center;">
-    <div style="font-size:24px; font-weight:700; color:#0B0F14; margin-bottom:8px;">Sgraal</div>
-    <div style="color:#6b7280; font-size:14px;">Loading API Reference...</div>
-  </div>
-</body>
-</html>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://api.sgraal.com/docs" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Swagger UI</a>
+</div>
+</nav>
+
+<main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+<h1 class="text-4xl font-extrabold mb-2">API Reference</h1>
+<p class="text-slate-500 mb-4">255+ endpoints. Base URL: <code class="text-[#c9a962] font-mono">https://api.sgraal.com</code></p>
+<p class="text-sm text-slate-500 mb-8">Interactive docs: <a href="https://api.sgraal.com/docs" target="_blank" class="text-[#c9a962] hover:underline">api.sgraal.com/docs</a> (Swagger UI)</p>
+
+<!-- Core Endpoints -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Core</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/preflight</code></div>
+<p class="text-slate-500 text-sm">Core decision endpoint. 83-module scoring pipeline.</p>
+<p class="text-slate-400 text-xs mt-1">New: <code class="text-[#c9a962]">grok_context</code> param, <code class="text-[#c9a962]">sgraal_override</code> / <code class="text-[#c9a962]">grok_decision</code> / <code class="text-[#c9a962]">formal_override</code> / <code class="text-[#c9a962]">notification_sent</code> response fields</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/preflight/batch</code></div>
+<p class="text-slate-500 text-sm">Batch scoring — up to 100 entries per call.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/preflight/zk</code></div>
+<p class="text-slate-500 text-sm">Zero-knowledge mode — SHA-256 proof hash, no content exposure.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/heal</code></div>
+<p class="text-slate-500 text-sm">Repair memory entries: REFETCH, VERIFY_WITH_SOURCE, REBUILD_WORKING_SET.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/explain</code></div>
+<p class="text-slate-500 text-sm">Natural language explanation — developer/compliance/executive audiences.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/outcome</code></div>
+<p class="text-slate-500 text-sm">Close outcome — success/failure/partial with component attribution.</p>
+</div>
+</div>
+</section>
+
+<!-- Comparison & Analysis -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Comparison &amp; Analysis</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/compare/grok</code></div>
+<p class="text-slate-500 text-sm">Side-by-side Sgraal vs Grok comparison. Formal contradiction detection.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/propagation/trace</code></div>
+<p class="text-slate-500 text-sm">Trace memory propagation — cascade risk, containment, affected agents.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/fidelity/certify</code></div>
+<p class="text-slate-500 text-sm">Certify memory fidelity with cryptographic proof.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/cross-agent-check</code></div>
+<p class="text-slate-500 text-sm">Multi-agent conflict detection with anti-consensus safeguard.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/court/arbitrate</code></div>
+<p class="text-slate-500 text-sm">Formal arbitration with Z3 verification. overridable: false.</p>
+</div>
+</div>
+</section>
+
+<!-- Memory Management -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Memory Management</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/memory/passport/export</code></div>
+<p class="text-slate-500 text-sm">Cryptographically signed memory snapshot. 3 TTL levels: ephemeral/standard/archival.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/memory/passport/{id}/verify</code></div>
+<p class="text-slate-500 text-sm">Verify passport signature integrity.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/audit-log</code></div>
+<p class="text-slate-500 text-sm">Decision audit trail with timestamp + omega mapping.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/analytics/summary</code></div>
+<p class="text-slate-500 text-sm">Fleet-wide decision analytics.</p>
+</div>
+</div>
+</section>
+
+<!-- Standards -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Standards</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/standard/memcube-spec</code></div>
+<p class="text-slate-500 text-sm">MemCube v2 JSON Schema.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/standard/score-definition</code></div>
+<p class="text-slate-500 text-sm">SMRS v1.0 formal score definition.</p>
+</div>
+</div>
+</section>
+
+<div class="bg-[#faf9f6] rounded-xl p-6 text-center border border-[#e5e7eb]">
+<p class="text-slate-500 text-sm mb-3">Full interactive documentation with request/response examples:</p>
+<a href="https://api.sgraal.com/docs" target="_blank" class="inline-block bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#b8973f] transition-all">Open Swagger UI &rarr;</a>
+</div>
+</main>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<a href="/docs" class="text-[#c9a962] font-semibold hover:underline">&larr; Back to docs</a>
+<p class="text-slate-500 text-sm mt-4">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
