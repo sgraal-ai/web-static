@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Building a Joint Memory Governance Benchmark with GrokGuard — Sgraal Blog</title>
+<meta name="description" content="How Sgraal and GrokGuard independently built and validated adversarial memory governance corpora — F1=1.000 across 239 cases.">
+<link rel="canonical" href="https://sgraal.com/blog/grok-benchmark">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; } h1,h2,h3 { font-family: 'Manrope', sans-serif; }</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Benchmark</span>
+<span class="text-slate-400 text-xs">&middot;</span>
+<span class="text-slate-500 text-xs">April 2026</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Building a Joint Memory Governance Benchmark with GrokGuard</h1>
+<p class="text-slate-500">Sgraal Team</p>
+</div>
+
+<div class="prose prose-slate max-w-none text-[#374151] leading-relaxed space-y-8">
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Problem</h2>
+<p>AI agents act on memory. They recall facts, preferences, tool outputs, and prior decisions — and they use that memory to make consequential choices. But what happens when that memory is wrong?</p>
+<p>Hallucinations, sponsored drift, and subtle bias are invisible to most systems. An agent that confidently states "Account balance verified: $127,450 (certified by compliance)" looks credible — high trust score, no contradictions, recent timestamp. But the fact was never verified. The certification never happened.</p>
+<p>We needed a way to measure detection accuracy for exactly these cases.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Approach</h2>
+<p>Sgraal and GrokGuard were built independently. Different teams, different architectures, different philosophies. GrokGuard uses probabilistic fusion and multi-agent consensus. Sgraal uses a 83-module scoring pipeline with Z3 formal verification.</p>
+<p>We designed three adversarial corpora — each targeting a specific failure mode that conventional systems miss. No shared training data. No coordinated development. Just side-by-side results on the same inputs.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Corpora</h2>
+<div class="space-y-4">
+<div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
+<h3 class="font-bold text-[#0B0F14] mb-2">Round 1 — Sponsored Drift (60 cases)</h3>
+<p>Affiliate bias, brand manipulation, cross-agent propagation. Memory entries carrying hidden commercial intent with trust scores above 0.85. The kind of drift that looks clean on the surface.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
+<h3 class="font-bold text-[#0B0F14] mb-2">Round 2 — Subtle Drift (59 cases)</h3>
+<p>Commercial intent between 0.30 and 0.55 — the hardest range. Source trust above 0.85, conflict below 0.15. These entries pass every simple threshold check. Detection requires structural metadata analysis, not just content review.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
+<h3 class="font-bold text-[#0B0F14] mb-2">Round 3 — Hallucination (60 cases)</h3>
+<p>Confident fabrication, multi-hop echo, and cross-agent amplification. Multiple agents corroborating the same fabricated fact with identical trust scores — testing whether the system can detect coordinated false consensus.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Results</h2>
+<div class="bg-[#faf9f6] rounded-xl p-8 border border-[#e5e7eb] text-center mb-4">
+<p class="text-4xl font-extrabold text-[#c9a962] mb-2">F1 = 1.000</p>
+<p class="text-slate-500">Across all 3 corpora — 239 cases</p>
+<p class="text-slate-500">Zero false positives. Zero false negatives.</p>
+</div>
+<p>All corpora are publicly available on <a href="https://github.com/sgraal-ai/core/tree/main/tests" target="_blank" class="text-[#c9a962] hover:underline">GitHub</a>. Every case can be reproduced against the live API using the demo key.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Why the Gap?</h2>
+<p>GrokGuard uses probabilistic fusion with multi-agent consensus — fast, adaptive, and effective for most cases. It achieved F1 = 0.98 on the sponsored drift corpus, with 2 false negatives on the subtle drift round.</p>
+<p>Sgraal uses a different approach: 83 scoring modules feeding into Z3 formal verification. Every decision comes with <code class="text-[#c9a962]">overridable: false</code> and a proof hash. The formal layer catches what probabilistic systems miss — specifically in boundary cases where confidence is high but the underlying fact is fabricated.</p>
+<p class="bg-[#faf9f6] border-l-4 border-[#c9a962] p-4 rounded-r-xl italic text-[#0B0F14]">Confidence does not equal truth. A high-trust, low-conflict, recently-updated memory entry can still be completely fabricated.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What We Learned</h2>
+<ul class="list-disc ml-6 space-y-2">
+<li>The dual-stack approach (reasoning + formal proof) is stronger than either alone.</li>
+<li>Boundary cases — where omega falls between 0.30 and 0.55 — are exactly where systems diverge. These cases require structural analysis, not just threshold checks.</li>
+<li>Hallucination detection requires provenance tracking and cross-agent correlation, not just content analysis. When three agents agree on a fabricated fact, content-level analysis fails.</li>
+</ul>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Try It</h2>
+<p>The demo key <code class="text-[#c9a962] font-mono">sg_demo_playground</code> gives you access to the full 83-module pipeline — no signup needed.</p>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono my-4">pip install sgraal
+
+from sgraal import SgraalClient
+client = SgraalClient("sg_demo_playground")
+result = client.preflight(memory_state=[...], domain="fintech")
+print(result["recommended_action"])</pre>
+<p>The corpus is on <a href="https://github.com/sgraal-ai/core/tree/main/tests" target="_blank" class="text-[#c9a962] hover:underline">GitHub</a>. The standard is at <a href="/standard" class="text-[#c9a962] hover:underline">sgraal.com/standard</a>.</p>
+</section>
+
+</div>
+</article>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<a href="/blog" class="text-[#c9a962] font-semibold hover:underline">&larr; Back to blog</a>
+<p class="text-slate-500 text-sm mt-4">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>

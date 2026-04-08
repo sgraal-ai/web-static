@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Changelog — Sgraal</title>
+<meta name="description" content="Sgraal changelog — new features, endpoints, and standards.">
+<link rel="canonical" href="https://sgraal.com/changelog">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; } h1,h2,h3,h4 { font-family: 'Manrope', sans-serif; }</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+<h1 class="text-4xl font-extrabold mb-2">Changelog</h1>
+<p class="text-slate-500 mb-12">Public-facing changes to the Sgraal protocol, API, and SDKs.</p>
+
+<!-- April 2026 -->
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<h2 class="text-2xl font-bold">April 2026 — v2.0</h2>
+<span class="bg-[#c9a962] text-white text-xs font-bold px-3 py-1 rounded-full">LATEST</span>
+</div>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">Decision Stability Layer</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li>Asymmetric hysteresis: USE_MEMORY is never sticky</li>
+<li>Only ASK_USER and BLOCK maintain decision continuity</li>
+<li>Boundary explainer: why WARN and not BLOCK, with confidence score</li>
+</ul>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">New Endpoints</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li><code class="text-[#c9a962] font-mono">POST /v1/compare/grok</code> — side-by-side formal contradiction analysis</li>
+<li><code class="text-[#c9a962] font-mono">POST /v1/propagation/trace</code> — cascade risk + containment status</li>
+<li><code class="text-[#c9a962] font-mono">POST /v1/fidelity/certify</code> — per-entry fidelity score</li>
+</ul>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">Open Standards</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li>MemCube v2 JSON Schema published</li>
+<li>SMRS v1.0 formal definition published</li>
+<li>Available at <a href="https://api.sgraal.com/v1/standard/" class="text-[#c9a962] hover:underline">api.sgraal.com/v1/standard/</a></li>
+</ul>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">SDK Updates</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li><code class="font-mono">pip install sgraal</code> v0.2.0</li>
+<li><code class="font-mono">npm install @sgraal/mcp</code> v0.2.0</li>
+<li><code class="font-mono">pip install mem0-sgraal</code> v0.1.0 (new)</li>
+</ul>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">Benchmark</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li>Joint benchmark with GrokGuard: F1=1.000 across 239 corpus cases</li>
+<li>Sponsored drift, subtle drift, hallucination corpora</li>
+</ul>
+</section>
+
+<hr class="border-slate-200 mb-16">
+
+<!-- March 2026 -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-6">March 2026 — v1.0</h2>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">Initial Release</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li><code class="text-[#c9a962] font-mono">POST /v1/preflight</code> — core memory validation</li>
+<li>83-module scoring pipeline</li>
+<li>4 decisions: USE_MEMORY, WARN, ASK_USER, BLOCK</li>
+<li>ZK mode: <code class="text-[#c9a962] font-mono">POST /v1/preflight/zk</code></li>
+<li>Court arbitration: <code class="text-[#c9a962] font-mono">POST /v1/court/arbitrate</code></li>
+<li>Memory Passport: <code class="text-[#c9a962] font-mono">POST /v1/memory/passport/export</code></li>
+<li>Heal: <code class="text-[#c9a962] font-mono">POST /v1/heal</code></li>
+<li>Explain: <code class="text-[#c9a962] font-mono">POST /v1/explain</code></li>
+</ul>
+
+<h3 class="text-lg font-bold mb-2 text-[#0B0F14]">Integrations</h3>
+<ul class="text-slate-600 text-sm space-y-1 mb-6 ml-4 list-disc">
+<li><code class="font-mono">pip install sgraal</code> v0.1.0</li>
+<li><code class="font-mono">pip install langchain-sgraal</code> v0.1.0</li>
+<li><code class="font-mono">npm install @sgraal/mcp</code> v0.1.0</li>
+</ul>
+</section>
+</main>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>

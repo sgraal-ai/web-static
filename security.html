@@ -33,7 +33,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <main class="pt-40 pb-32 px-6">
 <div class="max-w-3xl mx-auto">
 <h1 class="text-4xl font-extrabold tracking-tight mb-4">Security</h1>
-<p class="text-slate-500 mb-12">Last updated: March 2026</p>
+<p class="text-slate-500 mb-12">Last updated: April 2026</p>
 
 <div class="space-y-8">
 
@@ -89,28 +89,74 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </section>
 
 <section>
-<h2 class="text-2xl font-bold mb-4">Zero-Knowledge Mode</h2>
-<p class="text-slate-600 leading-relaxed">Enterprise customers can enable ZK mode where memory content never leaves your system. Sgraal validates using cryptographic proofs and receives only the omega score and proof hash. This mode is compliant with the most stringent data residency requirements.</p>
+<h2 class="text-2xl font-bold mb-4">Zero-Knowledge Preflight</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Memory content never leaves your infrastructure. SHA-256 proof hash returned instead of content.</p>
+<div class="bg-[#f5f4f0] rounded-xl p-6 mb-3">
+<code class="text-sm font-mono text-[#c9a962]">POST /v1/preflight/zk</code>
+<p class="text-slate-500 text-sm mt-2">Use when: GDPR, HIPAA, data residency requirements.</p>
+</div>
 </section>
 
 <section>
-<h2 class="text-2xl font-bold mb-4">Black Box Recorder</h2>
-<p class="text-slate-600 leading-relaxed">Every BLOCK decision generates a tamper-evident capsule with SHA256 hash chain. This provides cryptographic proof of what was blocked, when, and why — without revealing the memory content itself.</p>
+<h2 class="text-2xl font-bold mb-4">Court Arbitration</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Z3 SMT formal verification for multi-agent conflicts. No probabilistic system can override a formal verdict.</p>
+<div class="bg-[#f5f4f0] rounded-xl p-6 mb-3">
+<code class="text-sm font-mono text-[#c9a962]">POST /v1/court/arbitrate</code>
+<ul class="text-slate-500 text-sm mt-2 space-y-1">
+<li>overridable: false</li>
+<li>verdict_id + z3_proof in every response</li>
+</ul>
+</div>
 </section>
 
 <section>
-<h2 class="text-2xl font-bold mb-4">Compliance</h2>
-<ul class="text-slate-600 leading-relaxed space-y-2">
-<li>✓ GDPR compliant (EU data processing)</li>
-<li>✓ EU AI Act Article 9, 12, 13 compliant</li>
-<li>✓ HIPAA-ready (healthcare domain)</li>
-<li>✓ Apache 2.0 open source core</li>
+<h2 class="text-2xl font-bold mb-4">Memory Passport</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Cryptographically signed memory snapshots. Verifiable by any Sgraal instance.</p>
+<div class="bg-[#f5f4f0] rounded-xl p-6 mb-3">
+<code class="text-sm font-mono text-[#c9a962]">POST /v1/memory/passport/export</code>
+<p class="text-slate-500 text-sm mt-2">3 TTL levels: ephemeral (5min), standard (1h), archival (30d)</p>
+</div>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold mb-4">Proof of Decision</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Every preflight response includes cryptographic proof fields.</p>
+<ul class="text-slate-600 text-sm space-y-1 ml-4 list-disc">
+<li><code class="font-mono text-[#c9a962]">input_hash</code> — SHA-256 of the input</li>
+<li><code class="font-mono text-[#c9a962]">proof_version</code> — v1</li>
+<li><code class="font-mono text-[#c9a962]">deterministic: true</code> — same input always produces same decision</li>
+<li><code class="font-mono text-[#c9a962]">reproducible: true</code> — audit trail for every agent action</li>
 </ul>
 </section>
 
 <section>
-<h2 class="text-2xl font-bold mb-4">Bug Bounty</h2>
-<p class="text-slate-600 leading-relaxed">We operate an informal bug bounty program. Researchers who responsibly disclose security issues may receive recognition and rewards depending on severity. Contact hello@sgraal.com with details.</p>
+<h2 class="text-2xl font-bold mb-4">Compliance Profiles</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">EU AI Act</h3>
+<p class="text-slate-500 text-sm">Article 9 (Risk Management), 12 (Record-keeping), 13 (Transparency), 14 (Human Oversight), 17 (Quality Management)</p>
+</div>
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">HIPAA</h3>
+<p class="text-slate-500 text-sm">&sect;164.312 safeguards — access controls, audit controls, integrity verification</p>
+</div>
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">MiFID2</h3>
+<p class="text-slate-500 text-sm">Financial decision audit trail for suitability requirements</p>
+</div>
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">GDPR</h3>
+<p class="text-slate-500 text-sm">Data minimization, right to explanation, EU data processing</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold mb-4">Responsible Disclosure</h2>
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<p class="font-mono text-sm text-[#0B0F14]">hello@sgraal.com</p>
+<p class="text-slate-500 text-sm mt-2">We respond within 48 hours. Critical vulnerabilities within 4 hours.</p>
+</div>
 </section>
 
 </div>
