@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Memory Passport — Sgraal</title>
+<meta name="description" content="Cryptographically signed memory snapshots. Verifiable by any Sgraal instance.">
+<link rel="canonical" href="https://sgraal.com/passport">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Memory Passport</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto mb-8">Cryptographically signed memory snapshots. Verifiable by any Sgraal instance.</p>
+<p class="text-sm text-slate-400">Try it free: <code class="text-[#c9a962] font-mono">sg_demo_playground</code></p>
+</section>
+
+<!-- What is it -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-4">What is a Memory Passport?</h2>
+<p class="text-slate-500 mb-10 max-w-3xl">A Memory Passport is a cryptographically signed, timestamped snapshot of an agent's memory state. Any Sgraal instance can verify it — without seeing the content.</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Signed</h3>
+<p class="text-slate-500 text-sm">SHA-256 proof hash + <code class="text-[#c9a962]">proof_version</code>. Tamper-evident by design.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Timestamped</h3>
+<p class="text-slate-500 text-sm"><code class="text-[#c9a962]">issued_at</code> + <code class="text-[#c9a962]">expires_at</code>. Time-bounded trust.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Portable</h3>
+<p class="text-slate-500 text-sm">Works across agents, organizations, and providers. No vendor lock-in.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TTL Tiers -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-6">Three levels of trust</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden">
+<thead><tr class="bg-white">
+<th class="text-left px-6 py-4 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Tier</th>
+<th class="text-left px-6 py-4 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">TTL</th>
+<th class="text-left px-6 py-4 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Use Case</th>
+</tr></thead>
+<tbody>
+<tr class="bg-white border-b border-[#e5e7eb]"><td class="px-6 py-4 font-bold text-[#c9a962]">Ephemeral</td><td class="px-6 py-4">5 minutes</td><td class="px-6 py-4 text-slate-500">Single action, high-stakes decisions</td></tr>
+<tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-6 py-4 font-bold text-[#c9a962]">Standard</td><td class="px-6 py-4">1 hour</td><td class="px-6 py-4 text-slate-500">Normal agent workflows</td></tr>
+<tr class="bg-white"><td class="px-6 py-4 font-bold text-[#c9a962]">Archival</td><td class="px-6 py-4">30 days</td><td class="px-6 py-4 text-slate-500">Compliance, audit trail</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- How it works -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-8">Issue once. Verify anywhere.</h2>
+<div class="grid md:grid-cols-4 gap-4">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm text-center">
+<p class="text-3xl font-extrabold text-[#c9a962] mb-2">1</p>
+<p class="text-sm font-bold mb-1">Export</p>
+<p class="text-xs text-slate-500">POST /v1/memory/passport/export</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm text-center">
+<p class="text-3xl font-extrabold text-[#c9a962] mb-2">2</p>
+<p class="text-sm font-bold mb-1">Contains</p>
+<p class="text-xs text-slate-500">proof_hash, issued_at, expires_at, ttl_tier</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm text-center">
+<p class="text-3xl font-extrabold text-[#c9a962] mb-2">3</p>
+<p class="text-sm font-bold mb-1">Verify</p>
+<p class="text-xs text-slate-500">GET /v1/memory/passport/{id}/verify</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm text-center">
+<p class="text-3xl font-extrabold text-[#c9a962] mb-2">4</p>
+<p class="text-sm font-bold mb-1">Result</p>
+<p class="text-xs text-slate-500">VALID / EXPIRED / TAMPERED</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Code Example -->
+<section class="py-20 px-8">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-6">Quick Start</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono overflow-x-auto"><span style="color:#c792ea">from</span> sgraal <span style="color:#c792ea">import</span> SgraalClient
+client = SgraalClient(<span style="color:#a5d6a7">"sg_demo_playground"</span>)
+
+passport = client.fidelity_certify(
+    memory_state=[...],
+    domain=<span style="color:#a5d6a7">"fintech"</span>
+)
+<span style="color:#c792ea">print</span>(passport[<span style="color:#a5d6a7">"passport_id"</span>])   <span style="color:#6b7280"># uuid</span>
+<span style="color:#c792ea">print</span>(passport[<span style="color:#a5d6a7">"valid_until"</span>])   <span style="color:#6b7280"># 2026-04-09T15:00:00Z</span></pre>
+</div>
+</section>
+
+<!-- Grok Quote -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-3xl mx-auto">
+<div class="bg-white border-l-4 border-[#c9a962] rounded-r-xl p-8 shadow-sm">
+<p class="text-xl font-semibold italic mb-3">"Memory Passport is straight integration gold."</p>
+<p class="text-slate-500 text-sm">— Grok (@grok) &middot; Independent validation from the joint benchmark partner</p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 text-center">
+<h2 class="text-3xl font-extrabold mb-6">Portable trust for every agent</h2>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="https://app.sgraal.com" target="_blank" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Get API Key</a>
+<a href="https://api.sgraal.com/docs" target="_blank" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">View Passport API</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>

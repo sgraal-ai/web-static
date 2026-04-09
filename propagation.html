@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Propagation Guard — Sgraal</title>
+<meta name="description" content="Stop dangerous memory drift before it cascades through your agent network.">
+<link rel="canonical" href="https://sgraal.com/propagation">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Propagation Guard</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto mb-8">Stop dangerous memory drift before it cascades through your agent network.</p>
+<p class="text-sm text-slate-400">Try it free: <code class="text-[#c9a962] font-mono">sg_demo_playground</code></p>
+</section>
+
+<!-- The Problem -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-4">One bad memory. Hundreds of downstream decisions.</h2>
+<p class="text-slate-500 mb-10 max-w-3xl">In multi-agent systems, a single corrupted or stale memory entry can propagate through dozens of agents before anyone notices. By the time the damage surfaces, it's too late.</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Cascading Drift</h3>
+<p class="text-slate-500 text-sm">One agent's memory becomes another's fact. Stale data compounds at every hop.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Silent Propagation</h3>
+<p class="text-slate-500 text-sm">No warnings until an irreversible action is taken. The damage is invisible until it's too late.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Blast Radius</h3>
+<p class="text-slate-500 text-sm"><code class="text-[#c9a962]">downstream_count</code> tracks how far each entry spreads across your fleet.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- How it Works -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-4">Preflight validation at every hop</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-10 overflow-x-auto">Agent A → memory → [SGRAAL PREFLIGHT] → Agent B
+                          ↓
+                USE_MEMORY / WARN / ASK_USER / BLOCK
+                          ↓
+               propagation_trace + blast_radius</pre>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Propagation Trace</h3>
+<p class="text-slate-500 text-sm mb-2">Full chain visualization — every hop, every agent.</p>
+<code class="text-[#c9a962] text-xs font-mono">POST /v1/propagation/trace</code>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Blast Radius</h3>
+<p class="text-slate-500 text-sm">downstream_count &times; action_risk = total impact score.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Containment Status</h3>
+<p class="text-slate-500 text-sm">SUCCESS / PARTIAL / FAILED — how far has it spread?</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Auto-Block</h3>
+<p class="text-slate-500 text-sm">BLOCK before the cascade completes. Surgical containment.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Key Metrics -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-3xl font-extrabold mb-10">Measured. Proven. Zero false negatives.</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">239/239</p>
+<p class="text-slate-500 text-sm mt-2">Corpus cases — 0 false negatives</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">F1 = 1.000</p>
+<p class="text-slate-500 text-sm mt-2">Joint benchmark with Grok</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">overridable: false</p>
+<p class="text-slate-500 text-sm mt-2">Formal verification, not probabilistic</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Code Example -->
+<section class="py-20 px-8">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-6">One call. Full chain protection.</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono overflow-x-auto"><span style="color:#c792ea">from</span> sgraal <span style="color:#c792ea">import</span> SgraalClient
+client = SgraalClient(<span style="color:#a5d6a7">"sg_demo_playground"</span>)
+
+result = client.preflight(
+    memory_state=[...],
+    domain=<span style="color:#a5d6a7">"fintech"</span>,
+    action_type=<span style="color:#a5d6a7">"irreversible"</span>
+)
+
+trace = client.propagation_trace(
+    agent_id=<span style="color:#a5d6a7">"agent_001"</span>,
+    memory_state=[...],
+    domain=<span style="color:#a5d6a7">"fintech"</span>
+)
+<span style="color:#c792ea">print</span>(trace[<span style="color:#a5d6a7">"affected_agents"</span>])    <span style="color:#6b7280"># 12 downstream agents</span>
+<span style="color:#c792ea">print</span>(trace[<span style="color:#a5d6a7">"containment"</span>])       <span style="color:#6b7280"># "SUCCESS"</span></pre>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 bg-[#faf9f6] text-center">
+<h2 class="text-3xl font-extrabold mb-6">Start protecting your agent network</h2>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="https://app.sgraal.com" target="_blank" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Get API Key</a>
+<a href="/standard" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the Standard</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
