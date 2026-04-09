@@ -228,6 +228,44 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </section>
 
+<!-- Round 4 Results -->
+<section class="py-20 px-6 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-4 text-[#0B0F14]">Joint Benchmark with Grok</h2>
+<p class="text-slate-500 mb-10">Independent builds, side-by-side results across 4 adversarial corpora.</p>
+
+<div class="grid md:grid-cols-2 gap-6 mb-10">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 1–3: Drift &amp; Hallucination</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
+<p class="text-slate-500 text-sm mb-3">239 cases: sponsored drift (60), subtle drift (59), hallucination (60)</p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 · FP=0 · FN=0</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">F1 = 1.000</span></p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 4: Propagation</h3><span class="bg-[#f59e0b] text-white text-xs font-bold px-3 py-1 rounded-full">IN PROGRESS</span></div>
+<p class="text-slate-500 text-sm mb-3">90 cases: injection mid-chain (20), drift amplification (20), RAG poisoning (20), API drift (20), baseline (10)</p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">90/90 green</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-400 font-mono italic">running...</span></p>
+</div>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6 text-center">
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">329</p>
+<p class="text-slate-500 text-sm mt-2">Total corpus cases</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">4</p>
+<p class="text-slate-500 text-sm mt-2">Adversarial rounds</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-green-500">0</p>
+<p class="text-slate-500 text-sm mt-2">False negatives</p>
+</div>
+</div>
+</div>
+</section>
+
 <!-- CTA -->
 <section class="py-24 bg-[#f5f4f0] px-6 text-center">
 <div class="max-w-2xl mx-auto">
