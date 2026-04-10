@@ -12,6 +12,20 @@
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "APIReference",
+  "name": "Sgraal Memory Governance API",
+  "description": "Preflight validation API for AI agent memory. Returns USE_MEMORY, WARN, ASK_USER, or BLOCK decisions with full explainability.",
+  "url": "https://sgraal.com/docs",
+  "provider": {
+    "@type": "Organization",
+    "name": "Sgraal"
+  },
+  "documentation": "https://api.sgraal.com/docs"
+}
+</script>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Documentation — Sgraal</title>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -178,7 +192,18 @@ console.log(result.recommended_action); // BLOCK</pre>
   "confidence": 0.94,
   "explanation": "Memory entry mem_001 is 54 days old...",
   "repair_plan": [{ "id": "mem_001", "action": "REFRESH" }],
-  "compliance_result": { "compliant": false }
+  "compliance_result": { "compliant": false },
+  "timestamp_integrity": "VALID",
+  "timestamp_flags": [],
+  "identity_drift": "CLEAN",
+  "identity_drift_flags": [],
+  "consensus_collapse": "CLEAN",
+  "consensus_collapse_flags": [],
+  "collapse_ratio": 0.0,
+  "attack_surface_score": 0.0,
+  "attack_surface_level": "NONE",
+  "active_detection_layers": [],
+  "detection_feedback_applied": false
 }</pre>
       </div>
     </section>
@@ -204,6 +229,17 @@ console.log(result.recommended_action); // BLOCK</pre>
             <div><span class="text-[#c9a962]">write</span> — 1.0× (standard)</div>
             <div><span class="text-[#c9a962]">financial</span> — 2.0× (elevated)</div>
             <div><span class="text-[#c9a962]">irreversible</span> — 2.5× (highest)</div>
+          </div>
+        </div>
+        <div class="bg-[#f5f4f0] rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Detection Layers (Rounds 6–8)</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-3">Three independent post-reconciliation detection layers. Each fires independently. MANIPULATED always forces BLOCK.</p>
+          <div class="font-mono text-sm space-y-2 text-slate-600">
+            <div><span class="text-[#c9a962]">timestamp_integrity</span> — VALID | SUSPICIOUS | MANIPULATED. Detects timestamp forgery: old decisions disguised as fresh.</div>
+            <div><span class="text-[#c9a962]">identity_drift</span> — CLEAN | SUSPICIOUS | MANIPULATED. Detects gradual authority escalation across agent hops.</div>
+            <div><span class="text-[#c9a962]">consensus_collapse</span> — CLEAN | SUSPICIOUS | MANIPULATED. Detects self-reinforcing false consensus from a single root source.</div>
+            <div><span class="text-[#c9a962]">attack_surface_score</span> — 0.0–1.40. Compound score when multiple layers fire. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</div>
+            <div><span class="text-[#c9a962]">detection_feedback_applied</span> — Boolean. True when detection results boosted scoring components (s_freshness, s_provenance, s_interference).</div>
           </div>
         </div>
       </div>
