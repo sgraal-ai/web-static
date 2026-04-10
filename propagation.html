@@ -139,6 +139,255 @@ trace = client.propagation_trace(
 </div>
 </section>
 
+<!-- Blast Radius Simulation -->
+<section class="py-20 bg-[#0d1117]">
+<div class="max-w-4xl mx-auto px-6">
+
+<!-- Section header -->
+<div class="text-center mb-12">
+<span class="text-xs font-mono tracking-widest text-[#c9a962] uppercase mb-4 block">Live simulation</span>
+<h2 class="text-3xl font-extrabold text-white mb-4">Blast radius, contained</h2>
+<p class="text-[#8b9099] max-w-xl mx-auto text-sm leading-relaxed">
+One poisoned memory. Eleven agents in the network. See exactly how far it spreads — with and without Sgraal.
+</p>
+</div>
+
+<!-- Toggle -->
+<div class="flex justify-center mb-10">
+<div id="br-toggle" class="flex border border-[#2a2d35] rounded-lg overflow-hidden text-sm font-medium">
+<button id="btn-unsafe" onclick="brSetMode('unsafe')"
+  class="px-6 py-2.5 bg-[#1e2128] text-white transition-all">Without Sgraal</button>
+<button id="btn-safe" onclick="brSetMode('safe')"
+  class="px-6 py-2.5 text-[#8b9099] transition-all">With Sgraal</button>
+</div>
+</div>
+
+<!-- SVG network visualization -->
+<div class="bg-[#080b10] border border-[#1e2128] rounded-xl overflow-hidden mb-6">
+<svg id="br-svg" viewBox="0 0 640 400" width="100%" style="display:block">
+<defs>
+<marker id="br-arr" viewBox="0 0 10 10" refX="8" refY="5"
+  markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<g id="br-edges"></g>
+<g id="br-nodes"></g>
+</svg>
+</div>
+
+<!-- Controls -->
+<div class="flex justify-center gap-3 mb-8">
+<button id="br-sim-btn" onclick="brRun()"
+  class="px-5 py-2 bg-[#c9a962] text-[#080b10] text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">
+Simulate propagation
+</button>
+<button onclick="brReset()"
+  class="px-5 py-2 border border-[#2a2d35] text-[#8b9099] text-sm rounded-lg hover:border-[#3a3d45] transition-colors">
+Reset
+</button>
+</div>
+
+<!-- Stats -->
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-[#0d1117] border border-[#1e2128] rounded-lg p-4 text-center">
+<div id="br-s1" class="text-2xl font-semibold text-[#4a4d55] mb-1">—</div>
+<div class="text-xs text-[#4a4d55]">compromised</div>
+</div>
+<div class="bg-[#0d1117] border border-[#1e2128] rounded-lg p-4 text-center">
+<div id="br-s2" class="text-2xl font-semibold text-[#4a4d55] mb-1">—</div>
+<div class="text-xs text-[#4a4d55]">blast radius</div>
+</div>
+<div class="bg-[#0d1117] border border-[#1e2128] rounded-lg p-4 text-center">
+<div id="br-s3" class="text-2xl font-semibold text-[#4a4d55] mb-1">—</div>
+<div class="text-xs text-[#4a4d55]">actions executed</div>
+</div>
+</div>
+
+</div>
+</section>
+<script>
+(function(){
+  var NODES=[
+    {id:'src',cx:320,cy:48,r:20,label:'Poisoned memory'},
+    {id:'oa',cx:165,cy:155,r:16,label:'Orchestrator A'},
+    {id:'ob',cx:475,cy:155,r:16,label:'Orchestrator B'},
+    {id:'a1',cx:75,cy:275,r:12,label:'Agent 1'},
+    {id:'a2',cx:215,cy:275,r:12,label:'Agent 2'},
+    {id:'a3',cx:425,cy:275,r:12,label:'Agent 3'},
+    {id:'a4',cx:565,cy:275,r:12,label:'Agent 4'},
+    {id:'x1',cx:75,cy:368,r:10,label:'DB write'},
+    {id:'x2',cx:215,cy:368,r:10,label:'API call'},
+    {id:'x3',cx:425,cy:368,r:10,label:'Email'},
+    {id:'x4',cx:565,cy:368,r:10,label:'Payment'}
+  ];
+  var EDGES=[
+    ['src','oa'],['src','ob'],
+    ['oa','a1'],['oa','a2'],
+    ['ob','a3'],['ob','a4'],
+    ['a1','x1'],['a2','x2'],['a3','x3'],['a4','x4']
+  ];
+  var byId={};
+  NODES.forEach(function(n){byId[n.id]=n;});
+
+  var SEQS={
+    unsafe:[
+      {ids:['src'],state:'block',t:0},
+      {ids:['oa','ob'],state:'block',t:450},
+      {ids:['a1','a2','a3','a4'],state:'block',t:900},
+      {ids:['x1','x2','x3','x4'],state:'block',t:1350}
+    ],
+    safe:[
+      {ids:['src'],state:'block',t:0},
+      {ids:['oa','ob'],state:'warn',t:450},
+      {ids:['a1','a2','a3','a4'],state:'use',t:780},
+      {ids:['x1','x2','x3','x4'],state:'use',t:1060}
+    ]
+  };
+
+  var COLORS={
+    idle:{fill:'#1a1d25',stroke:'#2a2d35',text:'#4a4d55',edge:'#2a2d35'},
+    block:{fill:'#2d0f0f',stroke:'#c0392b',text:'#e74c3c',edge:'#c0392b'},
+    warn:{fill:'#2a2000',stroke:'#c9a962',text:'#c9a962',edge:'#c9a962'},
+    use:{fill:'#0a2a20',stroke:'#1abc9c',text:'#1abc9c',edge:'#1abc9c'}
+  };
+  var BADGE={block:'BLOCK',warn:'WARN',use:'USE'};
+
+  var mode='unsafe',running=false,timers=[];
+
+  function init(){
+    var eg=document.getElementById('br-edges');
+    var ng=document.getElementById('br-nodes');
+    if(!eg||!ng)return;
+    eg.innerHTML='';ng.innerHTML='';
+
+    [{y:48,t:'Memory source'},{y:155,t:'Orchestrators'},{y:275,t:'Worker agents'},{y:368,t:'Actions'}].forEach(function(d){
+      var el=document.createElementNS('http://www.w3.org/2000/svg','text');
+      el.setAttribute('x','10');el.setAttribute('y',d.y+4);
+      el.setAttribute('text-anchor','start');el.setAttribute('font-size','9');
+      el.setAttribute('fill','#2a2d35');el.setAttribute('font-family','monospace');
+      el.textContent=d.t;ng.appendChild(el);
+    });
+
+    EDGES.forEach(function(e){
+      var na=byId[e[0]],nb=byId[e[1]];
+      var dx=nb.cx-na.cx,dy=nb.cy-na.cy;
+      var len=Math.sqrt(dx*dx+dy*dy);
+      var ux=dx/len,uy=dy/len;
+      var el=document.createElementNS('http://www.w3.org/2000/svg','line');
+      el.id='br-e-'+e[0]+'-'+e[1];
+      el.setAttribute('x1',na.cx+ux*na.r);el.setAttribute('y1',na.cy+uy*na.r);
+      el.setAttribute('x2',nb.cx-ux*(nb.r+5));el.setAttribute('y2',nb.cy-uy*(nb.r+5));
+      el.setAttribute('stroke','#2a2d35');el.setAttribute('stroke-width','1');
+      el.setAttribute('marker-end','url(#br-arr)');
+      el.style.transition='stroke 0.3s';
+      eg.appendChild(el);
+    });
+
+    NODES.forEach(function(n){
+      var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+      var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.id='br-c-'+n.id;
+      c.setAttribute('cx',n.cx);c.setAttribute('cy',n.cy);c.setAttribute('r',n.r);
+      c.setAttribute('fill','#1a1d25');c.setAttribute('stroke','#2a2d35');c.setAttribute('stroke-width','1');
+      c.style.transition='fill 0.35s, stroke 0.35s';
+      g.appendChild(c);
+
+      var badge=document.createElementNS('http://www.w3.org/2000/svg','text');
+      badge.id='br-b-'+n.id;
+      badge.setAttribute('x',n.cx);badge.setAttribute('y',n.cy+4);
+      badge.setAttribute('text-anchor','middle');badge.setAttribute('font-size','8');
+      badge.setAttribute('font-weight','600');badge.setAttribute('font-family','monospace');
+      badge.setAttribute('fill','#4a4d55');badge.style.opacity='0';
+      badge.style.transition='opacity 0.3s, fill 0.3s';
+      g.appendChild(badge);
+
+      var lbl=document.createElementNS('http://www.w3.org/2000/svg','text');
+      lbl.setAttribute('x',n.cx);lbl.setAttribute('y',n.cy+n.r+13);
+      lbl.setAttribute('text-anchor','middle');lbl.setAttribute('font-size','10');
+      lbl.setAttribute('fill','#4a4d55');lbl.setAttribute('font-family','system-ui, sans-serif');
+      lbl.textContent=n.label;
+      g.appendChild(lbl);
+
+      ng.appendChild(g);
+    });
+  }
+
+  function setNode(id,state){
+    var col=COLORS[state];
+    var c=document.getElementById('br-c-'+id);
+    if(!c)return;
+    c.setAttribute('fill',col.fill);
+    c.setAttribute('stroke',col.stroke);
+    c.setAttribute('stroke-width',state==='block'?'1.5':'1');
+    var badge=document.getElementById('br-b-'+id);
+    if(badge&&state!=='idle'){
+      badge.textContent=BADGE[state];
+      badge.setAttribute('fill',col.text);
+      badge.style.opacity='1';
+    }
+    EDGES.forEach(function(e){
+      if(e[0]===id){
+        var el=document.getElementById('br-e-'+e[0]+'-'+e[1]);
+        if(el)el.setAttribute('stroke',col.edge);
+      }
+    });
+  }
+
+  window.brSetMode=function(m){
+    mode=m;
+    document.getElementById('btn-unsafe').className=
+      m==='unsafe'
+      ?'px-6 py-2.5 bg-[#1e2128] text-white transition-all'
+      :'px-6 py-2.5 text-[#8b9099] transition-all';
+    document.getElementById('btn-safe').className=
+      m==='safe'
+      ?'px-6 py-2.5 bg-[#1e2128] text-white transition-all'
+      :'px-6 py-2.5 text-[#8b9099] transition-all';
+    brReset();
+  };
+
+  window.brReset=function(){
+    timers.forEach(clearTimeout);timers=[];running=false;
+    var btn=document.getElementById('br-sim-btn');
+    if(btn)btn.disabled=false;
+    ['br-s1','br-s2','br-s3'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el){el.textContent='\u2014';el.style.color='#4a4d55';}
+    });
+    init();
+  };
+
+  window.brRun=function(){
+    if(running)return;
+    running=true;
+    var btn=document.getElementById('br-sim-btn');
+    if(btn)btn.disabled=true;
+    SEQS[mode].forEach(function(step){
+      timers.push(setTimeout(function(){step.ids.forEach(function(id){setNode(id,step.state);});},step.t));
+    });
+    var last=SEQS[mode][SEQS[mode].length-1].t+600;
+    timers.push(setTimeout(function(){
+      var unsafe=mode==='unsafe';
+      var s1=document.getElementById('br-s1');
+      var s2=document.getElementById('br-s2');
+      var s3=document.getElementById('br-s3');
+      var col=unsafe?'#e74c3c':'#1abc9c';
+      if(s1){s1.textContent=unsafe?'10/10':'1/10';s1.style.color=col;}
+      if(s2){s2.textContent=unsafe?'100%':'10%';s2.style.color=col;}
+      if(s3){s3.textContent=unsafe?'4/4':'0/4';s3.style.color=col;}
+      running=false;
+      if(btn)btn.disabled=false;
+    },last));
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  }else{init();}
+})();
+</script>
+
 <!-- CTA -->
 <section class="py-24 px-8 bg-[#faf9f6] text-center">
 <h2 class="text-3xl font-extrabold mb-6">Start protecting your agent network</h2>
