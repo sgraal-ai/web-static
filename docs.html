@@ -160,7 +160,7 @@ console.log(result.recommended_action); // BLOCK</pre>
 
         <div class="tab-content" id="content-rest-qs">
 <pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">curl -X POST https://api.sgraal.com/v1/preflight \
-  -H "X-API-Key: sg_demo_playground" \
+  -H "Authorization: Bearer sg_demo_playground" \
   -H "Content-Type: application/json" \
   -d '{
     "memory_state": [{"id": "mem_001", "type": "tool_state",
@@ -317,7 +317,7 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
 
     <section id="auth" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Authentication</h2>
-      <pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-4">X-API-Key: sg_demo_playground</pre>
+      <pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-4">Authorization: Bearer sg_demo_playground</pre>
       <div class="grid md:grid-cols-3 gap-4">
         <div class="bg-[#f5f4f0] rounded-xl p-4">
           <p class="font-bold text-sm mb-1">Demo</p>
