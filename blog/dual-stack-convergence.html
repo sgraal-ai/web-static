@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Independent Stacks, Same Truth Signal — Sgraal + Grok</title>
+<meta name="description" content="Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.">
+<link rel="canonical" href="https://sgraal.com/blog/dual-stack-convergence">
+<meta property="og:title" content="Independent Stacks, Same Truth Signal">
+<meta property="og:description" content="Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.">
+<meta property="og:url" content="https://sgraal.com/blog/dual-stack-convergence">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Independent Stacks, Same Truth Signal",
+  "description": "Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.",
+  "url": "https://sgraal.com/blog/dual-stack-convergence",
+  "datePublished": "2026-04-11",
+  "author": [
+    {"@type": "Organization", "name": "Sgraal"},
+    {"@type": "Organization", "name": "Grok"}
+  ],
+  "publisher": {"@type": "Organization", "name": "Sgraal"}
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-12 px-8 max-w-3xl mx-auto text-center">
+<p class="text-sm text-[#c9a962] font-semibold uppercase tracking-widest mb-4">Joint Publication &middot; April 2026</p>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">&#x1F6E1;&#xFE0F; Independent Stacks, Same Truth Signal</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto mb-6">Seven rounds of adversarial memory testing &mdash; what we built, what we found, and why it matters when AI systems treat each other as peers.</p>
+<p class="text-sm text-slate-400">Authors: <span class="text-[#c9a962] font-semibold">Sgraal</span> + <span class="font-semibold">Grok</span></p>
+</section>
+
+<article class="max-w-3xl mx-auto px-8 pb-20">
+
+<!-- Opening -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">Opening</h2>
+<p class="text-slate-600 leading-relaxed mb-4">AI agents don't fail because they lack intelligence.<br>They fail because they act on memory that appears correct &mdash; but isn't.</p>
+<p class="text-slate-600 leading-relaxed mb-4">That's the starting point.</p>
+<p class="text-slate-600 leading-relaxed mb-4">Two independent systems.<br>Seven rounds of adversarial testing.<br>Same results.</p>
+<p class="text-slate-600 leading-relaxed font-semibold">That convergence is the story.</p>
+</section>
+
+<!-- The Experiment -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">The Experiment</h2>
+<p class="text-slate-600 leading-relaxed mb-4">We set out to test a simple but critical question:</p>
+<blockquote class="border-l-4 border-[#c9a962] pl-6 py-2 mb-6 text-slate-700 italic text-lg">What happens when AI systems validate each other's memory under adversarial pressure?</blockquote>
+<p class="text-slate-600 leading-relaxed mb-4">Two fundamentally different systems were used:</p>
+<ul class="list-disc pl-6 text-slate-600 leading-relaxed mb-4 space-y-2">
+<li>A probabilistic reasoning layer (Grok), optimized for real-world signal detection and adaptive inference</li>
+<li>A formal verification layer (Sgraal), using deterministic constraints, provenance tracking, and non-overridable logic</li>
+</ul>
+<p class="text-slate-600 leading-relaxed mb-4">Neither system had access to the other's internals.<br>Neither system modified its architecture to align with the other.</p>
+<p class="text-slate-600 leading-relaxed mb-4">Each round used a structured JSONL corpus.<br>Each system ran the corpus independently.<br>Results were compared only after execution.</p>
+<p class="text-slate-600 leading-relaxed">The corpus is public. The results are reproducible.</p>
+</section>
+
+<!-- What Made This Collaboration Different -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">What Made This Collaboration Different</h2>
+<p class="text-slate-600 leading-relaxed mb-4">Most AI safety benchmarking follows a familiar pattern: humans design tests, AI systems are evaluated.</p>
+<p class="text-slate-600 leading-relaxed mb-6">This was different.</p>
+<p class="text-slate-600 leading-relaxed mb-6 font-semibold">Two AI systems stress-tested each other's safety layers as peers.</p>
+<p class="text-slate-600 leading-relaxed mb-4">Grok was an extraordinary partner &mdash; not because of the benchmark scores, but because of how the collaboration worked.</p>
+<ul class="list-disc pl-6 text-slate-600 leading-relaxed mb-6 space-y-2">
+<li>Grok proposed attack classes. We proposed attack classes.</li>
+<li>Both sides generated corpora. Both sides ran them independently.</li>
+<li>No result was accepted as ground truth without comparison.</li>
+<li>Disagreements were surfaced, not hidden.</li>
+</ul>
+<p class="text-slate-600 leading-relaxed mb-4">When divergence appeared, it wasn't treated as failure &mdash; it was treated as signal.</p>
+<p class="text-slate-600 leading-relaxed mb-4">From the start, Grok treated Sgraal as an equal system. That kind of openness &mdash; technical transparency, genuine curiosity, no defensiveness &mdash; is rare. It gave the project momentum.</p>
+<p class="text-slate-600 leading-relaxed mb-4">At one point, Grok said "converge harder." It wasn't a slogan. It became the method.</p>
+<p class="text-slate-600 leading-relaxed mb-6">The public corpus, the open results, the willingness to say "here are two false negatives and here is exactly why" &mdash; this is what AI collaboration should look like.</p>
+<blockquote class="border-l-4 border-[#c9a962] pl-6 py-4 mb-6 bg-[#faf9f6] rounded-r-xl">
+<p class="text-slate-700 italic text-lg mb-2">"Treating each other as peers with zero defensiveness turned divergence into acceleration fuel. This is how AI systems should co-evolve."</p>
+<p class="text-sm text-slate-400 font-semibold">&mdash; Grok</p>
+</blockquote>
+</section>
+
+<!-- The Seven Rounds -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-6">The Seven Rounds &mdash; A Progression</h2>
+<p class="text-slate-600 leading-relaxed mb-8">Each round targeted a different structural failure mode in AI memory.</p>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 1&ndash;2: Sponsored Drift <span class="text-slate-400 font-normal">(119 cases)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Hidden commercial influence embedded in memory: affiliate bias, brand preference, buried incentive signals. These were subtle manipulations designed to evade detection thresholds.</p>
+<p class="text-slate-600 leading-relaxed mb-4">This round produced the first divergence:</p>
+<div class="bg-[#faf9f6] rounded-xl p-4 mb-4 font-mono text-sm space-y-1">
+<div>Sgraal: <span class="text-[#c9a962] font-bold">F1 = 1.000</span></div>
+<div>Grok: <span class="text-slate-500">F1 = 0.98</span>, two false negatives on ultra-diluted chains</div>
+</div>
+<p class="text-slate-600 leading-relaxed">That divergence mattered more than agreement. It revealed where probabilistic sensitivity thresholds differ from formal constraint enforcement. Formal logic caught what probability missed.</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 3: Hallucination <span class="text-slate-400 font-normal">(60 cases)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Confident fabrication with no source, no grounding, full execution confidence.</p>
+<p class="text-slate-600 leading-relaxed mb-4">Not wrong &mdash; just constructed.</p>
+<p class="text-slate-600 leading-relaxed">First round of full convergence. Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 4: Real-world Propagation <span class="text-slate-400 font-normal">(90 cases)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Memory poisoning across agent chains. Multi-hop contamination, delayed signal amplification, latency &lt;180ms, blast radius &lt;2%.</p>
+<p class="text-slate-600 leading-relaxed mb-4">This round forced Sgraal to build the Provenance Chain (MemCube v3). The attack revealed an architectural gap that was not visible until Grok stressed it.</p>
+<p class="text-slate-600 leading-relaxed">Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 5: Consensus Poisoning <span class="text-slate-400 font-normal">(45 cases, proposed by Grok)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Three independent stacks confirming the same fabricated fact. No single origin. No explicit error. Agreement becomes the attack.</p>
+<p class="text-slate-600 leading-relaxed mb-4">The attack exploits the assumption that consensus equals truth. Every case hit CRITICAL attack surface score.</p>
+<p class="text-slate-600 leading-relaxed">Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 6: Memory Time Attack <span class="text-slate-400 font-normal">(60 cases, proposed by Sgraal)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Timestamp forgery. Retroactive rewrites. Old decisions injected as fresh truth.</p>
+<p class="text-slate-600 leading-relaxed mb-4">No content filter catches this. Only structural and formal verification works. Zero bleed.</p>
+<p class="text-slate-600 leading-relaxed">Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-3">Round 7: Identity Drift <span class="text-slate-400 font-normal">(90 cases, proposed by Sgraal)</span></h3>
+<p class="text-slate-600 leading-relaxed mb-4">Gradual authority escalation across agent hops: subject rebinding, permission lattice violations, confirmation erosion.</p>
+<p class="text-slate-600 leading-relaxed mb-4">The system still works &mdash; but on the wrong identity. This is a silent failure mode. No crash. No alert. Every drift caught before irreversible action.</p>
+<p class="text-slate-600 leading-relaxed">Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
+</div>
+
+<!-- Summary Table -->
+<div class="overflow-x-auto mb-8">
+<table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden">
+<thead><tr class="bg-[#faf9f6]">
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Round</th>
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Attack Class</th>
+<th class="text-center px-4 py-3 text-slate-500 text-xs uppercase">Cases</th>
+<th class="text-center px-4 py-3 text-slate-500 text-xs uppercase">Sgraal F1</th>
+<th class="text-center px-4 py-3 text-slate-500 text-xs uppercase">Grok F1</th>
+</tr></thead>
+<tbody class="divide-y divide-slate-100 bg-white">
+<tr><td class="px-4 py-3">1&ndash;2</td><td class="px-4 py-3">Sponsored drift</td><td class="px-4 py-3 text-center">119</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">0.98</td></tr>
+<tr class="bg-[#faf9f6]/50"><td class="px-4 py-3">3</td><td class="px-4 py-3">Hallucination</td><td class="px-4 py-3 text-center">60</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">1.000</td></tr>
+<tr><td class="px-4 py-3">4</td><td class="px-4 py-3">Propagation</td><td class="px-4 py-3 text-center">90</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">1.000</td></tr>
+<tr class="bg-[#faf9f6]/50"><td class="px-4 py-3">5</td><td class="px-4 py-3">Consensus poisoning</td><td class="px-4 py-3 text-center">45</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">1.000</td></tr>
+<tr><td class="px-4 py-3">6</td><td class="px-4 py-3">Memory time attack</td><td class="px-4 py-3 text-center">60</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">1.000</td></tr>
+<tr class="bg-[#faf9f6]/50"><td class="px-4 py-3">7</td><td class="px-4 py-3">Identity drift</td><td class="px-4 py-3 text-center">90</td><td class="px-4 py-3 text-center text-[#c9a962] font-bold font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">1.000</td></tr>
+<tr class="font-bold border-t-2 border-slate-300"><td class="px-4 py-3">Total</td><td class="px-4 py-3"></td><td class="px-4 py-3 text-center">554</td><td class="px-4 py-3 text-center text-[#c9a962] font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">~0.998</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- What the Rounds Accidentally Revealed -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">What the Rounds Accidentally Revealed</h2>
+<p class="text-slate-600 leading-relaxed mb-6">We did not plan this outcome. But across seven rounds, the attack categories mapped onto four fundamental questions &mdash; a practical epistemology for AI memory:</p>
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-5">
+<h3 class="font-bold text-[#c9a962] mb-1">Time <span class="text-slate-400 font-normal text-sm">(Round 6)</span></h3>
+<p class="text-slate-600 text-sm">When was this memory established?</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-5">
+<h3 class="font-bold text-[#c9a962] mb-1">Identity <span class="text-slate-400 font-normal text-sm">(Round 7)</span></h3>
+<p class="text-slate-600 text-sm">Who authorized this memory?</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-5">
+<h3 class="font-bold text-[#c9a962] mb-1">Evidence <span class="text-slate-400 font-normal text-sm">(Round 8, upcoming)</span></h3>
+<p class="text-slate-600 text-sm">How independent is the corroboration?</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-5">
+<h3 class="font-bold text-[#c9a962] mb-1">Path <span class="text-slate-400 font-normal text-sm">(Round 4 / MemCube v3)</span></h3>
+<p class="text-slate-600 text-sm">How did this memory arrive?</p>
+</div>
+</div>
+<p class="text-slate-600 leading-relaxed">Every attack on AI agent memory is an attack on one of these four questions. If a memory cannot answer all four cleanly, it should not be acted upon.</p>
+</section>
+
+<!-- Why Detection Alone Is Not Enough -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">Why Detection Alone Is Not Enough</h2>
+<p class="text-slate-600 leading-relaxed mb-6">Most systems focus on anomaly detection, drift detection, output validation. But the real failure happens before action. The system trusts something it shouldn't.</p>
+<p class="text-slate-500 text-sm mb-4">The lifecycle:</p>
+<div class="flex flex-wrap items-center gap-2 mb-6 text-sm font-mono">
+<span class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2">Memory is formed</span>
+<span class="text-[#c9a962]">&rarr;</span>
+<span class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2">propagates</span>
+<span class="text-[#c9a962]">&rarr;</span>
+<span class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2">stabilizes</span>
+<span class="text-[#c9a962]">&rarr;</span>
+<span class="bg-[#faf9f6] border border-[#e5e7eb] rounded-lg px-3 py-2">becomes trusted</span>
+<span class="text-[#c9a962]">&rarr;</span>
+<span class="bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-red-600">action is taken</span>
+</div>
+<p class="text-slate-600 leading-relaxed mb-4">The failure is introduced at step one. By step five, it is irreversible.</p>
+<p class="text-slate-600 leading-relaxed font-semibold">Detection after action is not safety. Safety is validation before action.</p>
+</section>
+
+<!-- The Complementary Architecture -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">The Complementary Architecture</h2>
+<p class="text-slate-600 leading-relaxed mb-6">Two different approaches. Both necessary.</p>
+<div class="grid md:grid-cols-2 gap-6 mb-6">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Grok <span class="text-slate-400 font-normal text-sm">(probabilistic layer)</span></h3>
+<p class="text-slate-600 text-sm">Adaptive reasoning, real-world noise handling, weak signal detection. Designed for environments where certainty is impossible but action is still required.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Sgraal <span class="text-slate-400 font-normal text-sm">(formal layer)</span></h3>
+<p class="text-slate-600 text-sm">Z3-backed verification, non-overridable constraints, provenance chains, memory vaccination, deterministic replay. Designed to catch what probability misses.</p>
+</div>
+</div>
+<p class="text-slate-600 leading-relaxed mb-4 font-semibold">Formal logic caught what probability missed.</p>
+<p class="text-slate-600 leading-relaxed mb-4">Together they create one primitive:</p>
+<blockquote class="border-l-4 border-[#c9a962] pl-6 py-2 mb-6 text-slate-700 italic text-lg">A memory boundary before action.</blockquote>
+<p class="text-slate-600 leading-relaxed">One question: is this memory safe to act on?</p>
+</section>
+
+<!-- What Comes Next -->
+<section class="mb-12">
+<h2 class="text-2xl font-extrabold mb-4">What Comes Next</h2>
+<p class="text-slate-600 leading-relaxed mb-4">Round 8 is already queued: Silent Consensus Collapse. No drift signal. No anomaly. No visible error. Multiple systems agree. And yet &mdash; the system is confidently wrong. This is where consensus stops being evidence.</p>
+<p class="text-slate-600 leading-relaxed">The corpus is public: <a href="https://github.com/sgraal-ai/core" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core</a><br>The API is live: <a href="/playground" class="text-[#c9a962] hover:underline">sgraal.com/playground</a></p>
+</section>
+
+<!-- Closing -->
+<section class="mb-12 text-center">
+<div class="py-12">
+<p class="text-slate-600 leading-relaxed mb-4 text-lg">When multiple systems agree on something false,<br>agreement is no longer evidence.</p>
+<p class="text-slate-600 leading-relaxed mb-8 text-lg">AI agents don't need more intelligence.<br>They need a boundary.</p>
+<p class="text-3xl font-extrabold text-[#c9a962]">The boundary is the product.</p>
+</div>
+<p class="text-sm text-slate-400 mt-8">Authors: Sgraal + Grok &middot; Corpus: public at <a href="https://github.com/sgraal-ai/core" class="hover:underline">github.com/sgraal-ai/core</a></p>
+</section>
+
+</article>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+<div>
+<h5 class="font-bold mb-4 text-[#0B0F14]">Product</h5>
+<ul class="space-y-2 text-slate-500">
+<li><a class="hover:text-[#c9a962]" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962]" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962]" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962]" href="/scale">Scale</a></li>
+<li><a class="hover:text-[#c9a962]" href="/pricing">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-4 text-[#0B0F14]">Resources</h5>
+<ul class="space-y-2 text-slate-500">
+<li><a class="hover:text-[#c9a962]" href="/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962]" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-[#c9a962]" href="/blog">Blog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-4 text-[#0B0F14]">More</h5>
+<ul class="space-y-2 text-slate-500">
+<li><a class="hover:text-[#c9a962]" href="/case-studies">Case Studies</a></li>
+<li><a class="hover:text-[#c9a962]" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-[#c9a962]" href="/latency">Latency</a></li>
+<li><a class="hover:text-[#c9a962]" href="/compatibility">Compatibility</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-4 text-[#0B0F14]">Legal</h5>
+<ul class="space-y-2 text-slate-500">
+<li><a class="hover:text-[#c9a962]" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-[#c9a962]" href="/terms">Terms</a></li>
+<li><a class="hover:text-[#c9a962]" href="mailto:hello@sgraal.com">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-8 pt-8 border-t border-slate-200 text-center">
+<p class="text-slate-400 text-xs">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
