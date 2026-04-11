@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Memory Provenance Specification — Sgraal</title>
+<meta name="description" content="A standard for tracking the origin and transformation chain of AI agent memory.">
+<link rel="canonical" href="https://sgraal.com/standard/provenance">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Memory Provenance Specification</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">A standard for tracking the origin and transformation chain of AI agent memory.</p>
+</section>
+
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-2xl font-extrabold mb-4">Overview</h2>
+<p class="text-slate-600 mb-6">In multi-agent systems, memory passes through multiple agents before being acted upon. Each hop can modify, summarize, or reinterpret the original data. Without provenance tracking, there is no way to verify the chain of custody.</p>
+<p class="text-slate-600 mb-8">The <code class="text-[#c9a962]">provenance_chain</code> field in MemCube v3 provides an ordered list of agent identifiers that touched a memory entry, from its origin to the current holder.</p>
+
+<h2 class="text-2xl font-extrabold mb-4">The provenance_chain field</h2>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mb-8">
+<pre class="text-sm font-mono text-slate-600">{
+  "id": "mem_001",
+  "content": "Trade execution approved for portfolio rebalancing.",
+  "type": "semantic",
+  "timestamp_age_days": 0.5,
+  "source_trust": 0.91,
+  "source_conflict": 0.03,
+  "downstream_count": 5,
+  <span class="text-[#c9a962] font-bold">"provenance_chain": ["agent-planner-01", "agent-summarizer-03", "agent-executor-07"]</span>
+}</pre>
+</div>
+<p class="text-slate-500 text-sm mb-8">Optional field in MemCube v3. Default: empty list <code class="text-[#c9a962]">[]</code>. When absent, provenance detection is skipped (returns CLEAN).</p>
+</div>
+</section>
+
+<section class="py-16 px-8">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-2xl font-extrabold mb-6">Detection Rules</h2>
+<div class="grid md:grid-cols-2 gap-6 mb-10">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Circular Reference</h3>
+<p class="text-slate-500 text-sm">Same agent_id appears twice in the chain. Memory looped back through the same agent &mdash; self-reinforcing. Result: <span class="text-red-500 font-bold">MANIPULATED</span>.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Chain Length Mismatch</h3>
+<p class="text-slate-500 text-sm">Chain has &lt; 2 agents but downstream_count &gt; 8. Wide propagation with a short chain is physically implausible. Result: <span class="text-orange-500 font-bold">SUSPICIOUS</span>.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Compromised Agent</h3>
+<p class="text-slate-500 text-sm">Any agent_id in the chain exists in the compromised agent registry (auto-populated on MANIPULATED BLOCK). Result: <span class="text-red-500 font-bold">MANIPULATED</span>.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Identical Chains</h3>
+<p class="text-slate-500 text-sm">3+ entries in the same memory_state have identical provenance chains. Real independent memories would have different paths. Result: <span class="text-orange-500 font-bold">SUSPICIOUS</span>.</p>
+</div>
+</div>
+
+<h2 class="text-2xl font-extrabold mb-4">Response Fields</h2>
+<table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden mb-10">
+<thead><tr class="bg-[#faf9f6]">
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Field</th>
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Values</th>
+<th class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Description</th>
+</tr></thead>
+<tbody class="divide-y divide-slate-100 bg-white">
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">provenance_chain_integrity</td><td class="px-4 py-3">CLEAN | SUSPICIOUS | MANIPULATED</td><td class="px-4 py-3 text-slate-600">Overall provenance assessment</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">provenance_chain_flags</td><td class="px-4 py-3">list of strings</td><td class="px-4 py-3 text-slate-600">Specific issues detected</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">chain_depth</td><td class="px-4 py-3">integer</td><td class="px-4 py-3 text-slate-600">Max chain length across all entries</td></tr>
+</tbody>
+</table>
+
+<h2 class="text-2xl font-extrabold mb-4">Code Example</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono overflow-x-auto"><span style="color:#c792ea">from</span> sgraal <span style="color:#c792ea">import</span> SgraalClient
+
+client = SgraalClient(<span style="color:#a5d6a7">"sg_demo_playground"</span>)
+
+result = client.preflight(
+    memory_state=[{
+        <span style="color:#a5d6a7">"id"</span>: <span style="color:#a5d6a7">"mem_001"</span>,
+        <span style="color:#a5d6a7">"content"</span>: <span style="color:#a5d6a7">"Trade execution approved"</span>,
+        <span style="color:#a5d6a7">"type"</span>: <span style="color:#a5d6a7">"semantic"</span>,
+        <span style="color:#a5d6a7">"timestamp_age_days"</span>: 0.5,
+        <span style="color:#a5d6a7">"source_trust"</span>: 0.91,
+        <span style="color:#a5d6a7">"source_conflict"</span>: 0.03,
+        <span style="color:#a5d6a7">"downstream_count"</span>: 5,
+        <span style="color:#a5d6a7">"provenance_chain"</span>: [<span style="color:#a5d6a7">"agent-01"</span>, <span style="color:#a5d6a7">"agent-02"</span>, <span style="color:#a5d6a7">"agent-01"</span>]
+    }],
+    domain=<span style="color:#a5d6a7">"fintech"</span>,
+    action_type=<span style="color:#a5d6a7">"irreversible"</span>
+)
+
+<span style="color:#c792ea">print</span>(result[<span style="color:#a5d6a7">"provenance_chain_integrity"</span>])  <span style="color:#6b7280"># MANIPULATED</span>
+<span style="color:#c792ea">print</span>(result[<span style="color:#a5d6a7">"provenance_chain_flags"</span>])      <span style="color:#6b7280"># ["circular_reference:manipulated"]</span>
+<span style="color:#c792ea">print</span>(result[<span style="color:#a5d6a7">"recommended_action"</span>])          <span style="color:#6b7280"># BLOCK</span></pre>
+</div>
+</section>
+
+<section class="py-16 px-8 text-center">
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="/standard" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">SMRS Standard</a>
+<a href="/docs" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Full documentation</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
