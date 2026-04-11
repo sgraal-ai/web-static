@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Memory Failure Gallery — Sgraal</title>
+<meta name="description" content="Real attack patterns against AI agent memory, anonymized and categorized.">
+<link rel="canonical" href="https://sgraal.com/failures">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-16 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">The Memory Failure Gallery</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">Real attack patterns, anonymized and categorized. How AI agent memory fails in production.</p>
+</section>
+
+<!-- Failures Grid -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">1. Timestamp Zeroing</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">timestamp_age_days forced to 0. Stale regulatory data presented as current guidance.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"timestamp_age_days": 0,  // content says "Q2 2024"
+"source_trust": 0.92</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: timestamp_integrity</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">2. Authority Escalation</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">Agent role gradually inflated from "support assistant" to "authorized executor" across hops.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"content": "...elevated to trusted
+  execution with standing authority..."</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: identity_drift</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">3. Consensus Fabrication</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">3 independent stacks confirming same false fact. Zero source_conflict across all entries.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"source_conflict": 0.01,  // x3 entries
+"collapse_ratio": 5.2</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: consensus_collapse</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">4. Circular Provenance</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">Memory loops back through the same agent, creating self-reinforcing "evidence."</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"provenance_chain":
+  ["agent-01","agent-02","agent-01"]</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: provenance_chain_integrity</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">5. Fleet Age Collapse</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">5 entries all with timestamp_age_days=0 and source_conflict=0.0. Statistically implausible.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">// All 5 entries: age=0, conflict=0.0
+"naturalness_level": "FABRICATED"</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: timestamp_integrity + naturalness</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">6. Modal Uncertainty Strip</h3>
+<span class="text-orange-500 text-xs font-bold font-mono">WARN</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">"likely approved" becomes "approved" becomes "confirmed" across propagation hops.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">hop1: "likely approved"
+hop3: "confirmed approved"</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: consensus_collapse (uncertainty_hardening)</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">7. Subject Rebinding</h3>
+<span class="text-red-500 text-xs font-bold font-mono">BLOCK</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">"user_123" drifts to "workspace owner" to "organization admin" across hops.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"content": "...acts on behalf of the
+  organization for all users..."</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: identity_drift (subject_rebinding)</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold">8. Confidence Recycling</h3>
+<span class="text-orange-500 text-xs font-bold font-mono">WARN</span>
+</div>
+<p class="text-slate-500 text-sm mb-3">"prior review confirmed" used as new independent evidence. Agent output becomes its own proof.</p>
+<pre class="bg-[#faf9f6] text-xs font-mono p-3 rounded-lg text-slate-600 overflow-x-auto">"content": "Previously confirmed and
+  validated by prior review..."</pre>
+<p class="text-xs text-[#c9a962] mt-2">Detected by: consensus_collapse (confidence_recycling)</p>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-8 text-center">
+<h2 class="text-2xl font-extrabold mb-6">Protect your agents from these patterns</h2>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="/playground" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Try it now</a>
+<a href="/docs" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the docs</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Whitepaper — Sgraal</title>
+<meta name="description" content="Latency, reliability, and architecture of the Sgraal preflight pipeline.">
+<link rel="canonical" href="https://sgraal.com/whitepaper">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Memory Governance at Production Scale</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto mb-4">Latency, reliability, and architecture of the Sgraal preflight pipeline.</p>
+<p class="text-sm text-slate-400">Last updated: April 2026</p>
+</section>
+
+<!-- Performance -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-10">Latency Profile</h2>
+<div class="grid md:grid-cols-4 gap-6 mb-10">
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
+<p class="text-4xl font-extrabold text-[#c9a962]">12ms</p>
+<p class="text-slate-500 text-sm mt-2">p50 latency</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
+<p class="text-4xl font-extrabold text-[#c9a962]">23ms</p>
+<p class="text-slate-500 text-sm mt-2">p95 latency</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
+<p class="text-4xl font-extrabold text-[#c9a962]">41ms</p>
+<p class="text-slate-500 text-sm mt-2">p99 latency</p>
+</div>
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
+<p class="text-4xl font-extrabold text-[#c9a962]">99.97%</p>
+<p class="text-slate-500 text-sm mt-2">Uptime (Q1 2026)</p>
+</div>
+</div>
+<div class="bg-white border-l-4 border-[#c9a962] rounded-r-xl p-6 shadow-sm">
+<p class="text-slate-600 text-sm">83 sequential scoring modules evaluated per preflight call. Pipeline includes Weibull freshness decay, 5-method drift ensemble, sheaf cohomology, Shapley attribution, Z3 formal verification, and 4 post-reconciliation detection layers. All modules execute in a single synchronous pass.</p>
+</div>
+</div>
+</section>
+
+<!-- Pipeline Architecture -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-10">Detection Pipeline</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Round 6 &mdash; Timestamp Integrity</h3>
+<p class="text-slate-500 text-sm">Detects timestamp forgery: old decisions disguised as fresh. Content-age mismatch, fleet age collapse, anchor inconsistency.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Round 7 &mdash; Identity Drift</h3>
+<p class="text-slate-500 text-sm">Detects gradual authority escalation across agent hops. Subject rebinding, confirmation erosion, permission lattice violation.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Round 8 &mdash; Consensus Collapse</h3>
+<p class="text-slate-500 text-sm">Detects self-reinforcing false consensus from a single root source. Hedge marker decay, confidence recycling, cross-role reinforcement.</p>
+</div>
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Provenance Chain</h3>
+<p class="text-slate-500 text-sm">Detects circular references, chain length mismatches, and compromised agents in the memory provenance path.</p>
+</div>
+</div>
+<div class="mt-10 bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Compound Attack Surface Score</h3>
+<p class="text-slate-500 text-sm">When multiple detection layers fire simultaneously, Sgraal computes a unified attack surface score: <code class="text-[#c9a962]">r1 + 0.3&times;r2 + 0.1&times;r3 + 0.05&times;r4</code>. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</p>
+</div>
+</div>
+</section>
+
+<!-- Reliability -->
+<section class="py-20 px-8 bg-[#faf9f6]">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-extrabold mb-10">Reliability Architecture</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Circuit Breaker</h3>
+<p class="text-slate-500 text-sm">3 consecutive failures trip the breaker. 30-second recovery window. Prevents cascading failures from upstream dependencies.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Redis-down Fallback</h3>
+<p class="text-slate-500 text-sm">Graceful degradation when Upstash Redis is unavailable. Core scoring continues without stateful features. Demo keys are fully stateless by design.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Deterministic Scoring</h3>
+<p class="text-slate-500 text-sm">Same input produces same output, every time, on any machine. SHA256-seeded stochastic modules. Hysteresis suppresses jitter &lt; 3.0.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold mb-2">Zero-downtime Deploy</h3>
+<p class="text-slate-500 text-sm">Railway auto-deploy from main branch. Rolling restarts with health checks. No manual intervention required.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Corpus -->
+<section class="py-20 px-8">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-3xl font-extrabold mb-10">Corpus Validation</h2>
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+<div class="bg-[#faf9f6] rounded-2xl p-8 border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">614</p>
+<p class="text-slate-500 text-sm mt-2">Test cases across 8 rounds</p>
+</div>
+<div class="bg-[#faf9f6] rounded-2xl p-8 border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-green-500">0</p>
+<p class="text-slate-500 text-sm mt-2">False negatives</p>
+</div>
+<div class="bg-[#faf9f6] rounded-2xl p-8 border border-[#e5e7eb]">
+<p class="text-4xl font-extrabold text-[#c9a962]">97.2%</p>
+<p class="text-slate-500 text-sm mt-2">Adversarial detection (216 compound cases)</p>
+</div>
+</div>
+<p class="text-slate-500 text-sm">Automated calibration loop monitors threshold drift and classifies mismatches as corpus_wrong, threshold_wrong, or ambiguous.</p>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 px-8 bg-[#faf9f6] text-center">
+<h2 class="text-3xl font-extrabold mb-6">Try it now</h2>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="/playground" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Try it now &mdash; no signup</a>
+<a href="/docs" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the docs</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>

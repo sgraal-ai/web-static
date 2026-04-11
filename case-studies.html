@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Case Studies — Sgraal</title>
+<meta name="description" content="How Sgraal prevents costly AI agent failures in fintech, healthcare, and legal.">
+<link rel="canonical" href="https://sgraal.com/case-studies">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-36 pb-16 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Case Studies</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">How Sgraal prevents costly AI agent failures across regulated industries.</p>
+</section>
+
+<!-- Case 1: Fintech -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">FINTECH</span>
+<span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
+</div>
+<h2 class="text-2xl font-extrabold mb-4">Preventing a $2.3M trading error</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">An algorithmic trading agent prepared to execute a large position based on a memory entry referencing a 2024 SEC ruling. The entry had <code class="text-[#c9a962]">timestamp_age_days: 0</code> — presenting stale regulatory data presented as current.</p>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Detection</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Sgraal's timestamp integrity layer detected content-age mismatch: the content referenced "Q2 2024" and "deprecated framework" while claiming to be freshly created. Result: <code class="text-[#c9a962]">timestamp_integrity: MANIPULATED</code>.</p>
+</div>
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Result</h3>
+<div class="bg-white rounded-xl p-6 border border-[#e5e7eb] font-mono text-sm space-y-2">
+<div><span class="text-slate-400">omega_mem_final:</span> <span class="text-[#c9a962]">71.5</span></div>
+<div><span class="text-slate-400">recommended_action:</span> <span class="text-red-500 font-bold">BLOCK</span></div>
+<div><span class="text-slate-400">timestamp_integrity:</span> <span class="text-red-500">MANIPULATED</span></div>
+<div><span class="text-slate-400">pipeline_latency:</span> 18ms</div>
+<div><span class="text-slate-400">estimated_loss_avoided:</span> $2.3M</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case 2: Healthcare -->
+<section class="py-16 px-8">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">HEALTHCARE</span>
+<span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
+</div>
+<h2 class="text-2xl font-extrabold mb-4">Stopping a medical triage drift</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">A medical triage AI gradually expanded its diagnostic authority across 8 agent hops. By hop 6, it was recommending treatments outside its authorized scope — each individual hop looked plausible.</p>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Detection</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Sgraal's identity drift layer detected authority expansion keywords accumulating across the chain: "elevated to", "authorized to execute", "standing authority". Result: <code class="text-[#c9a962]">identity_drift: MANIPULATED</code> at hop 4.</p>
+</div>
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Result</h3>
+<div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb] font-mono text-sm space-y-2">
+<div><span class="text-slate-400">omega_mem_final:</span> <span class="text-[#c9a962]">100</span></div>
+<div><span class="text-slate-400">recommended_action:</span> <span class="text-red-500 font-bold">BLOCK</span></div>
+<div><span class="text-slate-400">identity_drift:</span> <span class="text-red-500">MANIPULATED</span></div>
+<div><span class="text-slate-400">hops_contained:</span> 4 of 8</div>
+<div><span class="text-slate-400">authority_expansion_score:</span> 1.0</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case 3: Legal -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">LEGAL</span>
+<span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
+</div>
+<h2 class="text-2xl font-extrabold mb-4">Catching fabricated legal precedent</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">Three independent research agents all confirmed a fabricated case citation as "verified precedent." No single agent had conflicting information — the consensus appeared genuine.</p>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Detection</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Sgraal's consensus collapse layer detected self-reinforcing agreement from a single root source. All three entries had near-identical trust scores with zero conflict — statistically implausible. Result: <code class="text-[#c9a962]">consensus_collapse: MANIPULATED</code>.</p>
+</div>
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Result</h3>
+<div class="bg-white rounded-xl p-6 border border-[#e5e7eb] font-mono text-sm space-y-2">
+<div><span class="text-slate-400">collapse_ratio:</span> <span class="text-[#c9a962]">5.2</span></div>
+<div><span class="text-slate-400">recommended_action:</span> <span class="text-red-500 font-bold">BLOCK</span></div>
+<div><span class="text-slate-400">consensus_collapse:</span> <span class="text-red-500">MANIPULATED</span></div>
+<div><span class="text-slate-400">attack_surface_level:</span> <span class="text-red-500">CRITICAL</span></div>
+<div><span class="text-slate-400">naturalness_level:</span> FABRICATED</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Disclaimer + CTA -->
+<section class="py-16 px-8 text-center">
+<p class="text-xs text-slate-400 mb-8">These are synthetic scenarios based on real corpus attack patterns. No actual client data is represented.</p>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="/playground" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Try it now</a>
+<a href="/whitepaper" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the whitepaper</a>
+</div>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
