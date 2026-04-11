@@ -23,10 +23,14 @@
     "@type": "Organization",
     "name": "Sgraal"
   },
-  "documentation": "https://api.sgraal.com/docs"
+  "documentation": "https://api.sgraal.com/docs",
+  "version": "3.0",
+  "dateModified": "2026-04-11"
 }
 </script>
 <link rel="icon" type="image/png" href="/favicon.png"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:description" content="Preflight validation API for AI agent memory. Returns USE_MEMORY, WARN, ASK_USER, or BLOCK decisions with full explainability."/>
 <title>Documentation — Sgraal</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -107,6 +111,26 @@ pre { overflow-x: auto; }
       </div>
     </div>
 
+    <section id="endpoints-summary" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Key Endpoints</h2>
+      <table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden mb-4">
+        <thead><tr class="bg-[#f5f4f0]">
+          <th scope="col" class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Method</th>
+          <th scope="col" class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Path</th>
+          <th scope="col" class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Description</th>
+        </tr></thead>
+        <tbody class="divide-y divide-slate-100 bg-white font-mono">
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/preflight</td><td class="px-4 py-3 font-sans text-slate-600">Score memory state, return decision + full analytics</td></tr>
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/preflight/batch</td><td class="px-4 py-3 font-sans text-slate-600">Batch preflight for up to 100 entries</td></tr>
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/heal</td><td class="px-4 py-3 font-sans text-slate-600">Heal a flagged memory entry</td></tr>
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/outcome</td><td class="px-4 py-3 font-sans text-slate-600">Close an outcome for learning feedback</td></tr>
+          <tr><td class="px-4 py-3 text-blue-600">GET</td><td class="px-4 py-3">/v1/verify</td><td class="px-4 py-3 font-sans text-slate-600">Formal verification of healing policies</td></tr>
+        </tbody>
+      </table>
+      <p class="text-xs text-slate-400">All endpoints require <code class="text-[#c9a962]">Authorization: Bearer &lt;api_key&gt;</code></p>
+    </section>
+
+    <!-- Agent-readable: endpoint auth uses Authorization: Bearer -->
     <section id="quickstart" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Quick Start — 5 minutes</h2>
 
