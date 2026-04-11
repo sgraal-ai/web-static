@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Sgraal + Conway — Memory Governance for Always-on Agents</title>
+<meta name="description" content="Validate every memory access before Conway acts — even at 3am.">
+<link rel="canonical" href="https://sgraal.com/integrations/conway">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Sgraal + Conway</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">Validate every memory access before Conway acts &mdash; even at 3am.</p>
+</section>
+
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-2xl font-extrabold mb-4">Why it matters</h2>
+<p class="text-slate-600 mb-6">Conway runs while you sleep. It persists across sessions, triggers via webhooks, and acts autonomously. Without preflight validation, stale or poisoned memories can drive irreversible actions with no human in the loop.</p>
+
+<h2 class="text-2xl font-extrabold mb-4">Integration pattern</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-8 overflow-x-auto">Conway webhook trigger
+    &darr;
+Retrieve memory from persistent store
+    &darr;
+Sgraal preflight (POST /v1/preflight)
+    &darr;
+USE_MEMORY &rarr; act    |    BLOCK &rarr; stop + alert</pre>
+
+<h2 class="text-2xl font-extrabold mb-4">Code example</h2>
+<pre class="bg-[#0d1117] text-[#e2e8f0] rounded-xl p-6 text-sm font-mono mb-8 overflow-x-auto"><span style="color:#c792ea">from</span> sgraal <span style="color:#c792ea">import</span> SgraalClient
+<span style="color:#c792ea">import</span> os
+
+client = SgraalClient(os.environ[<span style="color:#a5d6a7">"SGRAAL_API_KEY"</span>])
+
+<span style="color:#c792ea">def</span> <span style="color:#82aaff">conway_webhook_handler</span>(event):
+    <span style="color:#6b7280"># Retrieve memory Conway is about to act on</span>
+    memory = event[<span style="color:#a5d6a7">"memory_context"</span>]
+
+    result = client.preflight(
+        memory_state=[{
+            <span style="color:#a5d6a7">"id"</span>: <span style="color:#a5d6a7">"conway_mem"</span>,
+            <span style="color:#a5d6a7">"content"</span>: memory,
+            <span style="color:#a5d6a7">"type"</span>: <span style="color:#a5d6a7">"semantic"</span>,
+            <span style="color:#a5d6a7">"timestamp_age_days"</span>: 0,
+            <span style="color:#a5d6a7">"source_trust"</span>: 0.85,
+            <span style="color:#a5d6a7">"source_conflict"</span>: 0.05,
+            <span style="color:#a5d6a7">"downstream_count"</span>: 1
+        }],
+        domain=<span style="color:#a5d6a7">"coding"</span>,
+        action_type=event.get(<span style="color:#a5d6a7">"action_type"</span>, <span style="color:#a5d6a7">"reversible"</span>)
+    )
+
+    <span style="color:#c792ea">if</span> result[<span style="color:#a5d6a7">"recommended_action"</span>] == <span style="color:#a5d6a7">"BLOCK"</span>:
+        <span style="color:#c792ea">return</span> {<span style="color:#a5d6a7">"blocked"</span>: True, <span style="color:#a5d6a7">"reason"</span>: result.get(<span style="color:#a5d6a7">"explainability_note"</span>)}
+
+    <span style="color:#6b7280"># Safe to proceed</span>
+    <span style="color:#c792ea">return</span> execute_action(event)</pre>
+
+<h2 class="text-2xl font-extrabold mb-4">Key detection fields for Conway</h2>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-4">
+<h3 class="font-bold text-sm mb-1">timestamp_integrity</h3>
+<p class="text-slate-500 text-xs">Catches stale memory replayed as fresh during overnight runs.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-4">
+<h3 class="font-bold text-sm mb-1">identity_drift</h3>
+<p class="text-slate-500 text-xs">Detects authority creep over long-running persistent sessions.</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-4">
+<h3 class="font-bold text-sm mb-1">naturalness_level</h3>
+<p class="text-slate-500 text-xs">Flags too-clean memory from automated sources at 3am.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20 px-8 text-center">
+<a href="/docs" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Read the full docs</a>
+</section>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-slate-500 text-sm">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p>
+</div>
+</footer>
+</body></html>
