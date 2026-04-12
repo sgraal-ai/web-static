@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Circuit Breakers for AI Agent Memory — A First — Sgraal Blog</title>
+<meta name="description" content="The first application of the circuit breaker pattern to AI agent memory governance. How Sgraal prevents cascading memory failures.">
+<link rel="canonical" href="https://sgraal.com/blog/circuit-breaker-memory">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Architecture</span>
+<span class="text-slate-400 text-xs">&middot;</span>
+<span class="text-slate-500 text-xs">April 2026</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Circuit Breakers for AI Agent Memory &mdash; A First</h1>
+<p class="text-slate-500">The first application of the circuit breaker pattern to AI agent memory governance.</p>
+</div>
+
+<div class="prose prose-slate max-w-none text-[#374151] leading-relaxed space-y-8">
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What is a Circuit Breaker?</h2>
+<p>The circuit breaker pattern was introduced by Michael Nygard in <em>Release It!</em> (2007) as a stability pattern for distributed systems. The idea is simple: when a downstream service starts failing, stop calling it. Let it recover. Then try again.</p>
+<p>A circuit breaker has three states:</p>
+<ul class="space-y-2 mt-4">
+<li><strong>CLOSED</strong> &mdash; Normal operation. Requests flow through. Failures are counted.</li>
+<li><strong>OPEN</strong> &mdash; Too many failures. All requests are rejected immediately. No load on the failing service.</li>
+<li><strong>HALF-OPEN</strong> &mdash; After a timeout, a single probe request is allowed through. If it succeeds, the breaker closes. If it fails, the breaker reopens.</li>
+</ul>
+<p class="mt-4">Netflix popularized this pattern with Hystrix. It is now standard in every microservices toolkit: Resilience4j, Polly, Istio, Envoy. But until Sgraal, nobody applied it to AI agent memory.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Problem with AI Memory</h2>
+<p>AI agents do not crash gracefully. When their memory is corrupted &mdash; stale data, hallucinated facts, propagated errors &mdash; they do not throw exceptions or return error codes. They act with full confidence on wrong information.</p>
+<p>This creates a failure mode that is worse than a service outage: <strong>silent corruption</strong>. The agent continues operating, making decisions, taking actions, all based on memory that is no longer trustworthy. And because there is no error signal, no one knows until the damage is done.</p>
+<p>In multi-agent systems, this compounds. Agent A passes corrupted memory to Agent B, which summarizes it and passes it to Agent C. By the time anyone notices, three agents are operating on fabricated data. This is cascading memory failure.</p>
+</section>
+
+<section class="bg-[#faf9f6] border border-slate-200 rounded-xl p-8">
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">How Sgraal's Circuit Breaker Works</h2>
+<p class="mb-6">Sgraal's Python SDK implements a memory-aware circuit breaker with three key properties:</p>
+
+<div class="space-y-6">
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold text-lg mb-2">5 BLOCKs &rarr; OPEN</h3>
+<p class="text-slate-600 text-sm">When 5 consecutive preflight calls return BLOCK, the circuit breaker trips to OPEN state. All subsequent calls are immediately rejected without hitting the API. This protects the agent from repeatedly attempting actions on corrupted memory and prevents wasted API calls.</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold text-lg mb-2">Cross-Domain Awareness</h3>
+<p class="text-slate-600 text-sm">The circuit breaker tracks failures per domain. A medical agent hitting BLOCKs will not trip the breaker for a coding agent on the same system. But within a domain, all agents share the failure count &mdash; because if one medical agent's memory is corrupted, the others likely share the same corrupted data.</p>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
+<h3 class="font-bold text-lg mb-2">30-Second Recovery Window</h3>
+<p class="text-slate-600 text-sm">After 30 seconds in OPEN state, the breaker transitions to HALF-OPEN. A single probe preflight call is allowed through. If the memory state has improved (USE_MEMORY or WARN), the breaker closes and normal operation resumes. If the probe returns BLOCK, the breaker reopens for another 30 seconds.</p>
+</div>
+</div>
+
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mt-6">
+<h3 class="font-bold mb-2">State Machine</h3>
+<pre class="text-sm font-mono text-slate-600">CLOSED ──[5 BLOCKs]──&gt; OPEN ──[30s timeout]──&gt; HALF-OPEN
+  ^                                                  │
+  │              [probe succeeds]                    │
+  └──────────────────────────────────────────────────┘
+                   [probe fails]
+  OPEN &lt;────────────────────────────────────── HALF-OPEN</pre>
+</div>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">First in Class</h2>
+<p>To our knowledge, Sgraal is the first system to apply the circuit breaker pattern to AI agent memory. This is surprising, because the failure mode is a perfect fit:</p>
+<ul class="space-y-2 mt-4">
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">&bull;</span><span><strong>Repeated failures indicate a systemic problem.</strong> If memory is corrupted, retrying with the same memory will produce the same result. Stop retrying.</span></li>
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">&bull;</span><span><strong>Recovery takes time.</strong> Memory needs to be healed &mdash; entries refetched, conflicts resolved, working sets rebuilt. This takes time, just like a service recovering from overload.</span></li>
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">&bull;</span><span><strong>Probe-based recovery is safe.</strong> A single test preflight call with the healed memory state is a safe way to verify recovery before resuming full operation.</span></li>
+</ul>
+<p class="mt-4">The pattern works because memory governance is fundamentally a reliability problem. Sgraal treats it as one.</p>
+</section>
+
+<section class="bg-[#faf9f6] border border-slate-200 rounded-xl p-8">
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">API Reference</h2>
+<p class="mb-4">The circuit breaker is built into the Sgraal Python SDK. No additional configuration is needed &mdash; it activates automatically.</p>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mb-4">
+<pre class="text-sm font-mono text-slate-600">from sgraal import SgraalClient
+
+client = SgraalClient(api_key="sg_live_...")
+
+# Circuit breaker is automatic
+result = client.preflight(
+    memory_state=[...],
+    action_type="irreversible",
+    domain="medical"
+)
+
+# After 5 consecutive BLOCKs, raises CircuitOpenError
+# instead of calling the API
+try:
+    result = client.preflight(...)
+except CircuitOpenError as e:
+    print(f"Circuit open: {e.retry_after}s")
+    # Wait for recovery, or trigger healing</pre>
+</div>
+<p class="text-slate-500 text-sm">The <code class="text-[#c9a962]">@guard()</code> decorator also respects the circuit breaker state. When the circuit is open, the decorator applies the configured <code class="text-[#c9a962]">fallback_policy</code> (allow, warn, or block) without making an API call.</p>
+</section>
+
+</div>
+</article>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Product</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/decide">Decide</a></li><li><a class="hover:text-[#c9a962]" href="/protect">Protect</a></li><li><a class="hover:text-[#c9a962]" href="/comply">Comply</a></li><li><a class="hover:text-[#c9a962]" href="/scale">Scale</a></li><li><a class="hover:text-[#c9a962]" href="/pricing">Pricing</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Resources</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/docs">Documentation</a></li><li><a class="hover:text-[#c9a962]" href="/tutorial">Tutorial</a></li><li><a class="hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a></li><li><a class="hover:text-[#c9a962]" href="/blog">Blog</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">More</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/case-studies">Case Studies</a></li><li><a class="hover:text-[#c9a962]" href="/failures">Failure Gallery</a></li><li><a class="hover:text-[#c9a962]" href="/latency">Latency</a></li><li><a class="hover:text-[#c9a962]" href="/compatibility">Compatibility</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Legal</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/privacy">Privacy</a></li><li><a class="hover:text-[#c9a962]" href="/terms">Terms</a></li><li><a class="hover:text-[#c9a962]" href="mailto:hello@sgraal.com">Contact</a></li></ul></div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-8 pt-8 border-t border-slate-200 text-center"><p class="text-slate-400 text-xs">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p></div>
+</footer>
+</body>
+</html>

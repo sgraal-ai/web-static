@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K7B978E0HF');</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Memory Reliability Engineering — The Weibull Model — Sgraal Blog</title>
+<meta name="description" content="The same math that predicts equipment failure now predicts memory failure. How Sgraal uses Weibull distribution for freshness decay.">
+<link rel="canonical" href="https://sgraal.com/blog/weibull-reliability">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Engineering</span>
+<span class="text-slate-400 text-xs">&middot;</span>
+<span class="text-slate-500 text-xs">April 2026</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Memory Reliability Engineering &mdash; The Weibull Model</h1>
+<p class="text-slate-500">The same math that predicts equipment failure now predicts memory failure.</p>
+</div>
+
+<div class="prose prose-slate max-w-none text-[#374151] leading-relaxed space-y-8">
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What is the Weibull Distribution?</h2>
+<p>The Weibull distribution is the workhorse of reliability engineering. Introduced by Waloddi Weibull in 1951, it models the probability of failure over time for everything from ball bearings to jet engines. Its key insight: different things fail at different rates, and the shape of that failure curve tells you something fundamental about the failure mode.</p>
+<p>The distribution is defined by two parameters: a <strong>scale parameter</strong> (&lambda;) that controls when failures become likely, and a <strong>shape parameter</strong> (k) that controls how sharply the failure rate increases. When k &lt; 1, failures decrease over time (infant mortality). When k = 1, failures are random (exponential decay). When k &gt; 1, failures increase over time (wear-out) &mdash; this is the regime that matters for memory.</p>
+</section>
+
+<section class="bg-[#faf9f6] border border-slate-200 rounded-xl p-8">
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The Formula</h2>
+<p class="mb-4">Sgraal computes freshness using the Weibull survival function:</p>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mb-4">
+<pre class="text-lg font-mono text-center text-[#0B0F14]">s_freshness = exp( -(age / &lambda;)<sup>k</sup> )</pre>
+</div>
+<p class="text-sm text-slate-500 mb-4">Where <code class="text-[#c9a962]">age</code> is the memory's age in days, <code class="text-[#c9a962]">&lambda;</code> is the scale parameter (type-specific), and <code class="text-[#c9a962]">k</code> is the shape parameter (type-specific).</p>
+<p class="mb-2 font-semibold">Type-specific decay rates (fastest to slowest):</p>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
+<thead class="bg-slate-50">
+<tr>
+<th class="text-left px-4 py-3 font-bold">Memory Type</th>
+<th class="text-left px-4 py-3 font-bold">Decay Rate</th>
+<th class="text-left px-4 py-3 font-bold">Intuition</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">tool_state</td><td class="px-4 py-3">0.15 (fast)</td><td class="px-4 py-3 text-slate-600">API responses go stale in hours</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">shared_workflow</td><td class="px-4 py-3">0.08</td><td class="px-4 py-3 text-slate-600">Collaborative state drifts in days</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">episodic</td><td class="px-4 py-3">0.05</td><td class="px-4 py-3 text-slate-600">Event memories fade over weeks</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">preference</td><td class="px-4 py-3">0.02</td><td class="px-4 py-3 text-slate-600">User preferences shift over months</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">semantic</td><td class="px-4 py-3">0.01</td><td class="px-4 py-3 text-slate-600">Facts change slowly</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">policy</td><td class="px-4 py-3">0.005</td><td class="px-4 py-3 text-slate-600">Policies are revised infrequently</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">identity</td><td class="px-4 py-3">0.002 (near-permanent)</td><td class="px-4 py-3 text-slate-600">Core identity rarely changes</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Why This Matters</h2>
+<p>Most AI systems treat all memory as equally fresh or equally stale. A tool output from 2 hours ago is given the same weight as an identity fact stored 6 months ago. This is wrong.</p>
+<p>A 2-hour-old API response might already be dangerously stale (stock prices, order statuses, server health). A 6-month-old identity fact ("The user prefers dark mode") is probably fine. Weibull decay captures this difference mathematically: the survival function drops rapidly for tool_state but barely moves for identity.</p>
+<p>This means Sgraal can make the right call without human-written rules about "how old is too old." The math handles it.</p>
+</section>
+
+<section>
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Connection to Predictive BLOCK</h2>
+<p>The freshness score feeds directly into the &Omega;_MEM computation. When s_freshness drops below a critical threshold for enough entries, the overall risk score crosses the BLOCK boundary &mdash; and the agent is stopped <em>before</em> it acts on stale data.</p>
+<p>This is predictive, not reactive. The Weibull model tells us when memory <em>will</em> fail, not just when it <em>has</em> failed. Combined with Sgraal's Kalman forecasting and CUSUM trend detection, the system can issue warnings hours before a BLOCK becomes necessary.</p>
+</section>
+
+<section class="bg-[#faf9f6] border border-slate-200 rounded-xl p-8">
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">For Reliability Engineers</h2>
+<p>If you come from a reliability engineering background, you will recognize this pattern immediately. Sgraal treats AI agent memory the same way you treat physical assets:</p>
+<ul class="space-y-2 mt-4">
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">1.</span><span><strong>Failure modes.</strong> Each memory type has a characteristic failure mode (staleness, drift, conflict) with a known time profile.</span></li>
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">2.</span><span><strong>Survival analysis.</strong> The Weibull survival function gives the probability that a memory entry is still reliable at time t.</span></li>
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">3.</span><span><strong>Preventive maintenance.</strong> The repair_plan with REFETCH actions is exactly preventive maintenance &mdash; replacing components before they fail.</span></li>
+<li class="flex items-start gap-3"><span class="text-[#c9a962] font-bold">4.</span><span><strong>MTTR.</strong> Sgraal computes Mean Time To Repair via Weibull estimation, just like equipment reliability programs.</span></li>
+</ul>
+<p class="mt-4">The math is identical. The domain is new.</p>
+</section>
+
+</div>
+</article>
+
+<footer class="bg-[#faf9f6] py-16 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Product</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/decide">Decide</a></li><li><a class="hover:text-[#c9a962]" href="/protect">Protect</a></li><li><a class="hover:text-[#c9a962]" href="/comply">Comply</a></li><li><a class="hover:text-[#c9a962]" href="/scale">Scale</a></li><li><a class="hover:text-[#c9a962]" href="/pricing">Pricing</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Resources</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/docs">Documentation</a></li><li><a class="hover:text-[#c9a962]" href="/tutorial">Tutorial</a></li><li><a class="hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a></li><li><a class="hover:text-[#c9a962]" href="/blog">Blog</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">More</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/case-studies">Case Studies</a></li><li><a class="hover:text-[#c9a962]" href="/failures">Failure Gallery</a></li><li><a class="hover:text-[#c9a962]" href="/latency">Latency</a></li><li><a class="hover:text-[#c9a962]" href="/compatibility">Compatibility</a></li></ul></div>
+<div><h5 class="font-bold mb-4 text-[#0B0F14]">Legal</h5><ul class="space-y-2 text-slate-500"><li><a class="hover:text-[#c9a962]" href="/privacy">Privacy</a></li><li><a class="hover:text-[#c9a962]" href="/terms">Terms</a></li><li><a class="hover:text-[#c9a962]" href="mailto:hello@sgraal.com">Contact</a></li></ul></div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-8 pt-8 border-t border-slate-200 text-center"><p class="text-slate-400 text-xs">&copy; 2026 Sgraal Protocol &middot; Apache 2.0</p></div>
+</footer>
+</body>
+</html>
