@@ -225,11 +225,78 @@ requests.post(
 </div>
 </section>
 
+<!-- Sgraal Certified -->
+<section class="py-32 bg-[#f5f4f0]">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="bg-[#c9a962]/10 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[#c9a962] text-3xl">verified</span>
+</div>
+<h2 class="text-4xl font-bold tracking-tight mb-6">Sgraal Certified</h2>
+<p class="text-lg text-slate-600 leading-relaxed mb-6">Every agent that passes Sgraal's memory governance checks can display a verified badge &mdash; cryptographically signed, publicly verifiable, W3C Verifiable Credentials compatible.</p>
+<p class="text-sm text-slate-500 mb-8">Badge integrity verified via HMAC-SHA256. Revocable. Auditable.</p>
+<a href="https://api.sgraal.com/docs#/default/issue_certificate_v1_certificate_post" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-[#b8973f] transition-all inline-flex items-center gap-2">Get your badge <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="flex items-center justify-center">
+<div class="bg-white border-2 border-[#c9a962] rounded-2xl p-10 shadow-lg text-center max-w-xs">
+<div class="w-24 h-24 mx-auto mb-6 rounded-full bg-[#c9a962]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#c9a962]" style="font-size:48px">verified</span>
+</div>
+<div class="text-xl font-bold mb-1">Sgraal Certified</div>
+<div class="text-sm text-slate-500 mb-4">Memory Governance Verified</div>
+<div class="text-xs font-mono text-slate-400 bg-slate-50 rounded px-3 py-2">W3C Verifiable Credential</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- No-Code Automation -->
+<section class="py-32 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<div class="bg-[#c9a962]/10 w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-[#c9a962] text-3xl">bolt</span>
+</div>
+<h2 class="text-4xl font-bold tracking-tight mb-6">No-Code Automation</h2>
+<p class="text-lg text-slate-600 leading-relaxed">Connect Sgraal to your existing workflows without writing code. BLOCK events trigger Zapier automations. WARN thresholds fire Make.com scenarios. Memory governance becomes part of your no-code stack.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8 mb-12">
+<div class="bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-[#FF4A00]/10 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-[#FF4A00]">Z</div>
+<h3 class="text-lg font-bold">Zapier</h3>
+</div>
+<p class="text-sm text-slate-600 mb-4">Trigger any of 5,000+ Zapier apps when Sgraal blocks a decision or detects an attack.</p>
+<pre class="text-xs font-mono bg-white rounded-lg p-4 text-slate-600">POST /v1/zapier/webhook
+{
+  "webhook_url": "https://hooks.zapier.com/...",
+  "trigger": "block"
+}</pre>
+</div>
+<div class="bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-[#6C2EB9]/10 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-[#6C2EB9]">M</div>
+<h3 class="text-lg font-bold">Make.com</h3>
+</div>
+<p class="text-sm text-slate-600 mb-4">Build visual workflows that respond to memory governance events in real time.</p>
+<pre class="text-xs font-mono bg-white rounded-lg p-4 text-slate-600">POST /v1/make/webhook
+{
+  "webhook_url": "https://hook.make.com/...",
+  "trigger": "warn"
+}</pre>
+</div>
+</div>
+<p class="text-center text-sm text-slate-400">Works with 5,000+ Zapier apps and Make.com's visual workflow builder.</p>
+</div>
+</section>
+
 <!-- CTA -->
-<section class="py-24 bg-white text-center">
+<section class="py-24 bg-[#f5f4f0] text-center">
 <h2 class="text-4xl font-bold mb-6">Ready to scale your agent fleet?</h2>
 <div class="flex justify-center gap-4 flex-wrap">
-<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">Get API Key →</a>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">Get API Key &rarr;</a>
 </div>
 </section>
 
