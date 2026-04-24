@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>AI Memory Ecosystem Map | Sgraal</title>
+<meta name="description" content="The AI memory stack, end to end. Storage stores. Security filters writes. Sgraal gates actions. Three layers of the memory ecosystem explained.">
+<meta property="og:title" content="AI Memory Ecosystem Map — Sgraal">
+<meta property="og:description" content="Storage stores. Security filters writes. Sgraal gates actions. The three-layer AI memory stack.">
+<meta property="og:url" content="https://sgraal.com/memory-ecosystem-map">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sgraal.com/memory-ecosystem-map">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "surface": "#ffffff",
+                    "background": "#ffffff",
+                    "obsidian": "#0B0F14",
+                    "gold": "#c9a962",
+                    "gold-dark": "#745b1c",
+                    "primary": "#c9a962",
+                    "on-surface": "#0B0F14",
+                    "on-surface-variant": "#6b7280",
+                    "outline-variant": "rgba(0,0,0,0.06)",
+                    "surface-container": "#f5f4f0",
+                    "surface-container-low": "#faf9f6",
+                    "amber": "#F59E0B",
+                    "amber-light": "#FEF3C7",
+                    "amber-dark": "#B45309"
+                },
+                fontFamily: {
+                    "headline": ["Manrope", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #faf9f6; color: #0B0F14; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; color: #0B0F14; }
+</style>
+</head>
+<body class="selection:bg-amber selection:text-white">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-[#F59E0B] font-semibold hover:text-[#B45309] transition-colors" href="/memory-ecosystem-map">Ecosystem</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-[#F59E0B] font-semibold" href="/memory-ecosystem-map">Ecosystem</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-32 pb-16 px-6">
+<div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">The AI memory stack, end to end</h1>
+    <p class="text-xl md:text-2xl text-on-surface-variant font-medium leading-relaxed">Storage stores. Security filters writes.<br class="hidden md:block"/> <span class="text-[#F59E0B] font-bold">Sgraal gates actions.</span></p>
+</div>
+</section>
+
+<!-- Stack -->
+<section class="pb-20 px-6">
+<div class="max-w-2xl mx-auto space-y-0">
+
+    <!-- Layer 3 — Sgraal -->
+    <div class="border-2 border-[#F59E0B] bg-[#FEF3C7]/40 rounded-t-xl p-8 relative">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs font-bold tracking-widest uppercase text-[#B45309]">Layer 3</span>
+            <span class="text-xs text-[#B45309]/60 font-medium">Execution governance</span>
+        </div>
+        <h3 class="text-2xl font-extrabold mb-3">Sgraal</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-4">Preflight decision gate. Every memory-driven action returns <code class="text-sm bg-white/80 px-1.5 py-0.5 rounded border border-[#F59E0B]/20 font-mono">USE_MEMORY</code>, <code class="text-sm bg-white/80 px-1.5 py-0.5 rounded border border-[#F59E0B]/20 font-mono">WARN</code>, <code class="text-sm bg-white/80 px-1.5 py-0.5 rounded border border-[#F59E0B]/20 font-mono">ASK_USER</code>, or <code class="text-sm bg-white/80 px-1.5 py-0.5 rounded border border-[#F59E0B]/20 font-mono">BLOCK</code>. Deterministic, explainable, audit-ready.</p>
+        <a href="/docs" class="text-sm font-semibold text-[#B45309] hover:text-[#F59E0B] transition-colors">Read the docs &rarr;</a>
+    </div>
+
+    <!-- Layer 2 — Write-time security -->
+    <div class="border border-black/[0.08] border-t-0 bg-white p-8">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Layer 2</span>
+            <span class="text-xs text-on-surface-variant/60 font-medium">Write-time security</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Memory filters and guards</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-3">Filter injected or poisoned content at ingest time, before it reaches storage.</p>
+        <p class="text-xs text-on-surface-variant/50 font-medium">ShieldCortex &middot; A-MemGuard</p>
+    </div>
+
+    <!-- Layer 1 — Storage -->
+    <div class="border border-black/[0.08] border-t-0 bg-white rounded-b-xl p-8">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Layer 1</span>
+            <span class="text-xs text-on-surface-variant/60 font-medium">Storage</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Memory persistence and retrieval</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-3">Persist and retrieve agent memories across sessions. Vector stores, semantic indexes, episodic logs.</p>
+        <p class="text-xs text-on-surface-variant/50 font-medium">MemPalace &middot; Engrama &middot; Memori &middot; Zep &middot; Mem0</p>
+    </div>
+
+</div>
+</section>
+
+<!-- Why a third layer? -->
+<section class="pb-20 px-6">
+<div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-8">Why a third layer?</h2>
+
+    <div class="space-y-6 text-on-surface-variant leading-relaxed text-[15px]">
+        <p><strong class="text-obsidian">Storage assumes data is clean after it's written.</strong> Once a memory is persisted, every retrieval treats it as ground truth. But memory can degrade over time — timestamps age, sources lose trust, conflicting entries accumulate. Storage has no opinion about whether a memory is still safe to act on.</p>
+
+        <p><strong class="text-obsidian">Write-time security filters at the gate, but attacks can evolve after ingest.</strong> A memory that was clean when written can become dangerous days later — when the context changes, when a conflicting source appears, when the action cost increases from informational to irreversible. Write-time filters don't re-evaluate.</p>
+
+        <p><strong class="text-obsidian">Execution governance checks memory at the moment of action, when the cost of being wrong is highest.</strong> This is the layer that asks: is this memory safe to act on, <em>right now</em>, given <em>this specific action's</em> cost? A refund lookup and a wire transfer retrieve the same memory — but the governance decision is different because the stakes are different.</p>
+    </div>
+</div>
+</section>
+
+<!-- How the layers fit together -->
+<section class="pb-20 px-6">
+<div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-8">How the layers fit together</h2>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-0 text-sm font-semibold">
+        <div class="bg-white border border-black/[0.08] px-5 py-3 rounded-lg text-center">Agent</div>
+        <div class="hidden md:block text-on-surface-variant/40 px-2">&rarr;</div>
+        <div class="md:hidden text-on-surface-variant/40">&darr;</div>
+        <div class="bg-white border border-black/[0.08] px-5 py-3 rounded-lg text-center">Storage retrieval</div>
+        <div class="hidden md:block text-on-surface-variant/40 px-2">&rarr;</div>
+        <div class="md:hidden text-on-surface-variant/40">&darr;</div>
+        <div class="bg-[#FEF3C7] border-2 border-[#F59E0B] px-5 py-3 rounded-lg text-center text-[#B45309]">Sgraal preflight</div>
+        <div class="hidden md:block text-on-surface-variant/40 px-2">&rarr;</div>
+        <div class="md:hidden text-on-surface-variant/40">&darr;</div>
+        <div class="bg-white border border-black/[0.08] px-5 py-3 rounded-lg text-center">Action</div>
+    </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="pb-24 px-6">
+<div class="max-w-2xl mx-auto text-center">
+    <div class="bg-white border border-black/[0.08] rounded-xl p-10">
+        <p class="text-lg font-semibold mb-4">Building at Layer 2 or below?</p>
+        <p class="text-on-surface-variant mb-6">Sgraal sits on top. We integrate with your storage and security stack — not replace it.</p>
+        <a href="mailto:hello@sgraal.com" class="inline-block bg-[#F59E0B] text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-[#D97706] transition-all">Talk to us</a>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-black/[0.06]">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+<div class="col-span-2 md:col-span-3 lg:col-span-1">
+<span class="text-xl font-black text-obsidian mb-6 block">Sgraal</span>
+<p class="text-on-surface-variant mb-8 max-w-xs">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Product</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-gold transition-colors" href="/memory-ecosystem-map">Ecosystem Map</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Resources</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Standards</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Company</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-black/[0.06] py-8 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div>&copy; 2026 Sgraal Protocol &middot; Apache 2.0. Memory Governance Protocol for AI agents.</div>
+<div class="flex items-center gap-2">Made for the agentic era.<span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
+</div>
+</footer>
+</body></html>
