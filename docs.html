@@ -204,9 +204,9 @@ print(result.omega_mem_final)      # 78.4</pre>
         </div>
 
         <div class="tab-content" id="content-node-qs">
-<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">npm install @sgraal/sdk
+<pre class="bg-[#0b0f14] text-[#e2e8f0] rounded-xl p-6 text-sm leading-relaxed">npm install @sgraal/mcp
 
-const { SgraalClient } = require('@sgraal/sdk');
+const { SgraalClient } = require('@sgraal/mcp');
 const client = new SgraalClient({ apiKey: 'sg_demo_playground' });
 
 const result = await client.preflight({
@@ -447,9 +447,9 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">LangChain</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install langchain-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory validator</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">mem0</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install mem0-sgraal</code><p class="text-slate-500 text-xs">Preflight hook for mem0 memories</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">OpenAI Agents SDK</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install openai-sgraal</code><p class="text-slate-500 text-xs">Preflight hook for message history</p></div>
-        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">CrewAI</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install crewai-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory guard for CrewAI agents</p></div>
-        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">AutoGen</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install autogen-sgraal</code><p class="text-slate-500 text-xs">Context validation middleware for AutoGen</p></div>
-        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">RAG Filter</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install sgraal-rag</code><p class="text-slate-500 text-xs">Pipeline filter for LangChain and LlamaIndex</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">CrewAI <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">beta</span></p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install crewai-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory guard for CrewAI agents</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">AutoGen <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">beta</span></p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install autogen-sgraal</code><p class="text-slate-500 text-xs">Context validation middleware for AutoGen</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">RAG Filter <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">beta</span></p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install sgraal-rag</code><p class="text-slate-500 text-xs">Pipeline filter for LangChain and LlamaIndex</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">MCP Server</p><code class="text-xs font-mono text-[#c9a962] block mb-1">npm install @sgraal/mcp</code><p class="text-slate-500 text-xs">Claude Desktop, Cursor, Windsurf</p></div>
       </div>
     </section>
