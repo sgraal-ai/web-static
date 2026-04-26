@@ -361,38 +361,43 @@
 </div>
 <div class="quickstart-content hidden" id="content-python">
 <h3 class="text-xl font-bold mb-4 text-obsidian">Python SDK</h3>
-<p class="text-on-surface-variant mb-6 text-sm">Integrate Sgraal directly into your Pythonic agent workflows.</p>
+<p class="text-on-surface-variant mb-6 text-sm">Plain strings in, plain English out. One call.</p>
 <pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">import <span class="text-gold">sgraal</span>
 
-sg = sgraal.<span class="text-gold">Client</span>("<span class="text-gold">API_KEY</span>")
-ok, report = sg.<span class="text-gold">evaluate</span>(intent="update_schema")</pre>
+sg = sgraal.<span class="text-gold">Client</span>("<span class="text-gold">sg_live_...</span>")
+result = sg.<span class="text-gold">check</span>([
+    <span class="text-gold">"Deploy target is production"</span>,
+    <span class="text-gold">"API key is sk-proj-abc123"</span>
+])
+
+print(result[<span class="text-gold">"safe"</span>])    <span class="text-on-surface-variant"># False</span>
+print(result[<span class="text-gold">"reason"</span>])  <span class="text-on-surface-variant"># "Memory contains a likely secret (API key)."</span></pre>
 </div>
 
 <div class="quickstart-content hidden" id="content-node">
-<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js SDK</h3>
-<p class="text-on-surface-variant mb-6 text-sm">Use Sgraal in your Node.js or TypeScript agent projects.</p>
-<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">npm install @sgraal/sdk
+<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Same simple interface. Plain strings in, plain English out.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">const { <span class="text-gold">SgraalClient</span> } = require(<span class="text-gold">'@sgraal/mcp'</span>);
+const sg = new <span class="text-gold">SgraalClient</span>(<span class="text-gold">'sg_live_...'</span>);
 
-const sgraal = require('@sgraal/sdk');
-const sg = new sgraal.Client('API_KEY');
-const { decision } = await sg.evaluate({
-  intent: 'delete_user_data',
-  context: 'Agent requested cleanup'
-});
-console.log(decision); // BLOCK</pre>
+const result = await sg.<span class="text-gold">check</span>([
+    <span class="text-gold">"Customer approved for $50k credit line"</span>,
+    <span class="text-gold">"Last review was 18 months ago"</span>
+]);
+
+console.log(result.<span class="text-gold">safe</span>);    <span class="text-on-surface-variant">// false</span>
+console.log(result.<span class="text-gold">reason</span>);  <span class="text-on-surface-variant">// "Stale data — review older than policy threshold."</span></pre>
 </div>
 <div class="quickstart-content hidden" id="content-rest">
 <h3 class="text-xl font-bold mb-4 text-obsidian">REST API</h3>
-<p class="text-on-surface-variant mb-6 text-sm">Call Sgraal directly via HTTPS from any language or platform.</p>
-<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">curl -X POST https://api.sgraal.com/v1/preflight \
-  -H "Authorization: Bearer sg_demo_playground" \
+<p class="text-on-surface-variant mb-6 text-sm">Call /v1/check directly — no SDK required, any language.</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian">curl -X POST https://api.sgraal.com<span class="text-gold">/v1/check</span> \
+  -H <span class="text-gold">"Authorization: Bearer sg_demo_playground"</span> \
   -H "Content-Type: application/json" \
-  -d '{
-    "memory_state": [{"id": "mem_001", "type": "tool_state",
-      "timestamp_age_days": 54, "source_trust": 0.6}],
-    "action_type": "irreversible",
-    "domain": "fintech"
-  }'</pre>
+  -d <span class="text-gold">'{"memories": ["Deploy target is production",
+                  "API key is sk-proj-abc123"]}'</span>
+
+<span class="text-on-surface-variant"># {"safe": false, "reason": "Memory contains a likely secret (API key)."}</span></pre>
 </div>
 </div>
 </div>
