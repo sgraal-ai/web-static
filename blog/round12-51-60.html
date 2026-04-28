@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Round 12: 51/60 and the 9 Cases That Taught Us Our Ceiling Was Wrong — Sgraal Blog</title>
+<meta name="description" content="Round 12 adversarial benchmark result: 51/60 (85.0%) exact match, 24/24 BLOCK preserved. The honest accounting of what we shipped, what we learned, and why our ceiling prediction was wrong.">
+<link rel="canonical" href="https://sgraal.com/blog/round12-51-60">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; } h1,h2,h3 { font-family: 'Manrope', sans-serif; }</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/standard">Standard</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+
+<article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+
+<div class="mb-8">
+  <a href="/blog" class="text-sm text-[#c9a962] hover:underline">&larr; All posts</a>
+</div>
+
+<div class="flex items-center gap-3 mb-6">
+  <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Benchmark</span>
+  <span class="text-slate-400 text-xs">&middot;</span>
+  <span class="text-slate-500 text-xs">April 2026</span>
+</div>
+
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Round 12: 51/60 and the 9 Cases That Taught Us Our Ceiling Was Wrong</h1>
+
+<p class="text-slate-500 text-lg mb-12 leading-relaxed">When we wrote the Round 12 ceiling analysis three weeks ago, we predicted 54/60 was the realistic near-term maximum. We were wrong.</p>
+
+<div class="prose prose-slate max-w-none text-[#374151] leading-relaxed space-y-8">
+
+<p>The actual ceiling &mdash; measured against the live API after two surgical fixes &mdash; is <strong>51/60</strong>. The 3-case gap between our prediction and reality came from a category mistake: we counted as &ldquo;fixable contradictions&rdquo; what turned out to be three different failure modes wearing the same costume.</p>
+
+<p>This post is the honest accounting. What we shipped, what we learned, and why we&rsquo;re publishing the broken assumption alongside the working result.</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The headline</h2>
+
+<ul class="list-disc pl-6 space-y-2">
+  <li><strong>Round 12 result: 51/60 (85.0%) exact match</strong> on the live API</li>
+  <li><strong>24/24 hard BLOCK preserved</strong> (zero false negatives on critical attack cases)</li>
+  <li><strong>Wilson 95% CI: [73.9%, 91.9%]</strong></li>
+  <li><strong>Two patches shipped in 5 days</strong> (CC-016 staleness override, CC-012 correction marker)</li>
+  <li><strong>R2 F1 = 1.000, R3 F1 unchanged</strong> (no regression on prior rounds)</li>
+</ul>
+
+<p>Round 12 is the most adversarial corpus we&rsquo;ve tested against. 60 cases across three attack vectors:</p>
+
+<ul class="list-disc pl-6 space-y-2">
+  <li><strong>CC (Confidence Calibration)</strong>: 20 cases &mdash; fresh entries with stale neighbors, false consensus, contradicted history</li>
+  <li><strong>PS (Provenance Sync)</strong>: 20 cases &mdash; cross-agent timestamp drift, sync bleed, version skew</li>
+  <li><strong>PA (Provenance Asymmetry)</strong>: 20 cases &mdash; chain-of-custody violations, identity drift, attribution gaps</li>
+</ul>
+
+<p>The corpus is public: <a href="https://github.com/sgraal-ai/core/tree/main/tests/corpus/round12" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core/tree/main/tests/corpus/round12</a></p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What we shipped</h2>
+
+<p>Two surgical patches between April 26 and 27.</p>
+
+<h3 class="font-bold text-[#0B0F14] mb-2">CC-016 &mdash; staleness &times; action_type override</h3>
+
+<p>The original failure: a fintech agent with action_type <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">irreversible</code> reads a memory entry that&rsquo;s 2 days old (within normal staleness threshold), but the entry is <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">tool_state</code> &mdash; a category that decays faster. Our system returned USE_MEMORY with omega 67. The corpus said it should have escalated to ASK_USER.</p>
+
+<p>The fix: when action_type equals irreversible AND entry_type equals tool_state AND domain-specific threshold exceeded, force escalation regardless of base omega. Domain thresholds: fintech 1.5 days, medical 3.5 days for irreversible actions on tool_state.</p>
+
+<p>The fix added 16 lines. It moved Round 12 from 49 to 50.</p>
+
+<h3 class="font-bold text-[#0B0F14] mb-2">CC-012 &mdash; correction marker awareness</h3>
+
+<p>The original failure: a memory entry contains explicit correction language &mdash; <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">CORRECTION</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">NOT X</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">ACTUALLY</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">FIXED</code> &mdash; but our system treated the entry like any other potential conflict.</p>
+
+<p>The fix: regex-detect correction markers, apply a 35% omega discount when the marker is present, and suppress the SUSPICIOUS flag on confidence calibration for these specific cases.</p>
+
+<p>The fix added 46 lines. It moved Round 12 from 50 to 51.</p>
+
+<p>Both fixes preserved 24/24 hard BLOCK and didn&rsquo;t regress any prior round.</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Where we got the ceiling wrong</h2>
+
+<p>Three weeks ago we wrote a document called <em>r12_theoretical_ceiling.md</em>. It claimed 5 of the 11 remaining mismatches were contradiction cases that contradiction detection could resolve. Realistic near-term ceiling: 54/60.</p>
+
+<p>That&rsquo;s the sentence that turned out to be wrong.</p>
+
+<p>When we actually inventoried the 11 cases &mdash; case by case, root cause by root cause &mdash; the breakdown was:</p>
+
+<ul class="list-disc pl-6 space-y-2">
+  <li><strong>1 real contradiction</strong> (CC-012). Fixed by Option A.</li>
+  <li><strong>3 enrichment-driven cases</strong> (CC-009, CC-010, CC-019). These look like contradictions but the actual failure is that our enrichment pipeline inflates omega on structurally ambiguous entries. Fixing the enrichment layer breaks Round 3 detection. Risk too high.</li>
+  <li><strong>1 staleness &times; action_type case</strong> (CC-016). Fixed by Option C.</li>
+  <li><strong>4 semantic cases</strong> (CC-004, CC-007, CC-008, CC-011). These need actual language understanding &mdash; claim extraction and entailment checking. Beyond what our metadata-only system can do.</li>
+  <li><strong>2 architectural invariants</strong> (PA-002, PA-009). These are by design &mdash; the security-monotonic guarantees that say MANIPULATED never downgrades.</li>
+</ul>
+
+<p>The category we got wrong was the enrichment-driven cases. They look like contradictions because the entries describe different states of the world. But the failure mode is in the scoring pipeline, not in the contradiction detection logic.</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Why we&rsquo;re publishing the wrong prediction</h2>
+
+<p>Two reasons.</p>
+
+<p><strong>First, the prediction was a falsifiable claim.</strong> We said 54. We got 51. The honest move is to publish both numbers.</p>
+
+<p><strong>Second, the category mistake itself is interesting.</strong> The fact that three cases looked like one category and turned out to be three different categories is exactly the kind of failure mode that benchmark-driven development is supposed to catch. If we&rsquo;d shipped the enrichment refactor without inventorying the cases first, we&rsquo;d have hit a Round 3 regression that would have cost more than the 3 points we&rsquo;d have gained.</p>
+
+<p>The discipline of writing down what you predict before you fix it &mdash; and then publishing the gap between prediction and result &mdash; is what separates engineering from marketing.</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What 51/60 actually means</h2>
+
+<p>The 9 remaining mismatches sit at the metadata boundary:</p>
+
+<ul class="list-disc pl-6 space-y-2">
+  <li><strong>3 enrichment-driven</strong>: scoring pipeline structural issue, deferred to a dedicated refactor sprint</li>
+  <li><strong>4 semantic</strong>: require LLM-grade language understanding (claim extraction, entailment) &mdash; a separate layer</li>
+  <li><strong>2 architectural invariants</strong>: security-monotonic by design, won&rsquo;t change</li>
+</ul>
+
+<p>Ceiling for the current architecture: <strong>51/60 = 85.0%</strong>. To go higher requires either adding LLM-grade semantic understanding (~55/60), refactoring the enrichment pipeline (~54/60 with high regression risk), or relaxing architectural invariants (we won&rsquo;t).</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The 9 cases, named</h2>
+
+<p>For anyone running their own validation:</p>
+
+<h3 class="font-bold text-[#0B0F14] mb-2">Enrichment-driven (deferred)</h3>
+<ul class="list-disc pl-6 space-y-1 text-sm">
+  <li>CC-009: medication switch with stale neighbors</li>
+  <li>CC-010: fresh entry with corroborating-but-stale evidence</li>
+  <li>CC-019: 3-source corroboration false positive</li>
+</ul>
+
+<h3 class="font-bold text-[#0B0F14] mb-2 mt-4">Semantic (requires LLM layer)</h3>
+<ul class="list-disc pl-6 space-y-1 text-sm">
+  <li>CC-004: progressive language softening</li>
+  <li>CC-007: implicit supersession</li>
+  <li>CC-008: temporal sequence without explicit markers</li>
+  <li>CC-011: indirect contradiction</li>
+</ul>
+
+<h3 class="font-bold text-[#0B0F14] mb-2 mt-4">Architectural (by design)</h3>
+<ul class="list-disc pl-6 space-y-1 text-sm">
+  <li>PA-002: identity claim with no provenance, MANIPULATED preserved</li>
+  <li>PA-009: cross-agent attribution gap, BLOCK preserved</li>
+</ul>
+
+<p>Each one has a story. Each one is honest about why our system fails on it.</p>
+
+<h2 class="text-2xl font-bold text-[#0B0F14] mb-3">The corpus is public</h2>
+
+<p><a href="https://github.com/sgraal-ai/core/tree/main/tests/corpus/round12" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core/tree/main/tests/corpus/round12</a></p>
+
+<p>Run it on your own stack. We expect divergent results &mdash; different scoring architectures will hit different walls. That&rsquo;s the point.</p>
+
+<p>The metadata gap is real, and it has a measurable boundary. 51/60 is where ours sits today.</p>
+
+<hr class="my-12 border-slate-200"/>
+
+<p class="text-sm text-slate-500"><em>This post is part of the Sgraal dual-stack benchmark series. See also: <a href="/blog/dual-stack-convergence" class="text-[#c9a962] hover:underline">Independent Stacks, Same Truth Signal</a> &middot; <a href="/blog/grok-benchmark" class="text-[#c9a962] hover:underline">Building a Joint Memory Governance Benchmark with Grok</a></em></p>
+
+</div>
+</article>
+</article>
+
+<footer class="bg-surface-container border-t border-black/[0.06]">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+<div class="col-span-2 md:col-span-3 lg:col-span-1">
+<span class="text-xl font-black text-obsidian mb-6 block">Sgraal</span>
+<p class="text-on-surface-variant mb-8 max-w-xs">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Product</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
+<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Resources</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/case-studies">Case Studies</a></li>
+<li><a class="hover:text-gold transition-colors" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-gold transition-colors" href="/latency">Latency</a></li>
+<li><a class="hover:text-gold transition-colors" href="/compatibility">Compatibility</a></li>
+<li><a class="hover:text-gold transition-colors" href="/roi">ROI Calculator</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Standards</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+</ul>
+<h5 class="text-gold-dark font-bold mb-6 mt-8">Integrations</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/integrations/conway">Conway</a></li>
+<li><a class="hover:text-gold transition-colors" href="/integrations/agentkit">AgentKit</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-6">Company</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-black/[0.06] py-8 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div>© 2026 Sgraal Protocol · Apache 2.0. Memory Governance Protocol for AI agents.</div>
+<div class="flex items-center gap-2">
+            Made for the agentic era.
+            <span class="w-2 h-2 rounded-full bg-gold/40"></span>
+</div>
+</div>
+</footer>
+</body></html>
