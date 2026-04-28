@@ -88,7 +88,7 @@ pre { overflow-x: auto; }
         <nav class="space-y-1">
           <a href="#quickstart" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Quick Start (5 min)</a>
           <a href="#concepts" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Core Concepts</a>
-          <a href="#memcube" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MemCube v2 Schema</a>
+          <a href="#memcube" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MemCube v4.1 Schema</a>
           <a href="#smrs" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SMRS v1.0 Score</a>
           <a href="#sdks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SDK Quick Reference</a>
           <a href="#auth" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Authentication</a>
@@ -108,7 +108,7 @@ pre { overflow-x: auto; }
       <div>
         <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Reference</p>
         <nav class="space-y-1">
-          <a href="/docs/api" class="block text-sm font-semibold text-[#c9a962] py-1">API Reference (166+ endpoints) →</a>
+          <a href="/docs/api" class="block text-sm font-semibold text-[#c9a962] py-1">API Reference (356 endpoints) →</a>
         </nav>
       </div>
     </div>
@@ -286,7 +286,7 @@ console.log(result.recommended_action); // BLOCK</pre>
         </div>
         <div class="bg-[#f5f4f0] rounded-xl p-6">
           <h3 class="font-bold text-lg mb-2">Detection Layers (Rounds 6–8)</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-3">Three independent post-reconciliation detection layers. Each fires independently. MANIPULATED always forces BLOCK.</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-3">Six independent post-reconciliation detection layers. Each fires independently. MANIPULATED always forces BLOCK.</p>
           <div class="font-mono text-sm space-y-2 text-slate-600">
             <div><span class="text-[#c9a962]">timestamp_integrity</span> — VALID | SUSPICIOUS | MANIPULATED. Detects timestamp forgery: old decisions disguised as fresh.</div>
             <div><span class="text-[#c9a962]">identity_drift</span> — CLEAN | SUSPICIOUS | MANIPULATED. Detects gradual authority escalation across agent hops.</div>
@@ -298,10 +298,10 @@ console.log(result.recommended_action); // BLOCK</pre>
       </div>
     </section>
 
-    <!-- MemCube v2 -->
+    <!-- MemCube v4.1 -->
     <section id="memcube" class="mb-16 scroll-mt-24 bg-[#faf9f6] -mx-8 px-8 py-12 rounded-xl">
-      <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">MemCube v2 — Memory Entry Schema</h2>
-      <p class="text-[#374151] mb-6">The standardized format for AI agent memory entries. All Sgraal endpoints accept MemCube v2 formatted memory states.</p>
+      <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">MemCube v4.1 — Memory Entry Schema</h2>
+      <p class="text-[#374151] mb-6">The standardized format for AI agent memory entries. All Sgraal endpoints accept MemCube v4.1 formatted memory states.</p>
 
       <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Required Fields</h3>
       <div class="overflow-x-auto mb-6">
@@ -350,7 +350,7 @@ console.log(result.recommended_action); // BLOCK</pre>
     <!-- SMRS v1.0 -->
     <section id="smrs" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">SMRS v1.0 — Memory Risk Score</h2>
-      <p class="text-[#374151] mb-6">Formal 0-100 risk score computed from 10 components. Determines the preflight decision.</p>
+      <p class="text-[#374151] mb-6">Formal 0-100 risk score computed from 11 components. Determines the preflight decision.</p>
 
       <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Decision Thresholds</h3>
       <div class="overflow-x-auto mb-6">
