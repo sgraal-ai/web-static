@@ -1,0 +1,25 @@
+{
+  "name": "Sgraal",
+  "short_name": "Sgraal",
+  "description": "Memory governance for AI agents",
+  "icons": [
+    {
+      "src": "/favicon_32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon_48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1f1d1a",
+  "background_color": "#efeae0",
+  "display": "standalone"
+}
