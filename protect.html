@@ -153,7 +153,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">security</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Security Signals</h3>
-<p class="text-slate-600 leading-relaxed text-sm">poisoning_suspected: true — 3-signal combination. hallucination_risk: high — cyclic contradiction in memory graph. Circuit breaker triggers on sustained anomaly patterns (HTTP 429 Safety Block).</p>
+<p class="text-slate-600 leading-relaxed text-sm">poisoning_suspected: true — multi-signal correlation. hallucination_risk: high — semantic inconsistency detected. Circuit breaker triggers HTTP 429 Safety Block on repeated high-risk events; query state via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/circuit-breaker/status</code>.</p>
 <p class="text-xs italic text-slate-500 mt-2">Your agent acts on corrupted data — silently, repeatedly, without you knowing.</p>
 </div>
 <div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl hover:border-[#c9a962]/20 border border-transparent transition-all">
@@ -161,7 +161,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">shield</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Write-time Protection</h3>
-<p class="text-slate-600 leading-relaxed text-sm">Write firewall: blocks poisoned data before storage — prevention not detection. Sleeper detector: proactive scan for dormant trigger conditions.</p>
+<p class="text-slate-600 leading-relaxed text-sm">Write firewall: blocks poisoned data before storage — prevention not detection. Configure namespace rules and review violations via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/rules</code> and <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/violations</code>. Sleeper detector: proactive scan for dormant trigger conditions.</p>
 <p class="text-xs italic text-slate-500 mt-3">Never store poisoned memory. Ever.</p>
 <p class="text-xs italic text-slate-500 mt-2">Most tools detect after storage. Sgraal blocks before it ever enters memory.</p>
 </div>
@@ -170,7 +170,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">lock</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Legal & Cryptographic Layer</h3>
-<p class="text-slate-600 leading-relaxed text-sm">Memory Forensics: full incident trace. Black Box Recorder: tamper-evident capsule for every BLOCK. ZK Validation: omega score computed without content leaving your system.</p>
+<p class="text-slate-600 leading-relaxed text-sm">Memory Forensics: full incident trace via <code class="text-xs bg-white px-1.5 py-0.5 rounded">POST /v1/forensics/analyze</code> — submit any past request_id for forensic decomposition (which detection layers fired, which memory entries contributed, replay path). Black Box Recorder: tamper-evident capsule for every BLOCK. ZK Validation: omega score computed without content leaving your system.</p>
 <p class="text-xs italic text-slate-500 mt-2">Every threat is provable in court. Every block is auditable.</p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl hover:border-[#c9a962]/20 border border-transparent transition-all">
@@ -270,7 +270,6 @@ print(preflight.recommended_action)    # BLOCK</pre>
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
 <li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
-<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>

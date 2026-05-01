@@ -155,7 +155,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">receipt_long</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Audit Trail & Last Will</h3>
-<p class="text-slate-600 text-sm leading-relaxed">Tamper-proof audit log with SHA256 chain. Memory Last Will: GDPR + EU AI Act 10-year retention — ensures your audit data survives the full regulatory retention period. SIEM export.</p>
+<p class="text-slate-600 text-sm leading-relaxed">Tamper-proof audit log with SHA256 chain. Two API calls: <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/audit-log/chain-verify</code> answers "is the chain intact"; <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/audit-log/export</code> returns the full hash-chained log. Memory Last Will: GDPR + EU AI Act 10-year retention — ensures your audit data survives the full regulatory retention period. SIEM export.</p>
 <p class="text-xs italic text-slate-500 mt-2">Every decision is provable. Every audit is survivable.</p>
 </div>
 <div class="md:col-span-6 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
@@ -163,7 +163,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">verified_user</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Conformity Declaration</h3>
-<p class="text-slate-600 text-sm leading-relaxed">Auto-generated EU AI Act conformity declaration. Article-level evidence mapping. Ready for regulatory submission.</p>
+<p class="text-slate-600 text-sm leading-relaxed">Auto-generated EU AI Act conformity declaration via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/compliance/eu-ai-act/declaration</code>. Article-level evidence mapping. Ready for regulatory submission.</p>
 <p class="text-xs italic text-slate-500 mt-2">Submit to regulators in minutes. Not months.</p>
 </div>
 </div>
@@ -191,16 +191,28 @@ print(result.compliance_result.violations)
 # ["Article 9: risk management system required",
 #  "Article 13: transparency obligation"]
 
-# Generate compliance report via REST
+# Two compliance endpoints, two purposes:
+#   /report      — ongoing monitoring snapshot (decision counts, violation rates)
+#   /declaration — formal one-time conformance artifact for regulator submission
+
 import requests
+headers = {"Authorization": "Bearer sg_live_..."}
+
+# Ongoing monitoring report
 resp = requests.get(
     "https://api.sgraal.com/v1/compliance/eu-ai-act/report",
-    headers={"Authorization": "Bearer sg_live_..."}
+    headers=headers
 )
-report = resp.json()
+monitoring = resp.json()
+
+# Formal conformance declaration (Article-level evidence mapping)
+resp = requests.get(
+    "https://api.sgraal.com/v1/compliance/eu-ai-act/declaration",
+    headers=headers
+)
 with open("eu_ai_act_conformity.json", "w") as f:
     import json
-    json.dump(report, f, indent=2)</pre>
+    json.dump(resp.json(), f, indent=2)</pre>
 </div>
 </div>
 </div>
@@ -229,7 +241,6 @@ with open("eu_ai_act_conformity.json", "w") as f:
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
 <li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
-<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>

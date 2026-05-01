@@ -278,6 +278,21 @@
 </div>
 </div>
 </section>
+<!-- Continuous Calibration -->
+<section class="py-16 bg-white border-t border-black/[0.06]">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+<div class="md:col-span-6 bg-surface-dim p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all">
+<div class="bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">tune</span>
+</div>
+<h3 class="text-xl font-bold mb-3 tracking-tight">Continuous Calibration</h3>
+<p class="text-sm text-slate-600">Run the built-in adversarial corpus against your current configuration on demand and queue edge cases for human review. <code class="text-xs bg-white px-1.5 py-0.5 rounded">POST /v1/calibration/run</code> kicks off a run; <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/calibration/report</code> returns the latest results; <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/calibration/human-review</code> surfaces flagged cases; <code class="text-xs bg-white px-1.5 py-0.5 rounded">POST /v1/calibration/resolve/{case_id}</code> closes them.</p>
+<p class="text-sm text-slate-500 italic mt-3">Threshold tuning with a human-in-the-loop queue. Not a one-time benchmark.</p>
+</div>
+</div>
+</div>
+</section>
 <!-- Demo Key Section -->
 <section class="py-12 bg-white text-center">
 <div class="max-w-4xl mx-auto px-6">
@@ -424,7 +439,6 @@ console.log(result.recommended_action); // BLOCK</pre>
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
 <li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
-<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>

@@ -110,10 +110,6 @@
 <div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/cross-agent-check</code></div>
 <p class="text-slate-500 text-sm">Multi-agent conflict detection with anti-consensus safeguard.</p>
 </div>
-<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
-<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/court/arbitrate</code></div>
-<p class="text-slate-500 text-sm">Formal arbitration with Z3 verification. overridable: false.</p>
-</div>
 </div>
 </section>
 
@@ -121,14 +117,6 @@
 <section class="mb-12">
 <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Memory Management</h2>
 <div class="space-y-3">
-<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
-<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/memory/passport/export</code></div>
-<p class="text-slate-500 text-sm">Cryptographically signed memory snapshot. 3 TTL levels: ephemeral/standard/archival.</p>
-</div>
-<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
-<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/memory/passport/{id}/verify</code></div>
-<p class="text-slate-500 text-sm">Verify passport signature integrity.</p>
-</div>
 <div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
 <div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/audit-log</code></div>
 <p class="text-slate-500 text-sm">Decision audit trail with timestamp + omega mapping.</p>
@@ -155,6 +143,97 @@
 </div>
 </section>
 
+<!-- Audit Log -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Audit Log</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/audit-log/chain-verify</code></div>
+<p class="text-slate-500 text-sm">Verify cryptographic integrity of the SHA256-chained audit log. Returns the verified-up-to entry id and the first divergence point if any.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/audit-log/export</code></div>
+<p class="text-slate-500 text-sm">Export the full hash-chained log. <code>?format=json</code> | <code>cef</code> | <code>leef</code>. Each record carries the prior-hash for independent re-verification.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/audit-log/verify</code></div>
+<p class="text-slate-500 text-sm">Verify a single audit entry's signature and chain position by id.</p>
+</div>
+</div>
+</section>
+
+<!-- Compliance -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Compliance</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/compliance/eu-ai-act/declaration</code></div>
+<p class="text-slate-500 text-sm">Generate an EU AI Act conformity declaration scoped to your account. Article-level evidence mapping based on system risk classification. JSON output suitable for regulator submission.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/compliance/sla</code></div>
+<p class="text-slate-500 text-sm">SLA report for the current billing period. Latency, availability, decision counts.</p>
+</div>
+</div>
+</section>
+
+<!-- Forensics -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Forensics</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/forensics/analyze</code></div>
+<p class="text-slate-500 text-sm">Forensic decomposition of a past preflight decision. Body: <code>{"request_id": "..."}</code>. Returns: detection layers fired, memory entries contributing to the decision, replay path, and a stable forensics_id.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/forensics/{forensics_id}/report</code></div>
+<p class="text-slate-500 text-sm">Retrieve a previously-generated forensic report by id.</p>
+</div>
+</div>
+</section>
+
+<!-- Calibration -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Calibration</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/calibration/run</code></div>
+<p class="text-slate-500 text-sm">Trigger a calibration run against the built-in adversarial corpus using your account's current configuration.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/calibration/report</code></div>
+<p class="text-slate-500 text-sm">Returns the most recent calibration report.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/calibration/human-review</code></div>
+<p class="text-slate-500 text-sm">Cases the calibration run flagged for human review.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">POST</span><code class="font-mono text-sm font-semibold">/v1/calibration/resolve/{case_id}</code></div>
+<p class="text-slate-500 text-sm">Mark a human-review case as resolved with a decision label.</p>
+</div>
+</div>
+</section>
+
+<!-- Runtime Safety -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold mb-4 pb-2 border-b border-slate-200">Runtime Safety</h2>
+<div class="space-y-3">
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/firewall/rules</code></div>
+<p class="text-slate-500 text-sm">List per-namespace write firewall rules. <code>POST</code> to upsert, <code>DELETE /v1/firewall/rules/{namespace}</code> to remove.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/firewall/violations</code></div>
+<p class="text-slate-500 text-sm">Recent write firewall violations. Pagination via <code>?limit=</code> and <code>?cursor=</code>.</p>
+</div>
+<div class="bg-[#faf9f6] rounded-lg p-4 border border-[#e5e7eb]">
+<div class="flex items-center gap-3 mb-1"><span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">GET</span><code class="font-mono text-sm font-semibold">/v1/circuit-breaker/status</code></div>
+<p class="text-slate-500 text-sm">Current circuit breaker state per agent and per cross-domain rule. Includes which agents are currently blocked and remaining cooldown.</p>
+</div>
+</div>
+</section>
+
 <div class="bg-[#faf9f6] rounded-xl p-6 text-center border border-[#e5e7eb]">
 <p class="text-slate-500 text-sm mb-3">Full interactive documentation with request/response examples:</p>
 <a href="https://api.sgraal.com/docs" target="_blank" class="inline-block bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#b8973f] transition-all">Open Swagger UI &rarr;</a>
@@ -175,7 +254,6 @@
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
 <li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
-<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>

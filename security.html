@@ -123,27 +123,6 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </section>
 
 <section>
-<h2 class="text-2xl font-bold mb-4">Court Arbitration</h2>
-<p class="text-slate-600 leading-relaxed mb-3">Z3 SMT formal verification for multi-agent conflicts. No probabilistic system can override a formal verdict.</p>
-<div class="bg-[#f5f4f0] rounded-xl p-6 mb-3">
-<code class="text-sm font-mono text-[#c9a962]">POST /v1/court/arbitrate</code>
-<ul class="text-slate-500 text-sm mt-2 space-y-1">
-<li>overridable: false</li>
-<li>verdict_id + z3_proof in every response</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2 class="text-2xl font-bold mb-4">Memory Passport</h2>
-<p class="text-slate-600 leading-relaxed mb-3">Cryptographically signed memory snapshots. Verifiable by any Sgraal instance.</p>
-<div class="bg-[#f5f4f0] rounded-xl p-6 mb-3">
-<code class="text-sm font-mono text-[#c9a962]">POST /v1/memory/passport/export</code>
-<p class="text-slate-500 text-sm mt-2">3 TTL levels: ephemeral (5min), standard (1h), archival (30d)</p>
-</div>
-</section>
-
-<section>
 <h2 class="text-2xl font-bold mb-4">Proof of Decision</h2>
 <p class="text-slate-600 leading-relaxed mb-3">Every preflight response includes cryptographic proof fields.</p>
 <ul class="text-slate-600 text-sm space-y-1 ml-4 list-disc">
@@ -202,7 +181,6 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
 <li><a class="hover:text-gold transition-colors" href="/propagation">Propagation Guard</a></li>
-<li><a class="hover:text-gold transition-colors" href="/passport">Memory Passport</a></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>
