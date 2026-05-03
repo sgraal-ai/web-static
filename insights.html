@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Sgraal | 11 metrics for AI memory health</title>
+<meta name="description" content="Beyond verdict: Sgraal's preflight returns 11 derived diagnostics so you know not just whether memory is safe, but how it's drifting."/>
+<meta property="og:title" content="11 metrics for AI memory health — Sgraal"/>
+<meta property="og:description" content="Beyond verdict: Sgraal's preflight returns 11 derived diagnostics so you know not just whether memory is safe, but how it's drifting."/>
+<meta property="og:url" content="https://sgraal.com/insights"/>
+<meta property="og:type" content="website"/>
+<link rel="canonical" href="https://sgraal.com/insights"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Manrope', sans-serif; }
+  .metric-card { transition: all 0.2s; }
+  .metric-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(201,169,98,0.15); }
+  .gold { color: #c9a962; }
+  .gold-bg { background: #c9a962; }
+</style>
+</head>
+<body class="bg-white text-slate-900">
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/insights">Insights</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+</div>
+<a href="https://app.sgraal.com" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-16 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">INSIGHTS</span>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-6 leading-[1.1]">
+11 metrics for AI memory health
+</h1>
+<p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+Sgraal's preflight returns more than verdict. Eleven derived diagnostics surface the <em>why</em> behind every decision and reveal where memory is drifting before it becomes a failure mode.
+</p>
+</div>
+</section>
+
+<!-- Metrics grid -->
+<section class="px-6 pb-20">
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">01.</span> Days until block</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> projected runway before memory drift forces a BLOCK decision, with confidence interval.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> early-warning signal — schedule maintenance ahead of operational impact.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> if &lt; 7 days, queue refresh / heal / re-source.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">02.</span> Confidence calibration</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> whether stated confidence matches actual reliability of the underlying memory.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> overconfident memory is the leading silent failure mode for autonomous agents.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> on OVERCONFIDENT flag, require explicit user confirmation before irreversible action.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">03.</span> Knowledge age</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> wall-clock age of the memory entries the decision relied on.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> reasoning quality decays with stale data. Some domains tolerate weeks; others minutes.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> tune per-domain freshness threshold; alert when crossed.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">04.</span> Top-ROI heal</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> which single memory entry yields the largest decision improvement if healed.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> healing is not free; the metric prioritizes the one entry where intervention buys the most safety.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> automate refresh of the flagged entry; defer others.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">05.</span> Fleet health distance</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> how this agent's memory profile compares to the fleet aggregate distribution.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> outliers are early signals of either compromise or genuinely novel context.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> investigate agents whose distance grows monotonically; consider quarantine.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">06.</span> Memory complexity trend</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> direction and rate of change in the structural complexity of recent memory.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> rising complexity without rising relevance indicates accumulation without curation.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> trigger MVMem retention sweep when trend stays positive across 7+ calls.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">07.</span> Decision cost asymmetry</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> relative cost of false-allow vs false-block for the current action and domain.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> a 1% false-allow on a $5M wire transfer is not the same as 1% on a chat reply.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> auto-tune your local approval workflow to match.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">08.</span> Single point of failure</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> the entry whose removal would change the decision most — and the score quantifying it.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> a decision driven by one source is fragile. Diversification is the fix.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> add corroborating sources before acting; or accept the risk consciously.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">09.</span> Monoculture risk</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> diversity of provenance + structural independence of supporting evidence.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> three sources that all trace back to the same root agent are one source wearing three hats.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> on HIGH, require human approval before irreversible action.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">10.</span> Insight summary</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> compact narrative explanation of the decision in plain English.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> compliance teams, end users, and operators all need an explainability surface — not raw scores.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> include in audit trail; surface to end-user UI on ASK_USER decisions.</p>
+</div>
+
+<div class="metric-card border border-slate-200 rounded-xl p-6 bg-white">
+<h3 class="text-lg font-bold mb-2"><span class="gold">11.</span> Knowledge age confidence interval</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>What it measures:</strong> uncertainty bounds on the days-until-block estimate.</p>
+<p class="text-sm text-slate-700 mb-2"><strong>Why it matters:</strong> a point estimate of "5 days" with ±0.5 day CI is actionable; ±10 day CI is not.</p>
+<p class="text-xs text-slate-500"><strong>Customer action:</strong> only act on the projection when CI width is below your domain threshold.</p>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 pb-24">
+<div class="max-w-3xl mx-auto bg-slate-50 rounded-2xl p-10 text-center">
+<h2 class="text-3xl font-bold mb-4">All 11 in every preflight response</h2>
+<p class="text-slate-600 mb-6">No additional API calls. No additional latency. Open the response, read the metrics that matter for your domain.</p>
+<div class="flex justify-center gap-4 flex-wrap">
+<a href="/decide" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">See preflight</a>
+<a href="/blog" class="border border-slate-300 text-slate-700 px-8 py-3 rounded-lg font-semibold hover:bg-white transition-all">Read more</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-slate-200 px-6 py-12">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-slate-500">© 2026 Sgraal. Memory governance for AI agents.</p>
+<div class="flex gap-6 text-sm font-medium">
+<a class="text-slate-600 hover:text-[#c9a962]" href="/security">Security</a>
+<a class="text-slate-600 hover:text-[#c9a962]" href="/comply">Compliance</a>
+<a class="text-slate-600 hover:text-[#c9a962]" href="/changelog">Changelog</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
