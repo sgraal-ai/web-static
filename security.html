@@ -155,6 +155,37 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </section>
 
+<!-- #916 Bit-identical replay enterprise framing -->
+<section>
+<h2 class="text-2xl font-bold mb-4">Bit-identical replay for legal admissibility</h2>
+<p class="text-slate-700 mb-4">Every Sgraal decision can be replayed bit-identically months or years later, given the same input and the same scoring configuration. This is not a marketing claim — it is a measured property of the production scoring engine, validated by audit and exposed via the public API.</p>
+
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">What it provides</h3>
+<p class="text-sm text-slate-700">A regulator, auditor, or counter-party can request the original decision be re-run. With the same memory state, action context, and scoring configuration fingerprint, Sgraal returns the same decision, the same risk score, and the same explanation — within the floating-point precision of the runtime.</p>
+</div>
+<div class="bg-[#f5f4f0] rounded-xl p-6">
+<h3 class="font-bold mb-2">Why it matters for regulated industries</h3>
+<p class="text-sm text-slate-700">Fintech, medical, legal, and defense customers face regulators who can subpoena the basis for any automated decision. Without bit-identical replay, "the model said no" is unfalsifiable. With it, every decision is a reproducible experiment.</p>
+</div>
+</div>
+
+<div class="bg-[#f5f4f0] rounded-xl p-6 mb-6">
+<h3 class="font-bold mb-2">How it works (high level)</h3>
+<p class="text-sm text-slate-700 mb-2">Sgraal's primary scoring engine is per-call deterministic with calibrated constants. Same input plus same configuration produces the same output, every time, in any process. The configuration itself is fingerprinted via a public checksum so customers can verify which scoring regime was active when their decision was made.</p>
+<p class="text-sm text-slate-700">An explicit qualification: the guarantee holds in the absence of feedback events that update internal learning state. Customers needing strict per-call replay can opt in to a flag that disables the cross-call learning surface entirely. See our public determinism doc for the full contract.</p>
+</div>
+
+<div class="bg-[#f5f4f0] rounded-xl p-6 mb-6">
+<h3 class="font-bold mb-2">Sample legal use case</h3>
+<p class="text-sm text-slate-700 mb-2"><strong>Scenario:</strong> a regulator audits an automated underwriting decision from 18 months ago. The customer is asked to demonstrate that the decision was deterministic, explainable, and based on documented inputs.</p>
+<p class="text-sm text-slate-700"><strong>Sgraal-enabled response:</strong> the customer pulls the original memory state and action context from their audit log, calls Sgraal's preflight endpoint with the historical scoring configuration fingerprint, and produces the same decision, score, and decision-trail attribution as the original. The audit closes in hours rather than weeks of forensic reconstruction.</p>
+</div>
+
+<p class="text-slate-600 text-sm">Pairs with the <a class="text-[#c9a962] hover:underline" href="/comply">Comply</a> surface (NIST AI RMF MEASURE-4.1, EU AI Act Article 13 transparency, GDPR Article 22 right-to-explanation) and the <a class="text-[#c9a962] hover:underline" href="/insights">Insights</a> diagnostics that explain every decision.</p>
+</section>
+
 <section>
 <h2 class="text-2xl font-bold mb-4">Responsible Disclosure</h2>
 <div class="bg-[#f5f4f0] rounded-xl p-6">
