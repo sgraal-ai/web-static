@@ -62,222 +62,266 @@ th { text-align: left; }
 <section class="pt-40 pb-16 px-6 text-center">
 <div class="max-w-3xl mx-auto">
   <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">COMPATIBILITY</span>
-  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Works with every major AI framework.</h1>
-  <p class="text-slate-500 text-lg">Tested weekly via GitHub Actions.</p>
+  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Three ways to integrate Sgraal.</h1>
+  <p class="text-slate-500 text-lg">Pip install a package, call an HTTP endpoint, or request a roadmap item.</p>
   <div class="flex justify-center gap-6 mt-8 text-sm text-slate-500 flex-wrap">
-    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>14 frameworks</span>
-    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>7 memory stores</span>
-    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>47 integrations</span>
-    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>All tested on every release</span>
+    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>27 production integrations</span>
+    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>27 on roadmap</span>
   </div>
 </div>
 </section>
 
-<!-- Framework compatibility -->
+<!-- Section 1: Package Integrations (Bucket A + A-CORRECT) -->
 <section class="py-16 px-6">
 <div class="max-w-5xl mx-auto">
-  <h2 class="text-2xl font-bold mb-8">AI Frameworks</h2>
+  <div class="flex items-baseline justify-between mb-3">
+    <h2 class="text-2xl font-bold">Package Integrations</h2>
+    <span class="inline-flex items-center gap-2 text-sm text-green-700"><span class="w-2 h-2 rounded-full bg-green-500"></span>✅ Tested</span>
+  </div>
+  <p class="text-slate-500 text-sm mb-8">Verified install commands. Each package below resolves on its named registry today.</p>
   <div class="overflow-x-auto rounded-xl border border-slate-200">
     <table>
       <thead class="bg-[#f5f4f0]">
         <tr>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Framework</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Status</th>
+          <th class="px-6 py-4 text-sm font-bold text-slate-700">Integration</th>
           <th class="px-6 py-4 text-sm font-bold text-slate-700">Package</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Install</th>
+          <th class="px-6 py-4 text-sm font-bold text-slate-700">Install command</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100">
         <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Python (canonical)</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Claude MCP</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">@sgraal/mcp</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">npx @sgraal/mcp</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">LangChain</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">langchain-sgraal</td>
           <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install langchain-sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">LangGraph</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">langchain-sgraal</td>
           <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install langchain-sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">LlamaIndex</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">llama-index-sgraal</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install llama-index-sgraal</td>
-        </tr>
-        <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">CrewAI</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">crewai-sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install crewai-sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">AutoGen</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">autogen-sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install autogen-sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">OpenAI Agents SDK</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">openai-sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install openai-sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">Mem0</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">mem0-sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install mem0-sgraal</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">RAG (general)</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal-rag</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal-rag</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">LlamaIndex</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal (canonical)</td>
           <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">Haystack</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">haystack-sgraal</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install haystack-sgraal</td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Semantic Kernel</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal (canonical)</td>
           <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">n8n</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">@sgraal/n8n</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">n8n plugin</td>
+          <td class="px-6 py-4 font-semibold">Semantic Kernel</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal (canonical)</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
         </tr>
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Dify</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">@sgraal/dify</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">Dify marketplace</td>
+          <td class="px-6 py-4 font-semibold">Sgraal CLI</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal (canonical)</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal &amp;&amp; sgraal --help</td>
         </tr>
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Vercel AI SDK</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">@sgraal/sdk</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">npm install @sgraal/sdk</td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Claude MCP</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">@sgraal/mcp</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">npx @sgraal/mcp</td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Zapier</td>
-          <td class="px-6 py-4"><span class="text-green-600 font-medium">✅ Tested</span></td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">Zapier app</td>
-          <td class="px-6 py-4 font-mono text-sm text-slate-500">Zapier marketplace</td>
+          <td class="px-6 py-4 font-semibold">Redis (built-in)</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal (canonical)</td>
+          <td class="px-6 py-4 font-mono text-sm text-slate-500">pip install sgraal</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <p class="text-slate-400 text-xs mt-3">Tested via GitHub Actions on every release.</p>
 </div>
 </section>
 
-<!-- Memory stores -->
+<!-- Section 2: API Integrations (Bucket B) -->
 <section class="py-16 px-6 bg-[#f5f4f0]">
 <div class="max-w-5xl mx-auto">
-  <h2 class="text-2xl font-bold mb-8">Memory Stores</h2>
+  <div class="flex items-baseline justify-between mb-3">
+    <h2 class="text-2xl font-bold">API Integrations</h2>
+    <span class="inline-flex items-center gap-2 text-sm text-green-700"><span class="w-2 h-2 rounded-full bg-green-500"></span>✅ Live</span>
+  </div>
+  <p class="text-slate-500 text-sm mb-8">No package needed — integrate via HTTP from any language or platform.</p>
   <div class="overflow-x-auto rounded-xl border border-slate-200">
     <table>
       <thead class="bg-white">
         <tr>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Store</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Status</th>
           <th class="px-6 py-4 text-sm font-bold text-slate-700">Integration</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Command</th>
+          <th class="px-6 py-4 text-sm font-bold text-slate-700">How it works</th>
+          <th class="px-6 py-4 text-sm font-bold text-slate-700">API endpoint</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-100 bg-white">
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">mnemos <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">MCP-native persistent memory for AI agents</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install mnemos-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Memvid <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Single-file AI memory layer, sub-ms retrieval</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install memvid-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">LlamaIndex <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Node validation before LLM generation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install llamaindex-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Semantic Kernel <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Microsoft Semantic Kernel memory validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install semantic-kernel-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Haystack <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Haystack (deepset) document validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install haystack-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">LangSmith <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Export preflight decisions as LangSmith traces</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install langsmith-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Langfuse <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Export preflight decisions as Langfuse traces</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install langfuse-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Vercel AI SDK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Context validation before AI generation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install vercel-ai-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Pydantic AI <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Agent message validation before action</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install pydantic-ai-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Google ADK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Google Agent Development Kit state validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install google-adk-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">LLM Wrapper <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Universal</td><td class="px-6 py-4 text-slate-500 text-sm">Drop-in wrapper for any LLM function</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal-llm-wrapper</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Normalizer <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Universal</td><td class="px-6 py-4 text-slate-500 text-sm">Cross-provider memory normalizer to MemCube</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal-normalizer</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">mngr (Imbue) <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Parallel agent inter-memory validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install mngr-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Conway <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Guide</td><td class="px-6 py-4 text-slate-500 text-sm">Always-on agent memory validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a href="/integrations/conway" class="underline">Integration guide</a></td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">AgentKit <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Guide</td><td class="px-6 py-4 text-slate-500 text-sm">17-subagent memory safety</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a href="/integrations/agentkit" class="underline">Integration guide</a></td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Amazon Bedrock <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Context + agent trace validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install bedrock-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Azure AI Foundry <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Message + tool result validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install azure-ai-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Zep <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Memory search result validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install zep-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Letta (MemGPT) <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Memory block validation</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install letta-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">n8n <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Community node with continue/blocked branches</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">n8n-nodes-sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">CLI <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Command-line preflight, score, verify, config</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal-cli</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Go SDK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Full Go client with Preflight + GovernanceScore</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">go get github.com/sgraal-ai/sgraal-go</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">A2A Protocol <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Google Agent-to-Agent protocol (JSON-RPC 2.0)</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">/.well-known/agent.json</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Dify <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Custom tool for Dify workflows</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sdk/dify/</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Langflow <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Custom component for Langflow</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sdk/langflow/</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Flowise <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Custom node for Flowise</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sdk/flowise/</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Java SDK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Java 11+ client (no external deps)</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">com.sgraal:sgraal-java</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Rust SDK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Async Rust client with reqwest</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">cargo add sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">.NET SDK <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">C# .NET 6.0+ client</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">dotnet add package Sgraal</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">VS Code <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Run preflight from editor selection</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal-ai.sgraal-vscode</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">gRPC <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">New</span></td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">gRPC interface with streaming support</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">api/proto/sgraal.proto</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Mem0</td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Direct integration</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal migrate-from-mem0</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Zep</td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Direct integration</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal migrate-from-zep</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Letta</td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Direct integration</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">sgraal migrate-from-letta</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Pinecone</td><td class="px-6 py-4 text-green-600 font-medium">✅ Sentinel</td><td class="px-6 py-4 text-slate-500 text-sm">Wrapper layer</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal[pinecone]</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Weaviate</td><td class="px-6 py-4 text-green-600 font-medium">✅ Sentinel</td><td class="px-6 py-4 text-slate-500 text-sm">Wrapper layer</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal[weaviate]</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Milvus</td><td class="px-6 py-4 text-green-600 font-medium">✅ Sentinel</td><td class="px-6 py-4 text-slate-500 text-sm">Wrapper layer</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal[milvus]</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Redis</td><td class="px-6 py-4 text-green-600 font-medium">✅ Native</td><td class="px-6 py-4 text-slate-500 text-sm">Built-in</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">Built-in</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Any vector DB</td><td class="px-6 py-4 text-green-600 font-medium">✅ Universal</td><td class="px-6 py-4 text-slate-500 text-sm">Universal adapter</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">REST API</td></tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Zapier</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Use the "Webhooks by Zapier" trigger pointing at this URL.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default/Configure_Zapier_v1_zapier_webhook_post">POST /v1/zapier/webhook</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Make.com</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">HTTP module → POST JSON. Returns the preflight verdict.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/make/webhook</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">A2A Protocol</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Google Agent-to-Agent (JSON-RPC). Discovery via well-known.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/.well-known/agent.json">GET /.well-known/agent.json</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">OpenAI function guard</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Wrap an OpenAI function call; Sgraal validates inputs first.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/guard/openai-function</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Claude tool guard</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Wrap a Claude tool-use turn; Sgraal validates the tool input.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/guard/claude-tool</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">RAG filter</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Filter retrieved nodes through Sgraal preflight before generation.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/rag/filter</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">gRPC interface</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">protoc-generate a client in any language. 4 RPCs incl. streaming.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">api/proto/sgraal.proto</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Postman collection</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Importable collection covering the public endpoints.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs/postman">GET /docs/postman</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Embed JS widget</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Single &lt;script src&gt; tag. Adds a Sgraal preflight to your app.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/v1/embed/sgraal-embed.js">GET /v1/embed/sgraal-embed.js</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Compliance Suite</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">EU AI Act, GDPR, NIST AI RMF, SLA, docs index.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/v1/compliance/docs">GET /v1/compliance/*</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Federation API</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Contribute / consume cross-tenant attack vaccines.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/federation/contribute</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">Conway</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">Always-on agent memory validation pattern.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="/integrations/conway">/integrations/conway</a></td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="px-6 py-4 font-semibold">AgentKit</td>
+          <td class="px-6 py-4 text-slate-500 text-sm">17-subagent memory safety pattern.</td>
+          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="/integrations/agentkit">/integrations/agentkit</a></td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
 </section>
 
-<!-- SDKs -->
+<!-- Section 3: On Roadmap (Bucket C) -->
 <section class="py-16 px-6">
 <div class="max-w-5xl mx-auto">
-  <h2 class="text-2xl font-bold mb-8">SDK Support</h2>
-  <div class="overflow-x-auto rounded-xl border border-slate-200">
-    <table>
-      <thead class="bg-[#f5f4f0]">
-        <tr>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Language</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Package</th>
-          <th class="px-6 py-4 text-sm font-bold text-slate-700">Min Version</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-slate-100">
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Python</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">pip install sgraal</td><td class="px-6 py-4 text-slate-500 text-sm">Python 3.9+</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Node.js / TypeScript</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">npm install @sgraal/sdk</td><td class="px-6 py-4 text-slate-500 text-sm">Node 18+</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Go</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">go get github.com/sgraal-ai/sgraal-go</td><td class="px-6 py-4 text-slate-500 text-sm">Go 1.21+</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Java</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">ai.sgraal:sdk:1.0</td><td class="px-6 py-4 text-slate-500 text-sm">Java 11+</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">Rust</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">cargo add sgraal</td><td class="px-6 py-4 text-slate-500 text-sm">Rust 1.70+</td></tr>
-        <tr class="hover:bg-slate-50"><td class="px-6 py-4 font-semibold">C# / .NET</td><td class="px-6 py-4 font-mono text-sm text-[#c9a962]">dotnet add package Sgraal</td><td class="px-6 py-4 text-slate-500 text-sm">.NET 6+</td></tr>
-      </tbody>
-    </table>
+  <div class="flex items-baseline justify-between mb-3">
+    <h2 class="text-2xl font-bold">On Roadmap</h2>
+    <span class="inline-flex items-center gap-2 text-sm text-amber-700"><span class="w-2 h-2 rounded-full bg-amber-500"></span>🔜 Roadmap</span>
+  </div>
+  <p class="text-slate-500 text-sm mb-8">Not yet shipped. Request via <a class="text-[#c9a962] hover:underline" href="mailto:hello@sgraal.com">hello@sgraal.com</a> — we prioritize by customer demand.</p>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">Frameworks</h3>
+      <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
+        <li>n8n native node</li>
+        <li>Dify plugin</li>
+        <li>Vercel AI SDK adapter</li>
+        <li>Langflow component</li>
+        <li>Flowise node</li>
+        <li>Pydantic AI</li>
+        <li>Google ADK</li>
+        <li>Amazon Bedrock</li>
+        <li>Azure AI Foundry</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">Memory layers</h3>
+      <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
+        <li>mnemos (sibling SDK, unpublished)</li>
+        <li>Memvid (sibling SDK, unpublished)</li>
+        <li>Zep adapter</li>
+        <li>Letta (MemGPT) adapter</li>
+        <li>Pinecone (extras_require not yet defined)</li>
+        <li>Weaviate (extras_require not yet defined)</li>
+        <li>Milvus (extras_require not yet defined)</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">Languages</h3>
+      <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
+        <li>Go SDK</li>
+        <li>Java SDK</li>
+        <li>Rust SDK</li>
+        <li>.NET SDK</li>
+        <li>Node.js / TypeScript SDK (only <span class="font-mono text-xs">@sgraal/mcp</span> is on npm today)</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">Observability &amp; tools</h3>
+      <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
+        <li>VS Code extension</li>
+        <li>LangSmith trace exporter</li>
+        <li>Langfuse trace exporter</li>
+        <li>LLM Wrapper (universal adapter)</li>
+        <li>Cross-provider Normalizer</li>
+        <li>mngr (Imbue) parallel-agent guard</li>
+      </ul>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- Testing note + CTA -->
+<!-- CTA -->
 <section class="py-16 px-6 bg-[#f5f4f0]">
-<div class="max-w-5xl mx-auto">
-  <div class="bg-white rounded-xl p-6 border border-slate-200 mb-8 flex items-start gap-4">
-    <span class="text-green-500 text-2xl">✅</span>
-    <div>
-      <p class="font-semibold mb-1">Tested on every release</p>
-      <p class="text-slate-500 text-sm">All integrations are tested via GitHub Actions compatibility matrix on every release. <a href="https://github.com/sgraal-ai/core" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core →</a></p>
-    </div>
-  </div>
-  <div class="text-center">
-    <p class="text-slate-500 mb-4">Missing an integration?</p>
-    <a href="mailto:hello@sgraal.com" class="inline-block bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#b8973f] transition-all">Contact hello@sgraal.com →</a>
-  </div>
+<div class="max-w-5xl mx-auto text-center">
+  <p class="text-slate-500 mb-4">Need an integration we don't ship?</p>
+  <a href="mailto:hello@sgraal.com" class="inline-block bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#b8973f] transition-all">Contact hello@sgraal.com →</a>
+  <p class="text-xs text-slate-400 mt-6">Last verified: 2026-05-05 · Published packages: 8 (PyPI 7 + npm 1) · Live API endpoints: 13 · Roadmap: 27</p>
 </div>
 </section>
 

@@ -333,18 +333,23 @@ print(result.recommended_action)  # BLOCK
 print(result.omega_mem_final)     # 78.4</pre>
 </div>
 <div class="quickstart-content hidden" id="content-node">
-<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js SDK</h3>
-<p class="text-on-surface-variant mb-6 text-sm">Use Sgraal in your Node.js or TypeScript agent projects.</p>
-<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">npm install @sgraal/sdk
-
-const { SgraalClient } = require('@sgraal/sdk');
-const client = new SgraalClient({ apiKey: 'sg_demo_playground' });
-const result = await client.preflight({
-  memory_state: [{ id: 'mem_001', type: 'tool_state',
-    timestamp_age_days: 54, source_trust: 0.6 }],
-  action_type: 'irreversible',
-  domain: 'fintech'
+<h3 class="text-xl font-bold mb-4 text-obsidian">Node.js / TypeScript</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Sgraal exposes a REST API. Call it directly from Node — no package install needed. (A dedicated <code>@sgraal/sdk</code> npm package is on the roadmap; <code>@sgraal/mcp</code> is available today for Claude Desktop integration.)</p>
+<pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed">// Native fetch — Node 18+
+const res = await fetch('https://api.sgraal.com/v1/preflight', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer sg_demo_playground',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    memory_state: [{ id: 'mem_001', type: 'tool_state',
+      timestamp_age_days: 54, source_trust: 0.6 }],
+    action_type: 'irreversible',
+    domain: 'fintech',
+  }),
 });
+const result = await res.json();
 console.log(result.recommended_action); // BLOCK</pre>
 </div>
 <div class="quickstart-content hidden" id="content-rest">
