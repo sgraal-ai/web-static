@@ -1,0 +1,58 @@
+name: Endpoint count drift check
+
+# Prevents the #1054-class drift where hardcoded endpoint counts in public
+# HTML copy diverge from the live api.sgraal.com OpenAPI spec.
+#
+# Background: web-static#4 (Phase 1.5 fix-step) cleaned 366+/356/255+ →
+# 355 across most pages. research#17 (Direction 2 audit) found additional
+# instances. This workflow catches the next instance automatically.
+#
+# Mode policy:
+#   - pull_request: WARN only (advisory; does not block PRs)
+#   - push to main: WARN only initially; flip to STRICT after the 3
+#     outstanding drifts (scale.html:174 "166+", docs/api.html:16+58
+#     "255+") are cleaned up in a follow-up PR.
+#
+# To switch to STRICT mode, change `STRICT_MODE: "0"` to `STRICT_MODE: "1"`
+# in the `push-main` job below.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_endpoint_count_drift.sh'
+      - '.github/workflows/endpoint-count-drift.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_endpoint_count_drift.sh'
+      - '.github/workflows/endpoint-count-drift.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Drift check (advisory on PR)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run drift check (warn-only)
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_endpoint_count_drift.sh
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: Drift check (main / dispatch)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run drift check
+        # NOTE: STRICT_MODE is "0" until the 3 known drifts are cleaned
+        # up (scale.html:174 "166+", docs/api.html:16+58 "255+").
+        # After cleanup, flip this to "1".
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_endpoint_count_drift.sh
