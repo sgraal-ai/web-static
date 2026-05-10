@@ -9,12 +9,14 @@ name: Endpoint count drift check
 #
 # Mode policy:
 #   - pull_request: WARN only (advisory; does not block PRs)
-#   - push to main: WARN only initially; flip to STRICT after the 3
-#     outstanding drifts (scale.html:174 "166+", docs/api.html:16+58
-#     "255+") are cleaned up in a follow-up PR.
+#   - push to main: STRICT (any drift fails the build).
+#     Flipped to strict in #1067 (this file's history) after the
+#     3 outstanding drifts were cleaned up in #1066 (web-static#8,
+#     merged 2026-05-10T17:54:02Z).
 #
-# To switch to STRICT mode, change `STRICT_MODE: "0"` to `STRICT_MODE: "1"`
-# in the `push-main` job below.
+# To re-allow drift temporarily (e.g. during a planned bulk
+# endpoint-count change), set STRICT_MODE: "0" on the push-main
+# job in a PR, merge, ship, then flip back to "1".
 
 on:
   pull_request:
@@ -50,9 +52,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run drift check
-        # NOTE: STRICT_MODE is "0" until the 3 known drifts are cleaned
-        # up (scale.html:174 "166+", docs/api.html:16+58 "255+").
-        # After cleanup, flip this to "1".
+        # STRICT mode: any drift fails the build on push to main.
+        # Cleanup PR was web-static#8 (#1066, merged 2026-05-10T17:54:02Z,
+        # commit 2d5d215d). The flip itself is web-static PR (#1067).
         env:
-          STRICT_MODE: "0"
+          STRICT_MODE: "1"
         run: ./scripts/check_endpoint_count_drift.sh
