@@ -14,13 +14,15 @@ name: Banned strings check
 #
 # Mode policy:
 #   - pull_request: WARN only (advisory; does not block PRs)
-#   - push to main: WARN only initially. **Flip to STRICT in a follow-up
-#     PR after this workflow confirms 0 banned-string hits on main.**
-#     The flip is intentionally a separate PR so the WARN-mode behavior
-#     can be verified in CI before the gate goes hot.
+#   - push to main: STRICT (any banned-string hit outside allowlist
+#     fails the build).
+#     Flipped to strict in this PR after the WARN-mode workflow
+#     (post web-static#12 merge, 2026-05-11T12:51:31Z, commit
+#     3bd2c7e7) confirmed 0 hits on main. Run id 25671246133.
 #
-# To switch to STRICT mode, change STRICT_MODE: "0" → "1" on the
-# check-main job below.
+# To re-allow drift temporarily (e.g. during a planned bulk
+# claim-language overhaul), set STRICT_MODE: "0" on the
+# push:main job in a PR, merge, ship, then flip back to "1".
 
 on:
   pull_request:
@@ -56,10 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run check
-        # NOTE: STRICT_MODE is "0" initially. Flip to "1" after this
-        # workflow confirms 0 banned-string hits on main (similar to
-        # the endpoint-count-drift workflow's two-step activation:
-        # web-static#7 introduced warn-only, web-static#9 flipped strict).
+        # STRICT mode: any banned-string hit outside allowlist fails
+        # the build on push to main. WARN-mode validation completed in
+        # web-static#12 (merged 2026-05-11T12:51:31Z, commit 3bd2c7e7).
+        # Post-merge workflow run 25671246133 confirmed PASS:
+        # "Summary: 0 banned-string hits outside allowlist".
         env:
-          STRICT_MODE: "0"
+          STRICT_MODE: "1"
         run: ./scripts/check_banned_strings.sh
