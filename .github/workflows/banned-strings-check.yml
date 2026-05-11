@@ -1,0 +1,65 @@
+name: Banned strings check
+
+# Prevents the #1054-class drift where forbidden compliance/external-validity
+# claims appear on the customer-facing HTML surface.
+#
+# Background:
+#   - #1054 audit established a manual-grep banned-strings list for 8
+#     compliance-certification strings (SOC 2, MiFID2, Basel4, etc.).
+#   - research#25 recommended codifying that list + adding 6 NEW Tier-1
+#     strict-ban strings (Proven, certified by/to, audited by/to,
+#     approved by, 100% accuracy, Guaranteed).
+#   - research#26 / web-static#11 pre-cleaned the only existing "Proven"
+#     heading on propagation.html:114, unblocking activation.
+#
+# Mode policy:
+#   - pull_request: WARN only (advisory; does not block PRs)
+#   - push to main: WARN only initially. **Flip to STRICT in a follow-up
+#     PR after this workflow confirms 0 banned-string hits on main.**
+#     The flip is intentionally a separate PR so the WARN-mode behavior
+#     can be verified in CI before the gate goes hot.
+#
+# To switch to STRICT mode, change STRICT_MODE: "0" → "1" on the
+# check-main job below.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_banned_strings.sh'
+      - '.github/workflows/banned-strings-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_banned_strings.sh'
+      - '.github/workflows/banned-strings-check.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Banned strings check (advisory on PR)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check (warn-only)
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_banned_strings.sh
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: Banned strings check (main / dispatch)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check
+        # NOTE: STRICT_MODE is "0" initially. Flip to "1" after this
+        # workflow confirms 0 banned-string hits on main (similar to
+        # the endpoint-count-drift workflow's two-step activation:
+        # web-static#7 introduced warn-only, web-static#9 flipped strict).
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_banned_strings.sh
