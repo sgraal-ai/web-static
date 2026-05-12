@@ -23,13 +23,15 @@ name: Module count drift check
 #
 # Mode policy:
 #   - pull_request: WARN only (advisory; does not block PRs)
-#   - push to main: WARN INITIAL — STRICT flip is Step 2 (separate PR)
-#     after this Step 1 has been verified clean on main for at least
-#     one push cycle.
+#   - push to main: STRICT (any module-count drift hit outside allowlist
+#     fails the build).
+#     Flipped to strict in this PR after the WARN-mode workflow
+#     (web-static#17 Step 1, merged 2026-05-12T17:03:24Z, commit
+#     e4a3691) confirmed 0 hits on main. Run id 25749713975.
 #
-# To flip STRICT, change STRICT_MODE: "0" → "1" on the check-main job
-# in a follow-up PR (mirrors the web-static#13 banned-strings STRICT
-# flip pattern, and web-static#1067 endpoint-count STRICT flip pattern).
+# To re-allow drift temporarily (e.g. during a planned bulk module-count
+# bump), set STRICT_MODE: "0" on the push:main job in a PR, merge, ship,
+# then flip back to "1".
 
 on:
   pull_request:
@@ -65,10 +67,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run check
-        # WARN mode initial (Step 1 of 2). STRICT flip = separate Step 2 PR
-        # after this workflow has been verified clean on at least one
-        # push:main cycle (mirrors web-static#1067 + web-static#13
-        # endpoint-count + banned-strings STRICT-flip cadence).
+        # STRICT mode: any module-count drift hit outside allowlist fails
+        # the build on push to main. WARN-mode validation completed in
+        # web-static#17 (Step 1, merged 2026-05-12T17:03:24Z, commit
+        # e4a3691). Post-merge workflow run 25749713975 confirmed PASS:
+        # "Summary: 0 module-count drift hits outside allowlist".
+        # Mirrors web-static#13 banned-strings STRICT flip and
+        # web-static#1067 endpoint-count STRICT flip cadence.
         env:
-          STRICT_MODE: "0"
+          STRICT_MODE: "1"
         run: ./scripts/check_module_count.sh
