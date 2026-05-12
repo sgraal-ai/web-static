@@ -193,6 +193,46 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
 </div>
 </section>
 
+<!-- WHAT WE DON'T YET CLAIM (Scoring quality) -->
+<section class="mb-16 border-t border-slate-200 pt-8">
+<h2 class="text-2xl font-bold mb-4">What Sgraal does NOT yet claim about its scoring</h2>
+<p class="text-slate-600 text-sm mb-6">Honest framing of what our scoring pipeline does and does not assert today. Each disclosure below is a known limit of the pre-paying-customer state; calibration tightens as production data accumulates.</p>
+
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-5">
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Benchmark calibration</h3>
+<p class="text-slate-700 text-sm">Our R12 and R14 corpora are synthetic adversarial sets. Production calibration against real customer outcomes is pending paying-customer onboarding.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Score consistency vs external causation</h3>
+<p class="text-slate-700 text-sm">We measure internal decision consistency (NIST AI RMF MEASURE-3.1 style). External causal validity of our risk scores requires real-world outcome data, which we do not yet have.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">First-call accuracy</h3>
+<p class="text-slate-700 text-sm">For single-entry calls, several of our analytical modules use placeholder baselines until sufficient history accumulates. Multi-entry realistic calls (3+ entries) exercise the full pipeline.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Per-tenant calibration maturity</h3>
+<p class="text-slate-700 text-sm">Thresholds default to global values until each tenant accumulates at least 20 outcome episodes per domain. Calibration tightens automatically with usage.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Cohort-relative scoring</h3>
+<p class="text-slate-700 text-sm">Comparisons against industry peers (&ldquo;your agent vs typical fintech&rdquo;) require multiple production tenants in the same domain. We surface this as null until cohort threshold is met.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Internationalization</h3>
+<p class="text-slate-700 text-sm">Our explain endpoint accepts a language parameter but currently renders English only. Other languages queued for a future release.</p>
+</div>
+
+</div>
+</section>
+
 <!-- VERSIONING -->
 <section class="mb-16 border-t border-slate-200 pt-8">
 <h2 class="text-2xl font-bold mb-2">Versioning</h2>
