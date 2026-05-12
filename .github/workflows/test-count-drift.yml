@@ -1,0 +1,77 @@
+name: Test count drift check
+
+# Prevents drift class where hardcoded test counts in public HTML drift
+# from the canonical source-of-truth (2,905 test functions in
+# core/tests/test_*.py as of 2026-05-12, verified via
+# `grep -hE "def test_" tests/test_*.py | wc -l`).
+#
+# Background:
+#   - 4th drift-prevention workflow on web-static (after endpoint-count,
+#     banned-strings, module-count).
+#   - Same pattern-based approach as banned-strings + module-count
+#     (live verification of source happens in the core repo, not in
+#     this repo's CI workers).
+#   - Currently 0 specific-count test claims on web-static surface
+#     (benchmark.html uses "2,900+ test scenarios" fuzzy framing,
+#     which intentionally does NOT match the 5 legacy patterns).
+#
+# Source-of-truth: hardcoded constant `SOURCE_OF_TRUTH=2905` in
+# scripts/check_test_count.sh. Bump when test count changes by >50
+# tests OR when a customer-facing page references a specific count
+# that needs to be kept in sync. (Unlike endpoint-count-drift which
+# fetches live api.sgraal.com/openapi.json, the test count cannot be
+# derived from any live API endpoint and the source directory lives
+# in a separate repo. Pattern-based banned-strings approach used
+# instead.)
+#
+# Mode policy:
+#   - pull_request: WARN only (advisory; does not block PRs)
+#   - push to main: WARN INITIAL — STRICT flip is Step 2 (separate PR)
+#     after this Step 1 has been verified clean on main for at least
+#     one push cycle.
+#
+# To flip STRICT, change STRICT_MODE: "0" → "1" on the check-main job
+# in a follow-up PR (mirrors web-static#13 banned-strings STRICT-flip
+# pattern + web-static#18 module-count STRICT-flip pattern).
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_test_count.sh'
+      - '.github/workflows/test-count-drift.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_test_count.sh'
+      - '.github/workflows/test-count-drift.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Test-count drift check (advisory on PR)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check (warn-only)
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_test_count.sh
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: Test-count drift check (main / dispatch)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check
+        # WARN mode initial (Step 1 of 2). STRICT flip = separate Step 2 PR
+        # after this workflow has been verified clean on at least one
+        # push:main cycle (mirrors web-static#18 module-count STRICT-flip
+        # + web-static#13 banned-strings STRICT-flip cadence).
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_test_count.sh
