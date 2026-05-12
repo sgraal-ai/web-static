@@ -1,0 +1,74 @@
+name: Module count drift check
+
+# Prevents the research#19 C5 Tier-3 drift class where hardcoded
+# scoring-module counts in public HTML drift from the canonical
+# source-of-truth (86 modules in core/scoring_engine/*.py per research#31
+# §4 + core#38 README sync).
+#
+# Background:
+#   - research#19 C5 finding flagged module-count as a drift surface
+#     analogous to the #1054 endpoint-count drift (web-static#1066, #1067).
+#   - research#31 §4 established the canonical count: 86 .py modules
+#     in core/scoring_engine/ as of 2026-05-11.
+#   - core#38 (`c612db7`) updated core/README.md from "83 modules" to
+#     "86 scoring modules" — making 83 a legacy claim and 85 an
+#     intermediate one that should never appear on customer-facing HTML.
+#
+# Source-of-truth: hardcoded constant `SOURCE_OF_TRUTH=86` in
+# scripts/check_module_count.sh. Bump when scoring_engine/ module
+# count changes. (Unlike endpoint-count-drift which fetches live
+# api.sgraal.com/openapi.json, the module count cannot be derived from
+# any live API endpoint and the source directory lives in a separate
+# repo. Pattern-based banned-strings approach used instead.)
+#
+# Mode policy:
+#   - pull_request: WARN only (advisory; does not block PRs)
+#   - push to main: WARN INITIAL — STRICT flip is Step 2 (separate PR)
+#     after this Step 1 has been verified clean on main for at least
+#     one push cycle.
+#
+# To flip STRICT, change STRICT_MODE: "0" → "1" on the check-main job
+# in a follow-up PR (mirrors the web-static#13 banned-strings STRICT
+# flip pattern, and web-static#1067 endpoint-count STRICT flip pattern).
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_module_count.sh'
+      - '.github/workflows/module-count-drift.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_module_count.sh'
+      - '.github/workflows/module-count-drift.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Module-count drift check (advisory on PR)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check (warn-only)
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_module_count.sh
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: Module-count drift check (main / dispatch)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check
+        # WARN mode initial (Step 1 of 2). STRICT flip = separate Step 2 PR
+        # after this workflow has been verified clean on at least one
+        # push:main cycle (mirrors web-static#1067 + web-static#13
+        # endpoint-count + banned-strings STRICT-flip cadence).
+        env:
+          STRICT_MODE: "0"
+        run: ./scripts/check_module_count.sh
