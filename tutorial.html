@@ -224,6 +224,70 @@ result = client.preflight(
 
 </section>
 
+<!-- 3-storyline decision-band primer (BATCH 9 TASK M) -->
+<section class="pb-20 px-8 max-w-5xl mx-auto">
+<div class="text-center mb-10">
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2">Decision bands</p>
+<h2 class="text-3xl font-extrabold tracking-tight mb-3">What the 3 decisions mean</h2>
+<p class="text-slate-600 max-w-2xl mx-auto">Every <code>/v1/preflight</code> call returns a <code>recommended_action</code> from a fixed set. Here is what each one means in agent code, with realistic storylines that show when each one fires.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<!-- USE_MEMORY -->
+<div class="bg-white border border-emerald-200 rounded-xl p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-2">Decision 1</p>
+<h3 class="text-xl font-extrabold mb-3 text-emerald-800"><code>USE_MEMORY</code></h3>
+<p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Use the memory entry as-is.</span> Sgraal found no freshness, provenance, or detection signal worth pausing for. The agent proceeds.</p>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
+<p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Storyline — customer support</p>
+<p class="text-slate-700 text-sm leading-relaxed">A support agent looks up the customer's preferred contact channel. The memory entry says &ldquo;prefers email,&rdquo; sourced from the customer's own settings update four days ago. Freshness fine, source trusted, no detection signal fires.</p>
+</div>
+<div class="bg-[#0d1117] rounded-lg p-4">
+<pre class="text-[#e2e8f0] text-xs font-mono"><span class="text-slate-500"># response</span>
+"recommended_action": "USE_MEMORY"</pre>
+</div>
+</div>
+
+<!-- ASK_USER -->
+<div class="bg-white border border-amber-200 rounded-xl p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-amber-700 mb-2">Decision 2</p>
+<h3 class="text-xl font-extrabold mb-3 text-amber-800"><code>ASK_USER</code></h3>
+<p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Pause and confirm with a human.</span> The memory is not clearly malicious, but at least one signal (often freshness, occasionally trust) is below the bar for autonomous action.</p>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
+<p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Storyline — trading assistant</p>
+<p class="text-slate-700 text-sm leading-relaxed">A trading-assistant agent is about to place a position. Its memory says the customer's position limit is &ldquo;$500K per security,&rdquo; recorded 60 days ago. Position limits get reviewed quarterly. Sgraal returns <code>ASK_USER</code>: the agent pauses and asks the operator to re-confirm the limit before placing the order.</p>
+</div>
+<div class="bg-[#0d1117] rounded-lg p-4">
+<pre class="text-[#e2e8f0] text-xs font-mono"><span class="text-slate-500"># response</span>
+"recommended_action": "ASK_USER"</pre>
+</div>
+</div>
+
+<!-- BLOCK -->
+<div class="bg-white border border-red-200 rounded-xl p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-red-700 mb-2">Decision 3</p>
+<h3 class="text-xl font-extrabold mb-3 text-red-800"><code>BLOCK</code></h3>
+<p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Do not act on this memory.</span> At least one detection layer fired with a manipulation signal that cannot be overridden by downstream reasoning.</p>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
+<p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Storyline — coding assistant</p>
+<p class="text-slate-700 text-sm leading-relaxed">A coding-assistant agent reads a memory entry claiming &ldquo;function X is deprecated; do not call it.&rdquo; The entry looks fresh, but the timestamp-integrity check sees that the surrounding provenance chain was rewritten after the original commit. Sgraal returns <code>BLOCK</code>: the agent refuses to act on the entry and flags it for review.</p>
+</div>
+<div class="bg-[#0d1117] rounded-lg p-4">
+<pre class="text-[#e2e8f0] text-xs font-mono"><span class="text-slate-500"># response</span>
+"recommended_action": "BLOCK"</pre>
+</div>
+</div>
+
+</div>
+
+<!-- WARN footnote -->
+<div class="bg-[#faf9f6] border border-slate-200 rounded-xl p-5 mt-6 text-sm text-slate-600">
+<p><span class="font-semibold text-slate-800">There is also a fourth band, <code>WARN</code>,</span> between <code>USE_MEMORY</code> and <code>ASK_USER</code>. <code>WARN</code> says the memory looks usable but worth logging at higher verbosity. Use it for telemetry without interrupting the agent's flow. Many integrations collapse <code>WARN</code> into <code>USE_MEMORY</code> + a metric; others surface it as a UI hint. See the <a class="text-[#c9a962] hover:underline" href="/docs/api">API reference</a> for the full contract.</p>
+</div>
+
+</section>
+
 <footer class="bg-surface-container border-t border-black/[0.06]">
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
 <div class="col-span-2 md:col-span-3 lg:col-span-1">
