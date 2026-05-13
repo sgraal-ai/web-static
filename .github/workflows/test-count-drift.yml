@@ -26,13 +26,18 @@ name: Test count drift check
 #
 # Mode policy:
 #   - pull_request: WARN only (advisory; does not block PRs)
-#   - push to main: WARN INITIAL — STRICT flip is Step 2 (separate PR)
-#     after this Step 1 has been verified clean on main for at least
-#     one push cycle.
+#   - push to main: STRICT (any test-count drift hit outside allowlist
+#     fails the build).
+#     Flipped to strict in this PR after the WARN-mode workflow
+#     (web-static#20 Step 1, merged 2026-05-12T20:10:32Z, commit
+#     ea31073) confirmed 0 hits on main. Run id verified at
+#     2026-05-12T20:16:30Z (push event, conclusion=success).
+#     Mirrors web-static#13 banned-strings STRICT-flip pattern and
+#     web-static#18 module-count STRICT-flip pattern.
 #
-# To flip STRICT, change STRICT_MODE: "0" → "1" on the check-main job
-# in a follow-up PR (mirrors web-static#13 banned-strings STRICT-flip
-# pattern + web-static#18 module-count STRICT-flip pattern).
+# To re-allow drift temporarily (e.g. during a planned bulk test-count
+# bump from 2,905 to a new value), set STRICT_MODE: "0" on the
+# push:main job in a PR, merge, ship, then flip back to "1".
 
 on:
   pull_request:
@@ -68,10 +73,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run check
-        # WARN mode initial (Step 1 of 2). STRICT flip = separate Step 2 PR
-        # after this workflow has been verified clean on at least one
-        # push:main cycle (mirrors web-static#18 module-count STRICT-flip
-        # + web-static#13 banned-strings STRICT-flip cadence).
+        # STRICT mode: any test-count drift hit outside allowlist fails
+        # the build on push to main. WARN-mode validation completed in
+        # web-static#20 (Step 1, merged 2026-05-12T20:10:32Z, commit
+        # ea31073). Post-merge workflow run 2026-05-12T20:16:30Z
+        # confirmed PASS: "Summary: 0 test-count drift hits outside
+        # allowlist". Mirrors web-static#13 banned-strings STRICT flip
+        # and web-static#18 module-count STRICT flip cadence.
         env:
-          STRICT_MODE: "0"
+          STRICT_MODE: "1"
         run: ./scripts/check_test_count.sh
