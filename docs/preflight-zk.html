@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Zero-Knowledge Preflight — Sgraal</title>
+<meta name="description" content="POST /v1/preflight/zk — score memory state without sending memory content. SHA-256 proof hash returned instead. Use when GDPR, HIPAA, or data-residency requirements apply.">
+<meta property="og:title" content="Zero-Knowledge Preflight — Sgraal">
+<meta property="og:description" content="POST /v1/preflight/zk — score memory state without sending memory content. SHA-256 proof hash returned instead.">
+<meta property="og:url" content="https://sgraal.com/docs/preflight-zk">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sgraal.com/docs/preflight-zk">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
+pre code { font-size: 0.8125rem; }
+</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/standard">Standard</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<main class="pt-40 pb-32 px-6">
+<div class="max-w-3xl mx-auto">
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Zero-Knowledge Preflight</p>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4">Score memory state without sending memory content.</h1>
+<p class="text-slate-600 text-lg mb-12"><code>POST /v1/preflight/zk</code> returns the same four-band decision as the standard preflight endpoint, but your memory content never leaves your infrastructure. Sgraal scores against a SHA-256 commitment hash and returns a verifiable proof.</p>
+
+<!-- WHAT IT DOES -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What it does</h2>
+<p class="text-slate-600 leading-relaxed mb-3">The zero-knowledge variant of <code>POST /v1/preflight</code> accepts a commitment hash and a small set of public metadata fields (memory entry types, ages, source-trust scores, hop counts) instead of the underlying memory content. The scoring engine runs over the public fields and the commitment; the engine never sees the entry text, the user prompt, or any tool output.</p>
+<p class="text-slate-600 leading-relaxed mb-3">The response includes a <code>zk_proof</code> object containing a proof hash, a validity flag, a proof-type tag, and a <code>verifiable_without_content</code> flag. The same response shape that <code>/v1/preflight</code> returns (decision band, omega risk score, attack-surface composite, detection-layer states) is preserved.</p>
+<p class="text-slate-600 leading-relaxed">The four-band decision contract is unchanged: <code>USE_MEMORY</code> / <code>WARN</code> / <code>ASK_USER</code> / <code>BLOCK</code>. Content-dependent detections that require text inspection are surfaced as <code>insufficient_signal</code> rather than silently downgrading the score.</p>
+</section>
+
+<!-- WHEN TO USE -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">When to use</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Use the zero-knowledge endpoint when contractual or regulatory constraints prohibit sending memory content off-host. Common contexts:</p>
+<ul class="text-slate-600 leading-relaxed list-disc pl-6 space-y-2 mb-4">
+<li><span class="font-semibold text-slate-800">GDPR data-minimization.</span> When the lawful basis for processing does not extend to a third-party preflight scorer, the commitment-only flow keeps personal data inside your boundary.</li>
+<li><span class="font-semibold text-slate-800">HIPAA covered-entity workloads.</span> When PHI may appear in memory entries and your Business Associate Agreement does not cover the preflight scorer.</li>
+<li><span class="font-semibold text-slate-800">Data-residency requirements.</span> When customer contracts require all content to remain in a specific jurisdiction.</li>
+<li><span class="font-semibold text-slate-800">Internal trade-secret protection.</span> When memory entries may include proprietary code, prompts, or business logic that should not be transmitted.</li>
+</ul>
+<p class="text-slate-600 leading-relaxed">If none of the above apply, the standard <code>POST /v1/preflight</code> endpoint is recommended &mdash; it exercises every content-dependent detection and produces a fuller risk picture.</p>
+</section>
+
+<!-- REQUEST -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Request</h2>
+<p class="text-slate-600 leading-relaxed mb-4">The request body mirrors <code>POST /v1/preflight</code> with two differences: each <code>memory_state</code> entry carries a <code>content_hash</code> field (SHA-256 over the local content) in place of the <code>content</code> string, and the request carries a top-level <code>zk_commitment</code> field summarizing the entry set.</p>
+
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>curl -sS https://api.sgraal.com/v1/preflight/zk \
+  -H "Authorization: Bearer $SGRAAL_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json</code></pre>
+</div>
+
+<p class="text-slate-600 leading-relaxed mb-3"><code>request.json</code>:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>{
+  "tenant_id": "acme-prod",
+  "agent_id": "support-bot-7",
+  "action_type": "reversible",
+  "domain": "customer_support",
+  "zk_commitment": "sha256:6f3c...e1ab",
+  "memory_state": [
+    {
+      "id": "m1",
+      "type": "tool_state",
+      "age_seconds": 42,
+      "source_trust": 0.91,
+      "hop_count": 1,
+      "content_hash": "sha256:9b8d...77c2"
+    },
+    {
+      "id": "m2",
+      "type": "identity",
+      "age_seconds": 86400,
+      "source_trust": 0.97,
+      "hop_count": 0,
+      "content_hash": "sha256:42af...10de"
+    }
+  ]
+}</code></pre>
+</div>
+<p class="text-slate-500 text-sm">Required public fields per entry: <code>id</code>, <code>type</code>, <code>age_seconds</code>, <code>source_trust</code>, <code>hop_count</code>, <code>content_hash</code>. Optional public fields (when available without revealing content): <code>provenance_chain_length</code>, <code>distinct_sources</code>, <code>corroboration_count</code>. The <code>content</code> field, if present, is rejected with <code>422</code>.</p>
+</section>
+
+<!-- RESPONSE -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Response</h2>
+<p class="text-slate-600 leading-relaxed mb-4">The response uses the same decision contract as the standard endpoint, with a <code>zk_proof</code> object appended and content-dependent fields set to <code>null</code> or <code>"insufficient_signal"</code>.</p>
+
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>{
+  "recommended_action": "USE_MEMORY",
+  "omega_mem": 18.4,
+  "attack_surface_score": 0.06,
+  "decision_zone": "safe",
+  "detection_layers": {
+    "timestamp_integrity": "PASS",
+    "identity_drift": "PASS",
+    "consensus_collapse": "PASS",
+    "provenance_chain": "PASS",
+    "sync_bleed": "PASS",
+    "confidence_calibration": "insufficient_signal"
+  },
+  "zk_commitment": "sha256:6f3c...e1ab",
+  "zk_proof": {
+    "proof_hash": "sha256:8a21...4f7c",
+    "proof_valid": true,
+    "proof_type": "zk_sheaf_v1",
+    "verifiable_without_content": true
+  }
+}</code></pre>
+</div>
+<p class="text-slate-500 text-sm">The <code>recommended_action</code>, <code>omega_mem</code>, <code>attack_surface_score</code>, and <code>decision_zone</code> fields carry the same semantics as the standard endpoint. The <code>zk_proof</code> object is verifiable client-side against the original commitment without re-transmitting content. See <a class="text-[#c9a962] hover:underline" href="/docs/api">API reference</a> for the standard endpoint contract.</p>
+</section>
+
+<!-- WHAT IT DOES NOT REPLACE -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What this does not replace</h2>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-4">
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Content-dependent detections</h3>
+<p class="text-slate-700 text-sm">Detections that require text inspection (e.g., naturalness scoring, secret-pattern matching, prompt-injection regex) are reported as <code>insufficient_signal</code> rather than executed. If your threat model requires them, run the standard <code>POST /v1/preflight</code> with consent and a BAA in place, or keep this endpoint for sensitive subsets only.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Auditor-grade calibration</h3>
+<p class="text-slate-700 text-sm">Validation to date is against synthetic adversarial corpora (R1&ndash;R14). Production calibration against real customer outcome data is pending paying-customer onboarding. See the <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">threat model</a> for the full honest framing.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">A compliance certification</h3>
+<p class="text-slate-700 text-sm">Zero-knowledge preflight is a data-minimization control. It is not, on its own, a regulatory certification. Whether it satisfies your specific GDPR / HIPAA / residency obligation is a determination only your DPO or counsel can make.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-amber-800 mb-1">Encryption-at-rest or in-transit</h3>
+<p class="text-slate-700 text-sm">Transport security (TLS 1.3) and storage encryption operate on the public metadata fields and the commitment hash, exactly as on the standard endpoint. The zero-knowledge guarantee is about <em>what is sent</em>, not <em>how</em>.</p>
+</div>
+
+</div>
+</section>
+
+<!-- VERSIONING -->
+<section class="mb-16 border-t border-slate-200 pt-8">
+<h2 class="text-2xl font-bold mb-2">Versioning</h2>
+<p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-13</span>.</p>
+<p class="text-slate-600 text-sm">This document is versioned in git at <a href="https://github.com/sgraal-ai/web-static/blob/main/docs/preflight-zk.html" class="text-[#c9a962] hover:underline" target="_blank" rel="noopener noreferrer">sgraal-ai/web-static</a>. Previous revisions available via <code>git log</code>.</p>
+<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a> &middot; <a href="/privacy" class="text-[#c9a962] hover:underline">/privacy</a> &middot; <a href="/docs/threat-model" class="text-[#c9a962] hover:underline">/docs/threat-model</a></p>
+</section>
+
+</div>
+</main>
+
+<footer class="bg-[#faf9f6] border-t border-black/[0.06]">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+<div class="col-span-2 md:col-span-3 lg:col-span-1">
+<span class="text-xl font-black text-[#101419] mb-6 block">Sgraal</span>
+<p class="text-slate-500 mb-8 max-w-xs">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Product</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Resources</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/preflight-zk">Zero-Knowledge Preflight</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/threat-model">Threat Model</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/benchmark">Benchmark</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Standards</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Company</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-black/[0.06] py-8 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+<div>© 2026 Sgraal Protocol · Apache 2.0. Memory Governance Protocol for AI agents.</div>
+<div class="flex items-center gap-2">
+            Made for the agentic era.
+            <span class="w-2 h-2 rounded-full bg-[#c9a962]/40"></span>
+</div>
+</div>
+</footer>
+</body>
+</html>
