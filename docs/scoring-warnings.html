@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>scoring_warnings — Sgraal</title>
+<meta name="description" content="What the scoring_warnings field means in a /v1/preflight response, when you see it, and what to do about it. Honest framing of the current Phase 1 state.">
+<meta property="og:title" content="scoring_warnings — Sgraal">
+<meta property="og:description" content="What the scoring_warnings field means in a /v1/preflight response, when you see it, and what to do about it.">
+<meta property="og:url" content="https://sgraal.com/docs/scoring-warnings">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sgraal.com/docs/scoring-warnings">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
+pre code { font-size: 0.8125rem; }
+</style>
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/decide">Decide</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/protect">Protect</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/comply">Comply</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/scale">Scale</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/standard">Standard</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-3 text-sm font-medium">
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/standard">Standard</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<main class="pt-40 pb-32 px-6">
+<div class="max-w-3xl mx-auto">
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Response Field Reference</p>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4"><code>scoring_warnings</code> — what it means, when you see it.</h1>
+<p class="text-slate-600 text-lg mb-12">A field in every <code>/v1/preflight</code> response. Surfaces fail-open warnings from the scoring pipeline so you know exactly when one of Sgraal's many analytical modules hit a non-fatal exception. The decision is still produced; this field just makes the partial-failure visible.</p>
+
+<!-- WHAT IT IS -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What it is</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Sgraal's preflight pipeline runs many analytical modules (the 10 core risk components plus dozens of analytics modules — see the <a class="text-[#c9a962] hover:underline" href="/docs/api">API reference</a>). Most of those modules wrap their computation in a try / except block: if any single module hits an exception, the pipeline catches it, records the failure in <code>scoring_warnings</code>, and keeps going with the remaining modules.</p>
+<p class="text-slate-600 leading-relaxed mb-3">This is called <strong>fail-open</strong> behavior: a single sub-component failure does not abort the whole request. You still get back a <code>recommended_action</code> (one of <code>USE_MEMORY</code> / <code>WARN</code> / <code>ASK_USER</code> / <code>BLOCK</code>) computed from the modules that did succeed. The <code>scoring_warnings</code> field exists so you can see which modules failed, even though the overall response succeeded.</p>
+<p class="text-slate-600 leading-relaxed"><code>scoring_warnings</code> is always an array. <code>scoring_warnings_count</code> is the same number as <code>scoring_warnings.length</code>. Both are always present in the response, even when empty.</p>
+</section>
+
+<!-- EXAMPLE -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Example</h2>
+<p class="text-slate-600 leading-relaxed mb-4">A typical <code>/v1/preflight</code> response excerpt with a single warning:</p>
+
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>{
+  "recommended_action": "BLOCK",
+  "omega_mem_final": 100,
+  ...
+  "scoring_warnings": [
+    {
+      "module": "timestamp_integrity",
+      "error": "'NoneType' object is not iterable"
+    }
+  ],
+  "scoring_warnings_count": 1
+}</code></pre>
+</div>
+<p class="text-slate-500 text-sm">Each warning carries a <code>module</code> field (which analytical module failed) and an <code>error</code> field (the truncated exception message, up to 200 characters). The decision (<code>recommended_action</code>) is still computed from the modules that did succeed.</p>
+</section>
+
+<!-- WHEN YOU SEE "unknown_module" -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">When the <code>module</code> field says <code>"unknown_module"</code></h2>
+<p class="text-slate-600 leading-relaxed mb-3">The scoring pipeline today does not name every internal module in the <code>scoring_warnings</code> entries. As of this snapshot, the six primary detection layers (timestamp integrity, identity drift, consensus collapse, provenance chain integrity, sync bleed, confidence calibration) are named accurately. Other analytical modules currently emit <code>"module": "unknown_module"</code> when they fail, even though the surrounding code knows which module raised.</p>
+<p class="text-slate-600 leading-relaxed">This is a known transparency gap and is being closed in stages. Phase 1 (the six detection layers) is shipped. Phase 2 (the remaining easily-attributable sites) and Phase 3 (a structural helper-function refactor that makes <code>"unknown_module"</code> impossible to emit by accident) are tracked and scheduled. See <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">the threat model</a> for the broader "what we are and are not yet" framing.</p>
+</section>
+
+<!-- WHAT TO DO -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What to do with <code>scoring_warnings</code></h2>
+
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6 mb-4">
+<h3 class="font-bold mb-2">Read it, but do not retry on it.</h3>
+<p class="text-slate-600 text-sm mb-3">A non-empty <code>scoring_warnings</code> array means one or more sub-modules failed. It does <strong>not</strong> mean the request failed. The decision in <code>recommended_action</code> is final and was computed from the surviving modules. Re-issuing the same request typically reproduces the same warnings.</p>
+<p class="text-slate-600 text-sm">If you want a request-level retry signal, use a non-2xx HTTP status or a <code>recommended_action</code> of <code>BLOCK</code> with a domain-specific business rule on top — do not key retry behavior off <code>scoring_warnings</code>.</p>
+</div>
+
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6 mb-4">
+<h3 class="font-bold mb-2">Log it.</h3>
+<p class="text-slate-600 text-sm">Recording <code>scoring_warnings</code> alongside the request ID in your own logs makes incident response cheaper later. When a customer-side ticket arrives that traces back to a specific preflight call, the warning trail tells you whether a sub-module failed at scoring time — and which one, where named.</p>
+</div>
+
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6 mb-4">
+<h3 class="font-bold mb-2">File an issue if it persists.</h3>
+<p class="text-slate-600 text-sm">A steady stream of the same warning across many requests usually points to a stable bug rather than a transient glitch. Open an issue with the request ID, the <code>module</code> name (or <code>"unknown_module"</code> if not yet named), and the <code>error</code> string at <a class="text-[#c9a962] hover:underline" href="mailto:hello@sgraal.com">hello@sgraal.com</a>. Persistent warnings are exactly the kind of signal Sgraal's pre-customer audit cycle is designed to surface; customer-reported instances accelerate the fix sequence.</p>
+</div>
+
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<h3 class="font-bold mb-2">Treat it as observability, not as an alarm.</h3>
+<p class="text-slate-600 text-sm">An empty <code>scoring_warnings</code> array does not mean "every module succeeded perfectly" any more than a non-empty array means "the request failed." The field is a transparency surface that lets you see partial-failure where it occurs. Use it the same way you'd use any other observability signal — log, aggregate, alert on persistent patterns, but do not gate request flow on it.</p>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Roadmap</h2>
+<p class="text-slate-600 leading-relaxed mb-4">The transparency-gap closure proceeds in three phases:</p>
+<ul class="text-slate-600 leading-relaxed list-disc pl-6 space-y-2">
+<li><span class="font-semibold text-slate-800">Phase 1 — six detection layers named.</span> <span class="text-green-700 font-semibold">Shipped.</span> Customer-most-relevant warnings now carry their actual module names.</li>
+<li><span class="font-semibold text-slate-800">Phase 2 — remaining easily-attributable sites.</span> Scheduled. Each site has the module name visible in the surrounding code; the fix is mechanical and incremental.</li>
+<li><span class="font-semibold text-slate-800">Phase 3 — helper-function refactor + CI lint.</span> Scheduled. A required-parameter helper makes <code>"unknown_module"</code> impossible to introduce in new code; a CI lint rule guards against regression.</li>
+</ul>
+<p class="text-slate-600 leading-relaxed mt-4">Phase 2 and Phase 3 are tracked separately in the project backlog. The conservative path is <strong>Phase 1 first, then Phase 3</strong> (so the structural fix lands before the bulk-attribution sweep), but the operational ordering is flexible.</p>
+</section>
+
+<!-- VERSIONING -->
+<section class="mb-16 border-t border-slate-200 pt-8">
+<h2 class="text-2xl font-bold mb-2">Versioning</h2>
+<p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-13</span>.</p>
+<p class="text-slate-600 text-sm">This document is versioned in git at <a href="https://github.com/sgraal-ai/web-static/blob/main/docs/scoring-warnings.html" class="text-[#c9a962] hover:underline" target="_blank" rel="noopener noreferrer">sgraal-ai/web-static</a>. Previous revisions available via <code>git log</code>.</p>
+<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a> &middot; <a href="/docs/threat-model" class="text-[#c9a962] hover:underline">/docs/threat-model</a> &middot; <a href="/docs/preflight-zk" class="text-[#c9a962] hover:underline">/docs/preflight-zk</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a></p>
+</section>
+
+</div>
+</main>
+
+<footer class="bg-[#faf9f6] border-t border-black/[0.06]">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+<div class="col-span-2 md:col-span-3 lg:col-span-1">
+<span class="text-xl font-black text-[#101419] mb-6 block">Sgraal</span>
+<p class="text-slate-500 mb-8 max-w-xs">Memory Governance Protocol for AI agents.</p>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Product</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Resources</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/scoring-warnings">scoring_warnings</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/preflight-zk">Zero-Knowledge Preflight</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/docs/threat-model">Threat Model</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/benchmark">Benchmark</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Standards</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#b8973f] font-bold mb-6">Company</h5>
+<ul class="space-y-3 text-slate-500">
+<li><a class="hover:text-[#c9a962] transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="/terms">Terms of Service</a></li>
+<li><a class="hover:text-[#c9a962] transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-black/[0.06] py-8 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+<div>© 2026 Sgraal Protocol · Apache 2.0. Memory Governance Protocol for AI agents.</div>
+<div class="flex items-center gap-2">
+            Made for the agentic era.
+            <span class="w-2 h-2 rounded-full bg-[#c9a962]/40"></span>
+</div>
+</div>
+</footer>
+</body>
+</html>
