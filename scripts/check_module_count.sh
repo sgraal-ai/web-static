@@ -1,28 +1,32 @@
 #!/usr/bin/env bash
 # check_module_count.sh — fail if hardcoded scoring-module counts in
 # public HTML copy reference legacy/intermediate values rather than the
-# current source-of-truth (86 modules in core/scoring_engine/*.py).
+# current source-of-truth (87 modules in core/scoring_engine/*.py — post
+# core#32 input_integrity.py addition; bumped from 86 via web-static#1101).
 #
 # Background: see research#19 C5 finding (Tier-3 drift class), research#31
-# §4 (codebase ground truth — 86 .py modules in scoring_engine/), and
-# core#38 (README sync 83→86 that established the canonical count).
+# §4 (codebase ground truth, baseline 86 modules), core#38 (README sync
+# 83→86 that established the prior canonical count), and core#32 +
+# web-static#1101 (87 ground truth post input-integrity gate).
 #
 # Three drift-prevention workflows now exist on web-static:
 #   - endpoint-count-drift (STRICT on push:main since web-static#1066)
 #   - banned-strings (STRICT on push:main since web-static#13)
 #   - module-count (THIS — WARN mode initial, STRICT flip = separate Step 2 PR)
 #
-# Source-of-truth: `ls ~/core/scoring_engine/*.py | wc -l` = 86 (as of
-# 2026-05-12, baseline research#31 commit `e48b159`). Note: the source-of-truth
+# Source-of-truth: `ls ~/core/scoring_engine/*.py | wc -l` = 87 (as of
+# 2026-05-15, post-core#32 input_integrity.py). Note: the source-of-truth
 # directory lives in the `sgraal-ai/core` repo, NOT in this repo. The check
 # is therefore pattern-based (banned-strings style) rather than fetch-based
 # (endpoint-count-drift style). Live verification of the source-of-truth is
 # manual — bump the SOURCE_OF_TRUTH constant below when scoring_engine/
 # module count changes.
 #
-# 6 patterns detected (anti-drift):
+# 9 patterns detected (anti-drift):
 #   "83 module"   / "83-module"   / "83 modules"   (legacy, pre-core#38)
 #   "85 module"   / "85-module"   / "85 modules"   (intermediate, deprecated)
+#   "86 module"   / "86-module"   / "86 modules"   (intermediate, deprecated
+#                                                   post-core#32 / web-static#1101)
 #
 # Behavior:
 #   STRICT_MODE=1 → exit 1 on any drift outside allowlist (used on push:main
@@ -41,7 +45,7 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-SOURCE_OF_TRUTH="${SOURCE_OF_TRUTH:-86}"
+SOURCE_OF_TRUTH="${SOURCE_OF_TRUTH:-87}"
 STRICT_MODE="${STRICT_MODE:-0}"
 
 # Patterns are ERE (extended regex). \b is word-boundary to prevent false
@@ -53,6 +57,9 @@ PATTERNS=(
   "\b85 module\b"
   "\b85-module\b"
   "\b85 modules\b"
+  "\b86 module\b"
+  "\b86-module\b"
+  "\b86 modules\b"
 )
 
 # Allowlist: file:line pairs that are OK to contain a banned legacy count.
@@ -79,8 +86,9 @@ PATTERNS=(
 #     Mirrors the existing banned-strings allowlist pattern for the SOC 2
 #     "NOT certified" disclosure block. Currently empty.
 ALLOWLIST=(
-  # (no entries — canonical count is 86 across all surface today; no
-  # legitimate historical/disclosure references exist as of 2026-05-12)
+  # (no entries — canonical count is 87 across all surface as of
+  # 2026-05-15 post web-static#1101; no legitimate historical/disclosure
+  # references exist)
 )
 
 is_allowlisted() {
@@ -92,7 +100,7 @@ is_allowlisted() {
 }
 
 echo "Module-count drift check — STRICT_MODE=$STRICT_MODE"
-echo "Source-of-truth: $SOURCE_OF_TRUTH modules (per research#31 + core#38)"
+echo "Source-of-truth: $SOURCE_OF_TRUTH modules (per core#32 + web-static#1101)"
 echo "Patterns: ${#PATTERNS[@]} | Allowlist entries: ${#ALLOWLIST[@]}"
 echo
 
@@ -126,8 +134,9 @@ if [[ "$HITS" -gt 0 ]]; then
     echo "      intentional (legitimate historical/disclosure context), added to"
     echo "      the ALLOWLIST array in this script with a comment explaining why."
     echo
-    echo "      Background: research#19 C5 (Tier-3 drift class), research#31 §4"
-    echo "      (canonical module count 86), core#38 (README sync 83→86)."
+    echo "      Background: research#19 C5 (Tier-3 drift class), core#32"
+    echo "      (input_integrity.py added — canonical module count 87),"
+    echo "      web-static#1101 (SoT bump 86→87)."
     exit 1
   else
     echo
