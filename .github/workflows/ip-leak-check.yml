@@ -1,0 +1,71 @@
+name: IP leak check
+
+# Closes the systemic gap surfaced by 2026-04-30 vs 2026-05-16 IP audit
+# delta (1 leak → 11 leaks in 17 days, per INCIDENT_PLAYBOOK §7.18 F5).
+# Detects 3+ decimal-pointed numbers near IP keywords (omega, WARN, BLOCK,
+# threshold, lambda, weibull, etc.) within a 5-line sliding window, with
+# IP-CI-ALLOW: <reason> annotation as the explicit-exception mechanism.
+#
+# Scope (web-static): all *.html files recursive (root + blog/ + docs/ +
+# standard/ + integrations/).
+#
+# Mode policy — Step 1 of 2 (2026-05-16):
+#   - pull_request: WARN (advisory; does not block PRs)
+#   - push:main: STRICT (any unexempted hit fails the build)
+#   Step 2 STRICT-flip on pull_request follows in a separate PR ~2-3
+#   days after this PR's clean push:main run (target 2026-05-19).
+#   Mirrors banned-strings Step 1 → 2, module-count Step 1 → 2,
+#   test-count Step 1 → 2.
+#
+# Canonical script: sgraal-ai/core/scripts/check_ip_leak.py. This file
+# is a duplicate; sync when canonical updates.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_ip_leak.py'
+      - '.github/workflows/ip-leak-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_ip_leak.py'
+      - '.github/workflows/ip-leak-check.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: IP leak check (advisory on PR — Step 1)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run IP leak check (WARN mode, diff-only)
+        env:
+          STRICT_MODE: "0"
+          IP_CI_REPO: web-static
+        run: python3 scripts/check_ip_leak.py --diff-only
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: IP leak check (main / dispatch — STRICT)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run IP leak check (STRICT, full scan)
+        env:
+          STRICT_MODE: "1"
+          IP_CI_REPO: web-static
+        run: python3 scripts/check_ip_leak.py
