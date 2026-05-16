@@ -101,9 +101,9 @@
 
 <h3 class="font-bold text-[#0B0F14] mb-2">CC-016 &mdash; staleness &times; action_type override</h3>
 
-<p>The original failure: a fintech agent with action_type <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">irreversible</code> reads a memory entry that&rsquo;s 2 days old (within normal staleness threshold), but the entry is <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">tool_state</code> &mdash; a category that decays faster. Our system returned USE_MEMORY with omega 67. The corpus said it should have escalated to ASK_USER.</p>
+<p>The original failure: a fintech agent with action_type <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">irreversible</code> reads a memory entry that&rsquo;s within the normal staleness threshold, but the entry is <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">tool_state</code> &mdash; a category that decays faster. Our system returned USE_MEMORY. The corpus said it should have escalated to ASK_USER.</p>
 
-<p>The fix: when action_type equals irreversible AND entry_type equals tool_state AND domain-specific threshold exceeded, force escalation regardless of base omega. Domain thresholds: fintech 1.5 days, medical 3.5 days for irreversible actions on tool_state.</p>
+<p>The fix: when action_type equals irreversible AND entry_type equals tool_state AND the per-domain staleness threshold is exceeded, force escalation regardless of base omega. Per-domain staleness cutoffs are tenant-calibrated and tighter for high-stakes domains.</p>
 
 <p>The fix added 16 lines. It moved Round 12 from 49 to 50.</p>
 

@@ -275,12 +275,12 @@ console.log(result.recommended_action); // BLOCK</pre>
       <div class="space-y-4">
         <div class="bg-[#f5f4f0] rounded-xl p-6">
           <h3 class="font-bold text-lg mb-2">omega_mem_final</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-3">Risk score 0–100. Combines freshness decay, source trust, conflict detection, provenance, and commercial intent.</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-3">Risk score on a 0–100 scale. Combines freshness decay, source trust, conflict detection, provenance, and commercial intent. Maps to one of four decision bands. Concrete band cutpoints are tenant-specific and recalibrated continuously.</p>
           <div class="flex gap-2 flex-wrap">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">0–30: USE_MEMORY</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">31–60: WARN</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-700">61–75: ASK_USER</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700">76–100: BLOCK</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">USE_MEMORY</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">WARN</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-700">ASK_USER</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700">BLOCK</span>
           </div>
         </div>
         <div class="bg-[#f5f4f0] rounded-xl p-6">
@@ -365,17 +365,17 @@ console.log(result.recommended_action); // BLOCK</pre>
       <div class="overflow-x-auto mb-6">
         <table class="w-full text-sm border border-[#e5e7eb] rounded-lg overflow-hidden">
           <thead><tr class="bg-white">
-            <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Range</th>
             <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Decision</th>
             <th class="text-left px-4 py-3 text-slate-500 text-xs uppercase border-b border-[#e5e7eb]">Meaning</th>
           </tr></thead>
           <tbody>
-            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-green-600">0–25</td><td class="px-4 py-2 font-bold text-green-600">USE_MEMORY</td><td class="px-4 py-2 text-[#374151]">Safe to proceed</td></tr>
-            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-amber-600">25–50</td><td class="px-4 py-2 font-bold text-amber-600">WARN</td><td class="px-4 py-2 text-[#374151]">Proceed with caution</td></tr>
-            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-orange-600">50–75</td><td class="px-4 py-2 font-bold text-orange-600">ASK_USER</td><td class="px-4 py-2 text-[#374151]">Human approval needed</td></tr>
-            <tr class="bg-[#faf9f6]"><td class="px-4 py-2 font-bold text-red-600">75–100</td><td class="px-4 py-2 font-bold text-red-600">BLOCK</td><td class="px-4 py-2 text-[#374151]">Do not proceed</td></tr>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-green-600">USE_MEMORY</td><td class="px-4 py-2 text-[#374151]">Safe to proceed</td></tr>
+            <tr class="bg-[#faf9f6] border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-amber-600">WARN</td><td class="px-4 py-2 text-[#374151]">Proceed with caution</td></tr>
+            <tr class="bg-white border-b border-[#e5e7eb]"><td class="px-4 py-2 font-bold text-orange-600">ASK_USER</td><td class="px-4 py-2 text-[#374151]">Human approval needed</td></tr>
+            <tr class="bg-[#faf9f6]"><td class="px-4 py-2 font-bold text-red-600">BLOCK</td><td class="px-4 py-2 text-[#374151]">Do not proceed</td></tr>
           </tbody>
         </table>
+        <p class="text-xs text-slate-500 mt-3 italic">Concrete band cutpoints are tenant-specific and recalibrated continuously — only the qualitative semantics are part of the public contract.</p>
       </div>
 
       <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">10 Components</h3>

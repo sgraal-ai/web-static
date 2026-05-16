@@ -73,27 +73,28 @@
 <pre class="text-lg font-mono text-center text-[#0B0F14]">s_freshness = exp( -(age / &lambda;)<sup>k</sup> )</pre>
 </div>
 <p class="text-sm text-slate-500 mb-4">Where <code class="text-[#c9a962]">age</code> is the memory's age in days, <code class="text-[#c9a962]">&lambda;</code> is the scale parameter (type-specific), and <code class="text-[#c9a962]">k</code> is the shape parameter (type-specific).</p>
-<p class="mb-2 font-semibold">Type-specific decay rates (fastest to slowest):</p>
+<p class="mb-2 font-semibold">Type-specific decay ordering (fastest to slowest):</p>
 <div class="overflow-x-auto">
 <table class="w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
 <thead class="bg-slate-50">
 <tr>
 <th class="text-left px-4 py-3 font-bold">Memory Type</th>
-<th class="text-left px-4 py-3 font-bold">Decay Rate</th>
+<th class="text-left px-4 py-3 font-bold">Relative Decay</th>
 <th class="text-left px-4 py-3 font-bold">Intuition</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-slate-100">
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">tool_state</td><td class="px-4 py-3">0.15 (fast)</td><td class="px-4 py-3 text-slate-600">API responses go stale in hours</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">shared_workflow</td><td class="px-4 py-3">0.08</td><td class="px-4 py-3 text-slate-600">Collaborative state drifts in days</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">episodic</td><td class="px-4 py-3">0.05</td><td class="px-4 py-3 text-slate-600">Event memories fade over weeks</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">preference</td><td class="px-4 py-3">0.02</td><td class="px-4 py-3 text-slate-600">User preferences shift over months</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">semantic</td><td class="px-4 py-3">0.01</td><td class="px-4 py-3 text-slate-600">Facts change slowly</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">policy</td><td class="px-4 py-3">0.005</td><td class="px-4 py-3 text-slate-600">Policies are revised infrequently</td></tr>
-<tr><td class="px-4 py-3 font-mono text-[#c9a962]">identity</td><td class="px-4 py-3">0.002 (near-permanent)</td><td class="px-4 py-3 text-slate-600">Core identity rarely changes</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">tool_state</td><td class="px-4 py-3">Fastest</td><td class="px-4 py-3 text-slate-600">API responses go stale in hours</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">shared_workflow</td><td class="px-4 py-3">Fast</td><td class="px-4 py-3 text-slate-600">Collaborative state drifts in days</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">episodic</td><td class="px-4 py-3">Medium</td><td class="px-4 py-3 text-slate-600">Event memories fade over weeks</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">preference</td><td class="px-4 py-3">Slow</td><td class="px-4 py-3 text-slate-600">User preferences shift over months</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">semantic</td><td class="px-4 py-3">Slow</td><td class="px-4 py-3 text-slate-600">Facts change slowly</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">policy</td><td class="px-4 py-3">Very slow</td><td class="px-4 py-3 text-slate-600">Policies are revised infrequently</td></tr>
+<tr><td class="px-4 py-3 font-mono text-[#c9a962]">identity</td><td class="px-4 py-3">Near-permanent</td><td class="px-4 py-3 text-slate-600">Core identity rarely changes</td></tr>
 </tbody>
 </table>
 </div>
+<p class="text-xs text-slate-500 mt-3 italic">Concrete per-type &lambda; values are tenant-calibrated and recalibrated continuously — only the qualitative ordering is part of the public model description.</p>
 </section>
 
 <section>
