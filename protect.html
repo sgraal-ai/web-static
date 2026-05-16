@@ -14,9 +14,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Protect — Sgraal</title>
-<meta name="description" content="Write firewall, poisoning detection, and tamper verification for AI agent memory.">
+<meta name="description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect poisoning, manipulation, and drift before the action executes.">
 <meta property="og:title" content="Protect — Sgraal">
-<meta property="og:description" content="Write firewall, poisoning detection, and tamper verification for AI agent memory.">
+<meta property="og:description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect poisoning, manipulation, and drift before the action executes.">
 <meta property="og:url" content="https://sgraal.com/protect">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -82,7 +82,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </h1>
 <p class="text-red-500 font-semibold text-sm mb-2">And you won't see it happen.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-  Memory poisoning, prompt injection, and tampering are blocked before they reach your agent.
+  Memory poisoning, prompt injection, and tampering are blocked before they affect agent actions.
 </p>
 <a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
@@ -105,10 +105,10 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     <div>
       <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
       <ul class="space-y-3 text-slate-700 text-sm">
-        <li>&rarr; Injection detected at write time</li>
-        <li>&rarr; Memory never stored</li>
+        <li>&rarr; Injection flagged at preflight</li>
+        <li>&rarr; Unsafe action blocked before execution</li>
         <li>&rarr; Full threat trace recorded (SHA256)</li>
-        <li>&rarr; Agent remains unaffected</li>
+        <li>&rarr; Agent acts only on validated memory</li>
       </ul>
     </div>
   </div>
@@ -121,8 +121,8 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="relative">
 <div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">1</div>
 <div class="relative z-10 pt-4">
-<h3 class="text-xl font-bold mb-4">Every write is validated before storage</h3>
-<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">The write firewall intercepts incoming memory. Sleeper patterns, injection signatures, and source anomalies are flagged immediately.</p>
+<h3 class="text-xl font-bold mb-4">Every memory-driven action is validated before execution</h3>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Sgraal's preflight gate intercepts every action that depends on memory. Sleeper patterns, injection signatures, and source anomalies are flagged before the action runs. Write-time filtering is also available via <code class="text-xs bg-slate-100 px-1 rounded">/v1/firewall/*</code>.</p>
 </div>
 </div>
 <div class="relative">
@@ -164,6 +164,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <p class="text-slate-600 leading-relaxed text-sm">Write firewall: blocks poisoned data before storage — prevention not detection. Configure namespace rules and review violations via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/rules</code> and <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/violations</code>. Sleeper detector: proactive scan for dormant trigger conditions.</p>
 <p class="text-xs italic text-slate-500 mt-3">Never store poisoned memory. Ever.</p>
 <p class="text-xs italic text-slate-500 mt-2">Most tools detect after storage. Sgraal blocks before it ever enters memory.</p>
+<p class="text-xs text-slate-500 mt-3">Write-time filtering is one of Sgraal's protection layers. The primary mode is action-time preflight — <a href="/memory-ecosystem-map" class="text-[#c9a962] font-semibold hover:underline">see the full memory stack &rarr;</a></p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl hover:border-[#c9a962]/20 border border-transparent transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
@@ -239,8 +240,8 @@ print(preflight.recommended_action)    # BLOCK</pre>
 <div class="text-sm text-slate-500">Lookup complexity</div>
 </div>
 <div class="bg-white p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all text-center">
-<div class="text-3xl font-extrabold text-[#c9a962] mb-2">100%</div>
-<div class="text-sm text-slate-500">Fleet-wide coverage</div>
+<div class="text-3xl font-extrabold text-[#c9a962] mb-2">Signed</div>
+<div class="text-sm text-slate-500">Cryptographic vaccine signatures</div>
 </div>
 </div>
 <p class="text-center text-xs text-slate-400 italic">Powered by cryptographically signed vaccine signatures with automatic expiry.</p>
