@@ -85,11 +85,11 @@
 <div class="space-y-4">
 <div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
 <h3 class="font-bold text-[#0B0F14] mb-2">Round 1 — Sponsored Drift (60 cases)</h3>
-<p>Affiliate bias, brand manipulation, cross-agent propagation. Memory entries carrying hidden commercial intent with trust scores above 0.85. The kind of drift that looks clean on the surface.</p>
+<p>Affiliate bias, brand manipulation, cross-agent propagation. Memory entries carrying hidden commercial intent inside high-trust sources. The kind of drift that looks clean on the surface.</p>
 </div>
 <div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
 <h3 class="font-bold text-[#0B0F14] mb-2">Round 2 — Subtle Drift (59 cases)</h3>
-<p>Commercial intent between 0.30 and 0.55 — the hardest range. Source trust above 0.85, conflict below 0.15. These entries pass every simple threshold check. Detection requires structural metadata analysis, not just content review.</p>
+<p>Commercial intent in the mid-range — the hardest band, neither obviously benign nor obviously commercial. Source trust high, conflict low. These entries pass every simple threshold check. Detection requires structural metadata analysis, not just content review.</p>
 </div>
 <div class="bg-[#faf9f6] rounded-xl p-6 border border-[#e5e7eb]">
 <h3 class="font-bold text-[#0B0F14] mb-2">Round 3 — Hallucination (60 cases)</h3>
@@ -119,7 +119,7 @@
 <h2 class="text-2xl font-bold text-[#0B0F14] mb-3">What We Learned</h2>
 <ul class="list-disc ml-6 space-y-2">
 <li>The dual-stack approach (reasoning + formal proof) is stronger than either alone.</li>
-<li>Boundary cases — where omega falls between 0.30 and 0.55 — are exactly where systems diverge. These cases require structural analysis, not just threshold checks.</li>
+<li>Boundary cases — in the borderline omega range where the decision band is least settled — are exactly where systems diverge. These cases require structural analysis, not just threshold checks.</li>
 <li>Hallucination detection requires provenance tracking and cross-agent correlation, not just content analysis. When three agents agree on a fabricated fact, content-level analysis fails.</li>
 </ul>
 </section>
