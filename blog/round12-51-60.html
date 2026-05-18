@@ -112,7 +112,7 @@
 
 <p>The original failure: a memory entry contains explicit correction language &mdash; <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">CORRECTION</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">NOT X</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">ACTUALLY</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">FIXED</code> &mdash; but our system treated the entry like any other potential conflict.</p>
 
-<p>The fix: regex-detect correction markers, apply a 35% omega discount when the marker is present, and suppress the SUSPICIOUS flag on confidence calibration for these specific cases.</p>
+<p>The fix: regex-detect correction markers, apply a calibrated omega discount when the marker is present, and suppress the SUSPICIOUS flag on confidence calibration for these specific cases.</p>
 
 <p>The fix added 46 lines. It moved Round 12 from 50 to 51.</p>
 

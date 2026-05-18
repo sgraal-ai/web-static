@@ -210,6 +210,7 @@ result = client.preflight(
     action_type="irreversible",
     domain="fintech"
 )
+# IP-CI-ALLOW: illustrative RL adjustment confidence in code example
 print(result.recommended_action)   # USE_MEMORY
 print(result.rl_adjustment)        # {"rl_adjusted_action": "USE_MEMORY", "confidence": 0.91}
 

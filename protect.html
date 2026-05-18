@@ -202,6 +202,7 @@ result = client.store(
     agent_id="agent-payments",
     domain="fintech"
 )
+# IP-CI-ALLOW: illustrative threat_score in code example
 if result.write_firewall_triggered:
     print(result.block_reason)   # SLEEPER_PATTERN_DETECTED
     print(result.threat_score)   # 0.94
