@@ -1,0 +1,144 @@
+<!--
+========================================================================
+  TIER BADGE COMPONENT — Sgraal IA design system v1
+  Sprint 0 (2026-05-19) · refactor/sprint-0-ia-foundation-2026-05-19
+
+  Purpose: visually communicate per-feature / per-page readiness state.
+
+  3 variants:
+    LIVE             — feature is production-ready, customer can use today
+    IN_DEVELOPMENT   — beta / early access, accepting design partners
+    COMING           — concept / roadmap, email waitlist only
+
+  Plus 2 companions:
+    PERSONA_EYEBROW  — top-of-page persona-target ribbon
+    DUAL_EYEBROW     — product pillar + persona target combined
+
+  Usage: copy-paste the relevant block inline into the target HTML page.
+  Do NOT modify the token classes — keep visual consistency across pages.
+
+  Color tokens used (already in tailwind config of all pages):
+    #c9a962  gold (primary)
+    #0B0F14  obsidian (text)
+    slate-100/300/400/500/600  (muted scale)
+========================================================================
+-->
+
+
+<!-- ============== VARIANT 1: LIVE (filled gold) ============== -->
+<!-- Use: feature is production-ready and customer-accessible today -->
+
+<span class="inline-flex items-center gap-1.5 bg-[#c9a962] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+  <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+  Live
+</span>
+
+
+<!-- ============== VARIANT 2: IN DEVELOPMENT (outlined gold) ============== -->
+<!-- Use: feature in beta / early access; accepting design partners -->
+
+<span class="inline-flex items-center gap-1.5 bg-white border border-[#c9a962] text-[#c9a962] text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+  <span class="w-1.5 h-1.5 rounded-full bg-[#c9a962] animate-pulse"></span>
+  In Development
+</span>
+
+
+<!-- ============== VARIANT 3: COMING (slate muted) ============== -->
+<!-- Use: concept / roadmap, email waitlist only, no demo, no promise -->
+
+<span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-500 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+  Coming
+</span>
+
+
+<!-- ============== PERSONA EYEBROW (single line) ============== -->
+<!-- Use above a hero H1 to signal "this page targets X" -->
+
+<p class="text-slate-500 font-bold tracking-[0.2em] text-xs uppercase mb-4">
+  For DPOs &amp; AI compliance officers
+</p>
+
+
+<!-- ============== DUAL EYEBROW (pillar + persona, separator) ============== -->
+<!-- Use on pillar pages where both product-feature and persona apply -->
+
+<div class="flex items-center justify-center gap-3 mb-6">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase">COMPLY</span>
+  <span class="w-1 h-1 rounded-full bg-[#c9a962]/40"></span>
+  <span class="text-slate-500 font-semibold tracking-[0.15em] text-xs uppercase">For DPOs &amp; CCOs</span>
+</div>
+
+
+<!-- ============== HERO-LEVEL TIER BADGE (large) ============== -->
+<!-- Use prominently at page hero for whole-page tier state -->
+
+<!-- LIVE -->
+<span class="inline-flex items-center gap-2 bg-[#c9a962] text-white text-sm font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+  <span class="w-2 h-2 rounded-full bg-white"></span>
+  Live · Available today
+</span>
+
+<!-- IN DEVELOPMENT -->
+<span class="inline-flex items-center gap-2 bg-white border-2 border-[#c9a962] text-[#c9a962] text-sm font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+  <span class="w-2 h-2 rounded-full bg-[#c9a962] animate-pulse"></span>
+  In Development · Early access
+</span>
+
+<!-- COMING -->
+<span class="inline-flex items-center gap-2 bg-slate-100 text-slate-500 text-sm font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+  <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+  Coming · Research preview
+</span>
+
+
+<!-- ============== FEATURE-LEVEL TIER BADGE (small, inline-with-feature) ============== -->
+<!-- Use next to individual feature names within a page (e.g., on a feature card) -->
+
+<!-- LIVE -->
+<span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+
+<!-- IN DEVELOPMENT -->
+<span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Beta</span>
+
+<!-- COMING -->
+<span class="inline-flex items-center bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Coming</span>
+
+
+<!--
+========================================================================
+  PLACEMENT GUIDELINES
+
+  PAGE-LEVEL (hero badge):
+    - Tier 1 pages → Live · Available today
+    - Tier 2 pages → In Development · Early access
+    - Tier 3 pages → Coming · Research preview
+    Position: directly above the H1, or directly below it as a sub-headline
+
+  PERSONA EYEBROW:
+    - All persona-targeted pages (Tier 1 + Tier 2 + Tier 3)
+    - Position: above the H1, between page-tier-badge and H1
+    - Use the single-line variant on persona pages
+    - Use the dual variant on pillar pages where pillar + persona both apply
+
+  FEATURE-LEVEL BADGES (small):
+    - Within feature cards on a page
+    - Allows mixed-tier features on a single page (e.g., /developers has Live SDK
+      + Beta Proxy + Coming Pre-Cog)
+
+  CTA DIFFERENTIATION (by tier):
+    Tier 1 / Live      → "Try free" / "Get API key" / "npm install" (Stripe self-serve)
+    Tier 2 / In Dev    → "Request early access" (email form, design partner program)
+    Tier 3 / Coming    → "Be first to know" (email-only, no follow-up promise)
+
+  COLOR DISCIPLINE:
+    - Never mix tier-badge color tokens (no green/blue for Live, no purple for Coming)
+    - Keep gold for active, slate for inactive
+    - Hover states: subtle scale/shadow, no color change
+
+  ACCESSIBILITY:
+    - All badges have visible text (no icon-only)
+    - Sufficient contrast: WCAG AA passes for all 3 variants on white bg
+    - The pulse animation on In Dev is decorative; respect prefers-reduced-motion
+========================================================================
+-->

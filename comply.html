@@ -66,21 +66,47 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </nav>
 
-<!-- Hero -->
+<!-- Hero — Sprint 0 IA refactor (persona-explicit dual eyebrow + Live tier badge + +cryptographically) -->
 <section class="pt-40 pb-24 px-6">
 <div class="max-w-4xl mx-auto text-center">
-<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">COMPLY</span>
+
+<!-- Page-level tier badge -->
+<div class="flex justify-center mb-6">
+  <span class="inline-flex items-center gap-2 bg-[#c9a962] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    <span class="w-2 h-2 rounded-full bg-white"></span>
+    Live · Available today
+  </span>
+</div>
+
+<!-- Dual eyebrow: pillar + persona -->
+<div class="flex items-center justify-center gap-3 mb-6">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase">COMPLY</span>
+  <span class="w-1 h-1 rounded-full bg-[#c9a962]/40"></span>
+  <span class="text-slate-500 font-semibold tracking-[0.15em] text-xs uppercase">For DPOs &amp; CCOs</span>
+</div>
+
 <h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
-  Meet every regulation.<br/>Prove it.
+  Meet every regulation.<br/>Prove it cryptographically.
 </h1>
 <p class="text-red-500 font-semibold text-sm mb-4">If you cannot prove compliance, you are not compliant.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
-  EU AI Act, GDPR, HIPAA, FDA 510(k), NIST AI RMF — built into every preflight call. Full audit trail. Cryptographic proof.
+  EU AI Act Art. 13 &middot; GDPR Art. 5(1)(c) &middot; FDA 510(k) &middot; NIST AI RMF — all mappable with one API call. Full audit trail. W3C Verifiable Credentials.
 </p>
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">Want to know what Sgraal does <em>not</em> claim? Read the <a href="/docs/threat-model" class="text-[#c9a962] hover:underline font-semibold">threat model</a> — including the explicit non-certification disclosure.</p>
-<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
-  Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
-</a>
+
+<!-- Persona-specific CTAs (3 paths) -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+  <a href="#mvmem-certificate" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    See sample certificate <span class="material-symbols-outlined ml-2">workspace_premium</span>
+  </a>
+  <a href="mailto:compliance@sgraal.com?subject=Compliance%20program%20inquiry" class="inline-flex items-center bg-white border-2 border-[#c9a962] text-[#c9a962] px-8 py-4 rounded-lg font-bold text-base hover:bg-[#c9a962]/5 transition-all">
+    Talk to compliance team
+  </a>
+  <a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Get API Key →
+  </a>
+</div>
+
 </div>
 </section>
 
@@ -135,6 +161,97 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </div>
 </div>
+</div>
+</section>
+
+<!-- MVMem Certificate — Sprint 0 featured capability (NEW, surfacing a previously invisible product capability) -->
+<section id="mvmem-certificate" class="py-24 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">⭐ Featured · GDPR Art. 5(1)(c)</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">MVMem Certificate</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">Automated GDPR data minimization proof — cryptographically signed, court-admissible.</p>
+</div>
+
+<div class="max-w-6xl mx-auto bg-gradient-to-br from-[#c9a962]/10 to-[#f5f4f0] p-8 md:p-10 rounded-2xl border border-[#c9a962]/30">
+
+<div class="grid md:grid-cols-2 gap-10 items-center">
+
+  <!-- Left: explanation -->
+  <div>
+    <div class="flex items-center gap-3 mb-4">
+      <div class="bg-[#c9a962]/20 w-12 h-12 rounded-lg flex items-center justify-center">
+        <span class="material-symbols-outlined text-[#c9a962]">workspace_premium</span>
+      </div>
+      <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">Beta · Early Access</span>
+    </div>
+
+    <p class="text-slate-700 leading-relaxed mb-4">
+      Sgraal computes the <strong>Minimum Viable Memory</strong> state for every agent action — the smallest set of memory entries that would yield the same decision — and signs it as a W3C Verifiable Credential.
+    </p>
+
+    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+      Prove to your regulator that your AI agent operated with the minimum necessary personal data. Cryptographically signed by your tenant's <code class="text-xs bg-white px-1.5 py-0.5 rounded">PASSPORT_SIGNING_KEY</code>. Court-admissible. <strong>Article 30 records auto-populated</strong>.
+    </p>
+
+    <div class="space-y-2 mb-6">
+      <div class="flex items-start gap-2 text-sm text-slate-700">
+        <span class="text-[#c9a962] mt-0.5 font-bold">✓</span>
+        <span>Automated <strong>data minimization proof</strong> — no manual audit reconstruction</span>
+      </div>
+      <div class="flex items-start gap-2 text-sm text-slate-700">
+        <span class="text-[#c9a962] mt-0.5 font-bold">✓</span>
+        <span>Signed <strong>W3C Verifiable Credential</strong> — standards-grade, not vendor-specific</span>
+      </div>
+      <div class="flex items-start gap-2 text-sm text-slate-700">
+        <span class="text-[#c9a962] mt-0.5 font-bold">✓</span>
+        <span><strong>GDPR Article 5(1)(c) compliant</strong> — direct mapping to the regulation</span>
+      </div>
+      <div class="flex items-start gap-2 text-sm text-slate-700">
+        <span class="text-[#c9a962] mt-0.5 font-bold">✓</span>
+        <span>Generated <strong>per agent action</strong>, not per quarter</span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <a href="mailto:earlyaccess@sgraal.com?subject=MVMem%20Certificate%20-%20Early%20Access" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+        Request early access →
+      </a>
+      <a href="/docs/api" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
+        API reference →
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: sample credential JSON -->
+  <div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Sample credential</p>
+<pre class="bg-[#0B0F14] text-slate-200 p-5 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed shadow-lg">{
+  <span class="text-[#c9a962]">"@context"</span>: [<span class="text-emerald-300">"https://www.w3.org/2018/credentials/v1"</span>],
+  <span class="text-[#c9a962]">"type"</span>: [<span class="text-emerald-300">"VerifiableCredential"</span>, <span class="text-emerald-300">"MVMemCertificate2026"</span>],
+  <span class="text-[#c9a962]">"issuer"</span>: <span class="text-emerald-300">"did:sgraal:tenant_..."</span>,
+  <span class="text-[#c9a962]">"issuanceDate"</span>: <span class="text-emerald-300">"2026-05-19T08:42:11Z"</span>,
+  <span class="text-[#c9a962]">"credentialSubject"</span>: {
+    <span class="text-[#c9a962]">"agentId"</span>: <span class="text-emerald-300">"agent_a47..."</span>,
+    <span class="text-[#c9a962]">"requestId"</span>: <span class="text-emerald-300">"req_b8c..."</span>,
+    <span class="text-[#c9a962]">"originalMemorySize"</span>: <span class="text-amber-300">47</span>,
+    <span class="text-[#c9a962]">"minimumViableSize"</span>: <span class="text-amber-300">12</span>,
+    <span class="text-[#c9a962]">"decisionPreserved"</span>: <span class="text-violet-300">true</span>,
+    <span class="text-[#c9a962]">"gdprArticle"</span>: <span class="text-emerald-300">"5(1)(c)"</span>
+  },
+  <span class="text-[#c9a962]">"proof"</span>: {
+    <span class="text-[#c9a962]">"type"</span>: <span class="text-emerald-300">"Ed25519Signature2020"</span>,
+    <span class="text-[#c9a962]">"jws"</span>: <span class="text-emerald-300">"eyJhbGc..."</span>
+  }
+}</pre>
+    <p class="text-xs text-slate-500 mt-3 text-center">Anonymized sample. Your tenant produces identical-format certificates signed by your own key.</p>
+  </div>
+
+</div>
+
+</div>
+
 </div>
 </section>
 
