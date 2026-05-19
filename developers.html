@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>For Developers — Sgraal</title>
+<meta name="description" content="Drop-in safety for any AI agent memory. 23 framework SDKs. Sgraal Proxy migrates Mem0/Zep with one env var. Apache 2.0 SDK. 5-line integration.">
+<meta property="og:title" content="For Developers — Sgraal">
+<meta property="og:description" content="Drop-in safety for any AI agent memory. 23 framework SDKs. Sgraal Proxy migrates Mem0/Zep with one env var. Apache 2.0 SDK.">
+<meta property="og:url" content="https://sgraal.com/developers">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sgraal.com/developers">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code, pre { font-family: 'JetBrains Mono', monospace; }
+pre { font-size: 0.8125rem; line-height: 1.6; }
+.tab-btn { cursor: pointer; transition: all 0.15s; }
+.tab-btn.active { background: #c9a962; color: #fff; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-7 font-medium text-sm">
+
+<!-- Product dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Product
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Product pillars</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">Decide <span class="text-xs text-slate-400">— Verify before acting</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">Protect <span class="text-xs text-slate-400">— Stop manipulation</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">Comply <span class="text-xs text-slate-400">— Prove compliance</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">Scale <span class="text-xs text-slate-400">— Run at any size</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/standard">Standards &amp; Provenance</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">Whitepaper</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/benchmark">Benchmark</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/failures">Failure Gallery</a>
+  </div>
+</div>
+
+<!-- Solutions dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Solutions
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-72 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">For builders</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/pricing">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2 mt-2">For enterprise</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">For DPOs &amp; Compliance <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Healthcare <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Trading desks <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Multi-Agent systems <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+  </div>
+</div>
+
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+
+<!-- Mobile nav (Sub-Sprint 1a: persona structure with section headers) -->
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-2 text-sm font-medium max-h-[calc(100vh-5rem)] overflow-y-auto">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-2">Product</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/standard">Standards</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/benchmark">Benchmark</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/failures">Failure Gallery</a>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-4">Solutions</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">For Developers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">For Platform &amp; MLOps</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">For Researchers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">For AI Startups</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">For Security teams</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">For DPOs &amp; Compliance</a>
+<div class="border-t border-slate-100 my-3"></div>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/docs">Docs</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold mt-3" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-20 px-6">
+<div class="max-w-5xl mx-auto text-center">
+
+<!-- Page-level tier badge -->
+<div class="flex justify-center mb-6">
+  <span class="inline-flex items-center gap-2 bg-[#c9a962] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    <span class="w-2 h-2 rounded-full bg-white"></span>
+    Live · Available today
+  </span>
+</div>
+
+<!-- Persona eyebrow -->
+<p class="text-slate-500 font-bold tracking-[0.2em] text-xs uppercase mb-6">
+  For Developers building autonomous AI agents
+</p>
+
+<h1 class="text-5xl md:text-6xl font-extrabold text-[#0B0F14] tracking-tighter mb-6 leading-[1.1]">
+  Drop-in safety for any AI agent memory.
+</h1>
+
+<p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
+  23 framework SDKs. Apache 2.0 SDK on GitHub. <strong>Sgraal Proxy</strong> migrates your Mem0 or Zep agents with one env var change. Real-time preflight before every action.
+</p>
+
+<p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
+  No signup needed to try. Demo key <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">sg_demo_playground</code> hits the live API right now.
+</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+  <a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#0B0F14] text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-black transition-all">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="mr-2"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    View on GitHub
+  </a>
+  <a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Try in playground →
+  </a>
+  <a href="#proxy" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Migrate from Mem0/Zep →
+  </a>
+</div>
+
+<!-- Inline copy command -->
+<div class="inline-flex items-center bg-black/[0.04] border border-black/[0.12] rounded-xl px-4 py-3 group cursor-pointer hover:bg-black/[0.06] transition-colors">
+  <code class="text-[#0B0F14] font-mono text-sm mr-4">pip install sgraal</code>
+  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-slate-500 group-hover:text-[#c9a962] transition-colors"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+</div>
+
+</div>
+</section>
+
+
+<!-- Sgraal Proxy (Featured — Tier 2 Beta) -->
+<section id="proxy" class="py-20 px-6 bg-[#f5f4f0]">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">⭐ Featured · Drop-in migration</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">Sgraal Proxy</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+    Migrate any Mem0, Zep, or Letta agent in 30 seconds. One env var. Zero code change.
+  </p>
+</div>
+
+<div class="bg-white border-2 border-[#c9a962]/30 rounded-2xl p-8 md:p-10">
+
+<div class="flex items-center gap-3 mb-6">
+  <div class="bg-[#c9a962]/20 w-12 h-12 rounded-lg flex items-center justify-center">
+    <span class="text-[#c9a962] text-2xl font-bold">⇄</span>
+  </div>
+  <span class="inline-flex items-center bg-white border-2 border-[#c9a962] text-[#c9a962] text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    <span class="w-2 h-2 rounded-full bg-[#c9a962] mr-2 animate-pulse"></span>
+    Beta · In Development
+  </span>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-10 items-center">
+
+  <div>
+    <h3 class="text-2xl font-bold mb-4">Already using Mem0? Add Sgraal in one line.</h3>
+    <p class="text-slate-600 leading-relaxed mb-5">
+      Sgraal Proxy speaks the Mem0 wire protocol. Point your client at <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">proxy.sgraal.com</code> instead of <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">api.mem0.ai</code> and every call gets a Sgraal preflight in front. Memory writes are scored before they're stored. Memory reads are validated before the agent uses them. <strong>Your code doesn't change.</strong>
+    </p>
+    <p class="text-slate-600 leading-relaxed mb-5 text-sm">
+      Same pattern for Zep (<code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">ZEP_URL=...</code>), Letta, and other memory backends. The proxy passes through everything Sgraal doesn't need to block.
+    </p>
+
+    <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg mb-6">
+      <p class="text-amber-900 text-sm leading-relaxed">
+        <strong>Beta status:</strong> Sgraal Proxy is in active development. Mem0 path is most mature. Zep and Letta paths are in progress. Early access customers shape the roadmap — request access via the form on the right.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <a href="mailto:earlyaccess@sgraal.com?subject=Sgraal%20Proxy%20-%20Early%20Access" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+        Request early access →
+      </a>
+      <a href="/docs" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
+        Read the Proxy docs →
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Before</p>
+<pre class="bg-[#0B0F14] text-slate-300 p-5 rounded-xl text-xs overflow-x-auto mb-4">
+<span class="text-slate-500"># your agent code (Mem0 client)</span>
+<span class="text-violet-300">import</span> mem0
+client = mem0.<span class="text-emerald-300">MemoryClient</span>(api_key=<span class="text-[#c9a962]">"..."</span>)
+client.add(messages, user_id=<span class="text-[#c9a962]">"alice"</span>)</pre>
+
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">After (env var only)</p>
+<pre class="bg-[#0B0F14] text-slate-300 p-5 rounded-xl text-xs overflow-x-auto">
+<span class="text-slate-500"># shell</span>
+<span class="text-amber-300">export</span> MEM0_API_BASE_URL=<span class="text-[#c9a962]">https://proxy.sgraal.com</span>
+<span class="text-amber-300">export</span> SGRAAL_API_KEY=<span class="text-[#c9a962]">sg_demo_playground</span>
+
+<span class="text-slate-500"># your agent code — UNCHANGED</span>
+<span class="text-violet-300">import</span> mem0
+client = mem0.<span class="text-emerald-300">MemoryClient</span>(api_key=<span class="text-[#c9a962]">"..."</span>)
+client.add(messages, user_id=<span class="text-[#c9a962]">"alice"</span>)
+<span class="text-slate-500"># ↑ now goes through Sgraal preflight first</span></pre>
+  </div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- 5-line integration (Tier 1 — existing SDK) -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-5xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">The simple path</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">5-line integration. Any agent.</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+    Skip the proxy. Call Sgraal directly. One API, four-band decision.
+  </p>
+</div>
+
+<!-- Tab control -->
+<div class="bg-[#f5f4f0] rounded-2xl p-2 max-w-3xl mx-auto mb-2">
+  <div class="flex gap-1">
+    <button class="tab-btn active flex-1 py-3 rounded-lg text-sm font-bold" onclick="showTab(event, 'tab-python')">Python</button>
+    <button class="tab-btn flex-1 py-3 rounded-lg text-sm font-bold" onclick="showTab(event, 'tab-node')">Node.js</button>
+    <button class="tab-btn flex-1 py-3 rounded-lg text-sm font-bold" onclick="showTab(event, 'tab-curl')">cURL</button>
+  </div>
+</div>
+
+<div class="max-w-3xl mx-auto">
+
+<div id="tab-python" class="tab-content active">
+<pre class="bg-[#0B0F14] text-slate-300 p-6 rounded-xl text-sm overflow-x-auto">
+<span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> SgraalClient
+
+client = <span class="text-emerald-300">SgraalClient</span>(<span class="text-[#c9a962]">"sg_demo_playground"</span>)
+result = client.preflight(
+    memory_state=[
+        {<span class="text-[#c9a962]">"id"</span>: <span class="text-[#c9a962]">"m1"</span>, <span class="text-[#c9a962]">"content"</span>: <span class="text-[#c9a962]">"Customer balance: $85,000"</span>,
+         <span class="text-[#c9a962]">"type"</span>: <span class="text-[#c9a962]">"tool_state"</span>, <span class="text-[#c9a962]">"timestamp_age_days"</span>: <span class="text-amber-300">0.1</span>,
+         <span class="text-[#c9a962]">"source_trust"</span>: <span class="text-amber-300">0.95</span>}
+    ],
+    domain=<span class="text-[#c9a962]">"fintech"</span>,
+    action_type=<span class="text-[#c9a962]">"irreversible"</span>
+)
+
+<span class="text-violet-300">if</span> result[<span class="text-[#c9a962]">"recommended_action"</span>] == <span class="text-[#c9a962]">"BLOCK"</span>:
+    refuse_action(reason=result[<span class="text-[#c9a962]">"explainability_note"</span>])</pre>
+</div>
+
+<div id="tab-node" class="tab-content">
+<pre class="bg-[#0B0F14] text-slate-300 p-6 rounded-xl text-sm overflow-x-auto">
+<span class="text-violet-300">import</span> { <span class="text-emerald-300">SgraalClient</span> } <span class="text-violet-300">from</span> <span class="text-[#c9a962]">"@sgraal/sdk"</span>;
+
+<span class="text-violet-300">const</span> client = <span class="text-violet-300">new</span> <span class="text-emerald-300">SgraalClient</span>(<span class="text-[#c9a962]">"sg_demo_playground"</span>);
+<span class="text-violet-300">const</span> result = <span class="text-violet-300">await</span> client.preflight({
+  memory_state: [
+    { id: <span class="text-[#c9a962]">"m1"</span>, content: <span class="text-[#c9a962]">"Customer balance: $85,000"</span>,
+      type: <span class="text-[#c9a962]">"tool_state"</span>, timestamp_age_days: <span class="text-amber-300">0.1</span>,
+      source_trust: <span class="text-amber-300">0.95</span> }
+  ],
+  domain: <span class="text-[#c9a962]">"fintech"</span>,
+  action_type: <span class="text-[#c9a962]">"irreversible"</span>
+});
+
+<span class="text-violet-300">if</span> (result.recommended_action === <span class="text-[#c9a962]">"BLOCK"</span>) {
+  refuseAction({ reason: result.explainability_note });
+}</pre>
+</div>
+
+<div id="tab-curl" class="tab-content">
+<pre class="bg-[#0B0F14] text-slate-300 p-6 rounded-xl text-sm overflow-x-auto">curl -X POST https://api.sgraal.com<span class="text-[#c9a962]">/v1/preflight</span> \
+  -H <span class="text-[#c9a962]">"Authorization: Bearer sg_demo_playground"</span> \
+  -H <span class="text-[#c9a962]">"Content-Type: application/json"</span> \
+  -d '{
+    "memory_state": [
+      {"id": "m1", "content": "Customer balance: $85,000",
+       "type": "tool_state", "timestamp_age_days": 0.1,
+       "source_trust": 0.95}
+    ],
+    "domain": "fintech",
+    "action_type": "irreversible"
+  }'</pre>
+</div>
+
+<p class="text-center text-slate-500 text-sm mt-6">
+  Returns one of <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">USE_MEMORY</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">WARN</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">ASK_USER</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">BLOCK</code> in ~15ms.
+</p>
+
+</div>
+</div>
+</section>
+
+<script>
+function showTab(ev, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  ev.currentTarget.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+
+<!-- 23 SDK matrix grid -->
+<section class="py-24 px-6 bg-[#f5f4f0]">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">23 framework SDKs</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">Native integration for every agent stack.</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+    Each SDK is a thin shim over the canonical Python client. Same scoring engine, framework-idiomatic API.
+  </p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+<a href="/docs" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Python</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install sgraal</p>
+</a>
+<a href="/docs#mcp" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">MCP (Claude)</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">@sgraal/mcp</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">npx @sgraal/mcp</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Cloudflare</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">@sgraal/cloudflare</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">npm i @sgraal/cloudflare</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Edge mode</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal.edge</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">(in Python SDK)</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">LangChain</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">langchain-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install langchain-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">CrewAI</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">crewai-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install crewai-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">AutoGen</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">autogen-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install autogen-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">LlamaIndex</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">llamaindex-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install llamaindex-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Haystack</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">haystack-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install haystack-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Semantic Kernel</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">semantic-kernel-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install semantic-kernel-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">OpenAI Agents</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">openai-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install openai-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Mem0</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">mem0-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install mem0-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Memvid</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">memvid-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install memvid-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Mnemos</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">mnemos-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install mnemos-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">sgraal-rag</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-rag</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install sgraal-rag</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Normalizer</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-normalizer</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install sgraal-normalizer</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Emulator</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-emulator</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install sgraal-emulator</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">CLI</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-cli</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">pip install sgraal-cli</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">n8n</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">n8n-nodes-sgraal</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">npm i n8n-nodes-sgraal</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Go</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">github.com/sgraal-ai/go</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">go get github.com/sgraal-ai/go</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Java</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">ai.sgraal:sgraal-java</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">Maven / Gradle</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">C# / .NET</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">Sgraal.Sdk</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">dotnet add package Sgraal.Sdk</p>
+</a>
+<a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-bold text-sm">Rust</h3>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+  </div>
+  <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-rs</p>
+  <p class="text-slate-400 text-[10px] font-mono truncate">cargo add sgraal-rs</p>
+</a>
+</div>
+
+<p class="text-center text-slate-500 text-sm mt-8">
+  Looking for something else? See the
+  <a href="/compatibility" class="text-[#c9a962] hover:underline font-semibold">full compatibility matrix</a>
+  including community wrappers (Pydantic AI, Letta, Vercel, Bedrock, Azure, Google ADK, Langfuse, LangSmith, Zep, Dify, Flowise, Make, Zapier) and roadmap items.
+</p>
+
+</div>
+</section>
+
+
+<!-- MCP server section -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-5xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">MCP server · Claude Desktop</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">Sgraal in Claude Desktop.</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+    One config block. Claude can call Sgraal preflight on any memory state directly from a conversation.
+  </p>
+</div>
+
+<div class="bg-[#0B0F14] rounded-2xl p-6 max-w-3xl mx-auto">
+  <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">~/Library/Application Support/Claude/claude_desktop_config.json</p>
+<pre class="text-slate-300 text-sm overflow-x-auto">{
+  <span class="text-[#c9a962]">"mcpServers"</span>: {
+    <span class="text-[#c9a962]">"sgraal"</span>: {
+      <span class="text-[#c9a962]">"command"</span>: <span class="text-emerald-300">"npx"</span>,
+      <span class="text-[#c9a962]">"args"</span>: [<span class="text-emerald-300">"@sgraal/mcp"</span>],
+      <span class="text-[#c9a962]">"env"</span>: { <span class="text-[#c9a962]">"SGRAAL_API_KEY"</span>: <span class="text-emerald-300">"sg_live_..."</span> }
+    }
+  }
+}</pre>
+</div>
+
+<p class="text-center text-slate-500 text-sm mt-6">
+  Restart Claude Desktop, ask: <em>"check if this memory state is safe to act on"</em>, paste your JSON. Claude calls Sgraal and explains the verdict.
+</p>
+
+</div>
+</section>
+
+
+<!-- Use cases -->
+<section class="py-24 px-6 bg-[#f5f4f0]">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Use cases</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">What developers actually build with this.</h2>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">LangChain</span>
+    <h3 class="text-lg font-bold mb-2">RAG pipeline guardrail</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Validate retrieved chunks before they hit the LLM. Catch poisoned vectors, contradicted citations, and stale documents. Add 12 lines to your existing retriever — done.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">CrewAI</span>
+    <h3 class="text-lg font-bold mb-2">Multi-agent provenance</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Detect circular references when agent A passes memory to agent B passes back to agent A. Block before identity drift propagates across the crew.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">Mem0 / Zep</span>
+    <h3 class="text-lg font-bold mb-2">Memory governance layer</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Use Sgraal Proxy to add safety to existing Mem0 or Zep deployments without touching agent code. Every read and write goes through preflight first.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">Custom agent</span>
+    <h3 class="text-lg font-bold mb-2">Pre-action gate</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Roll your own agent? Add one call before any irreversible action — payment, email send, deploy, vote. Returns a four-band decision with full explainability and a repair plan.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- Why developers like it -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-5xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Why developers actually adopt this</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">No corporate ceremony. Just useful.</h2>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">Apache 2.0 SDK</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Fork it, modify it, ship it with your product. The wire format is stable. No CLA, no copyright assignment. <a href="/open-source" class="text-[#c9a962] hover:underline">See the cut line</a>.</p>
+  </div>
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">SSE streaming for debugging</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Hit <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/preflight/stream</code> and watch the decision form in 23 events across 4 phases. See which module flagged what. Great for tuning thresholds.</p>
+  </div>
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">/v1/check simple door</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Don't need 200 fields of response? Hit <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/check</code> with plain strings. Returns <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">{safe: bool, reason: str}</code>. Done.</p>
+  </div>
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">Edge mode for low latency</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Sub-millisecond p99 latency in-process. Zero dependencies. Runs in air-gapped environments. <a href="/open-source" class="text-[#c9a962] hover:underline">It's in the open layer</a>.</p>
+  </div>
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">Demo key works today</h3>
+    <p class="text-slate-600 text-sm leading-relaxed"><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">sg_demo_playground</code> hits the live API. Rate-limited, but real responses. No signup, no email gate. Just go.</p>
+  </div>
+
+  <div class="border-l-4 border-[#c9a962] pl-6 py-1">
+    <h3 class="font-bold text-lg mb-2">Open R1–R3 benchmark</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">239 adversarial test cases. Run them against your model, your competitor, or just to understand the attack surface. Pull request your own additions.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- Final CTA -->
+<section class="py-24 px-6 bg-[#0B0F14] text-white text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-bold mb-6">Ship Sgraal before lunch.</h2>
+<p class="text-slate-300 text-lg mb-10">SDK on GitHub. Demo key in the docs. No corporate ceremony.</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+  <a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white text-[#0B0F14] px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="mr-2"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    Star on GitHub
+  </a>
+  <a href="/playground" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Try in playground →
+  </a>
+  <a href="/pricing" class="inline-flex items-center text-slate-300 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Pricing →
+  </a>
+</div>
+
+<div class="inline-flex items-center bg-white/10 border border-white/20 rounded-xl px-4 py-3">
+  <code class="text-white font-mono text-sm mr-4">pip install sgraal</code>
+  <span class="text-slate-400 text-xs">· Apache 2.0 · ~15ms preflight</span>
+</div>
+
+</div>
+</section>
+
+<footer class="bg-surface-container border-t border-black/[0.06]">
+
+<!-- Top: 6 link columns -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+
+<!-- Column 1: Product -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Product</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><span class="text-slate-400">Open Core <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Visualizer <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+
+<!-- Column 2: Solutions -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Solutions</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">For Developers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">For Platform &amp; MLOps</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">For Researchers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">For AI Startups</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">For Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">For DPOs &amp; CCOs</a></li>
+<li><span class="text-slate-400">Healthcare <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Trading <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Multi-Agent <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Forensics <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Insurance <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Government <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Frontier Labs <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Enterprise <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Chrome Extension <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 3: Resources -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Resources</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai/sdks" target="_blank" rel="noopener noreferrer">SDKs &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-gold transition-colors" href="/roi">ROI Calculator</a></li>
+<li><a class="hover:text-gold transition-colors" href="/latency">Latency</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+</ul>
+</div>
+
+<!-- Column 4: Standards -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Standards</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Verified Badge <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 5: Company -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Company</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><span class="text-slate-400">About <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+<li><span class="text-slate-400">Careers <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Status <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai" target="_blank" rel="noopener noreferrer">GitHub &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer">X &uarr;</a></li>
+<li><span class="text-slate-400">LinkedIn <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Discord <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 6: Trust -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Trust</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
+<li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+</div>
+
+<!-- Bottom strip: brand + © + tagline -->
+<div class="border-t border-black/[0.06] py-6 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div><span class="font-bold text-obsidian">Sgraal</span> &middot; &copy; 2026 &middot; Open core memory governance for AI agents &middot; Apache 2.0 SDK + hosted engine</div>
+<div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
+</div>
+</footer>
+
+</body>
+</html>
