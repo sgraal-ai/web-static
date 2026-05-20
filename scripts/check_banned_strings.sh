@@ -70,6 +70,15 @@ ALLOWLIST=(
   # not to claim certification.
   # Line number updated 2026-05-20 (was 65 pre Sub-Sprint 1a).
   "security.html:120"
+  # The /startups page documents the three procurement blockers AI
+  # startups hit when selling to enterprise. Blocker #3 quotes the
+  # questions enterprise procurement actually asks: "What's your SOC 2
+  # status? EU AI Act mapping? FDA pathway?" — these are the QUESTIONS
+  # the customer asks, not claims Sgraal makes. The page's actual
+  # response is to point at MVMem certificate + W3C VCs + conformity
+  # declaration — explicitly NOT a claim to hold SOC 2 itself.
+  # Added 2026-05-20 (Sub-Sprint 1c).
+  "startups.html:203"
 )
 
 is_allowlisted() {
