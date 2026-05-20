@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>For Trading — Sgraal</title>
+<meta name="description" content="AI trading agent safety: edge mode sub-ms latency, deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
+<meta property="og:title" content="For Trading — Sgraal">
+<meta property="og:description" content="AI trading agent safety: edge mode sub-ms latency, deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
+<meta property="og:url" content="https://sgraal.com/trading">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sgraal.com/trading">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-7 font-medium text-sm">
+
+<!-- Product dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Product
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Product pillars</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">Decide <span class="text-xs text-slate-400">— Verify before acting</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">Protect <span class="text-xs text-slate-400">— Stop manipulation</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">Comply <span class="text-xs text-slate-400">— Prove compliance</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">Scale <span class="text-xs text-slate-400">— Run at any size</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/standard">Standards &amp; Provenance</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">Whitepaper</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/benchmark">Benchmark</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/failures">Failure Gallery</a>
+  </div>
+</div>
+
+<!-- Solutions dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Solutions
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-72 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">For builders</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/pricing">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2 mt-2">For enterprise</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">For DPOs &amp; Compliance <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Healthcare <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Trading desks <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Multi-Agent systems <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+  </div>
+</div>
+
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+
+<!-- Mobile nav (Sub-Sprint 1a: persona structure with section headers) -->
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-2 text-sm font-medium max-h-[calc(100vh-5rem)] overflow-y-auto">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-2">Product</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/standard">Standards</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/benchmark">Benchmark</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/failures">Failure Gallery</a>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-4">Solutions</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">For Developers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">For Platform &amp; MLOps</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">For Researchers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">For AI Startups</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">For Security teams</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">For DPOs &amp; Compliance</a>
+<div class="border-t border-slate-100 my-3"></div>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/docs">Docs</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold mt-3" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-20 px-6">
+<div class="max-w-4xl mx-auto text-center">
+
+<!-- Page-level Tier 2 badge -->
+<div class="flex justify-center mb-6">
+  <span class="inline-flex items-center gap-2 bg-white border-2 border-[#c9a962] text-[#c9a962] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    <span class="w-2 h-2 rounded-full bg-[#c9a962] animate-pulse"></span>
+    Beta · Early Access
+  </span>
+</div>
+
+<!-- Persona eyebrow -->
+<p class="text-slate-500 font-bold tracking-[0.2em] text-xs uppercase mb-6">
+  For AI-driven trading desks, HFT, and quantitative funds
+</p>
+
+<h1 class="text-5xl md:text-6xl font-extrabold text-[#0B0F14] tracking-tighter mb-6 leading-[1.1]">
+  Determinism. Latency. Audit. No exceptions.
+</h1>
+
+<p class="text-slate-600 text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
+  Trading agents need deterministic replay of every executed trade, sub-millisecond decision latency, and an audit trail that survives regulator review. The cost of a memory-poisoning incident in production is measured in basis points, not engineer-hours.
+</p>
+
+<p class="text-slate-600 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+  <strong>Edge mode and determinism ship today — both are production grade. Memory Time Machine for execution audit and compliance officer hooks for high-stakes trade interception are in Beta. Quant teams joining the design partner program get NDA-channel access.</strong>
+</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+  <a href="mailto:earlyaccess@sgraal.com?subject=Trading%20-%20design%20partner" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Apply to design partner program →
+  </a>
+  <a href="/playground" class="inline-flex items-center bg-white border border-slate-300 text-slate-700 px-8 py-4 rounded-lg font-bold text-base hover:border-[#c9a962] hover:text-[#c9a962] transition-all">
+    Try in playground
+  </a>
+  <a href="/pricing" class="inline-flex items-center text-slate-500 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Pricing →
+  </a>
+</div>
+
+</div>
+</section>
+
+<!-- Live features (gold solid badges — works today) -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">What works today</span>
+  <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Five primitives the trading floor expects.</h2>
+  <p class="text-slate-500 text-base max-w-2xl mx-auto">Production-grade, in active use, ready for your stack today.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">bolt</span>
+      <h3 class="font-bold text-base">Edge mode (sub-ms p99)</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed">Zero-dependency in-process scoring. Runs in the same process as the trading agent. Sub-millisecond p99 latency. No network call between the agent and the safety check. Air-gappable for isolated dealing rooms.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">history_edu</span>
+      <h3 class="font-bold text-base">Deterministic replay</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed"><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">pg_override_disabled</code> + <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">cfg_checksum</code> mode produces bit-perfect replay of any historical decision. Regulator audit, internal compliance review, post-incident root cause — all reconstructable.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">call_merge</span>
+      <h3 class="font-bold text-base">Subjective Logic multi-source fusion</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed">Jøsang opinion algebra for combining confidence signals from multiple data sources (market data, internal models, risk overlays). Byzantine-fault-tolerant aggregation when sources disagree.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">badge</span>
+      <h3 class="font-bold text-base">Signed memory passports</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed">Cryptographic attestation of memory provenance per tenant. The chain-of-custody for any decision is signed by your tenant key — never the vendor's.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">trending_down</span>
+      <h3 class="font-bold text-base">/v1/predict/degradation</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed">Returns the projected day a given memory state will cross the BLOCK threshold. Trading desks pre-schedule strategy refresh ahead of memory degradation — predictive, not reactive.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- Beta features (gold-outline — Tier 2 active development) -->
+<section class="py-24 px-6 bg-[#f5f4f0]">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">What is in active development</span>
+  <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Two Beta features for trading desk design partners.</h2>
+  <p class="text-slate-500 text-base max-w-2xl mx-auto">In active development with design partner input. Not yet GA — but real, not vaporware.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  <div class="bg-white border-2 border-[#c9a962]/40 rounded-xl p-7 hover:border-[#c9a962] transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">history</span>
+      <h3 class="font-bold text-base">Memory Time Machine — execution audit</h3>
+      <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+        <span class="w-1 h-1 rounded-full bg-[#c9a962] mr-1 animate-pulse"></span>
+        Beta
+      </span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed mb-3">Deterministic replay of the full decision chain leading to a trade, with counterfactual branching. Useful for post-mortem on flagged trades, regulator queries, and internal model retrospectives.</p>
+    <p class="text-xs text-slate-500 italic border-l-2 border-[#c9a962]/30 pl-3">Status: core replay works against test workloads. The compliance-export format is being shaped with design partners (regulator audit standard varies per jurisdiction).</p>
+  </div>
+
+  <div class="bg-white border-2 border-[#c9a962]/40 rounded-xl p-7 hover:border-[#c9a962] transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">pause_circle</span>
+      <h3 class="font-bold text-base">In-Decision Human Veto (Schrödinger)</h3>
+      <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+        <span class="w-1 h-1 rounded-full bg-[#c9a962] mr-1 animate-pulse"></span>
+        Beta
+      </span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed mb-3">Pause an agent's execution mid-decision for human review on flagged high-stakes trades. Compliance officer hooks into the SSE decision stream and can veto before commit. Standard SSE protocol; the trading-desk-specific framing is the Beta part.</p>
+    <p class="text-xs text-slate-500 italic border-l-2 border-[#c9a962]/30 pl-3">Status: SSE streaming is GA; the human-veto callback handshake is in test. Design partners get the first integration.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- Design Partner Program -->
+<section class="py-20 px-6 bg-gradient-to-br from-[#c9a962]/10 to-[#f5f4f0] border-y border-[#c9a962]/20">
+<div class="max-w-4xl mx-auto">
+
+<div class="text-center mb-10">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Design Partner Program</span>
+  <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">First 5–10 quant and trading teams shape the roadmap.</h2>
+  <p class="text-slate-600 text-base max-w-2xl mx-auto leading-relaxed">
+    Early Access is not a feature flag — it is a structured program. Design partners get founder-direct access, priority on roadmap input, and locked-in pricing through the Beta period.
+  </p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">connect_without_contact</span>
+      Founder-direct access
+    </h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Slack channel with the founder. No ticket queue, no AE filter. You hit a wall, you hear back same day.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">route</span>
+      Roadmap input
+    </h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Beta features ship based on what design partners actually use. The next Beta milestone is decided by the first 5–10 customers, not a marketing committee.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">lock</span>
+      Locked-in pricing
+    </h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Your Beta-period pricing is locked through general availability. If the GA tier list moves up, you stay on the partner rate for 24 months.</p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">handshake</span>
+      Honest reciprocity
+    </h3>
+    <p class="text-slate-600 text-sm leading-relaxed">In return: candid feedback when something does not work, a written case study at GA (with your approval and disclosure terms), and a willingness to live with Beta-grade rough edges.</p>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="mailto:earlyaccess@sgraal.com?subject=Trading%20-%20design%20partner" class="inline-flex items-center bg-[#c9a962] text-white px-6 py-3 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+    Apply to the program →
+  </a>
+  <p class="text-xs text-slate-500 mt-3">No NDA required to apply. We respond within 48 hours.</p>
+</div>
+
+</div>
+</section>
+
+<!-- Concept teaser (Tier 3 — long-term direction) -->
+<section class="py-16 px-6 bg-white border-t border-slate-100">
+<div class="max-w-5xl mx-auto">
+
+<div class="text-center mb-8">
+  <span class="text-slate-400 font-bold tracking-[0.2em] text-xs uppercase block mb-2">Beyond Beta</span>
+  <h3 class="text-xl font-bold tracking-tight">Where this is heading.</h3>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+
+  <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
+    <div class="flex items-center gap-2 mb-2">
+      <h3 class="font-bold text-sm text-slate-700">NDA-channel enterprise tier</h3>
+      <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Concept</span>
+    </div>
+    <p class="text-slate-500 text-xs leading-relaxed mb-2">Pricing tier for funds that cannot publicly disclose vendor relationships. Long-horizon commercial work; flagged here for honesty, not committed roadmap.</p>
+    <a href="/enterprise" class="text-slate-500 hover:text-[#c9a962] text-xs font-bold">More on the long-term direction →</a>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- Honest disclosure -->
+<section class="py-20 px-6 bg-amber-50/40 border-y border-amber-200/40">
+<div class="max-w-3xl mx-auto">
+
+<div class="bg-white border border-amber-200 rounded-xl p-8">
+  <div class="flex items-start gap-4">
+    <div class="bg-amber-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="material-symbols-outlined text-amber-700">info</span>
+    </div>
+    <div>
+      <h3 class="text-lg font-bold mb-3">Honest disclosure: what works today, what is beta.</h3>
+      <ul class="space-y-2 text-sm text-slate-700 leading-relaxed">
+        <li class="flex items-start gap-2">
+          <span class="text-[#c9a962] font-bold mt-0.5">✓</span>
+          <span><strong>Today (Live):</strong> Edge mode (sub-ms p99), deterministic replay, Subjective Logic fusion, signed memory passports, /v1/predict/degradation — all production.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#c9a962] font-bold mt-0.5">◯</span>
+          <span><strong>Beta:</strong> Memory Time Machine for execution audit; In-Decision Human Veto for compliance officer trade interception. Both work in test workloads. Compliance-export formats shaped with design partners.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-slate-400 font-bold mt-0.5">▢</span>
+          <span><strong>Concept:</strong> NDA-channel enterprise pricing tier. Long-horizon commercial design, not a built feature.</span>
+        </li>
+      </ul>
+      <p class="text-xs text-slate-500 mt-4 italic">Tier badges across the page surface this distinction. No category was glossed over.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- Final CTA -->
+<section class="py-24 px-6 bg-[#0B0F14] text-white text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-bold mb-6">Five to ten design partners. That is the cohort.</h2>
+<p class="text-slate-300 text-lg mb-10">If you are a quant and trading teams and want to shape what comes next, write us. If you would rather wait for GA, the page is here when you are ready.</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+  <a href="mailto:earlyaccess@sgraal.com?subject=Trading%20-%20design%20partner" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Apply to design partner program →
+  </a>
+  <a href="/playground" class="inline-flex items-center bg-white text-[#0B0F14] px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Try in playground →
+  </a>
+  <a href="/pricing" class="inline-flex items-center text-slate-300 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Pricing →
+  </a>
+</div>
+</div>
+</section>
+
+<footer class="bg-surface-container border-t border-black/[0.06]">
+
+<!-- Top: 6 link columns -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+
+<!-- Column 1: Product -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Product</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><span class="text-slate-400">Open Core <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Visualizer <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+
+<!-- Column 2: Solutions -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Solutions</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">For Developers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">For Platform &amp; MLOps</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">For Researchers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">For AI Startups</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">For Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">For DPOs &amp; CCOs</a></li>
+<li><span class="text-slate-400">Healthcare <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Trading <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Multi-Agent <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Forensics <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Insurance <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Government <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Frontier Labs <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Enterprise <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Chrome Extension <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 3: Resources -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Resources</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai/sdks" target="_blank" rel="noopener noreferrer">SDKs &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-gold transition-colors" href="/roi">ROI Calculator</a></li>
+<li><a class="hover:text-gold transition-colors" href="/latency">Latency</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+</ul>
+</div>
+
+<!-- Column 4: Standards -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Standards</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Verified Badge <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 5: Company -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Company</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><span class="text-slate-400">About <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+<li><span class="text-slate-400">Careers <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Status <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai" target="_blank" rel="noopener noreferrer">GitHub &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer">X &uarr;</a></li>
+<li><span class="text-slate-400">LinkedIn <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Discord <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 6: Trust -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Trust</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
+<li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+</div>
+
+<!-- Bottom strip: brand + © + tagline -->
+<div class="border-t border-black/[0.06] py-6 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div><span class="font-bold text-obsidian">Sgraal</span> &middot; &copy; 2026 &middot; Open core memory governance for AI agents &middot; Apache 2.0 SDK + hosted engine</div>
+<div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
+</div>
+</footer>
+
+</body>
+</html>
