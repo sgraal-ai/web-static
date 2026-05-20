@@ -19,12 +19,16 @@
 #     Guaranteed (capitalized, word-boundary)
 #
 # Allowlist (file:line pairs that are OK to contain a banned string):
-#   - docs/threat-model.html:191 — explicit "NOT certified by SOC 2..."
+#   - docs/threat-model.html:246-247 — explicit "NOT certified by SOC 2..."
 #     disclosure (the exception that proves the rule)
-#   - standard/cvss.html:114 — factual reference: NIST CSF / ISO 27001
+#   - standard/cvss.html:169 — factual reference: NIST CSF / ISO 27001
 #     in CVSS context, not a Sgraal claim
-#   - security.html (cross-link line) — references the threat-model page
+#   - security.html:120 (cross-link line) — references the threat-model page
 #     which contains the NOT-certified disclosure
+#
+# Line numbers refreshed 2026-05-20 after Sub-Sprint 1a (web-static#35) nav
+# rollout shifted line counts. Original entries: threat-model:191/192,
+# cvss:114, security:65 — all stale post-rollout, all updated below.
 #
 # Behavior:
 #   STRICT_MODE=1 → exit 1 on any hit outside allowlist
@@ -44,16 +48,28 @@ HITS=0
 ALLOWLIST=(
   # The "Sgraal is NOT certified by SOC 2..." disclosure block on the
   # threat-model page is THE exception that proves the rule. Two lines
-  # contain banned strings: the main disclaimer (191) and the follow-up
-  # SOC 2 Type II procurement-contact paragraph (192).
-  "docs/threat-model.html:191"
-  "docs/threat-model.html:192"
+  # contain banned strings: the main disclaimer (246) — which trips
+  # SOC 2 + ISO 27001 + PCI-DSS + certified by simultaneously — and the
+  # follow-up SOC 2 Type II procurement-contact paragraph (247).
+  # This is an explicit honest non-certification disclosure, the OPPOSITE
+  # of overclaim. Required by procurement-process transparency.
+  # Line numbers updated 2026-05-20 (was 191/192 pre Sub-Sprint 1a).
+  "docs/threat-model.html:246"
+  "docs/threat-model.html:247"
   # NIST CSF / ISO 27001 in CVSS scoring context — factual reference to
-  # an external framework's reliance on CVSS, not a Sgraal certification claim.
-  "standard/cvss.html:114"
-  # The "See also: Threat Model" cross-link on the security page links to
-  # the threat-model page and quotes its NOT-certified disclosure verbatim.
-  "security.html:65"
+  # an external framework's reliance on CVSS, not a Sgraal certification
+  # claim. The sentence reads "Frameworks like NIST CSF and ISO 27001
+  # already reference CVSS for risk assessment" — ISO 27001 is the
+  # subject of the framework, not a Sgraal capability.
+  # Line number updated 2026-05-20 (was 114 pre Sub-Sprint 1a).
+  "standard/cvss.html:169"
+  # The "See also: Threat Model" cross-link on the security page links
+  # to the threat-model page and explicitly quotes its NOT-certified
+  # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
+  # exists precisely to redirect customers to the honest disclosure,
+  # not to claim certification.
+  # Line number updated 2026-05-20 (was 65 pre Sub-Sprint 1a).
+  "security.html:120"
 )
 
 is_allowlisted() {
