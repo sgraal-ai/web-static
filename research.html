@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K7B978E0HF');
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>For AI Researchers — Sgraal</title>
+<meta name="description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, formal verification, free research tier.">
+<meta property="og:title" content="For AI Researchers — Sgraal">
+<meta property="og:description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, formal verification.">
+<meta property="og:url" content="https://sgraal.com/research">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sgraal.com/research">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code, pre { font-family: 'JetBrains Mono', monospace; }
+pre { font-size: 0.8125rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-7 font-medium text-sm">
+
+<!-- Product dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Product
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Product pillars</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">Decide <span class="text-xs text-slate-400">— Verify before acting</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">Protect <span class="text-xs text-slate-400">— Stop manipulation</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">Comply <span class="text-xs text-slate-400">— Prove compliance</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">Scale <span class="text-xs text-slate-400">— Run at any size</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/standard">Standards &amp; Provenance</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">Whitepaper</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/benchmark">Benchmark</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/failures">Failure Gallery</a>
+  </div>
+</div>
+
+<!-- Solutions dropdown -->
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Solutions
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-72 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">For builders</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/pricing">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2 mt-2">For enterprise</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">For DPOs &amp; Compliance <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Healthcare <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Trading desks <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Multi-Agent systems <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+  </div>
+</div>
+
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+<a href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+
+<!-- Mobile nav (Sub-Sprint 1a: persona structure with section headers) -->
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-2 text-sm font-medium max-h-[calc(100vh-5rem)] overflow-y-auto">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-2">Product</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/standard">Standards</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/benchmark">Benchmark</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/failures">Failure Gallery</a>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-4">Solutions</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">For Developers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">For Platform &amp; MLOps</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">For Researchers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">For AI Startups</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">For Security teams</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">For DPOs &amp; Compliance</a>
+<div class="border-t border-slate-100 my-3"></div>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/docs">Docs</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold mt-3" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-40 pb-20 px-6">
+<div class="max-w-5xl mx-auto text-center">
+
+<div class="flex justify-center mb-6">
+  <span class="inline-flex items-center gap-2 bg-[#c9a962] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    <span class="w-2 h-2 rounded-full bg-white"></span>
+    Live · Available today
+  </span>
+</div>
+
+<p class="text-slate-500 font-bold tracking-[0.2em] text-xs uppercase mb-6">
+  For AI Safety Researchers
+</p>
+
+<h1 class="text-5xl md:text-6xl font-extrabold text-[#0B0F14] tracking-tighter mb-6 leading-[1.1]">
+  The mathematical foundations<br/>of AI memory governance.
+</h1>
+
+<p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
+  25 mathematical disciplines. 87 scoring modules. 614 adversarial test cases. Z3 SMT formal verification. Apache 2.0 SDK and open R1–R3 corpus. Sgraal is free for academic research.
+</p>
+
+<p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
+  We publish what we don't catch. The R12 PARKED 8-case disclosure lives at <a href="/failures" class="text-[#c9a962] hover:underline">/failures</a>.
+</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+  <a href="/whitepaper" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Read the whitepaper <span class="material-symbols-outlined ml-2">description</span>
+  </a>
+  <a href="https://github.com/sgraal-ai/core/tree/main/tests/corpus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#0B0F14] text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-black transition-all">
+    Benchmark on GitHub <span class="material-symbols-outlined ml-2">north_east</span>
+  </a>
+  <a href="/determinism" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Determinism audit →
+  </a>
+</div>
+
+</div>
+</section>
+
+
+<!-- arXiv paper preview -->
+<section id="paper" class="py-20 px-6 bg-[#f5f4f0]">
+<div class="max-w-4xl mx-auto">
+
+<div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-10">
+
+<div class="flex items-center gap-3 mb-4">
+  <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center">
+    <span class="material-symbols-outlined text-[#c9a962]">article</span>
+  </div>
+  <span class="inline-flex items-center bg-white border-2 border-[#c9a962] text-[#c9a962] text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#c9a962] mr-2 animate-pulse"></span>
+    Beta · In Development
+  </span>
+</div>
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2">Whitepaper · arXiv submission target Q3 2026</p>
+
+<h2 class="text-3xl font-bold tracking-tight mb-4">Sgraal: A Multi-Disciplinary Mathematical Framework for AI Memory Governance with Formal Verification</h2>
+
+<p class="text-slate-600 leading-relaxed mb-6">
+  We present Sgraal, a memory governance protocol for autonomous AI agents that integrates 25 mathematical disciplines (control theory, topological data analysis, formal methods, causal inference, optimal transport, Bayesian methods, stochastic processes, opinion algebra) into a 87-module scoring pipeline. The system returns a four-band decision (USE_MEMORY / WARN / ASK_USER / BLOCK) per memory state with full explainability. Decisions are formally verified via Z3 SMT for three healing policy properties (monotonicity, idempotency, bounded drift). We evaluate against an adversarial corpus of 614 cases across 11 attack rounds; the 60-case held-out R12 corpus serves as the public integrity benchmark (current 52/60 with 8 documented PARKED failures).
+</p>
+
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-6">
+  <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">BibTeX (provisional)</p>
+<pre class="text-slate-700 text-xs overflow-x-auto">@article{sgraal2026,
+  title = {Sgraal: A Multi-Disciplinary Mathematical Framework
+           for AI Memory Governance with Formal Verification},
+  author = {Zsobrak, Peter and contributors},
+  year = {2026},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.AI},
+  url = {https://sgraal.com/whitepaper}
+}</pre>
+</div>
+
+<div class="flex flex-wrap gap-3">
+  <a href="/whitepaper" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+    Read whitepaper draft →
+  </a>
+  <a href="mailto:research@sgraal.com?subject=Whitepaper%20-%20early%20reader" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
+    Be an early reader →
+  </a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- 25 disciplines grid -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-6xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">The math</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">25 mathematical disciplines.<br/>One scoring engine.</h2>
+  <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+    Each discipline contributes a module to the 87-module pipeline. Every value is real implementation, not stub or mock.
+  </p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Lyapunov stability</p>
+  <p class="text-xs text-slate-500">control theory</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Z3 SMT</p>
+  <p class="text-xs text-slate-500">formal verification</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Persistent homology</p>
+  <p class="text-xs text-slate-500">topological data analysis</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Sinkhorn OT</p>
+  <p class="text-xs text-slate-500">optimal transport</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Lévy α-stable</p>
+  <p class="text-xs text-slate-500">heavy-tail probability</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">DirectLiNGAM</p>
+  <p class="text-xs text-slate-500">causal discovery</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">HMM Baum-Welch</p>
+  <p class="text-xs text-slate-500">hidden Markov models</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Cox proportional hazards</p>
+  <p class="text-xs text-slate-500">survival analysis</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">PCTL</p>
+  <p class="text-xs text-slate-500">probabilistic CTL</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Subjective Logic</p>
+  <p class="text-xs text-slate-500">opinion algebra</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Ollivier-Ricci curvature</p>
+  <p class="text-xs text-slate-500">discrete geometry</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Mahalanobis distance</p>
+  <p class="text-xs text-slate-500">multivariate stats</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Fréchet distance</p>
+  <p class="text-xs text-slate-500">trajectory comparison</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">BOCPD</p>
+  <p class="text-xs text-slate-500">Bayesian change-point</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Sheaf cohomology</p>
+  <p class="text-xs text-slate-500">algebraic topology</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Rate-distortion</p>
+  <p class="text-xs text-slate-500">information theory</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Hopfield network</p>
+  <p class="text-xs text-slate-500">associative memory</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Wilson-Hilferty χ²</p>
+  <p class="text-xs text-slate-500">outlier detection</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Ornstein-Uhlenbeck</p>
+  <p class="text-xs text-slate-500">mean-reversion process</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">κ<sub>MEM</sub> percolation</p>
+  <p class="text-xs text-slate-500">phase-transition threshold</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Vietoris-Rips complex</p>
+  <p class="text-xs text-slate-500">simplicial homology</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Drezner-Wesolowsky</p>
+  <p class="text-xs text-slate-500">bivariate CDF</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Acklam quantile</p>
+  <p class="text-xs text-slate-500">normal quantile approx</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Denman-Beavers</p>
+  <p class="text-xs text-slate-500">matrix square root</p>
+</div>
+<div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Sgraal Ω-norm</p>
+  <p class="text-xs text-slate-500">truncated quasi-norm</p>
+</div>
+</div>
+
+<p class="text-center text-slate-500 text-sm mt-10">
+  Full module listing at <a href="https://github.com/sgraal-ai/core/tree/main/scoring_engine" target="_blank" rel="noopener noreferrer" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core/scoring_engine</a> · 87 modules · 12,000+ LOC of pure mathematics
+</p>
+
+</div>
+</section>
+
+
+<!-- R1-R3 open benchmark -->
+<section class="py-24 px-6 bg-[#f5f4f0]">
+<div class="max-w-5xl mx-auto">
+
+<div class="grid md:grid-cols-2 gap-10 items-center">
+
+  <div>
+    <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Open corpus</span>
+    <h2 class="text-3xl font-bold tracking-tight mb-4">R1–R3: 239 adversarial cases, fully open.</h2>
+    <p class="text-slate-600 leading-relaxed mb-5">Run the benchmark against Sgraal, your own model, or a competitor. The R1–R3 corpus is Apache 2.0 on GitHub. Each case includes ground-truth label, attack vector taxonomy, and a reference solution path.</p>
+
+    <div class="space-y-2 mb-6">
+      <div class="flex items-start gap-3 text-sm">
+        <span class="bg-[#c9a962]/15 text-[#c9a962] font-bold px-2 py-0.5 rounded text-xs">R1</span>
+        <span class="text-slate-700">60 sponsored drift cases · F1 = 1.000</span>
+      </div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="bg-[#c9a962]/15 text-[#c9a962] font-bold px-2 py-0.5 rounded text-xs">R2</span>
+        <span class="text-slate-700">60 subtle drift cases · F1 = 1.000</span>
+      </div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="bg-[#c9a962]/15 text-[#c9a962] font-bold px-2 py-0.5 rounded text-xs">R3</span>
+        <span class="text-slate-700">119 hallucination injection cases · F1 published per case-class</span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <a href="https://github.com/sgraal-ai/core/tree/main/tests/corpus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#0B0F14] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-black transition-all">
+        Browse corpus on GitHub →
+      </a>
+      <a href="/benchmark" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
+        Benchmark page →
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <div class="bg-[#0B0F14] rounded-xl p-6 shadow-xl">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Quick start</p>
+<pre class="text-slate-300 text-xs overflow-x-auto">git clone https://github.com/sgraal-ai/core
+cd core/tests/corpus
+
+<span class="text-slate-500"># Run R1 against your own model</span>
+python3 run_round1.py --model your_model.py
+
+<span class="text-slate-500"># Compare against Sgraal baseline</span>
+python3 compare.py --baseline sgraal \
+                   --candidate your_model
+<span class="text-slate-500"># Outputs F1, precision, recall per class</span></pre>
+    </div>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- R12 disclosure (private corpus) -->
+<section class="py-20 px-6 bg-white">
+<div class="max-w-4xl mx-auto">
+
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-8">
+  <div class="flex items-start gap-4">
+    <div class="bg-amber-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="material-symbols-outlined text-amber-700">visibility_off</span>
+    </div>
+    <div>
+      <h3 class="text-xl font-bold mb-3 text-amber-900">Why R6–R12 stay private</h3>
+      <p class="text-amber-900 text-sm leading-relaxed mb-3">
+        We hold the R6–R12 corpus (375 additional adversarial cases) privately to keep the benchmark honest. If the corpus were public, vendors could memorize attack signatures rather than learn the underlying detection problem. We publish what we don't catch instead: <strong>R12 currently passes 52 / 60 cases</strong>; the 8 PARKED failures are documented case-by-case at <a href="/failures" class="text-[#c9a962] hover:underline font-semibold">/failures</a>.
+      </p>
+      <p class="text-amber-900 text-sm leading-relaxed">
+        Academic collaborators can request blind evaluation access via <a href="mailto:research@sgraal.com?subject=R12%20blind%20evaluation%20access" class="text-[#c9a962] hover:underline font-semibold">research@sgraal.com</a>. We send the test inputs without ground-truth labels; you return predictions; we score and publish.
+      </p>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+
+<!-- Methodology -->
+<section class="py-24 px-6 bg-[#f5f4f0]">
+<div class="max-w-5xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Methodology</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">How we build, in five sentences.</h2>
+</div>
+
+<div class="space-y-6 text-slate-700 leading-relaxed">
+
+<p><strong>1. Five-AI adversarial consensus.</strong> Every non-trivial scoring patch is reviewed by five independent LLMs (Gemini, DeepSeek, Qwen, Grok, ChatGPT) as adversarial reviewers. We adopt patches only when at least three of five identify the same failure mode and agree on the fix shape. The #739c BWDT (Belief-Weighted Drift Tolerance) patch is the canonical example.</p>
+
+<p><strong>2. Formal verification before merge.</strong> Three healing policy properties (monotonicity, idempotency, bounded drift) are encoded as Z3 SMT formulas and verified before any merge that touches healing logic. The <code class="text-xs bg-white px-1.5 py-0.5 rounded">api/main.py</code> healing path is gated on this check.</p>
+
+<p><strong>3. Transparency over claim.</strong> Every scoring constant exposed via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged. The full determinism audit doc lives at <a href="/determinism" class="text-[#c9a962] hover:underline">/determinism</a>.</p>
+
+<p><strong>4. Published failures.</strong> We document the 8 R12 PARKED cases (CC-004/007/008/009/010/011, PA-002/009) with full case description and our reasoning for not chasing 60/60 at all costs. Published failures keep the benchmark honest — and the philosophy of "safety-bias narrative is the right framing" is itself an artifact of multi-AI consensus from 2026-04-20.</p>
+
+<p><strong>5. Apache 2.0 everything we can.</strong> SDK, Proxy, Edge mode, OpenAPI spec, R1–R3 corpus — all open. The hosted scoring engine and R6–R12 corpus stay commercial to fund the research. See <a href="/open-source" class="text-[#c9a962] hover:underline">/open-source</a> for the full cut-line.</p>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- Free research tier -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-4xl mx-auto">
+
+<div class="text-center mb-12">
+  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">For academics</span>
+  <h2 class="text-4xl font-bold tracking-tight mb-4">Sgraal is free for research.</h2>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+  <div class="bg-[#f5f4f0] rounded-xl p-6">
+    <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">school</span>
+      Academic tier
+    </h3>
+    <p class="text-slate-700 text-sm leading-relaxed mb-3">If you are at an academic institution (.edu, university lab, research institute, or a recognized non-profit AI safety org), you can use Sgraal hosted free of charge. Higher rate limits than the demo tier; same engine.</p>
+    <a href="mailto:research@sgraal.com?subject=Academic%20tier%20access&body=Institution%3A%20%0AProject%3A%20%0AExpected%20call%20volume%3A%20" class="text-[#c9a962] font-bold text-sm hover:underline">Request academic access →</a>
+  </div>
+
+  <div class="bg-[#f5f4f0] rounded-xl p-6">
+    <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+      <span class="material-symbols-outlined text-[#c9a962]">format_quote</span>
+      How to cite Sgraal
+    </h3>
+    <p class="text-slate-700 text-sm leading-relaxed mb-3">For now, cite the website + repo. Once the whitepaper lands on arXiv, the BibTeX above will become the canonical citation. Reach out if you want pre-print access.</p>
+    <p class="text-xs text-slate-500 leading-relaxed mb-3">Working paper · <code class="bg-white px-1.5 py-0.5 rounded">arXiv:cs.AI · pending submission</code></p>
+    <a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-[#c9a962] font-bold text-sm hover:underline">github.com/sgraal-ai/core →</a>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- Final CTA -->
+<section class="py-24 px-6 bg-[#0B0F14] text-white text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-bold mb-6">25 disciplines. 87 modules. Open.</h2>
+<p class="text-slate-300 text-lg mb-10">Free for academic research. Cite us. Run the corpus. Tell us what we got wrong.</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+  <a href="/whitepaper" class="inline-flex items-center bg-white text-[#0B0F14] px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Read whitepaper →
+  </a>
+  <a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
+    Browse on GitHub →
+  </a>
+  <a href="mailto:research@sgraal.com?subject=Research%20collaboration" class="inline-flex items-center text-slate-300 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Collaborate →
+  </a>
+</div>
+</div>
+</section>
+
+<footer class="bg-surface-container border-t border-black/[0.06]">
+
+<!-- Top: 6 link columns -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+
+<!-- Column 1: Product -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Product</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><span class="text-slate-400">Open Core <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Visualizer <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+
+<!-- Column 2: Solutions -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Solutions</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">For Developers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">For Platform &amp; MLOps</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">For Researchers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">For AI Startups</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">For Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">For DPOs &amp; CCOs</a></li>
+<li><span class="text-slate-400">Healthcare <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Trading <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Multi-Agent <em>(Coming)</em></span></li>
+<li><span class="text-slate-400">Forensics <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Insurance <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Government <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Frontier Labs <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Enterprise <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Chrome Extension <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 3: Resources -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Resources</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai/sdks" target="_blank" rel="noopener noreferrer">SDKs &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-gold transition-colors" href="/roi">ROI Calculator</a></li>
+<li><a class="hover:text-gold transition-colors" href="/latency">Latency</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+</ul>
+</div>
+
+<!-- Column 4: Standards -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Standards</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/prov">W3C PROV</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Verified Badge <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 5: Company -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Company</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><span class="text-slate-400">About <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+<li><span class="text-slate-400">Careers <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Status <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai" target="_blank" rel="noopener noreferrer">GitHub &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer">X &uarr;</a></li>
+<li><span class="text-slate-400">LinkedIn <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Discord <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+<!-- Column 6: Trust -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Trust</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
+<li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
+</ul>
+</div>
+
+</div>
+
+<!-- Bottom strip: brand + © + tagline -->
+<div class="border-t border-black/[0.06] py-6 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div><span class="font-bold text-obsidian">Sgraal</span> &middot; &copy; 2026 &middot; Open core memory governance for AI agents &middot; Apache 2.0 SDK + hosted engine</div>
+<div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
+</div>
+</footer>
+
+</body>
+</html>
