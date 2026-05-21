@@ -270,7 +270,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <div class="bg-[#c9a962]/20 w-12 h-12 rounded-lg flex items-center justify-center">
         <span class="material-symbols-outlined text-[#c9a962]">workspace_premium</span>
       </div>
-      <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">Beta · Early Access</span>
+      <span class="inline-flex items-center bg-[#c9a962] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">Live · Available today</span>
     </div>
 
     <p class="text-slate-700 leading-relaxed mb-4">
@@ -301,8 +301,8 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     </div>
 
     <div class="flex flex-wrap gap-3">
-      <a href="mailto:earlyaccess@sgraal.com?subject=MVMem%20Certificate%20-%20Early%20Access" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
-        Request early access →
+      <a href="/docs/api#mvmem-certificate" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+        Generate sample certificate →
       </a>
       <a href="/docs/api" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
         API reference →
@@ -334,6 +334,16 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     <p class="text-xs text-slate-500 mt-3 text-center">Anonymized sample. Your tenant produces identical-format certificates signed by your own key.</p>
   </div>
 
+</div>
+
+<!-- Try it — curl snippet for the now-live endpoint -->
+<div class="mt-8 pt-8 border-t border-[#c9a962]/20">
+  <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Try it</p>
+<pre class="bg-[#0B0F14] text-slate-200 p-5 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed shadow-lg">curl -X POST https://api.sgraal.com/v1/certify/mvmem \
+  -H <span class="text-emerald-300">"Authorization: Bearer sg_live_..."</span> \
+  -H <span class="text-emerald-300">"Content-Type: application/json"</span> \
+  -d <span class="text-emerald-300">'{"agent_id": "demo", "memory_state": [{"id": "m1", "content": "...", "type": "semantic"}]}'</span></pre>
+  <p class="text-xs text-slate-500 mt-3">Returns a signed <code class="text-xs bg-white px-1.5 py-0.5 rounded">MVMemCertificate2026</code> with the structure shown above. Response headers expose <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Original-Memory-Size</code>, <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Minimum-Viable-Size</code>, <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Decision-Preserved</code>.</p>
 </div>
 
 </div>
