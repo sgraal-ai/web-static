@@ -14,9 +14,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>For Healthcare — Sgraal</title>
-<meta name="description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay. Beta features: convergence proof PDF generation and clinical incident replay. Design partner program.">
+<meta name="description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
 <meta property="og:title" content="For Healthcare — Sgraal">
-<meta property="og:description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay. Beta features: convergence proof PDF generation and clinical incident replay. Design partner program.">
+<meta property="og:description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
 <meta property="og:url" content="https://sgraal.com/healthcare">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -177,7 +177,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </p>
 
 <p class="text-slate-600 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-  <strong>The compliance suite ships today. Convergence-proof PDF generation and Memory Time Machine for clinical incident review are in Beta. Healthcare design partners shape the clinical workflow.</strong>
+  <strong>The compliance suite ships today, including Convergence Proof PDF generation. Memory Time Machine for clinical incident review is in Beta. Healthcare design partners shape the clinical workflow.</strong>
 </p>
 
 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
@@ -261,6 +261,15 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     <p class="text-slate-600 text-sm leading-relaxed">Probabilistic Computation Tree Logic for stating safety guarantees ("with probability ≥ 0.999, the agent will not recommend a contraindicated medication").</p>
   </div>
 
+  <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-symbols-outlined text-[#c9a962]">picture_as_pdf</span>
+      <h3 class="font-bold text-base">Convergence Proof PDF</h3>
+      <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed">Auto-generated FDA submission artefact via <code class="text-xs bg-[#f5f4f0] px-1.5 py-0.5 rounded">POST /v1/proofs/convergence</code>: Lyapunov stability visualisation, healing trajectory plots, Z3 verification certificate. Output is signed and includes the engine config checksum.</p>
+  </div>
+
 </div>
 
 </div>
@@ -272,24 +281,11 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 
 <div class="text-center mb-12">
   <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">What is in active development</span>
-  <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Two Beta features for healthcare design partners.</h2>
+  <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">One Beta feature for healthcare design partners.</h2>
   <p class="text-slate-500 text-base max-w-2xl mx-auto">In active development with design partner input. Not yet GA — but real, not vaporware.</p>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-  <div class="bg-white border-2 border-[#c9a962]/40 rounded-xl p-7 hover:border-[#c9a962] transition-all">
-    <div class="flex items-center gap-2 mb-3">
-      <span class="material-symbols-outlined text-[#c9a962]">picture_as_pdf</span>
-      <h3 class="font-bold text-base">Convergence Proof PDF</h3>
-      <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-        <span class="w-1 h-1 rounded-full bg-[#c9a962] mr-1 animate-pulse"></span>
-        Beta
-      </span>
-    </div>
-    <p class="text-slate-600 text-sm leading-relaxed mb-3">Auto-generated FDA submission artefact: Lyapunov stability visualisation, healing trajectory plots, Z3 verification certificate. Matplotlib + ReportLab backend. Output is signed and includes the engine config checksum.</p>
-    <p class="text-xs text-slate-500 italic border-l-2 border-[#c9a962]/30 pl-3">Status: production-ready in test environment. Design partners get the first releases. GA when 3+ partners have used it for a real FDA submission.</p>
-  </div>
 
   <div class="bg-white border-2 border-[#c9a962]/40 rounded-xl p-7 hover:border-[#c9a962] transition-all">
     <div class="flex items-center gap-2 mb-3">
@@ -404,11 +400,11 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <ul class="space-y-2 text-sm text-slate-700 leading-relaxed">
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">✓</span>
-          <span><strong>Today (Live):</strong> FDA mapping, Z3 SMT verification, deterministic replay, W3C VCs, MVMem (HIPAA + GDPR), PCTL probabilistic verification — all in production.</span>
+          <span><strong>Today (Live):</strong> FDA mapping, Z3 SMT verification, deterministic replay, W3C VCs, MVMem (HIPAA + GDPR), PCTL probabilistic verification, Convergence Proof PDF generation — all in production.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">◯</span>
-          <span><strong>Beta:</strong> Convergence Proof PDF generation for FDA submissions; Memory Time Machine for adverse event review. Both work in test environments. Clinical-workflow integration shaped with design partners.</span>
+          <span><strong>Beta:</strong> Memory Time Machine for adverse event review. Works in test environments. Clinical-workflow integration shaped with design partners.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-slate-400 font-bold mt-0.5">▢</span>
