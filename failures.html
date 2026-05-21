@@ -35,6 +35,7 @@
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">Comply <span class="text-xs text-slate-400">— Prove compliance</span></a>
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">Scale <span class="text-xs text-slate-400">— Run at any size</span></a>
     <div class="border-t border-slate-100 my-2"></div>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/open-source">Open Core</a>
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/standard">Standards &amp; Provenance</a>
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">Whitepaper</a>
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/benchmark">Benchmark</a>
@@ -42,25 +43,40 @@
   </div>
 </div>
 
-<!-- Solutions dropdown -->
+<!-- Solutions dropdown (Sub-Sprint 1f: tier-aware 3-section structure) -->
 <div class="relative group">
   <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
     Solutions
     <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
   </button>
-  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-72 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
-    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">For builders</p>
-    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/pricing">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
-    <div class="border-t border-slate-100 my-2"></div>
-    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2 mt-2">For enterprise</p>
-    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-80 bg-white border border-slate-200 rounded-xl shadow-lg py-3 max-h-[80vh] overflow-y-auto">
+
+    <!-- Tier 1: Live -->
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] px-4 mb-2">Live · Available today</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/developers">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/platform">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/research">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/startups">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/security">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
     <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">For DPOs &amp; Compliance <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Healthcare <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Trading desks <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
-    <a class="block px-4 py-2 text-sm text-slate-400 cursor-default" href="#">For Multi-Agent systems <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+
+    <div class="border-t border-slate-100 my-2"></div>
+
+    <!-- Tier 2: Beta -->
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] px-4 mb-2">Beta · Early Access</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/healthcare">For Healthcare <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/trading">For Trading <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/multi-agent">For Multi-Agent Systems <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+
+    <div class="border-t border-slate-100 my-2"></div>
+
+    <!-- Tier 3: Concept -->
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Concept · Coming</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/forensics">For Forensics <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/insurance">For Insurance <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/government">For Government <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/labs">For Frontier Labs <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/enterprise">For Enterprise <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
   </div>
 </div>
 
@@ -75,24 +91,39 @@
 <a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
 </div>
 
-<!-- Mobile nav (Sub-Sprint 1a: persona structure with section headers) -->
+<!-- Mobile nav (Sub-Sprint 1f: tier-aware Solutions section) -->
 <div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-2 text-sm font-medium max-h-[calc(100vh-5rem)] overflow-y-auto">
 <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-2">Product</p>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/open-source">Open Core</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/standard">Standards</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">Whitepaper</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/benchmark">Benchmark</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/failures">Failure Gallery</a>
-<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-4">Solutions</p>
-<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">For Developers</a>
-<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">For Platform &amp; MLOps</a>
-<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/whitepaper">For Researchers</a>
-<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">For AI Startups</a>
-<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">For Security teams</a>
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2 mt-4">Solutions · Live</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/developers">For Developers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/platform">For Platform &amp; MLOps</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/research">For Researchers</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/startups">For AI Startups</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/security">For Security teams</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">For DPOs &amp; Compliance</a>
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2 mt-3">Solutions · Beta</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/healthcare">For Healthcare</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/trading">For Trading</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/multi-agent">For Multi-Agent Systems</a>
+
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 mt-3">Solutions · Concept</p>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/forensics">For Forensics</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/insurance">For Insurance</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/government">For Government</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/labs">For Frontier Labs</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/enterprise">For Enterprise</a>
+
 <div class="border-t border-slate-100 my-3"></div>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
 <a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/docs">Docs</a>
@@ -233,25 +264,25 @@ hop3: "confirmed approved"</pre>
 </ul>
 </div>
 
-<!-- Column 2: Solutions -->
+<!-- Column 2: Solutions (Sub-Sprint 1f: tier-aware with Beta/Coming inline labels) -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Solutions</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
-<li><a class="hover:text-gold transition-colors" href="/decide">For Developers</a></li>
-<li><a class="hover:text-gold transition-colors" href="/scale">For Platform &amp; MLOps</a></li>
-<li><a class="hover:text-gold transition-colors" href="/whitepaper">For Researchers</a></li>
-<li><a class="hover:text-gold transition-colors" href="/pricing">For AI Startups</a></li>
-<li><a class="hover:text-gold transition-colors" href="/protect">For Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/developers">For Developers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/platform">For Platform &amp; MLOps</a></li>
+<li><a class="hover:text-gold transition-colors" href="/research">For Researchers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/startups">For AI Startups</a></li>
+<li><a class="hover:text-gold transition-colors" href="/security">For Security</a></li>
 <li><a class="hover:text-gold transition-colors" href="/comply">For DPOs &amp; CCOs</a></li>
-<li><span class="text-slate-400">Healthcare <em>(Coming)</em></span></li>
-<li><span class="text-slate-400">Trading <em>(Coming)</em></span></li>
-<li><span class="text-slate-400">Multi-Agent <em>(Coming)</em></span></li>
-<li><span class="text-slate-400">Forensics <em>(Concept)</em></span></li>
-<li><span class="text-slate-400">Insurance <em>(Concept)</em></span></li>
-<li><span class="text-slate-400">Government <em>(Concept)</em></span></li>
-<li><span class="text-slate-400">Frontier Labs <em>(Concept)</em></span></li>
-<li><span class="text-slate-400">Enterprise <em>(Concept)</em></span></li>
-<li><span class="text-slate-400">Chrome Extension <em>(Concept)</em></span></li>
+<li><a class="hover:text-gold transition-colors" href="/healthcare">Healthcare <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/trading">Trading <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/multi-agent">Multi-Agent <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/forensics">Forensics <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/insurance">Insurance <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/government">Government <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/labs">Frontier Labs <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/enterprise">Enterprise <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><span class="text-slate-400">Chrome Extension <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Concept</span></span></li>
 </ul>
 </div>
 
