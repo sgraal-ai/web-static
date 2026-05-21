@@ -19,16 +19,23 @@
 #     Guaranteed (capitalized, word-boundary)
 #
 # Allowlist (file:line pairs that are OK to contain a banned string):
-#   - docs/threat-model.html:246-247 — explicit "NOT certified by SOC 2..."
+#   - docs/threat-model.html:277-278 — explicit "NOT certified by SOC 2..."
 #     disclosure (the exception that proves the rule)
-#   - standard/cvss.html:169 — factual reference: NIST CSF / ISO 27001
+#   - standard/cvss.html:200 — factual reference: NIST CSF / ISO 27001
 #     in CVSS context, not a Sgraal claim
-#   - security.html:120 (cross-link line) — references the threat-model page
+#   - security.html:151 (cross-link line) — references the threat-model page
 #     which contains the NOT-certified disclosure
+#   - startups.html:234 — procurement-question quote ("What's your SOC 2
+#     status?") — these are QUESTIONS enterprise asks, not Sgraal claims
 #
-# Line numbers refreshed 2026-05-20 after Sub-Sprint 1a (web-static#35) nav
-# rollout shifted line counts. Original entries: threat-model:191/192,
-# cvss:114, security:65 — all stale post-rollout, all updated below.
+# Line number history:
+#   - Original entries (pre Sub-Sprint 1a): threat-model:191/192, cvss:114,
+#     security:65, startups:N/A
+#   - After 1a nav rollout (2026-05-19): threat-model:246/247, cvss:169,
+#     security:120, startups:203 (newly added in 1c)
+#   - After 1f tier-aware nav rollout (2026-05-21): threat-model:277/278,
+#     cvss:200, security:151, startups:234 (current)
+# Line shifts come from canonical nav expansion (more Tier 2/3 entries added).
 #
 # Behavior:
 #   STRICT_MODE=1 → exit 1 on any hit outside allowlist
@@ -48,28 +55,28 @@ HITS=0
 ALLOWLIST=(
   # The "Sgraal is NOT certified by SOC 2..." disclosure block on the
   # threat-model page is THE exception that proves the rule. Two lines
-  # contain banned strings: the main disclaimer (246) — which trips
+  # contain banned strings: the main disclaimer (277) — which trips
   # SOC 2 + ISO 27001 + PCI-DSS + certified by simultaneously — and the
-  # follow-up SOC 2 Type II procurement-contact paragraph (247).
+  # follow-up SOC 2 Type II procurement-contact paragraph (278).
   # This is an explicit honest non-certification disclosure, the OPPOSITE
   # of overclaim. Required by procurement-process transparency.
-  # Line numbers updated 2026-05-20 (was 191/192 pre Sub-Sprint 1a).
-  "docs/threat-model.html:246"
-  "docs/threat-model.html:247"
+  # Line numbers updated 2026-05-21 (Sub-Sprint 1f, was 246/247 in 1c-era).
+  "docs/threat-model.html:277"
+  "docs/threat-model.html:278"
   # NIST CSF / ISO 27001 in CVSS scoring context — factual reference to
   # an external framework's reliance on CVSS, not a Sgraal certification
   # claim. The sentence reads "Frameworks like NIST CSF and ISO 27001
   # already reference CVSS for risk assessment" — ISO 27001 is the
   # subject of the framework, not a Sgraal capability.
-  # Line number updated 2026-05-20 (was 114 pre Sub-Sprint 1a).
-  "standard/cvss.html:169"
+  # Line number updated 2026-05-21 (was 169 in 1c-era).
+  "standard/cvss.html:200"
   # The "See also: Threat Model" cross-link on the security page links
   # to the threat-model page and explicitly quotes its NOT-certified
   # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
   # exists precisely to redirect customers to the honest disclosure,
   # not to claim certification.
-  # Line number updated 2026-05-20 (was 65 pre Sub-Sprint 1a).
-  "security.html:120"
+  # Line number updated 2026-05-21 (was 120 in 1c-era).
+  "security.html:151"
   # The /startups page documents the three procurement blockers AI
   # startups hit when selling to enterprise. Blocker #3 quotes the
   # questions enterprise procurement actually asks: "What's your SOC 2
@@ -77,8 +84,8 @@ ALLOWLIST=(
   # the customer asks, not claims Sgraal makes. The page's actual
   # response is to point at MVMem certificate + W3C VCs + conformity
   # declaration — explicitly NOT a claim to hold SOC 2 itself.
-  # Added 2026-05-20 (Sub-Sprint 1c).
-  "startups.html:203"
+  # Line number updated 2026-05-21 (was 203 in 1c-era).
+  "startups.html:234"
 )
 
 is_allowlisted() {
