@@ -282,7 +282,7 @@ console.log(verdict.decision);</pre>
     <a href="/pricing" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">See pricing →</a>
     <a href="mailto:hello@sgraal.com?subject=Quickstart%20question" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-bold hover:bg-[#c9a962]/10 transition-all">Questions? hello@sgraal.com</a>
   </div>
-  <p class="text-xs text-slate-400 max-w-2xl mx-auto">This quickstart uses live endpoints on <code class="text-xs">api.sgraal.com</code>. The sample key <code class="text-xs">sg_demo_playground</code> has minimal scoping — sufficient for testing, not for production. Real production keys are scoped per-tenant with full quota.</p>
+  <p class="text-xs text-slate-400 max-w-2xl mx-auto">This quickstart uses live endpoints on <code class="text-xs">api.sgraal.com</code>. The sample key <code class="text-xs">sg_demo_playground</code> is real and works for <code class="text-xs">/v1/check</code>, <code class="text-xs">/v1/preflight</code>, and other non-sensitive endpoints. It is blocked on admin/destructive endpoints (audit-log export, key generation, team management). Real production keys are scoped per-tenant with full quota and no endpoint restrictions.</p>
 </section>
 
 <script>
