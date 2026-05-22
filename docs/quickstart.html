@@ -24,14 +24,16 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Pricing — Sgraal</title>
-<meta name="description" content="Price it like Stripe for memory decisions. Free tier: 10,000 decisions/month.">
-<meta property="og:title" content="Pricing — Sgraal">
-<meta property="og:description" content="Price it like Stripe for memory decisions. Free tier: 10,000 decisions/month.">
-<link rel="canonical" href="https://sgraal.com/pricing">
+<title>Quickstart — Sgraal</title>
+<meta name="description" content="Sgraal in 5 lines of code. Python, Node.js, or cURL. See your first memory verdict in under 60 seconds. No signup required to read.">
+<meta property="og:title" content="Quickstart — Sgraal">
+<meta property="og:description" content="Sgraal in 5 lines of code. Python, Node.js, or cURL. First memory verdict in under 60 seconds.">
+<meta property="og:url" content="https://sgraal.com/docs/quickstart">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sgraal.com/docs/quickstart">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}code{font-family:'JetBrains Mono',monospace}</style>
 </head>
 <body>
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
@@ -155,110 +157,157 @@
 
 <!-- Hero -->
 <section class="pt-36 pb-12 px-8 max-w-5xl mx-auto text-center">
-<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Pricing</h1>
-<p class="text-xl text-[#c9a962] font-semibold mb-3">Price it like Stripe for memory decisions &mdash; not like OpenAI for tokens.</p>
-<p class="text-slate-500 max-w-xl mx-auto mb-2">You don't pay for decisions. You pay for not making the wrong one.</p>
-<p class="text-sm text-slate-400 mb-4">Save 20% with annual billing</p>
-<p class="text-sm text-slate-600 inline-flex items-center gap-2 bg-[#c9a962]/10 border border-[#c9a962]/30 rounded-full px-4 py-1.5"><span>New here?</span><a href="/docs/quickstart" class="text-[#c9a962] font-bold hover:underline">Start with the quickstart &rarr;</a></p>
+  <div class="flex items-center justify-center gap-2 mb-4 flex-wrap">
+    <a href="/developers" class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full hover:bg-[#c9a962]/5 transition-all">For Developers →</a>
+    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
+  </div>
+  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Quickstart</h1>
+  <p class="text-xl text-[#c9a962] font-semibold mb-3">Sgraal in 5 lines of code.</p>
+  <p class="text-slate-500 max-w-xl mx-auto">See your first memory verdict in under 60 seconds. Python, Node.js, or any HTTP client.</p>
 </section>
 
-<!-- Pricing Cards -->
-<section class="pb-20 px-6">
-<div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-<!-- FREE -->
-<div class="bg-white border border-[#e5e7eb] rounded-2xl p-8 shadow-sm flex flex-col">
-<h3 class="text-lg font-bold mb-1">Free</h3>
-<div class="mb-4"><span class="text-4xl font-extrabold">$0</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-6">10,000 decisions/month</p>
-<ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
-<li>&#x2713; Basic preflight (USE_MEMORY / WARN / ASK_USER / BLOCK)</li>
-<li>&#x2713; 4 pillars: Time &middot; Identity &middot; Evidence &middot; Path</li>
-<li>&#x2713; 27 production integrations</li>
-<li>&#x2713; Community support</li>
-<li>&#x2713; 1 API key</li>
-</ul>
-<a href="/playground" class="block text-center bg-[#0B0F14] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#1a1f28] transition-all">Start free</a>
-<p class="text-xs text-slate-400 mt-3 text-center">No credit card required</p>
-</div>
-
-<!-- PRO -->
-<div class="bg-white border-2 border-[#c9a962] rounded-2xl p-8 shadow-md flex flex-col relative">
-<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#c9a962] text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
-<h3 class="text-lg font-bold mb-1">Pro</h3>
-<div class="mb-4"><span class="text-4xl font-extrabold">$99</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-2">250,000 decisions/month</p>
-<p class="text-xs text-[#c9a962] mb-6">Annual: $79/mo (save 20%)</p>
-<ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
-<li>&#x2713; Everything in Free</li>
-<li>&#x2713; Full explainability (Omega score, component breakdown)</li>
-<li>&#x2713; Repair plan (REFETCH / VERIFY / REBUILD)</li>
-<li>&#x2713; Full dashboard + audit log</li>
-<li>&#x2713; Webhook + SIEM export (CEF/LEEF)</li>
-<li>&#x2713; Email support</li>
-<li>&#x2713; Up to 10 agents</li>
-<li class="text-slate-400 text-xs">Overage: $0.0008/decision</li>
-</ul>
-<a href="https://app.sgraal.com" class="block text-center bg-[#c9a962] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Start Pro</a>
-</div>
-
-<!-- BUSINESS -->
-<div class="bg-white border border-[#e5e7eb] rounded-2xl p-8 shadow-sm flex flex-col">
-<h3 class="text-lg font-bold mb-1">Team</h3>
-<div class="mb-4"><span class="text-4xl font-extrabold">$499</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-2">2,500,000 decisions/month</p>
-<p class="text-xs text-[#c9a962] mb-6">Annual: $399/mo (save 20%)</p>
-<ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
-<li>&#x2713; Everything in Pro</li>
-<li>&#x2713; SSO + RBAC</li>
-<li>&#x2713; Unlimited agents</li>
-<li>&#x2713; Governance Certificate (W3C VC)</li>
-<li>&#x2713; Policy Engine (custom rules)</li>
-<li>&#x2713; SLA dashboard</li>
-<li>&#x2713; Priority support (Slack)</li>
-<li class="text-slate-400 text-xs">Overage: $0.0005/decision</li>
-</ul>
-<a href="https://app.sgraal.com" class="block text-center bg-[#0B0F14] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#1a1f28] transition-all">Start Team</a>
-</div>
-
-<!-- ENTERPRISE -->
-<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-2xl p-8 shadow-sm flex flex-col">
-<h3 class="text-lg font-bold mb-1">Enterprise</h3>
-<div class="mb-4"><span class="text-3xl font-extrabold">From $2,500</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-6">Custom decision limit</p>
-<ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
-<li>&#x2713; Everything in Team</li>
-<li>&#x2713; SLA (99.9% uptime)</li>
-<li>&#x2713; Dedicated support</li>
-<li>&#x2713; On-prem option (+40%)</li>
-<li>&#x2713; Custom integrations</li>
-<li>&#x2713; BLOCK guarantee: 0 BLOCKs &rarr; 20% credit</li>
-</ul>
-<a href="mailto:hello@sgraal.com" class="block text-center border-2 border-[#c9a962] text-[#c9a962] px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#c9a962]/10 transition-all">Contact sales</a>
-</div>
-
-</div>
+<!-- Prerequisites -->
+<section class="pb-12 px-8">
+  <div class="max-w-3xl mx-auto bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">You'll need</p>
+    <ul class="space-y-2 text-sm text-slate-700">
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] font-bold">1.</span><span><strong>Python 3.8+</strong>, <strong>Node 18+</strong>, or any HTTP client</span></li>
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] font-bold">2.</span><span>An API key — for this walkthrough, use the public demo key <code class="text-xs bg-white px-1.5 py-0.5 rounded border border-[#c9a962]/30 text-[#c9a962] font-mono">sg_demo_playground</code>. <a href="/pricing" class="text-[#c9a962] font-bold hover:underline">Get your own →</a></span></li>
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] font-bold">3.</span><span><strong>5 minutes</strong></span></li>
+    </ul>
+  </div>
 </section>
 
-<!-- Comparison Note -->
-<section class="pb-20 px-8">
-<div class="max-w-3xl mx-auto text-center">
-<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-8">
-<p class="text-slate-600 mb-4">Free tier: <strong>10,000 decisions</strong> = enough to protect a full production agent for a week.</p>
-<p class="text-slate-400 text-sm">All plans include: 6 detection layers &middot; 87-module scoring pipeline &middot; W3C PROV provenance &middot; CVSS-mapped attack surface &middot; A2A protocol support</p>
-</div>
-</div>
+<!-- Code tabs -->
+<section class="pb-12 px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="flex items-end gap-1 mb-0 border-b border-slate-200" role="tablist" aria-label="Language">
+      <button id="qs-tab-python" type="button" role="tab" aria-controls="qs-code-python" aria-selected="true"
+        onclick="window.sgraalQS('python')"
+        class="px-4 py-2.5 text-sm font-bold text-[#c9a962] border-b-2 border-[#c9a962] -mb-px transition-all">Python</button>
+      <button id="qs-tab-node" type="button" role="tab" aria-controls="qs-code-node" aria-selected="false"
+        onclick="window.sgraalQS('node')"
+        class="px-4 py-2.5 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition-all">Node.js</button>
+      <button id="qs-tab-curl" type="button" role="tab" aria-controls="qs-code-curl" aria-selected="false"
+        onclick="window.sgraalQS('curl')"
+        class="px-4 py-2.5 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition-all">cURL</button>
+    </div>
+
+<pre id="qs-code-python" role="tabpanel" aria-labelledby="qs-tab-python" class="bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg"><span class="text-slate-500"># pip install sgraal</span>
+<span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> Sgraal
+
+client = Sgraal(api_key=<span class="text-emerald-300">"sg_demo_playground"</span>)
+verdict = client.check(agent_id=<span class="text-emerald-300">"my-agent"</span>, memory_state=[{<span class="text-emerald-300">"text"</span>: <span class="text-emerald-300">"user prefers email"</span>}])
+<span class="text-violet-300">print</span>(verdict.decision)  <span class="text-slate-500"># USE_MEMORY / WARN / ASK_USER / BLOCK</span></pre>
+
+<pre id="qs-code-node" role="tabpanel" aria-labelledby="qs-tab-node" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg"><span class="text-slate-500">// npm install sgraal</span>
+<span class="text-violet-300">import</span> { Sgraal } <span class="text-violet-300">from</span> <span class="text-emerald-300">"sgraal"</span>;
+
+<span class="text-violet-300">const</span> client = <span class="text-violet-300">new</span> Sgraal({ apiKey: <span class="text-emerald-300">"sg_demo_playground"</span> });
+<span class="text-violet-300">const</span> verdict = <span class="text-violet-300">await</span> client.check({ agentId: <span class="text-emerald-300">"my-agent"</span>, memoryState: [{ text: <span class="text-emerald-300">"user prefers email"</span> }] });
+console.log(verdict.decision);</pre>
+
+<pre id="qs-code-curl" role="tabpanel" aria-labelledby="qs-tab-curl" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg">curl -X POST https://api.sgraal.com/v1/check \
+  -H <span class="text-emerald-300">"Authorization: Bearer sg_demo_playground"</span> \
+  -H <span class="text-emerald-300">"Content-Type: application/json"</span> \
+  -d <span class="text-emerald-300">'{"agent_id": "my-agent", "memory_state": [{"text": "user prefers email"}]}'</span></pre>
+
+    <p class="text-xs text-slate-500 mt-3 text-center">Hit <code class="text-xs bg-[#faf9f6] px-1.5 py-0.5 rounded">POST /v1/check</code> on api.sgraal.com — the simple-door endpoint that returns a plain English verdict.</p>
+  </div>
 </section>
 
-<!-- CTA -->
-<section class="py-20 px-8 bg-[#faf9f6] text-center">
-<h2 class="text-3xl font-extrabold mb-4">Start protecting your agents today</h2>
-<p class="text-slate-500 mb-8">No credit card required. Demo key: <code class="text-[#c9a962] font-mono">sg_demo_playground</code></p>
-<div class="flex justify-center gap-4 flex-wrap">
-<a href="/playground" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Try it now</a>
-<a href="/docs" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the docs</a>
-</div>
+<!-- Response -->
+<section class="pb-12 px-8">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold tracking-tight mb-4">What you'll get back</h2>
+<pre class="bg-[#0B0F14] text-slate-200 p-5 rounded-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg">{
+  <span class="text-[#c9a962]">"decision"</span>: <span class="text-emerald-300">"USE_MEMORY"</span>,
+  <span class="text-[#c9a962]">"confidence"</span>: <span class="text-amber-300">0.87</span>,
+  <span class="text-[#c9a962]">"request_id"</span>: <span class="text-emerald-300">"req_abc123"</span>,
+  <span class="text-[#c9a962]">"reasoning"</span>: <span class="text-emerald-300">"Memory aligns with agent context, no provenance conflict detected."</span>,
+  <span class="text-[#c9a962]">"policy_version"</span>: <span class="text-emerald-300">"v12"</span>
+}</pre>
+    <div class="mt-5 grid sm:grid-cols-2 gap-3 text-sm text-slate-600">
+      <div class="flex items-start gap-2"><span class="text-[#c9a962] font-bold mt-0.5">decision</span><span>One of <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">USE_MEMORY</code>, <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">WARN</code>, <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">ASK_USER</code>, or <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">BLOCK</code>.</span></div>
+      <div class="flex items-start gap-2"><span class="text-[#c9a962] font-bold mt-0.5">confidence</span><span>Float in [0, 1]. &lt; 0.7 → consider ASK_USER.</span></div>
+      <div class="flex items-start gap-2"><span class="text-[#c9a962] font-bold mt-0.5">request_id</span><span>Opaque ID for audit log lookup + support tickets.</span></div>
+      <div class="flex items-start gap-2"><span class="text-[#c9a962] font-bold mt-0.5">reasoning</span><span>Plain English explanation. Suitable for end-user display.</span></div>
+    </div>
+  </div>
 </section>
+
+<!-- Next steps -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold tracking-tight mb-2 text-center">Next steps</h2>
+    <p class="text-slate-500 text-center mb-10 text-sm">Pick the proof artifact your auditor or regulator asks for.</p>
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <a href="/comply" class="block bg-white border-2 border-[#c9a962]/30 hover:border-[#c9a962] rounded-xl p-6 transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#c9a962]" style="font-size: 24px;">workspace_premium</span>
+          <h3 class="font-bold text-base">Add MVMem Certificate</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-3">Upgrade verdicts to GDPR-grade signed W3C Verifiable Credentials. <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">/v1/certify/mvmem</code></p>
+        <span class="text-[#c9a962] font-bold text-sm">/comply →</span>
+      </a>
+
+      <a href="/healthcare" class="block bg-white border-2 border-[#c9a962]/30 hover:border-[#c9a962] rounded-xl p-6 transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#c9a962]" style="font-size: 24px;">picture_as_pdf</span>
+          <h3 class="font-bold text-base">Convergence Proof PDF</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-3">Generate FDA-style audit artifacts. Lyapunov stability proof + signed PDF. <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">/v1/proofs/convergence</code></p>
+        <span class="text-[#c9a962] font-bold text-sm">/healthcare →</span>
+      </a>
+
+      <a href="/docs" class="block bg-white border-2 border-[#c9a962]/30 hover:border-[#c9a962] rounded-xl p-6 transition-all hover:shadow-lg hover:-translate-y-0.5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#c9a962]" style="font-size: 24px;">menu_book</span>
+          <h3 class="font-bold text-base">Browse all endpoints</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-3">366+ endpoints across preflight, scoring, healing, vaccines, fleet health, compliance.</p>
+        <span class="text-[#c9a962] font-bold text-sm">/docs →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer CTA -->
+<section class="py-16 px-8 text-center">
+  <h2 class="text-3xl font-extrabold tracking-tight mb-3">Ready for production?</h2>
+  <p class="text-slate-500 mb-8">The demo key is great for testing. Real keys give you full quota, per-tenant signing, and the dashboard.</p>
+  <div class="flex justify-center gap-4 flex-wrap mb-8">
+    <a href="/pricing" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">See pricing →</a>
+    <a href="mailto:hello@sgraal.com?subject=Quickstart%20question" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-bold hover:bg-[#c9a962]/10 transition-all">Questions? hello@sgraal.com</a>
+  </div>
+  <p class="text-xs text-slate-400 max-w-2xl mx-auto">This quickstart uses live endpoints on <code class="text-xs">api.sgraal.com</code>. The sample key <code class="text-xs">sg_demo_playground</code> has minimal scoping — sufficient for testing, not for production. Real production keys are scoped per-tenant with full quota.</p>
+</section>
+
+<script>
+(function(){
+  window.sgraalQS = function(lang) {
+    var langs = ['python','node','curl'];
+    langs.forEach(function(L){
+      var pre = document.getElementById('qs-code-'+L);
+      var tab = document.getElementById('qs-tab-'+L);
+      if (!pre || !tab) return;
+      if (L === lang) {
+        pre.classList.remove('hidden');
+        tab.setAttribute('aria-selected','true');
+        tab.classList.remove('text-slate-400','border-transparent');
+        tab.classList.add('text-[#c9a962]','border-[#c9a962]');
+      } else {
+        pre.classList.add('hidden');
+        tab.setAttribute('aria-selected','false');
+        tab.classList.remove('text-[#c9a962]','border-[#c9a962]');
+        tab.classList.add('text-slate-400','border-transparent');
+      }
+    });
+  };
+})();
+</script>
 
 <footer class="bg-surface-container border-t border-black/[0.06]">
 
