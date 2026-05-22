@@ -90,18 +90,16 @@ See [/open-source](https://sgraal.com/open-source) for the full breakdown of wha
 - [Scoring warnings catalog](https://sgraal.com/docs/scoring-warnings)
 - [Memory ecosystem map](https://sgraal.com/memory-ecosystem-map) — how Sgraal fits with Mem0, Zep, Letta, LangSmith
 
-## Company
-
-Sgraal is being built by Peter Zsobrak at Zs-Consulting Kft. (Budapest).
+## Contact
 
 - **Site** — [sgraal.com](https://sgraal.com)
-- **Contact** — [hello@sgraal.com](mailto:hello@sgraal.com)
+- **Email** — [hello@sgraal.com](mailto:hello@sgraal.com)
 - **Pricing** — [sgraal.com/pricing](https://sgraal.com/pricing)
 - **Design Partner Program** — [sgraal.com/comply](https://sgraal.com/comply) for compliance pilots
 
 ## License
 
-This repository (`sgraal-ai/web-static`) contains the public source for the marketing site at [sgraal.com](https://sgraal.com). No formal `LICENSE` file ships at this time — content here is © 2026 Zs-Consulting Kft., all rights reserved.
+This repository (`sgraal-ai/web-static`) contains the public source for the marketing site at [sgraal.com](https://sgraal.com). No formal `LICENSE` file ships at this time — content here is © 2026 Sgraal. All rights reserved.
 
 The **Sgraal SDK** is licensed under **Apache 2.0** — see the individual SDK repositories for their license terms.
 
