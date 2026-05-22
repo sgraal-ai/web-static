@@ -19,13 +19,13 @@
 #     Guaranteed (capitalized, word-boundary)
 #
 # Allowlist (file:line pairs that are OK to contain a banned string):
-#   - docs/threat-model.html:290-291 — explicit "NOT certified by SOC 2..."
+#   - docs/threat-model.html:296-297 — explicit "NOT certified by SOC 2..."
 #     disclosure (the exception that proves the rule)
-#   - standard/cvss.html:218 — factual reference: NIST CSF / ISO 27001
+#   - standard/cvss.html:224 — factual reference: NIST CSF / ISO 27001
 #     in CVSS context, not a Sgraal claim
-#   - security.html:164 (cross-link line) — references the threat-model page
+#   - security.html:170 (cross-link line) — references the threat-model page
 #     which contains the NOT-certified disclosure
-#   - startups.html:247 — procurement-question quote ("What's your SOC 2
+#   - startups.html:253 — procurement-question quote ("What's your SOC 2
 #     status?") — these are QUESTIONS enterprise asks, not Sgraal claims
 #
 # Line number history:
@@ -60,31 +60,28 @@ ALLOWLIST=(
   # follow-up SOC 2 Type II procurement-contact paragraph (278).
   # This is an explicit honest non-certification disclosure, the OPPOSITE
   # of overclaim. Required by procurement-process transparency.
-  # Line numbers updated 2026-05-22 cookie-consent subfolder catch-up
-  # (was 277/278 in Sub-Sprint 1f, 246/247 in 1c-era). The cookie-banner
-  # rollout missed the docs/ + standard/ + blog/ + integrations/ subfolders
-  # in PR#45 (os.listdir scope bug). Catch-up PR added ~14 lines of GA
-  # deferred-loader to these pages, shifting downstream line numbers.
-  "docs/threat-model.html:290"
-  "docs/threat-model.html:291"
+  # Line numbers updated 2026-05-22 og:image sub-sprint
+  # (was 290/291 in cookie-consent catch-up, 277/278 in Sub-Sprint 1f,
+  # 246/247 in 1c-era). The og:image rollout injected 6 meta tags
+  # (og:image, og:image:width/height/alt, twitter:card, twitter:image)
+  # near the top of every GA-instrumented page, shifting downstream by +6.
+  "docs/threat-model.html:296"
+  "docs/threat-model.html:297"
   # NIST CSF / ISO 27001 in CVSS scoring context — factual reference to
   # an external framework's reliance on CVSS, not a Sgraal certification
   # claim. The sentence reads "Frameworks like NIST CSF and ISO 27001
   # already reference CVSS for risk assessment" — ISO 27001 is the
   # subject of the framework, not a Sgraal capability.
-  # Line number updated 2026-05-22 cookie-consent subfolder catch-up
-  # (was 200 in Sub-Sprint 1f, 169 in 1c-era).
-  "standard/cvss.html:218"
+  # Line number updated 2026-05-22 og:image sub-sprint (+6 from catch-up's 218).
+  "standard/cvss.html:224"
   # The "See also: Threat Model" cross-link on the security page links
   # to the threat-model page and explicitly quotes its NOT-certified
   # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
   # exists precisely to redirect customers to the honest disclosure,
   # not to claim certification.
-  # Line number updated 2026-05-22 cookie-consent rollout (was 151 pre-banner,
-  # 120 in 1c-era). The cookie-banner sub-sprint added ~14 lines near the top
-  # of every GA-instrumented page (deferred GA loader replacing the auto-load
-  # gtag.js snippet), shifting downstream line numbers.
-  "security.html:164"
+  # Line number updated 2026-05-22 og:image sub-sprint (+6 from cookie-banner's 164,
+  # was 151 pre-banner, 120 in 1c-era).
+  "security.html:170"
   # The /startups page documents the three procurement blockers AI
   # startups hit when selling to enterprise. Blocker #3 quotes the
   # questions enterprise procurement actually asks: "What's your SOC 2
@@ -92,9 +89,9 @@ ALLOWLIST=(
   # the customer asks, not claims Sgraal makes. The page's actual
   # response is to point at MVMem certificate + W3C VCs + conformity
   # declaration — explicitly NOT a claim to hold SOC 2 itself.
-  # Line number updated 2026-05-22 cookie-consent rollout (was 234 pre-banner,
-  # 203 in 1c-era).
-  "startups.html:247"
+  # Line number updated 2026-05-22 og:image sub-sprint (+6 from cookie-banner's 247,
+  # was 234 pre-banner, 203 in 1c-era).
+  "startups.html:253"
 )
 
 is_allowlisted() {
