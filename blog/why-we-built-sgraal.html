@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <!-- Google Analytics — gated on cookie consent (loader injected by sub-sprint cookie-consent) -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,25 +21,39 @@
     }
   } catch(e) {}
 </script>
-
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Blog — Sgraal</title>
-<meta name="description" content="Memory Governance Insights — technical writing on AI agent memory, security, and compliance.">
-<meta property="og:title" content="Blog — Sgraal">
-<meta property="og:description" content="Memory Governance Insights — technical writing on AI agent memory, security, and compliance.">
-<meta property="og:url" content="https://sgraal.com/blog">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://sgraal.com/blog">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script>tailwind.config = { theme: { extend: { colors: { "primary": "#c9a962" }, fontFamily: { "headline": ["Manrope"] } } } }</script>
-<style>
-body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
-h1,h2,h3 { font-family: 'Manrope', sans-serif; }
-</style>
+<title>Why we built Sgraal — Sgraal Blog</title>
+<meta name="description" content="AI agents act on memory. We thought someone should decide if that memory is safe to act on. The story of memory governance as the missing layer.">
+<meta property="og:title" content="Why we built Sgraal">
+<meta property="og:description" content="AI agents act on memory. Sgraal decides if that memory is safe to act on.">
+<meta property="og:url" content="https://sgraal.com/blog/why-we-built-sgraal">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sgraal.com/blog/why-we-built-sgraal">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why we built Sgraal",
+  "description": "AI agents act on memory. Sgraal decides if that memory is safe to act on.",
+  "image": "https://sgraal.com/og/og-default.png",
+  "datePublished": "2026-05-21",
+  "dateModified": "2026-05-21",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sgraal",
+    "url": "https://sgraal.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://sgraal.com/blog/why-we-built-sgraal"
+  }
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}code{font-family:'JetBrains Mono',monospace}</style>
 <meta property="og:image" content="https://sgraal.com/og/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -49,8 +62,6 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <meta name="twitter:image" content="https://sgraal.com/og/og-default.png">
 </head>
 <body>
-
-<!-- Navbar -->
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
 <a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
@@ -170,120 +181,84 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </nav>
 
-<!-- Hero -->
-<section class="pt-40 pb-16 px-6">
-<div class="max-w-4xl mx-auto">
-<span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">BLOG</span>
-<h1 class="text-5xl font-extrabold text-[#0B0F14] tracking-tighter mb-4">Memory Governance Insights</h1>
-<p class="text-slate-600 text-lg">Technical writing on AI agent memory, security, and compliance.</p>
-</div>
+<article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+
+<!-- Eyebrow + H1 + subtitle + metadata -->
+<header class="mb-12">
+  <div class="flex items-center gap-3 mb-6 flex-wrap">
+    <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Blog &middot; Foundations</span>
+    <span class="text-slate-400 text-xs">&middot;</span>
+    <span class="text-slate-500 text-xs">2026-05-21</span>
+    <span class="text-slate-400 text-xs">&middot;</span>
+    <span class="text-slate-500 text-xs">~5 min read</span>
+  </div>
+  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 leading-tight">Why we built Sgraal</h1>
+  <p class="text-xl text-slate-600 leading-relaxed">AI agents act on memory. We thought someone should decide if that memory is safe to act on.</p>
+</header>
+
+<!-- Section 1: Hook -->
+<section class="mb-10 prose-spacing">
+  <p class="text-slate-700 leading-relaxed mb-4">An AI agent in 2026 has memory. It remembers what the user said last week, what an upstream tool returned, what another agent told it about a customer. Then it acts.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">The agent doesn&rsquo;t usually pause to ask whether those memories are still true, still in scope, still safe to use right now. A stale user preference triggers an unwanted email. A clinical AI references a contraindicated medication note from a different patient. A trading agent acts on market context that was reasonable thirty minutes ago but no longer is. The memory wasn&rsquo;t fabricated &mdash; it was just used at the wrong moment.</p>
+  <p class="text-slate-700 leading-relaxed font-semibold">Memory governance is the missing layer.</p>
 </section>
 
-<!-- Posts -->
-<section class="pb-32 px-6">
-<div class="max-w-4xl mx-auto">
-
-  <!-- ============================================================ -->
-  <!-- Foundations series — launch posts for the broader audience  -->
-  <!-- ============================================================ -->
-  <div class="mb-6 mt-4">
-    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Foundations</p>
-    <p class="text-sm text-slate-500 mt-1">Why memory governance matters, and how Sgraal approaches it.</p>
-  </div>
-
-  <a href="/blog/why-we-built-sgraal" class="block bg-[#faf9f6] border-2 border-[#c9a962]/30 rounded-xl p-8 hover:border-[#c9a962] hover:shadow-md transition-all group mb-12">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Foundations</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">2026-05-21</span>
-      <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>
-      <span class="text-slate-400 text-xs">~5 min read</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">Why we built Sgraal</h2>
-    <p class="text-slate-600 leading-relaxed mb-4">AI agents act on memory. We thought someone should decide if that memory is safe to act on. Memory governance is the missing layer between storage and observability &mdash; here&rsquo;s why it matters now, and what Sgraal does about it.</p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  <!-- ============================================================ -->
-  <!-- Research series — existing technical posts                  -->
-  <!-- ============================================================ -->
-  <div class="mb-6 mt-12">
-    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Research</p>
-    <p class="text-sm text-slate-500 mt-1">Adversarial corpora, scoring engineering, and joint benchmarks.</p>
-  </div>
-
-  <div class="space-y-8">
-
-  <a href="/blog/round12-51-60" class="block bg-[#f5f4f0] rounded-xl p-8 hover:shadow-md transition-all group">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Benchmark</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">April 2026</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">Round 12: 51/60 and the 9 Cases That Taught Us Our Ceiling Was Wrong</h2>
-    <p class="text-slate-600 leading-relaxed mb-4">When we wrote the Round 12 ceiling analysis three weeks ago, we predicted 54/60. We were wrong. This is the honest accounting.</p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  <a href="/blog/dual-stack-convergence" class="block bg-[#f5f4f0] rounded-xl p-8 hover:shadow-md transition-all group">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Joint Publication</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">April 2026</span>
-      <span class="bg-[#c9a962] text-white text-xs font-bold px-2 py-0.5 rounded-full">NEW</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">
-      Independent Stacks, Same Truth Signal
-    </h2>
-    <p class="text-slate-600 leading-relaxed mb-4">
-      Seven rounds of adversarial memory testing with Grok &mdash; 554 cases, F1=1.000 on both independent stacks (synthetic adversarial corpora; production calibration pending). A practical epistemology for AI memory governance.
-    </p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  <a href="/blog/weibull-reliability" class="block bg-[#f5f4f0] rounded-xl p-8 hover:shadow-md transition-all group">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Engineering</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">April 2026</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">Memory Reliability Engineering &mdash; The Weibull Model</h2>
-    <p class="text-slate-600 leading-relaxed mb-4">The same math that predicts equipment failure in aerospace and nuclear now predicts AI agent memory failure.</p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  <a href="/blog/circuit-breaker-memory" class="block bg-[#f5f4f0] rounded-xl p-8 hover:shadow-md transition-all group">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Architecture</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">April 2026</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">Circuit Breakers for AI Agent Memory &mdash; A First</h2>
-    <p class="text-slate-600 leading-relaxed mb-4">The first application of the circuit breaker pattern to AI agent memory governance.</p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  <a href="/blog/grok-benchmark" class="block bg-[#f5f4f0] rounded-xl p-8 hover:shadow-md transition-all group">
-    <div class="flex items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c9a962]">Benchmark</span>
-      <span class="text-slate-400 text-xs">&middot;</span>
-      <span class="text-slate-500 text-xs">April 2026</span>
-    </div>
-    <h2 class="text-2xl font-bold text-[#0B0F14] mb-3 group-hover:text-[#c9a962] transition-colors">
-      Building a Joint Memory Governance Benchmark with Grok
-    </h2>
-    <p class="text-slate-600 leading-relaxed mb-4">
-      How Sgraal and Grok independently validated adversarial memory corpora — F1=1.000 across 239 cases, zero false negatives (synthetic adversarial corpora; production calibration pending).
-    </p>
-    <span class="text-[#c9a962] font-semibold text-sm">Read more &rarr;</span>
-  </a>
-
-  </div><!-- /Research space-y-8 -->
-
-</div><!-- /max-w-4xl -->
+<!-- Section 2: The gap -->
+<section class="mb-10">
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12">The gap</h2>
+  <p class="text-slate-700 leading-relaxed mb-4">The AI agent stack has matured fast. Storage is solved &mdash; there are excellent memory libraries that handle vector search, episodic storage, summarisation, and cross-session continuity. Observability is solved &mdash; there are platforms that tell you what an agent did, which prompts hit which tools, where latency spiked.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">What&rsquo;s not solved: the verdict layer. Before an agent acts on a memory entry, something needs to answer one question &mdash; is this safe to act on right now? Not <em>&ldquo;is this in the database?&rdquo;</em> Not <em>&ldquo;was this stored with high confidence?&rdquo;</em> But: given <strong>this</strong> decision, in <strong>this</strong> context, at <strong>this</strong> moment &mdash; should this memory be used?</p>
+  <p class="text-slate-700 leading-relaxed mb-4">That&rsquo;s a different question from storage, and a different question from observability. It&rsquo;s a governance question. It needs an answer in milliseconds, before the agent commits the action, in a form the agent can branch on.</p>
+  <p class="text-slate-700 leading-relaxed">In 2026 this gap matters more than it did in 2024. AI agents are leaving prototype phase and landing in regulated production: clinical workflows under HIPAA and GDPR, financial execution under regulator scrutiny, government deployments with audit obligations. The cost of getting memory wrong stopped being an awkward UX bug and started being a regulatory finding, a clinical incident, a trading loss.</p>
 </section>
 
-<!-- Footer -->
+<!-- Section 3: What Sgraal is -->
+<section class="mb-10">
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12">What Sgraal is</h2>
+  <p class="text-slate-700 leading-relaxed mb-4">Sgraal is a verdict API for AI agent memory. Every memory access can be passed to a single endpoint &mdash; <code class="text-sm bg-[#faf9f6] px-1.5 py-0.5 rounded text-[#c9a962]">POST /v1/check</code> &mdash; and Sgraal returns one of four decisions: <code>USE_MEMORY</code>, <code>WARN</code>, <code>ASK_USER</code>, or <code>BLOCK</code>. The decision arrives in under fifteen milliseconds. Fast enough to sit on the agent&rsquo;s execution path, slow enough to actually evaluate the question.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">The verdict is computed by a scoring engine that looks at memory provenance (where did this fact come from, what&rsquo;s its chain of trust?), staleness (when was this last validated against ground truth?), evidence independence (are three &ldquo;confirmations&rdquo; actually three independent confirmations, or is one source echoing itself?), and a dozen other dimensions calibrated for production AI deployment. The full component list is documented at <a href="/docs" class="text-[#c9a962] hover:underline">/docs</a>.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">For deployments that need more than just a verdict, Sgraal issues two optional artifacts:</p>
+  <ul class="list-disc list-outside ml-6 mb-4 space-y-2 text-slate-700 leading-relaxed">
+    <li><strong>MVMem Certificate</strong> (<code class="text-sm bg-[#faf9f6] px-1.5 py-0.5 rounded text-[#c9a962]">POST /v1/certify/mvmem</code>) &mdash; a W3C Verifiable Credential proving the agent operated with the minimum viable memory set for the given decision. This is the GDPR Article 5(1)(c) data-minimisation proof a DPO can hand to an auditor.</li>
+    <li><strong>Convergence Proof PDF</strong> (<code class="text-sm bg-[#faf9f6] px-1.5 py-0.5 rounded text-[#c9a962]">POST /v1/proofs/convergence</code>) &mdash; a multi-page FDA-style document showing the agent&rsquo;s memory stability under healing actions, mathematically certified with Lyapunov stability analysis.</li>
+  </ul>
+  <p class="text-slate-700 leading-relaxed">Sgraal follows an open-core model. The SDK clients, Edge mode, and Mem0/Zep drop-in proxy are Apache 2.0 &mdash; drop them into your codebase, contribute improvements, run them offline. The scoring engine itself runs hosted at <code>api.sgraal.com</code>, with continuous calibration improvements shipping without requiring SDK updates. See <a href="/open-source" class="text-[#c9a962] hover:underline">/open-source</a> for the full breakdown of what&rsquo;s open and what&rsquo;s hosted.</p>
+</section>
+
+<!-- Section 4: Quickstart preview -->
+<section class="mb-10">
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12">Five lines, no signup</h2>
+  <p class="text-slate-700 leading-relaxed mb-5">The friction to try Sgraal is intentionally low. Here&rsquo;s the entire integration in Python:</p>
+<pre class="bg-[#0B0F14] text-slate-200 p-5 rounded-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg mb-5"><span class="text-slate-500"># pip install sgraal</span>
+<span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> Sgraal
+
+client = Sgraal(api_key=<span class="text-emerald-300">"sg_demo_playground"</span>)
+verdict = client.check(agent_id=<span class="text-emerald-300">"my-agent"</span>, memory_state=[{<span class="text-emerald-300">"text"</span>: <span class="text-emerald-300">"user prefers email"</span>}])
+<span class="text-violet-300">print</span>(verdict.decision)  <span class="text-slate-500"># USE_MEMORY / WARN / ASK_USER / BLOCK</span></pre>
+  <p class="text-slate-700 leading-relaxed">Five lines. The demo key <code class="text-sm bg-[#faf9f6] px-1.5 py-0.5 rounded text-[#c9a962]">sg_demo_playground</code> works against the live API immediately &mdash; no signup required to verify Sgraal does what we say it does. Node.js and cURL versions live at <a href="/docs/quickstart" class="text-[#c9a962] hover:underline">/docs/quickstart</a>.</p>
+</section>
+
+<!-- Section 5: Why now -->
+<section class="mb-10">
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12">Why now</h2>
+  <p class="text-slate-700 leading-relaxed mb-4">AI agents in 2026 are crossing a threshold. The same systems that ran demos in 2024 are now writing patient communications, executing trades, drafting legal documents, and orchestrating multi-step workflows in regulated industries. The cost of a wrong action is no longer <em>&ldquo;the user laughs and re-prompts.&rdquo;</em> It&rsquo;s a DPO sign-off blocked for three weeks, a clinical incident review, a regulator inquiry, a customer-data exfiltration disclosure.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">The infrastructure to build memory-aware compliance and safety used to be a three-to-six-week custom engineering effort per agent. Every deployment built its own provenance tracker, its own audit-log writer, its own verdict logic. The verdict logic ended up wrong in subtle ways because the engineers writing it weren&rsquo;t memory-governance specialists &mdash; they were product engineers who needed it shipped by next quarter.</p>
+  <p class="text-slate-700 leading-relaxed mb-4">Sgraal exists to be that infrastructure. So that you can build your agent. So that compliance can be a two-day audit instead of a three-week sign-off. So that the trade-off between speed and safety stops being one.</p>
+  <p class="text-slate-700 leading-relaxed">In the next post in this series, we&rsquo;ll show how MVMem certificates actually make GDPR Article 5(1)(c) a two-day audit. In the third, how Lyapunov stability proofs become FDA-ready submission artifacts.</p>
+</section>
+
+<!-- CTA -->
+<section class="mt-16 pt-10 border-t border-slate-200">
+  <p class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-4">Next steps</p>
+  <div class="flex flex-wrap gap-3">
+    <a href="/docs/quickstart" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Try Sgraal in 5 lines &rarr;</a>
+    <a href="/comply" class="inline-flex items-center border-2 border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#c9a962]/5 transition-all">Apply to Design Partner Program &rarr;</a>
+    <a href="/whitepaper" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-3 py-2.5 font-bold text-sm transition-all">Read the technical whitepaper &rarr;</a>
+  </div>
+</section>
+
+</article>
+
 <footer class="bg-surface-container border-t border-black/[0.06]">
 
 <!-- Top: 6 link columns -->
@@ -393,7 +368,6 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
 </div>
 </footer>
-
 <!-- Cookie consent banner — GDPR-compliant (sgraal.com self-compliance) -->
 <div id="sgraal-cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#c9a962] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-50 hidden" role="dialog" aria-labelledby="sgraal-cookie-banner-title">
   <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
