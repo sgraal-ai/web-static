@@ -30,6 +30,78 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the 'Timestamp Zeroing' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "timestamp_age_days forced to 0. Stale regulatory data presented as current guidance. Detected by Sgraal's timestamp_integrity layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Authority Escalation' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Agent role gradually inflated from 'support assistant' to 'authorized executor' across hops. Detected by Sgraal's identity_drift layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Consensus Fabrication' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "3 independent stacks confirming same false fact, with zero source_conflict across all entries. Detected by Sgraal's consensus_collapse layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Circular Provenance' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Memory loops back through the same agent, creating self-reinforcing 'evidence'. Detected by Sgraal's provenance_chain_integrity layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Fleet Age Collapse' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5 entries all with timestamp_age_days=0 and source_conflict=0.0 — statistically implausible. Detected by Sgraal's timestamp_integrity + naturalness layers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Modal Uncertainty Strip' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uncertainty markers stripped across hops: 'likely approved' becomes 'approved' becomes 'confirmed'. Detected by Sgraal's consensus_collapse (uncertainty_hardening)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Subject Rebinding' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subject identifier drifts across hops: 'user_123' becomes 'workspace owner' becomes 'organization admin'. Detected by Sgraal's identity_drift (subject_rebinding)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 'Confidence Recycling' failure mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "'Prior review confirmed' used as new independent evidence — agent output becomes its own proof. Detected by Sgraal's consensus_collapse (confidence_recycling)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">

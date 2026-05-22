@@ -34,6 +34,52 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>body{font-family:'Inter',sans-serif;background:#fff;color:#0B0F14}h1,h2,h3{font-family:'Manrope',sans-serif}code{font-family:'JetBrains Mono',monospace}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Integrate Sgraal in 5 lines of code",
+  "description": "Get your first memory verdict from the Sgraal API in under 60 seconds.",
+  "totalTime": "PT5M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Python 3.8+ or Node 18+"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Sgraal API key (sg_demo_playground works for /v1/check)"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Install the SDK",
+      "text": "pip install sgraal (Python) or npm install sgraal (Node.js)"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Initialize the client",
+      "text": "Create a Sgraal client with your API key: client = Sgraal(api_key='sg_demo_playground')"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Make your first verdict call",
+      "text": "Call client.check() with agent_id and memory_state arguments"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Read the verdict",
+      "text": "Inspect verdict.decision — one of USE_MEMORY, WARN, ASK_USER, or BLOCK"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
