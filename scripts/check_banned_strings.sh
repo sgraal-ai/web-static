@@ -19,9 +19,9 @@
 #     Guaranteed (capitalized, word-boundary)
 #
 # Allowlist (file:line pairs that are OK to contain a banned string):
-#   - docs/threat-model.html:277-278 — explicit "NOT certified by SOC 2..."
+#   - docs/threat-model.html:290-291 — explicit "NOT certified by SOC 2..."
 #     disclosure (the exception that proves the rule)
-#   - standard/cvss.html:200 — factual reference: NIST CSF / ISO 27001
+#   - standard/cvss.html:218 — factual reference: NIST CSF / ISO 27001
 #     in CVSS context, not a Sgraal claim
 #   - security.html:164 (cross-link line) — references the threat-model page
 #     which contains the NOT-certified disclosure
@@ -60,16 +60,21 @@ ALLOWLIST=(
   # follow-up SOC 2 Type II procurement-contact paragraph (278).
   # This is an explicit honest non-certification disclosure, the OPPOSITE
   # of overclaim. Required by procurement-process transparency.
-  # Line numbers updated 2026-05-21 (Sub-Sprint 1f, was 246/247 in 1c-era).
-  "docs/threat-model.html:277"
-  "docs/threat-model.html:278"
+  # Line numbers updated 2026-05-22 cookie-consent subfolder catch-up
+  # (was 277/278 in Sub-Sprint 1f, 246/247 in 1c-era). The cookie-banner
+  # rollout missed the docs/ + standard/ + blog/ + integrations/ subfolders
+  # in PR#45 (os.listdir scope bug). Catch-up PR added ~14 lines of GA
+  # deferred-loader to these pages, shifting downstream line numbers.
+  "docs/threat-model.html:290"
+  "docs/threat-model.html:291"
   # NIST CSF / ISO 27001 in CVSS scoring context — factual reference to
   # an external framework's reliance on CVSS, not a Sgraal certification
   # claim. The sentence reads "Frameworks like NIST CSF and ISO 27001
   # already reference CVSS for risk assessment" — ISO 27001 is the
   # subject of the framework, not a Sgraal capability.
-  # Line number updated 2026-05-21 (was 169 in 1c-era).
-  "standard/cvss.html:200"
+  # Line number updated 2026-05-22 cookie-consent subfolder catch-up
+  # (was 200 in Sub-Sprint 1f, 169 in 1c-era).
+  "standard/cvss.html:218"
   # The "See also: Threat Model" cross-link on the security page links
   # to the threat-model page and explicitly quotes its NOT-certified
   # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
