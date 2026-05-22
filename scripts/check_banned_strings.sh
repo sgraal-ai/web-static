@@ -23,9 +23,9 @@
 #     disclosure (the exception that proves the rule)
 #   - standard/cvss.html:200 — factual reference: NIST CSF / ISO 27001
 #     in CVSS context, not a Sgraal claim
-#   - security.html:151 (cross-link line) — references the threat-model page
+#   - security.html:164 (cross-link line) — references the threat-model page
 #     which contains the NOT-certified disclosure
-#   - startups.html:234 — procurement-question quote ("What's your SOC 2
+#   - startups.html:247 — procurement-question quote ("What's your SOC 2
 #     status?") — these are QUESTIONS enterprise asks, not Sgraal claims
 #
 # Line number history:
@@ -75,8 +75,11 @@ ALLOWLIST=(
   # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
   # exists precisely to redirect customers to the honest disclosure,
   # not to claim certification.
-  # Line number updated 2026-05-21 (was 120 in 1c-era).
-  "security.html:151"
+  # Line number updated 2026-05-22 cookie-consent rollout (was 151 pre-banner,
+  # 120 in 1c-era). The cookie-banner sub-sprint added ~14 lines near the top
+  # of every GA-instrumented page (deferred GA loader replacing the auto-load
+  # gtag.js snippet), shifting downstream line numbers.
+  "security.html:164"
   # The /startups page documents the three procurement blockers AI
   # startups hit when selling to enterprise. Blocker #3 quotes the
   # questions enterprise procurement actually asks: "What's your SOC 2
@@ -84,8 +87,9 @@ ALLOWLIST=(
   # the customer asks, not claims Sgraal makes. The page's actual
   # response is to point at MVMem certificate + W3C VCs + conformity
   # declaration — explicitly NOT a claim to hold SOC 2 itself.
-  # Line number updated 2026-05-21 (was 203 in 1c-era).
-  "startups.html:234"
+  # Line number updated 2026-05-22 cookie-consent rollout (was 234 pre-banner,
+  # 203 in 1c-era).
+  "startups.html:247"
 )
 
 is_allowlisted() {

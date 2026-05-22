@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF"></script>
+<!-- Google Analytics — gated on cookie consent (loader injected by sub-sprint cookie-consent) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-K7B978E0HF');
+  window.sgraalLoadGA = function() {
+    if (window.sgraalGALoaded) return;
+    window.sgraalGALoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-K7B978E0HF');
+  };
+  try {
+    if (localStorage.getItem('sgraal_cookie_consent') === 'accepted') {
+      window.sgraalLoadGA();
+    }
+  } catch(e) {}
 </script>
 
 <meta charset="utf-8"/>
@@ -342,6 +355,7 @@ textarea, select { outline: none; }
 <ul class="space-y-2 text-on-surface-variant text-xs">
 <li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
 <li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-gold transition-colors" href="#" onclick="event.preventDefault(); window.sgraalCookieReshow && window.sgraalCookieReshow();">Cookie preferences</a></li>
 <li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
 <li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
 </ul>
@@ -429,5 +443,41 @@ function toggleJson() {
 }
 </script>
 
+<!-- Cookie consent banner — GDPR-compliant (sgraal.com self-compliance) -->
+<div id="sgraal-cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#c9a962] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-50 hidden" role="dialog" aria-labelledby="sgraal-cookie-banner-title">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+    <div class="flex-1">
+      <p id="sgraal-cookie-banner-title" class="font-bold text-sm text-[#1a1c1a] mb-1" style="font-family: 'Manrope', sans-serif;">Cookies on sgraal.com</p>
+      <p class="text-sm text-slate-600 leading-relaxed">We use cookies for analytics to improve sgraal.com. Your choice — we respect both. <a href="/privacy" class="text-[#c9a962] font-bold hover:underline">Privacy details →</a></p>
+    </div>
+    <div class="flex gap-3 items-stretch md:items-center flex-shrink-0">
+      <button type="button" onclick="window.sgraalCookieDecide('rejected')" class="border border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#c9a962]/5 transition-all">Reject</button>
+      <button type="button" onclick="window.sgraalCookieDecide('accepted')" class="bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'sgraal_cookie_consent';
+  var banner = document.getElementById('sgraal-cookie-banner');
+  window.sgraalCookieDecide = function(decision) {
+    try { localStorage.setItem(KEY, decision); } catch(e) {}
+    if (banner) banner.classList.add('hidden');
+    if (decision === 'accepted' && typeof window.sgraalLoadGA === 'function') {
+      window.sgraalLoadGA();
+    }
+  };
+  window.sgraalCookieReshow = function() {
+    try { localStorage.removeItem(KEY); } catch(e) {}
+    if (banner) banner.classList.remove('hidden');
+  };
+  var existing = null;
+  try { existing = localStorage.getItem(KEY); } catch(e) {}
+  if (!existing) {
+    setTimeout(function(){ if (banner) banner.classList.remove('hidden'); }, 1000);
+  }
+})();
+</script>
+<!-- /Cookie consent banner -->
 </body>
 </html>
