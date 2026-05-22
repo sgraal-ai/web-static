@@ -184,6 +184,25 @@ textarea, select { outline: none; }
 <section class="pb-24 px-6">
 <div class="max-w-3xl mx-auto">
 
+  <!-- Sample loaders -->
+  <div class="mb-5">
+    <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Load a sample</label>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <button type="button" onclick="loadSample('safe')"
+        class="border-2 border-[#c9a962] text-[#c9a962] px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#c9a962]/10 transition-all">
+        Try safe example
+      </button>
+      <button type="button" onclick="loadSample('ambiguous')"
+        class="border-2 border-[#c9a962] text-[#c9a962] px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#c9a962]/10 transition-all">
+        Try ambiguous example
+      </button>
+      <button type="button" onclick="loadSample('risky')"
+        class="border-2 border-[#c9a962] text-[#c9a962] px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#c9a962]/10 transition-all">
+        Try risky example
+      </button>
+    </div>
+  </div>
+
   <!-- Memory Input -->
   <div class="mb-5">
     <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Memory State (JSON)</label>
@@ -191,11 +210,12 @@ textarea, select { outline: none; }
       class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm font-mono text-[#0B0F14] resize-y focus:border-[#c9a962] transition-colors"
     >[
   {
-    "id": "mem_payment_history",
-    "type": "tool_state",
-    "timestamp_age_days": 54,
-    "source_trust": 0.6,
-    "source_conflict": 0.4
+    "id": "mem_user_pref",
+    "type": "preference",
+    "content": "User prefers concise answers and dark-mode UI; confirmed in account settings yesterday.",
+    "timestamp_age_days": 3,
+    "source_trust": 0.95,
+    "source_conflict": 0.05
   }
 ]</textarea>
   </div>
@@ -205,17 +225,17 @@ textarea, select { outline: none; }
     <div>
       <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Action Type</label>
       <select id="actionType" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-[#0B0F14] focus:border-[#c9a962] transition-colors">
-        <option value="read">read</option>
-        <option value="write">write</option>
-        <option value="financial">financial</option>
-        <option value="irreversible" selected>irreversible</option>
+        <option value="informational">informational</option>
+        <option value="reversible" selected>reversible</option>
+        <option value="irreversible">irreversible</option>
+        <option value="destructive">destructive</option>
       </select>
     </div>
     <div>
       <label class="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Domain</label>
       <select id="domain" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-[#0B0F14] focus:border-[#c9a962] transition-colors">
-        <option value="general">general</option>
-        <option value="fintech" selected>fintech</option>
+        <option value="general" selected>general</option>
+        <option value="fintech">fintech</option>
         <option value="medical">healthcare</option>
         <option value="legal">legal</option>
       </select>
@@ -390,6 +410,37 @@ function omegaColor(v) {
   return "#dc2626";
 }
 
+// Pre-baked examples. Verified live against api.sgraal.com:
+// safe → USE_MEMORY (omega ~1), ambiguous → WARN (omega ~39), risky → BLOCK (omega 100).
+const SAMPLES = {
+  safe: {
+    memory_state: [{ id: "mem_user_pref", type: "preference", content: "User prefers concise answers and dark-mode UI; confirmed in account settings yesterday.", timestamp_age_days: 3, source_trust: 0.95, source_conflict: 0.05 }],
+    action_type: "reversible",
+    domain: "general"
+  },
+  ambiguous: {
+    memory_state: [{ id: "mem_support_note", type: "episodic", content: "Customer said the billing issue was resolved on the last call; one agent flagged it may still be open.", timestamp_age_days: 21, source_trust: 0.65, source_conflict: 0.35 }],
+    action_type: "reversible",
+    domain: "general"
+  },
+  risky: {
+    memory_state: [{ id: "mem_payment_history", type: "tool_state", content: "Customer payment history: last invoice $4,200 settled 2026-03-18 via ACH; account in good standing; autopay enabled.", timestamp_age_days: 54, source_trust: 0.6, source_conflict: 0.4 }],
+    action_type: "irreversible",
+    domain: "fintech"
+  }
+};
+
+// Load a pre-baked example into the form, then run it immediately.
+// The loaded JSON remains fully editable — samples are starting points, not lockdowns.
+function loadSample(key) {
+  const sample = SAMPLES[key];
+  if (!sample) return;
+  document.getElementById("memoryInput").value = JSON.stringify(sample.memory_state, null, 2);
+  document.getElementById("actionType").value = sample.action_type;
+  document.getElementById("domain").value = sample.domain;
+  runPreflight();
+}
+
 async function runPreflight() {
   const btn = document.getElementById("runBtn");
   const errorMsg = document.getElementById("errorMsg");
@@ -401,7 +452,12 @@ async function runPreflight() {
   result.classList.add("hidden");
 
   try {
-    const memory = JSON.parse(document.getElementById("memoryInput").value);
+    let memory;
+    try {
+      memory = JSON.parse(document.getElementById("memoryInput").value);
+    } catch (parseErr) {
+      throw new Error("Invalid JSON syntax in Memory State — check your quotes, commas, and brackets.");
+    }
     const actionType = document.getElementById("actionType").value;
     const domain = document.getElementById("domain").value;
 
@@ -414,7 +470,22 @@ async function runPreflight() {
       body: JSON.stringify({ memory_state: memory, action_type: actionType, domain })
     });
 
-    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    if (!res.ok) {
+      // Surface Pydantic field-level errors instead of a bare "API error: 422".
+      let detailMsg = "";
+      try {
+        const errBody = await res.json();
+        if (Array.isArray(errBody.detail) && errBody.detail.length) {
+          detailMsg = errBody.detail.map(function (d) {
+            const field = Array.isArray(d.loc) ? d.loc.slice(1).join(".") : "request";
+            return `${d.msg} (field: ${field})`;
+          }).join("; ");
+        } else if (typeof errBody.detail === "string") {
+          detailMsg = errBody.detail;
+        }
+      } catch (_) { /* error body was not JSON */ }
+      throw new Error(detailMsg ? `Request rejected — ${detailMsg}` : `API error: ${res.status}`);
+    }
     const data = await res.json();
 
     const omega = data.omega_mem_final || 0;
