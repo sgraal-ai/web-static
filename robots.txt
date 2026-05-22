@@ -1,3 +1,14 @@
+# robots.txt for sgraal.com
+# Last updated: 2026-05-22 (SEO foundation sub-sprint)
+
 User-agent: *
 Allow: /
+
+# Internal references — not user-facing
+Disallow: /_components/
+
+# Error pages — should not appear in search results
+Disallow: /404
+Disallow: /500
+
 Sitemap: https://sgraal.com/sitemap.xml
