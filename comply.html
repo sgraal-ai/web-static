@@ -346,6 +346,61 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   <p class="text-xs text-slate-500 mt-3">Returns a signed <code class="text-xs bg-white px-1.5 py-0.5 rounded">MVMemCertificate2026</code> with the structure shown above. Response headers expose <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Original-Memory-Size</code>, <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Minimum-Viable-Size</code>, <code class="text-xs bg-white px-1.5 py-0.5 rounded">X-Sgraal-Decision-Preserved</code>.</p>
 </div>
 
+<!-- Interactive sample CTA — pre-baked output, no signup required -->
+<div class="mt-6 pt-6 border-t border-[#c9a962]/20" id="mvmem-demo">
+  <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">See a sample response</p>
+    <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+      <span class="material-symbols-outlined text-[12px]">info</span>
+      Pre-generated sample · No signup
+    </span>
+  </div>
+
+  <button id="mvmem-demo-btn" type="button"
+    class="inline-flex items-center gap-2 bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all"
+    onclick="document.getElementById('mvmem-demo-output').classList.remove('hidden'); this.style.display='none';">
+    <span class="material-symbols-outlined text-[16px]">play_arrow</span>
+    Generate sample
+  </button>
+
+  <div id="mvmem-demo-output" class="hidden mt-4">
+    <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+      <p class="text-xs font-bold inline-flex items-center gap-1 text-emerald-700">
+        <span class="material-symbols-outlined text-[14px]">check_circle</span>
+        HTTP 200 · POST /v1/certify/mvmem
+      </p>
+      <button id="mvmem-copy-btn" type="button"
+        onclick="navigator.clipboard.writeText(document.getElementById('mvmem-sample-json').innerText).then(function(){var l=document.getElementById('mvmem-copy-label');l.innerText='Copied!';setTimeout(function(){l.innerText='Copy JSON';},2000);});"
+        class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-600 hover:text-[#c9a962] border border-slate-300 px-2 py-1 rounded transition-all">
+        <span class="material-symbols-outlined text-[12px]">content_copy</span>
+        <span id="mvmem-copy-label">Copy JSON</span>
+      </button>
+    </div>
+<pre id="mvmem-sample-json" class="bg-[#0B0F14] text-slate-200 p-5 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed shadow-lg">{
+  <span class="text-[#c9a962]">"@context"</span>: [<span class="text-emerald-300">"https://www.w3.org/2018/credentials/v1"</span>],
+  <span class="text-[#c9a962]">"type"</span>: [<span class="text-emerald-300">"VerifiableCredential"</span>, <span class="text-emerald-300">"MVMemCertificate2026"</span>],
+  <span class="text-[#c9a962]">"issuer"</span>: <span class="text-emerald-300">"did:sgraal:tenant_demo"</span>,
+  <span class="text-[#c9a962]">"issuanceDate"</span>: <span class="text-emerald-300">"2026-05-21T20:07:43.441557+00:00"</span>,
+  <span class="text-[#c9a962]">"credentialSubject"</span>: {
+    <span class="text-[#c9a962]">"agentId"</span>: <span class="text-emerald-300">"demo_agent"</span>,
+    <span class="text-[#c9a962]">"requestId"</span>: <span class="text-emerald-300">"457b411b-a8ac-4d93-a59d-b629148b1c5e"</span>,
+    <span class="text-[#c9a962]">"originalMemorySize"</span>: <span class="text-amber-300">47</span>,
+    <span class="text-[#c9a962]">"minimumViableSize"</span>: <span class="text-amber-300">12</span>,
+    <span class="text-[#c9a962]">"decisionPreserved"</span>: <span class="text-violet-300">true</span>,
+    <span class="text-[#c9a962]">"gdprArticle"</span>: <span class="text-emerald-300">"5(1)(c)"</span>
+  },
+  <span class="text-[#c9a962]">"proof"</span>: {
+    <span class="text-[#c9a962]">"type"</span>: <span class="text-emerald-300">"Ed25519Signature2020"</span>,
+    <span class="text-[#c9a962]">"created"</span>: <span class="text-emerald-300">"2026-05-21T20:07:43.441557+00:00"</span>,
+    <span class="text-[#c9a962]">"verificationMethod"</span>: <span class="text-emerald-300">"did:sgraal:tenant_demo#key-1"</span>,
+    <span class="text-[#c9a962]">"proofPurpose"</span>: <span class="text-emerald-300">"assertionMethod"</span>,
+    <span class="text-[#c9a962]">"jws"</span>: <span class="text-emerald-300">"eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..FHT0szhLUdizD6evzdh9i7oNPejOYbG9e4O5IBsw7mKz6squXd_O58blbFz1FCuuUSxKuEj4vr36p09it1BeCA"</span>
+  }
+}</pre>
+    <p class="text-xs text-slate-500 mt-3">Sample output — your tenant produces identical-format certificates signed by your own Ed25519 key. <a href="/pricing" class="text-[#c9a962] font-bold hover:underline">Get your own key →</a></p>
+  </div>
+</div>
+
 </div>
 
 </div>
