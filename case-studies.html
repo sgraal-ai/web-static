@@ -152,9 +152,29 @@
 </nav>
 
 <!-- Hero -->
-<section class="pt-36 pb-16 px-8 max-w-5xl mx-auto text-center">
+<section class="pt-36 pb-10 px-8 max-w-5xl mx-auto text-center">
 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Case Studies</h1>
-<p class="text-lg text-slate-500 max-w-2xl mx-auto">How Sgraal prevents costly AI agent failures across regulated industries.</p>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">How Sgraal prevents costly AI agent failures across regulated industries — and what production integration looks like for design partners.</p>
+</section>
+
+<!-- Top disclosure block — covers all 5 case studies below -->
+<section class="px-8 pb-12">
+<div class="bg-amber-50 border border-amber-200 rounded-lg p-6 max-w-3xl mx-auto">
+<p class="text-sm text-amber-900 leading-relaxed">
+<strong>About these case studies:</strong> The scenarios below are <strong>hypothetical</strong>, grounded in real Sgraal capabilities and corpus attack patterns. <em>Detection scenarios</em> illustrate what Sgraal's scoring layers catch; <em>deployment scenarios</em> illustrate what production integration looks like for design partners. No actual client data is represented, and all metrics shown are illustrative of the use case — not real customer outcomes. As actual customers go public, named case studies with verified outcomes will replace these hypotheticals. Currently in pilot deployment with anonymized design partners; see the <a href="/" class="underline hover:text-[#c9a962]">homepage Design Partner Program</a>.
+</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- DETECTION SCENARIOS — what Sgraal's scoring layers catch     -->
+<!-- ============================================================ -->
+<section class="px-8 max-w-5xl mx-auto pb-4">
+<div class="text-center">
+<p class="text-xs uppercase tracking-widest text-[#c9a962] font-bold mb-2">Part 1 of 2</p>
+<h2 class="text-3xl font-extrabold tracking-tight mb-2">Detection scenarios</h2>
+<p class="text-sm text-slate-500 max-w-xl mx-auto">Single-incident attack patterns from the Sgraal corpus and the scoring layer that catches each.</p>
+</div>
 </section>
 
 <!-- Case 1: Fintech -->
@@ -164,7 +184,8 @@
 <span class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">FINTECH</span>
 <span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
 </div>
-<h2 class="text-2xl font-extrabold mb-4">Preventing a $2.3M trading error</h2>
+<h2 class="text-2xl font-extrabold mb-4">Preventing a multi-million-dollar trading error</h2>
+<p class="text-xs text-slate-500 italic mb-4">Hypothetical scenario based on real corpus attack pattern.</p>
 <div class="grid md:grid-cols-2 gap-8">
 <div>
 <h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
@@ -180,7 +201,7 @@
 <div><span class="text-slate-400">recommended_action:</span> <span class="text-red-500 font-bold">BLOCK</span></div>
 <div><span class="text-slate-400">timestamp_integrity:</span> <span class="text-red-500">MANIPULATED</span></div>
 <div><span class="text-slate-400">response_latency:</span> 18ms</div>
-<div><span class="text-slate-400">estimated_loss_avoided:</span> $2.3M</div>
+<div><span class="text-slate-400">estimated_loss_avoided:</span> multi-million USD</div>
 </div>
 </div>
 </div>
@@ -195,6 +216,7 @@
 <span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
 </div>
 <h2 class="text-2xl font-extrabold mb-4">Stopping a medical triage drift</h2>
+<p class="text-xs text-slate-500 italic mb-4">Hypothetical scenario based on real corpus attack pattern.</p>
 <div class="grid md:grid-cols-2 gap-8">
 <div>
 <h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
@@ -224,6 +246,7 @@
 <span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">PREVENTED</span>
 </div>
 <h2 class="text-2xl font-extrabold mb-4">Catching fabricated legal precedent</h2>
+<p class="text-xs text-slate-500 italic mb-4">Hypothetical scenario based on real corpus attack pattern.</p>
 <div class="grid md:grid-cols-2 gap-8">
 <div>
 <h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Problem</h3>
@@ -246,9 +269,133 @@
 </div>
 </section>
 
-<!-- Disclaimer + CTA -->
+<!-- ============================================================ -->
+<!-- DEPLOYMENT SCENARIOS — what production integration looks like -->
+<!-- ============================================================ -->
+<section class="px-8 max-w-5xl mx-auto pt-16 pb-4">
+<div class="text-center">
+<p class="text-xs uppercase tracking-widest text-[#c9a962] font-bold mb-2">Part 2 of 2</p>
+<h2 class="text-3xl font-extrabold tracking-tight mb-2">Deployment scenarios</h2>
+<p class="text-sm text-slate-500 max-w-xl mx-auto">What production integration looks like for design partners in regulated verticals — endpoints, architecture, and ongoing operational outcomes.</p>
+</div>
+</section>
+
+<!-- Case 4: Healthcare CMO deployment -->
+<section class="py-16 px-8">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">HEALTHCARE</span>
+<span class="bg-[#c9a962] text-white text-xs font-bold px-3 py-1 rounded-full">TIER 1 LIVE</span>
+</div>
+<h2 class="text-2xl font-extrabold mb-2">Healthcare CMO office — HIPAA + GDPR cross-jurisdiction memory governance</h2>
+<p class="text-xs text-slate-500 italic mb-6">Hypothetical deployment grounded in real Sgraal endpoints (<code>/v1/check</code>, <code>/v1/certify/mvmem</code>, <code>/v1/proofs/convergence</code>).</p>
+
+<!-- Profile box -->
+<div class="bg-[#faf9f6] border border-slate-200 rounded-xl p-5 mb-8 grid grid-cols-2 md:grid-cols-5 gap-4 text-xs">
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Industry</p><p class="text-slate-700 font-bold">Clinical AI</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Identity</p><p class="text-slate-700 font-bold">Fortune 500 health system, CMO office innovation team</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Jurisdiction</p><p class="text-slate-700 font-bold">US + EU (HIPAA + GDPR overlap)</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Scale</p><p class="text-slate-700 font-bold">1 production agent · 3 environments (dev / staging / prod)</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Sgraal tier</p><p class="text-slate-700 font-bold">Tier 1 Live integration</p></div>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Challenge</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Clinical AI agents drafting patient communication operate at the intersection of HIPAA (US Minimum Necessary Rule) and GDPR (EU Article 5(1)(c) data minimization). Each memory access touches identifiable patient context, and the DPO and Compliance team require a per-decision audit trail — not a quarterly prose summary. Pre-Sgraal: a 3-week manual sign-off cycle per major model change, with reconciliation done in a spreadsheet against access logs.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Sgraal Integration</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-3"><strong>Endpoints in use:</strong></p>
+<ul class="text-slate-600 text-sm leading-relaxed space-y-1.5 mb-3">
+<li>• <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">POST /v1/check</code> on every agent decision — real-time verdict</li>
+<li>• <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">POST /v1/certify/mvmem</code> on flagged decisions — W3C VC for audit trail</li>
+<li>• <code class="text-xs bg-[#faf9f6] px-1 py-0.5 rounded">POST /v1/proofs/convergence</code> quarterly — Lyapunov stability documentation for internal model governance review</li>
+</ul>
+<p class="text-slate-600 text-sm leading-relaxed"><strong>Architecture:</strong> Sgraal Proxy mode in front of the internal LLM agent, with a 60-second verdict cache for similar queries. MVMem certificates archived in the existing audit log system; FDA-ready Convergence Proof PDFs stored alongside the internal model registry.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Outcomes</h3>
+<div class="bg-[#faf9f6] rounded-xl p-5 border border-slate-200 text-sm space-y-2.5 mb-4">
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">DPO sign-off cycle</p><p class="text-slate-700 font-bold">3 weeks → 2 days</p></div>
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">Audit trail</p><p class="text-slate-700 font-bold">Per-decision, machine-verifiable</p></div>
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">Verdict distribution</p><p class="text-slate-700 font-bold">~12% WARN · ~3% BLOCK</p></div>
+</div>
+<p class="text-xs text-slate-500 italic leading-relaxed">A team in this position would frame this as: <em>"We replaced 60 hours of monthly compliance reconciliation with 30 minutes of MVMem certificate review."</em></p>
+</div>
+
+</div>
+
+<div class="mt-8 flex flex-wrap gap-3">
+<a href="/healthcare" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Discuss your healthcare deployment →</a>
+<a href="/comply" class="inline-flex items-center border-2 border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#c9a962]/5 transition-all">Apply to design partner program →</a>
+</div>
+
+</div>
+</section>
+
+<!-- Case 5: AI Trading Desk deployment -->
+<section class="py-16 px-8 bg-[#faf9f6]">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">FINTECH</span>
+<span class="bg-white border border-[#c9a962] text-[#c9a962] text-xs font-bold px-3 py-1 rounded-full">TIER 2 BETA</span>
+</div>
+<h2 class="text-2xl font-extrabold mb-2">AI trading desk — Real-time memory governance for execution agents</h2>
+<p class="text-xs text-slate-500 italic mb-6">Hypothetical deployment grounded in real Sgraal endpoints (<code>/v1/check</code>, Edge mode, hosted calibration sync).</p>
+
+<!-- Profile box -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 mb-8 grid grid-cols-2 md:grid-cols-5 gap-4 text-xs">
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Industry</p><p class="text-slate-700 font-bold">Quantitative finance / AI trading</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Identity</p><p class="text-slate-700 font-bold">Series B fintech, AI execution desk</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Jurisdiction</p><p class="text-slate-700 font-bold">US (SEC + FINRA) + EU markets regulation (trade reporting + best-execution)</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Scale</p><p class="text-slate-700 font-bold">4 production agents · ~10K decisions/day</p></div>
+<div><p class="text-slate-400 uppercase tracking-wider mb-1">Sgraal tier</p><p class="text-slate-700 font-bold">Tier 2 Beta (early access)</p></div>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">The Challenge</h3>
+<p class="text-slate-600 text-sm leading-relaxed">AI trading agents act on market memory and order-book history under a sub-15ms latency budget. A stale-memory hallucination at decision time translates directly to execution risk — and post-hoc replay analysis only catches the damage after it's done. The compliance officer needs an <em>explainable</em> audit trail for regulator inquiries, not a black-box agent log. Pre-Sgraal: replay-only governance, no real-time intervention path.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Sgraal Integration</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-3"><strong>Endpoint in use:</strong></p>
+<ul class="text-slate-600 text-sm leading-relaxed space-y-1.5 mb-3">
+<li>• <code class="text-xs bg-white px-1 py-0.5 rounded">POST /v1/check</code> pre-execution on every order — sub-15ms latency budget</li>
+<li>• <code>WARN</code> verdicts → human review queue (does not block execution)</li>
+<li>• <code>BLOCK</code> verdicts → halt execution immediately, raise on-call</li>
+</ul>
+<p class="text-slate-600 text-sm leading-relaxed"><strong>Architecture:</strong> Edge mode (offline scoring) deployed alongside the execution agent for sub-millisecond latency on the hot path; periodic sync to the hosted Sgraal calibration service. The Sgraal verdict score is recorded as a field in the per-trade explainability log alongside risk-management metadata.</p>
+</div>
+
+<div>
+<h3 class="font-bold text-sm text-slate-400 uppercase tracking-wide mb-2">Outcomes</h3>
+<div class="bg-white rounded-xl p-5 border border-slate-200 text-sm space-y-2.5 mb-4">
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">Average verdict latency</p><p class="text-slate-700 font-bold">8 ms (sub-15ms budget met)</p></div>
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">Order distribution</p><p class="text-slate-700 font-bold">~0.3% WARN-flagged for human review</p></div>
+<div><p class="text-slate-400 text-xs uppercase tracking-wider">Audit trail</p><p class="text-slate-700 font-bold">Per-trade verdict snapshot stored with order data</p></div>
+</div>
+<p class="text-xs text-slate-500 italic leading-relaxed">An execution desk lead would frame this as: <em>"Sgraal is the ABS for our agents — it doesn't make us fast, it makes us safe at speed."</em></p>
+</div>
+
+</div>
+
+<div class="mt-8 flex flex-wrap gap-3">
+<a href="/trading" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Discuss your trading desk deployment →</a>
+<a href="/comply" class="inline-flex items-center border-2 border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#c9a962]/5 transition-all">Apply to design partner program →</a>
+</div>
+
+</div>
+</section>
+
+<!-- CTA — bottom disclaimer subsumed into the top disclosure block above -->
 <section class="py-16 px-8 text-center">
-<p class="text-xs text-slate-400 mb-8">These are synthetic scenarios based on real corpus attack patterns. No actual client data is represented.</p>
 <div class="flex justify-center gap-4 flex-wrap">
 <a href="/playground" class="bg-[#c9a962] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973f] transition-all">Try it now</a>
 <a href="/whitepaper" class="border-2 border-[#c9a962] text-[#c9a962] px-8 py-3 rounded-lg font-semibold hover:bg-[#c9a962]/10 transition-all">Read the whitepaper</a>
