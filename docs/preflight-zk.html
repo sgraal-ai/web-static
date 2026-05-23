@@ -173,6 +173,7 @@ pre code { font-size: 0.8125rem; }
 
 <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Zero-Knowledge Preflight</p>
 <h1 class="text-4xl font-extrabold tracking-tight mb-4">Score memory state without sending memory content.</h1>
+<p class="text-sm text-slate-500 mb-6"><strong>Phase 1:</strong> SHA-256 content commitment. <strong>Phase 2 roadmap:</strong> full cryptographic zero-knowledge proof system.</p>
 <p class="text-slate-600 text-lg mb-12"><code>POST /v1/preflight/zk</code> returns the same four-band decision as the standard preflight endpoint, but your memory content never leaves your infrastructure. Sgraal scores against a SHA-256 commitment hash and returns a verifiable proof.</p>
 
 <!-- WHAT IT DOES -->
@@ -297,6 +298,12 @@ pre code { font-size: 0.8125rem; }
 </div>
 
 </div>
+</section>
+
+<!-- IMPLEMENTATION STATUS (GAP-1 honest disclosure) -->
+<section class="mb-16 border-t border-slate-200 pt-8">
+<h2 class="text-2xl font-bold mb-2">Implementation status</h2>
+<p class="text-slate-700 text-sm">Current implementation uses SHA-256 commitment with content-not-transmitted property. The &ldquo;verifier learns no content&rdquo; guarantee is delivered today through commitment-based verification. Full cryptographic zero-knowledge proof system (SNARK/STARK-based) is on the Phase 2 roadmap.</p>
 </section>
 
 <!-- VERSIONING -->
