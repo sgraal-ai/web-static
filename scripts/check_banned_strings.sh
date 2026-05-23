@@ -73,7 +73,8 @@ ALLOWLIST=(
   # already reference CVSS for risk assessment" — ISO 27001 is the
   # subject of the framework, not a Sgraal capability.
   # Line number updated 2026-05-22 og:image sub-sprint (+6 from catch-up's 218).
-  "standard/cvss.html:224"
+  # Updated 2026-05-23 standard/ og:url completeness sub-sprint: +1 (og:url injected after <title>).
+  "standard/cvss.html:225"
   # The "See also: Threat Model" cross-link on the security page links
   # to the threat-model page and explicitly quotes its NOT-certified
   # disclosure verbatim. Trips SOC 2 + certified by patterns. The line
