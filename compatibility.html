@@ -289,16 +289,6 @@ th { text-align: left; }
       </thead>
       <tbody class="divide-y divide-slate-100 bg-white">
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Zapier</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">Use the "Webhooks by Zapier" trigger pointing at this URL.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default/Configure_Zapier_v1_zapier_webhook_post">POST /v1/zapier/webhook</a></td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Make.com</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">HTTP module → POST JSON. Returns the preflight verdict.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/make/webhook</a></td>
-        </tr>
-        <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">A2A Protocol</td>
           <td class="px-6 py-4 text-slate-500 text-sm">Google Agent-to-Agent (JSON-RPC). Discovery via well-known.</td>
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/.well-known/agent.json">GET /.well-known/agent.json</a></td>
@@ -319,19 +309,9 @@ th { text-align: left; }
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/rag/filter</a></td>
         </tr>
         <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">gRPC interface</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">protoc-generate a client in any language. 4 RPCs incl. streaming.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]">api/proto/sgraal.proto</td>
-        </tr>
-        <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">Postman collection</td>
           <td class="px-6 py-4 text-slate-500 text-sm">Importable collection covering the public endpoints.</td>
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs/postman">GET /docs/postman</a></td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Embed JS widget</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">Single &lt;script src&gt; tag. Adds a Sgraal preflight to your app.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/v1/embed/sgraal-embed.js">GET /v1/embed/sgraal-embed.js</a></td>
         </tr>
         <tr class="hover:bg-slate-50">
           <td class="px-6 py-4 font-semibold">Compliance Suite</td>
@@ -342,16 +322,6 @@ th { text-align: left; }
           <td class="px-6 py-4 font-semibold">Federation API</td>
           <td class="px-6 py-4 text-slate-500 text-sm">Contribute / consume cross-tenant attack vaccines.</td>
           <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="https://api.sgraal.com/docs#/default">POST /v1/federation/contribute</a></td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">Conway</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">Always-on agent memory validation pattern.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="/integrations/conway">/integrations/conway</a></td>
-        </tr>
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-4 font-semibold">AgentKit</td>
-          <td class="px-6 py-4 text-slate-500 text-sm">17-subagent memory safety pattern.</td>
-          <td class="px-6 py-4 font-mono text-sm text-[#c9a962]"><a class="hover:underline" href="/integrations/agentkit">/integrations/agentkit</a></td>
         </tr>
       </tbody>
     </table>
@@ -433,6 +403,17 @@ th { text-align: left; }
         <li>LLM Wrapper (universal adapter)</li>
         <li>Cross-provider Normalizer</li>
         <li>mngr (Imbue) parallel-agent guard</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">API, no-code &amp; patterns</h3>
+      <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
+        <li>Zapier &mdash; &ldquo;Webhooks by Zapier&rdquo; trigger (planned <span class="font-mono text-xs">POST /v1/zapier/webhook</span>)</li>
+        <li>Make.com &mdash; HTTP module returning the preflight verdict (planned <span class="font-mono text-xs">POST /v1/make/webhook</span>)</li>
+        <li>Embed JS widget &mdash; single <span class="font-mono text-xs">&lt;script src&gt;</span> tag (planned <span class="font-mono text-xs">/v1/embed/sgraal-embed.js</span>)</li>
+        <li>gRPC interface &mdash; protoc-generated client, streaming RPCs (<span class="font-mono text-xs">api/proto/sgraal.proto</span>)</li>
+        <li>Conway &mdash; always-on agent memory validation pattern</li>
+        <li>AgentKit &mdash; 17-subagent memory safety pattern</li>
       </ul>
     </div>
   </div>
