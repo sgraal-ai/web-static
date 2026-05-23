@@ -80,8 +80,9 @@ ALLOWLIST=(
   # exists precisely to redirect customers to the honest disclosure,
   # not to claim certification.
   # Line number updated 2026-05-22 og:image sub-sprint (+6 from cookie-banner's 164,
-  # was 151 pre-banner, 120 in 1c-era).
-  "security.html:170"
+  # was 151 pre-banner, 120 in 1c-era). Updated 2026-05-23 canonical/og:url
+  # completeness sub-sprint: +2 (canonical + og:url injected after <title>).
+  "security.html:172"
   # The /startups page documents the three procurement blockers AI
   # startups hit when selling to enterprise. Blocker #3 quotes the
   # questions enterprise procurement actually asks: "What's your SOC 2
