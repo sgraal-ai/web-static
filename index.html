@@ -248,7 +248,7 @@
                 Your AI agent is about to act on <span class="text-gold">memory</span> it hasn't verified — Sgraal is the verification.
             </h1>
 <p class="text-[18px] text-[#6b7280] mb-6 max-w-[560px] leading-relaxed">
-                One API call. Plain English answer. 15ms.
+                One API call. Plain English answer. 12ms p50.
             </p>
 <p class="text-slate-500 text-sm mb-10">One wrong memory. One irreversible action. Sgraal stops it before it happens.</p>
 <div class="flex flex-wrap gap-4 items-center mb-6">
@@ -325,8 +325,8 @@
 <div class="text-sm text-on-surface-variant uppercase tracking-widest">Corpus cases</div>
 </div>
 <div class="text-center">
-<div class="text-3xl font-bold text-gold mb-1">15ms</div>
-<div class="text-sm text-on-surface-variant uppercase tracking-widest" title="Full 87-module scoring pipeline (p50 ~12ms — see /latency for full profile)">Preflight</div>
+<div class="text-3xl font-bold text-gold mb-1">12ms</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest" title="Full 87-module scoring pipeline (p50 ~12ms — see /latency for full profile)">Preflight · p50 · synthetic</div>
 </div>
 <div class="text-center">
 <div class="text-3xl font-bold text-gold mb-1">357</div>
@@ -349,7 +349,7 @@
       Design Partner Program
     </p>
     <p class="text-sm text-slate-600 max-w-2xl mx-auto mb-8 text-center leading-relaxed">
-      Sgraal is in pilot deployment with anonymized design partners across regulated verticals. Their feedback shapes the roadmap — and the partner identities stay private until launch. <a href="/comply" class="underline hover:text-[#c9a962]">Apply to join</a> or <a href="mailto:hello@sgraal.com?subject=Design%20Partner%20Program" class="underline hover:text-[#c9a962]">contact us</a>.
+      Sgraal's design-partner program is launching across regulated verticals. Partner feedback shapes the roadmap — and identities stay private until launch. <a href="/comply" class="underline hover:text-[#c9a962]">Apply to join</a> or <a href="mailto:hello@sgraal.com?subject=Design%20Partner%20Program" class="underline hover:text-[#c9a962]">contact us</a>.
     </p>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
 
@@ -452,7 +452,7 @@
       <h3 class="text-xl font-bold">For Researchers</h3>
       <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
     </div>
-    <p class="text-on-surface-variant text-sm leading-relaxed mb-4">25 mathematical disciplines. 87 modules. Open R1–R3 adversarial corpus. Z3 SMT formal verification. Free academic tier.</p>
+    <p class="text-on-surface-variant text-sm leading-relaxed mb-4">25 mathematical disciplines. 87 modules. R1–R3 adversarial corpus (available on request). Z3 SMT formal verification. Free academic tier.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">Read the paper →</span>
   </a>
   <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/proofs" class="text-[#c9a962] hover:underline">Proofs &amp; Certificates</a></p>
@@ -547,9 +547,9 @@
     <ul class="space-y-3 text-sm text-on-surface-variant">
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>Python SDK</strong> — <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">pip install sgraal</code></span></li>
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>11 production-grade SDKs + 29 framework adapters</strong> — LangChain, CrewAI, Mem0, AutoGen, LlamaIndex, Haystack, …</span></li>
-      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>Edge mode</strong> — zero-dependency, air-gappable, sub-ms p99 latency</span></li>
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>Edge mode</strong> — zero-dependency, air-gappable, near-instant local scoring</span></li>
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>OpenAPI specification</strong> — full API contract published</span></li>
-      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>R1–R3 benchmark corpus</strong> — 239 adversarial cases, fully open</span></li>
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>R1–R3 benchmark corpus</strong> — 239 adversarial cases, available on request</span></li>
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">✓</span><span><strong>MCP server</strong> — Claude Desktop integration via <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">@sgraal/mcp</code></span></li>
     </ul>
     <div class="mt-6 flex gap-3">
@@ -800,7 +800,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-16">
 <h2 class="text-3xl md:text-4xl font-extrabold text-[#0B0F14] mb-4">Validated in the Wild</h2>
-<p class="text-slate-500 text-lg max-w-2xl mx-auto">Joint benchmark with Grok (xAI) across 8 adversarial corpora. Independent builds, side-by-side results.</p>
+<p class="text-slate-500 text-lg max-w-2xl mx-auto">Joint benchmark with Grok (xAI) across 5 shared corpora, plus 3 Sgraal-only rounds. Independent builds, side-by-side results.</p>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
@@ -852,7 +852,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 <div class="space-y-3">
 <div class="flex justify-between items-center">
 <span class="text-[#0B0F14] text-sm">Sgraal</span>
-<span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 &middot; TP=239 &middot; FP=0 &middot; FN=0</span>
+<span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 &middot; FP=0 &middot; FN=0</span>
 </div>
 <div class="flex justify-between items-center">
 <span class="text-[#0B0F14] text-sm">Grok</span>
@@ -969,7 +969,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 <div class="flex items-center gap-3 mb-4">
 <h3 class="text-lg font-bold text-[#0B0F14]">In the Wild &mdash; Joint Benchmark with Grok</h3>
 </div>
-<p class="text-slate-500 text-sm mb-4">8 rounds. 554 cases. F1=1.000 on both independent stacks. Two AI systems stress-tested each other's safety layers as peers.</p>
+<p class="text-slate-500 text-sm mb-4">Joint with Grok across Rounds 1–5 (Sgraal F1=1.000; Grok F1=0.98–1.000), plus 3 Sgraal-only rounds (6–8). 614 cases total. Two AI systems stress-tested each other's safety layers as peers.</p>
 <blockquote class="border-l-4 border-[#c9a962] pl-4 py-2 mb-4 text-slate-600 italic text-sm">"Treating each other as peers with zero defensiveness turned divergence into acceleration fuel. This is how AI systems should co-evolve." <span class="text-slate-400 not-italic">&mdash; Grok</span></blockquote>
 <a href="/blog/dual-stack-convergence" class="text-[#c9a962] text-sm font-semibold hover:underline">Read the joint blog post &rarr;</a>
 </div>
