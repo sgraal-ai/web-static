@@ -250,7 +250,11 @@ curl -sS https://api.sgraal.com/v1/proofs/convergence \
 </main>
 
 <footer class="bg-surface-container border-t border-black/[0.06]">
+
+<!-- Top: 6 link columns -->
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+
+<!-- Column 1: Product -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Product</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
@@ -258,46 +262,83 @@ curl -sS https://api.sgraal.com/v1/proofs/convergence \
 <li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
 <li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
 <li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><span class="text-slate-400">Open Core <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Visualizer <em>(Concept)</em></span></li>
 <li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
 <li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
 </ul>
 </div>
+
+<!-- Column 2: Solutions (Sub-Sprint 1f: tier-aware with Beta/Coming inline labels) -->
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Solutions</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/developers">For Developers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/platform">For Platform &amp; MLOps</a></li>
+<li><a class="hover:text-gold transition-colors" href="/research">For Researchers</a></li>
+<li><a class="hover:text-gold transition-colors" href="/startups">For AI Startups</a></li>
+<li><a class="hover:text-gold transition-colors" href="/security">For Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">For DPOs &amp; CCOs</a></li>
+<li><a class="hover:text-gold transition-colors" href="/healthcare">Healthcare <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/trading">Trading <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/multi-agent">Multi-Agent <span class="text-[9px] uppercase font-bold text-[#c9a962] ml-1">Beta</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/forensics">Forensics <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/insurance">Insurance <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/government">Government <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/labs">Frontier Labs <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><a class="hover:text-gold transition-colors" href="/enterprise">Enterprise <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Coming</span></a></li>
+<li><span class="text-slate-400">Chrome Extension <span class="text-[9px] uppercase font-bold text-slate-400 ml-1">Concept</span></span></li>
+</ul>
+</div>
+
+<!-- Column 3: Resources -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Resources</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
 <li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
 <li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
-<li><a class="hover:text-gold transition-colors" href="/docs/insights">Insights</a></li>
-<li><a class="hover:text-gold transition-colors" href="/docs/counterfactual">Counterfactual</a></li>
-<li><a class="hover:text-gold transition-colors" href="/docs/mvmem">MVMem</a></li>
-<li><a class="hover:text-gold transition-colors" href="/docs/proofs">Proofs &amp; Certs</a></li>
-<li><a class="hover:text-gold transition-colors" href="/docs/vaccination">Vaccination</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai/sdks" target="_blank" rel="noopener noreferrer">SDKs &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="/tutorial">Tutorial</a></li>
+<li><a class="hover:text-gold transition-colors" href="/whitepaper">Whitepaper</a></li>
+<li><a class="hover:text-gold transition-colors" href="/benchmark">Benchmark</a></li>
+<li><a class="hover:text-gold transition-colors" href="/failures">Failure Gallery</a></li>
+<li><a class="hover:text-gold transition-colors" href="/roi">ROI Calculator</a></li>
+<li><a class="hover:text-gold transition-colors" href="/latency">Latency</a></li>
+<li><a class="hover:text-gold transition-colors" href="/changelog">Changelog</a></li>
 <li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
 </ul>
 </div>
+
+<!-- Column 4: Standards -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Standards</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
 <li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
 <li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/prov">W3C PROV</a></li>
 <li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+<li><span class="text-slate-400">Methodology <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Verified Badge <em>(Concept)</em></span></li>
 </ul>
 </div>
-<div>
-<h5 class="text-gold-dark font-bold mb-4">Integrations</h5>
-<ul class="space-y-2 text-on-surface-variant text-xs">
-<li><a class="hover:text-gold transition-colors" href="/docs/integrations/opentelemetry">OpenTelemetry</a></li>
-<li><a class="hover:text-gold transition-colors" href="/compatibility">Compatibility</a></li>
-</ul>
-</div>
+
+<!-- Column 5: Company -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Company</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
+<li><span class="text-slate-400">About <em>(Concept)</em></span></li>
 <li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+<li><span class="text-slate-400">Careers <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Status <em>(Concept)</em></span></li>
 <li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai" target="_blank" rel="noopener noreferrer">GitHub &uarr;</a></li>
 <li><a class="hover:text-gold transition-colors" href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer">X &uarr;</a></li>
+<li><span class="text-slate-400">LinkedIn <em>(Concept)</em></span></li>
+<li><span class="text-slate-400">Discord <em>(Concept)</em></span></li>
 </ul>
 </div>
+
+<!-- Column 6: Trust -->
 <div>
 <h5 class="text-gold-dark font-bold mb-4">Trust</h5>
 <ul class="space-y-2 text-on-surface-variant text-xs">
@@ -305,9 +346,13 @@ curl -sS https://api.sgraal.com/v1/proofs/convergence \
 <li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
 <li><a class="hover:text-gold transition-colors" href="#" onclick="event.preventDefault(); window.sgraalCookieReshow && window.sgraalCookieReshow();">Cookie preferences</a></li>
 <li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
+<li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
 </ul>
 </div>
+
 </div>
+
+<!-- Bottom strip: brand + © + tagline -->
 <div class="border-t border-black/[0.06] py-6 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
 <div><span class="font-bold text-obsidian">Sgraal</span> &middot; &copy; 2026 &middot; Open core memory governance for AI agents &middot; Apache 2.0 SDK + hosted engine</div>
 <div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
