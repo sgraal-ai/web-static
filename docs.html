@@ -213,6 +213,17 @@ pre { overflow-x: auto; }
         </nav>
       </div>
       <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Capabilities</p>
+        <nav class="space-y-1">
+          <a href="/docs/insights" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Insights</a>
+          <a href="/docs/counterfactual" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Counterfactual Navigator</a>
+          <a href="/docs/mvmem" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Minimum Viable Memory</a>
+          <a href="/docs/proofs" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Proofs &amp; Certificates</a>
+          <a href="/docs/integrations/opentelemetry" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">OpenTelemetry</a>
+          <a href="/docs/vaccination" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Memory Vaccination</a>
+        </nav>
+      </div>
+      <div>
         <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Reference</p>
         <nav class="space-y-1">
           <a href="/docs/api" class="block text-sm font-semibold text-[#c9a962] py-1">API Reference (357 endpoints) →</a>
@@ -251,7 +262,7 @@ pre { overflow-x: auto; }
     <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-10 flex items-center justify-between">
       <div>
         <span class="text-sm font-semibold text-slate-800 block">Open-source SDKs</span>
-        <span class="text-sm text-slate-500">10 official SDKs · Apache 2.0 · published on GitHub</span>
+        <span class="text-sm text-slate-500">11 production-grade SDKs + 29 framework adapters · Apache 2.0 · published on GitHub</span>
       </div>
       <a href="https://github.com/sgraal-ai/sdks" target="_blank" rel="noopener noreferrer" class="text-[#c9a962] text-sm font-semibold hover:underline">View sgraal-ai/sdks &rarr;</a>
     </div>
@@ -507,7 +518,7 @@ console.log(result.recommended_action); // BLOCK</pre>
     <!-- SMRS v1.0 -->
     <section id="smrs" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">SMRS v1.0 — Memory Risk Score</h2>
-      <p class="text-[#374151] mb-6">Formal 0-100 risk score computed from 11 components. Determines the preflight decision.</p>
+      <p class="text-[#374151] mb-6">Formal 0-100 risk score computed from 10 core components (plus an optional 11th, r_importance, when PageRank authority is enabled). Determines the preflight decision.</p>
 
       <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Decision Thresholds</h3>
       <div class="overflow-x-auto mb-6">
@@ -617,7 +628,7 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
 <!-- IP-CI-ALLOW: illustrative webhook payload values in documentation example -->
 <pre class="bg-[#f5f4f0] rounded-xl p-6 text-sm font-mono mb-4">{
   "event": "decision.block",
-  "timestamp": "2026-03-30T23:00:00Z",
+  "timestamp": "2026-05-24T09:12:04Z",
   "agent_id": "agent_001",
   "omega": 78.4,
   "action": "BLOCK",
@@ -645,7 +656,7 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
           <p class="font-bold text-sm mb-1">Pro</p>
           <p class="text-2xl font-bold text-[#c9a962] mb-1">1,000</p>
           <p class="text-slate-500 text-xs">requests / minute</p>
-          <p class="text-slate-400 text-xs mt-2">Unlimited decisions / month</p>
+          <p class="text-slate-400 text-xs mt-2">250,000 decisions / month</p>
         </div>
         <div class="bg-[#f5f4f0] rounded-xl p-5">
           <p class="font-bold text-sm mb-1">Enterprise</p>
