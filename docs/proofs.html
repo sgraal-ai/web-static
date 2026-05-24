@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<!-- Google Analytics — gated on cookie consent (loader injected by sub-sprint cookie-consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.sgraalLoadGA = function() {
+    if (window.sgraalGALoaded) return;
+    window.sgraalGALoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-K7B978E0HF');
+  };
+  try {
+    if (localStorage.getItem('sgraal_cookie_consent') === 'accepted') {
+      window.sgraalLoadGA();
+    }
+  } catch(e) {}
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal</title>
+<meta name="description" content="Four cryptographically verifiable artifacts: the MVMem Certificate, the Convergence Proof PDF, the W3C Verifiable Credential, and the tamper-evident audit-log hash chain. What each proves, and how anyone can check it.">
+<meta property="og:title" content="Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal">
+<meta property="og:description" content="MVMem Certificate, Convergence Proof PDF, W3C Verifiable Credential, audit-log hash chain — what each proves and how to verify it.">
+<meta property="og:url" content="https://sgraal.com/docs/proofs">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sgraal.com/docs/proofs">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
+pre code { font-size: 0.8125rem; }
+</style>
+<meta property="og:image" content="https://sgraal.com/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="USE_MEMORY · WARN · ASK_USER · BLOCK — the immune system for AI agent memory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgraal.com/og/og-default.png">
+</head>
+<body>
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<button class="md:hidden text-slate-600" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.getElementById('mobile-nav').classList.toggle('hidden')">
+<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="hidden md:flex items-center space-x-7 font-medium text-sm">
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Product
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white border border-slate-200 rounded-xl shadow-lg py-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Product pillars</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/decide">Decide <span class="text-xs text-slate-400">— Verify before acting</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/protect">Protect <span class="text-xs text-slate-400">— Stop manipulation</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">Comply <span class="text-xs text-slate-400">— Prove compliance</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/scale">Scale <span class="text-xs text-slate-400">— Run at any size</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/open-source">Open Core</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/standard">Standards &amp; Provenance</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/whitepaper">Whitepaper</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/benchmark">Benchmark</a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/failures">Failure Gallery</a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="text-slate-600 hover:text-[#c9a962] transition-colors flex items-center gap-1" aria-haspopup="true">
+    Solutions
+    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 mt-1 w-80 bg-white border border-slate-200 rounded-xl shadow-lg py-3 max-h-[80vh] overflow-y-auto">
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] px-4 mb-2">Live · Available today</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/developers">For Developers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/platform">For Platform &amp; MLOps <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/research">For Researchers <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/startups">For AI Startups <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/security">For Security teams <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/comply">For DPOs &amp; Compliance <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Live</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] px-4 mb-2">Beta · Early Access</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/healthcare">For Healthcare <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/trading">For Trading <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/multi-agent">For Multi-Agent Systems <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Beta</span></a>
+    <div class="border-t border-slate-100 my-2"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-4 mb-2">Concept · Coming</p>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/forensics">For Forensics <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/insurance">For Insurance <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/government">For Government <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/labs">For Frontier Labs <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+    <a class="block px-4 py-2 text-sm text-slate-700 hover:text-[#c9a962] hover:bg-slate-50" href="/enterprise">For Enterprise <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full ml-1">Coming</span></a>
+  </div>
+</div>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/pricing">Pricing</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/playground">Playground</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/blog">Blog</a>
+<a href="https://github.com/sgraal-ai/core" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#c9a962] transition-colors" aria-label="GitHub"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+</div>
+<a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-[#c9a962] text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Open Dashboard</a>
+</div>
+<div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-4 space-y-2 text-sm font-medium max-h-[calc(100vh-5rem)] overflow-y-auto">
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/decide">Decide</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/protect">Protect</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/comply">Comply</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/scale">Scale</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/pricing">Pricing</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/docs">Docs</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/playground">Playground</a>
+<a class="block py-1 text-slate-600 hover:text-[#c9a962]" href="/blog">Blog</a>
+<a class="block bg-[#c9a962] text-white px-4 py-2 rounded-lg text-center font-semibold mt-3" href="https://app.sgraal.com" target="_blank">Open Dashboard</a>
+</div>
+</nav>
+
+<main class="pt-40 pb-32 px-6">
+<div class="max-w-3xl mx-auto">
+
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Proofs &amp; Certificates · Live</p>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4">Cryptographically verifiable. Externally checkable.</h1>
+<p class="text-slate-600 text-lg mb-12">A governance decision is only as useful as your ability to <em>prove</em> it later. Sgraal issues four artifacts you can hand to an auditor, a counterparty, or your future self &mdash; each cryptographically signed, each verifiable without taking Sgraal's word for it.</p>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-6">The four artifacts</h2>
+
+<!-- 1 -->
+<div class="border border-slate-200 rounded-xl p-6 mb-5">
+<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">1 · MVMem Certificate</h3><code class="text-xs text-slate-500">POST /v1/certify/mvmem</code></div>
+<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a minimised memory subset preserves the original decision &mdash; the evidence behind a data-minimization claim (see <a class="text-[#c9a962] hover:underline" href="/docs/mvmem">/docs/mvmem</a>).</p>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the certificate is a Verifiable Credential; check it with <code>POST /v1/certify/verify</code>, which recomputes the signature in constant time and reports validity + expiry.</p>
+</div>
+
+<!-- 2 -->
+<div class="border border-slate-200 rounded-xl p-6 mb-5">
+<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">2 · Convergence Proof PDF</h3><code class="text-xs text-slate-500">POST /v1/proofs/convergence</code></div>
+<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that an agent's healing trajectory is stable &mdash; a Lyapunov-stability argument over a worst-case heal, rendered as a multi-page PDF with the analytical proof, a visualisation, methodology, and a signature block.</p>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the PDF carries a signing-key fingerprint in its signature block, and the response headers (<code>X-Sgraal-Asymptotic-Stable</code>, <code>X-Sgraal-Monotonic-Decreasing</code>) restate the result. It is designed to drop into an FDA-style or internal-audit dossier.</p>
+</div>
+
+<!-- 3 -->
+<div class="border border-slate-200 rounded-xl p-6 mb-5">
+<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">3 · W3C Verifiable Credential</h3><code class="text-xs text-slate-500">POST /v1/certify</code></div>
+<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a specific memory state passed preflight (USE_MEMORY / WARN) at a point in time, bound to the agent and domain.</p>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> a standards-shaped W3C VC with a <code>SgraalProof2026</code> proof; <code>POST /v1/certify/verify</code> recomputes the proof value and also checks the revocation list (below).</p>
+</div>
+
+<!-- 4 -->
+<div class="border border-slate-200 rounded-xl p-6">
+<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">4 · Audit-log hash chain</h3><code class="text-xs text-slate-500">GET /v1/audit-log/chain-verify</code></div>
+<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that your decision history has not been altered &mdash; each audit entry is chained to the previous by hash, so any insertion, deletion, or edit breaks the chain.</p>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> <code>GET /v1/audit-log/chain-verify</code> walks the chain and reports the first break, if any. Tamper-evidence is a property of the structure, not a promise.</p>
+</div>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">A credential, up close</h2>
+<p class="text-slate-600 leading-relaxed mb-4">Issuing a credential runs a preflight first; on USE_MEMORY / WARN it returns a signed VC. Illustrative values shown.</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>{
+  "certified": true,
+  "credential": {
+    "@context": ["https://www.w3.org/2018/credentials/v1"],
+    "type": ["VerifiableCredential", "SgraalMemoryCredential"],
+    "issuer": "https://api.sgraal.com",
+    "issuanceDate": "2026-05-24T09:12:04Z",
+    "credentialSubject": {
+      "agent_id": "support-bot-7",
+      "decision": "USE_MEMORY",
+      "omega": 18,
+      "scope": "memory-state",
+      "proof_hash": "sha256:9b8d...77c2",
+      "valid_for_seconds": 86400,
+      "domain": "customer_support"
+    },
+    "proof": {
+      "type": "SgraalProof2026",
+      "created": "2026-05-24T09:12:04Z",
+      "verificationMethod": "https://api.sgraal.com/.well-known/sgraal.json",
+      "proofValue": "..."
+    }
+  }
+}</code></pre>
+</div>
+<p class="text-slate-500 text-sm">On ASK_USER / BLOCK the endpoint returns <code>{ "certified": false, "reason": "...", "decision": "...", "omega": ... }</code> &mdash; a state is only certifiable if it actually passed.</p>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Get a sample</h2>
+<p class="text-slate-600 leading-relaxed mb-4">Issue and verify a credential, or download a convergence proof, against the live API:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code># Issue a credential
+curl -sS https://api.sgraal.com/v1/certify \
+  -H "Authorization: Bearer $SGRAAL_API_KEY" \
+  -H "Content-Type: application/json" -d @memory.json
+
+# Download a convergence proof PDF
+curl -sS https://api.sgraal.com/v1/proofs/convergence \
+  -H "Authorization: Bearer $SGRAAL_API_KEY" \
+  -H "Content-Type: application/json" -d @memory.json \
+  -o convergence_proof.pdf</code></pre>
+</div>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Revocation</h2>
+<p class="text-slate-600 leading-relaxed mb-4">A credential can outlive its truth &mdash; an agent is decommissioned, a state is superseded. Each tenant keeps a revocation list, and verification checks it automatically.</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code>GET /v1/credentials/revocation-list
+
+{
+  "credential_ids": ["cred_a1b2", "cred_c3d4"],
+  "count": 2,
+  "truncated": false
+}</code></pre>
+</div>
+<p class="text-slate-500 text-sm">A revoked credential fails <code>POST /v1/certify/verify</code> even if its signature is otherwise valid &mdash; revocation is a first-class part of the verify path, not an afterthought.</p>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What this does not replace</h2>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-4">
+<div>
+<h3 class="font-bold text-amber-800 mb-1">A third-party accreditation</h3>
+<p class="text-slate-700 text-sm">These artifacts prove what Sgraal computed and that it has not been tampered with. They are <em>not</em> an external accreditation of Sgraal itself &mdash; Sgraal itself holds no third-party accreditation. See the <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">threat model</a> for the honest framing.</p>
+</div>
+<div>
+<h3 class="font-bold text-amber-800 mb-1">A guarantee of the underlying action</h3>
+<p class="text-slate-700 text-sm">A credential attests that a memory state passed preflight. Whether the action the agent then took was correct depends on factors outside the memory layer. The proof bounds memory risk; it does not underwrite outcomes.</p>
+</div>
+</div>
+</section>
+
+<section class="mb-16 border-t border-slate-200 pt-8">
+<h2 class="text-2xl font-bold mb-2">Versioning</h2>
+<p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-24</span>. Status: <span class="font-semibold text-[#c9a962]">Live · doc-only</span> (endpoints in production).</p>
+<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/mvmem" class="text-[#c9a962] hover:underline">/docs/mvmem</a> &middot; <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">/docs/vaccination</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a> &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a></p>
+</section>
+
+</div>
+</main>
+
+<footer class="bg-surface-container border-t border-black/[0.06]">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-8 py-16 max-w-7xl mx-auto font-manrope text-sm leading-relaxed">
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Product</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/decide">Decide</a></li>
+<li><a class="hover:text-gold transition-colors" href="/protect">Protect</a></li>
+<li><a class="hover:text-gold transition-colors" href="/comply">Comply</a></li>
+<li><a class="hover:text-gold transition-colors" href="/scale">Scale</a></li>
+<li><a class="hover:text-gold transition-colors" href="/pricing">Pricing</a></li>
+<li><a class="hover:text-gold transition-colors" href="/playground">Playground</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Resources</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/docs">Documentation</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/api">API Reference</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/insights">Insights</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/counterfactual">Counterfactual</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/mvmem">MVMem</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/proofs">Proofs &amp; Certs</a></li>
+<li><a class="hover:text-gold transition-colors" href="/docs/vaccination">Vaccination</a></li>
+<li><a class="hover:text-gold transition-colors" href="/blog">Blog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Standards</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/standard">Overview</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/provenance">Provenance</a></li>
+<li><a class="hover:text-gold transition-colors" href="/standard/cvss">CVSS Mapping</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Integrations</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/docs/integrations/opentelemetry">OpenTelemetry</a></li>
+<li><a class="hover:text-gold transition-colors" href="/compatibility">Compatibility</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Company</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="mailto:hello@sgraal.com">Contact</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://github.com/sgraal-ai" target="_blank" rel="noopener noreferrer">GitHub &uarr;</a></li>
+<li><a class="hover:text-gold transition-colors" href="https://x.com/sgraal_ai" target="_blank" rel="noopener noreferrer">X &uarr;</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-dark font-bold mb-4">Trust</h5>
+<ul class="space-y-2 text-on-surface-variant text-xs">
+<li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
+<li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
+<li><a class="hover:text-gold transition-colors" href="#" onclick="event.preventDefault(); window.sgraalCookieReshow && window.sgraalCookieReshow();">Cookie preferences</a></li>
+<li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-black/[0.06] py-6 px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/60">
+<div><span class="font-bold text-obsidian">Sgraal</span> &middot; &copy; 2026 &middot; Open core memory governance for AI agents &middot; Apache 2.0 SDK + hosted engine</div>
+<div class="flex items-center gap-2">Made for the agentic era. <span class="w-2 h-2 rounded-full bg-gold/40"></span></div>
+</div>
+</footer>
+<!-- Cookie consent banner — GDPR-compliant (sgraal.com self-compliance) -->
+<div id="sgraal-cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#c9a962] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-50 hidden" role="dialog" aria-labelledby="sgraal-cookie-banner-title">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+    <div class="flex-1">
+      <p id="sgraal-cookie-banner-title" class="font-bold text-sm text-[#1a1c1a] mb-1" style="font-family: 'Manrope', sans-serif;">Cookies on sgraal.com</p>
+      <p class="text-sm text-slate-600 leading-relaxed">We use cookies for analytics to improve sgraal.com. Your choice — we respect both. <a href="/privacy" class="text-[#c9a962] font-bold hover:underline">Privacy details →</a></p>
+    </div>
+    <div class="flex gap-3 items-stretch md:items-center flex-shrink-0">
+      <button type="button" onclick="window.sgraalCookieDecide('rejected')" class="border border-[#c9a962] text-[#c9a962] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#c9a962]/5 transition-all">Reject</button>
+      <button type="button" onclick="window.sgraalCookieDecide('accepted')" class="bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'sgraal_cookie_consent';
+  var banner = document.getElementById('sgraal-cookie-banner');
+  window.sgraalCookieDecide = function(decision) {
+    try { localStorage.setItem(KEY, decision); } catch(e) {}
+    if (banner) banner.classList.add('hidden');
+    if (decision === 'accepted' && typeof window.sgraalLoadGA === 'function') {
+      window.sgraalLoadGA();
+    }
+  };
+  window.sgraalCookieReshow = function() {
+    try { localStorage.removeItem(KEY); } catch(e) {}
+    if (banner) banner.classList.remove('hidden');
+  };
+  var existing = null;
+  try { existing = localStorage.getItem(KEY); } catch(e) {}
+  if (!existing) {
+    setTimeout(function(){ if (banner) banner.classList.remove('hidden'); }, 1000);
+  }
+})();
+</script>
+<!-- /Cookie consent banner -->
+</body>
+</html>
