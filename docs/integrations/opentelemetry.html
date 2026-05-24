@@ -26,13 +26,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal</title>
-<meta name="description" content="Four cryptographically verifiable artifacts: the MVMem Certificate, the Convergence Proof PDF, the W3C Verifiable Credential, and the tamper-evident audit-log hash chain. What each proves, and how anyone can check it.">
-<meta property="og:title" content="Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal">
-<meta property="og:description" content="MVMem Certificate, Convergence Proof PDF, W3C Verifiable Credential, audit-log hash chain — what each proves and how to verify it.">
-<meta property="og:url" content="https://sgraal.com/docs/proofs">
+<title>OpenTelemetry — Sgraal verdicts as spans in your APM — Sgraal</title>
+<meta name="description" content="Export Sgraal memory-governance verdicts as Zipkin or Jaeger spans and feed them into Datadog, Grafana Tempo, or Honeycomb. Memory risk shows up on the dashboard you already watch.">
+<meta property="og:title" content="OpenTelemetry — Sgraal verdicts as spans in your APM — Sgraal">
+<meta property="og:description" content="Export Sgraal verdicts as Zipkin or Jaeger spans into Datadog, Grafana Tempo, or Honeycomb.">
+<meta property="og:url" content="https://sgraal.com/docs/integrations/opentelemetry">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://sgraal.com/docs/proofs">
+<link rel="canonical" href="https://sgraal.com/docs/integrations/opentelemetry">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -126,124 +126,113 @@ pre code { font-size: 0.8125rem; }
 <main class="pt-40 pb-32 px-6">
 <div class="max-w-3xl mx-auto">
 
-<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Proofs &amp; Certificates · Live</p>
-<h1 class="text-4xl font-extrabold tracking-tight mb-4">Cryptographically verifiable. Externally checkable.</h1>
-<p class="text-slate-600 text-lg mb-12">A governance decision is only as useful as your ability to <em>prove</em> it later. Sgraal issues four artifacts you can hand to an auditor, a counterparty, or your future self &mdash; each cryptographically signed, each verifiable without taking Sgraal's word for it.</p>
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Integration · OpenTelemetry · Live</p>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4">Sgraal verdicts as spans in your APM.</h1>
+<p class="text-slate-600 text-lg mb-12">You already have an observability stack. Sgraal exports its memory-governance decisions in <strong>Zipkin</strong> and <strong>Jaeger</strong> formats, so a memory <code>BLOCK</code> shows up next to your latency and error spans &mdash; on the pane of glass your team already watches. No new console to learn; governance is just another span.</p>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-6">The four artifacts</h2>
+<h2 class="text-2xl font-bold mb-3">The endpoints</h2>
+<p class="text-slate-600 leading-relaxed mb-4">Two export endpoints return your recent preflight decisions as spans, each tagged with the omega risk score and the four-band decision:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
+<pre class="text-slate-100"><code># Zipkin v2 span format
+curl -sS https://api.sgraal.com/v1/traces/export/zipkin \
+  -H "Authorization: Bearer $SGRAAL_API_KEY"
 
-<!-- 1 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">1 · MVMem Certificate</h3><code class="text-xs text-slate-500">POST /v1/certify/mvmem</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a minimised memory subset preserves the original decision &mdash; the evidence behind a data-minimization claim (see <a class="text-[#c9a962] hover:underline" href="/docs/mvmem">/docs/mvmem</a>).</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the certificate is a Verifiable Credential; check it with <code>POST /v1/certify/verify</code>, which recomputes the signature in constant time and reports validity + expiry.</p>
+# Jaeger format
+curl -sS https://api.sgraal.com/v1/traces/export/jaeger \
+  -H "Authorization: Bearer $SGRAAL_API_KEY"</code></pre>
 </div>
-
-<!-- 2 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">2 · Convergence Proof PDF</h3><code class="text-xs text-slate-500">POST /v1/proofs/convergence</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that an agent's healing trajectory is stable &mdash; a Lyapunov-stability argument over a worst-case heal, rendered as a multi-page PDF with the analytical proof, a visualisation, methodology, and a signature block.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the PDF carries a signing-key fingerprint in its signature block, and the response headers (<code>X-Sgraal-Asymptotic-Stable</code>, <code>X-Sgraal-Monotonic-Decreasing</code>) restate the result. It is designed to drop into an FDA-style or internal-audit dossier.</p>
-</div>
-
-<!-- 3 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">3 · W3C Verifiable Credential</h3><code class="text-xs text-slate-500">POST /v1/certify</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a specific memory state passed preflight (USE_MEMORY / WARN) at a point in time, bound to the agent and domain.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> a standards-shaped W3C VC with a <code>SgraalProof2026</code> proof; <code>POST /v1/certify/verify</code> recomputes the proof value and also checks the revocation list (below).</p>
-</div>
-
-<!-- 4 -->
-<div class="border border-slate-200 rounded-xl p-6">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">4 · Audit-log hash chain</h3><code class="text-xs text-slate-500">GET /v1/audit-log/chain-verify</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that your decision history has not been altered &mdash; each audit entry is chained to the previous by hash, so any insertion, deletion, or edit breaks the chain.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> <code>GET /v1/audit-log/chain-verify</code> walks the chain and reports the first break, if any. Tamper-evidence is a property of the structure, not a promise.</p>
-</div>
-</section>
-
-<section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">A credential, up close</h2>
-<p class="text-slate-600 leading-relaxed mb-4">Issuing a credential runs a preflight first; on USE_MEMORY / WARN it returns a signed VC. Illustrative values shown.</p>
+<p class="text-slate-600 leading-relaxed mb-3">A Zipkin response is a list of spans, each a <code>sgraal.preflight</code> operation with <code>omega</code> and <code>decision</code> tags:</p>
 <div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
 <pre class="text-slate-100"><code>{
-  "certified": true,
-  "credential": {
-    "@context": ["https://www.w3.org/2018/credentials/v1"],
-    "type": ["VerifiableCredential", "SgraalMemoryCredential"],
-    "issuer": "https://api.sgraal.com",
-    "issuanceDate": "2026-05-24T09:12:04Z",
-    "credentialSubject": {
-      "agent_id": "support-bot-7",
-      "decision": "USE_MEMORY",
-      "omega": 18,
-      "scope": "memory-state",
-      "proof_hash": "sha256:9b8d...77c2",
-      "valid_for_seconds": 86400,
-      "domain": "customer_support"
-    },
-    "proof": {
-      "type": "SgraalProof2026",
-      "created": "2026-05-24T09:12:04Z",
-      "verificationMethod": "https://api.sgraal.com/.well-known/sgraal.json",
-      "proofValue": "..."
+  "format": "zipkin",
+  "spans": [
+    {
+      "traceId": "6f3c1a...e1ab",
+      "id": "9b8d77c2",
+      "name": "sgraal.preflight",
+      "localEndpoint": { "serviceName": "sgraal-api" },
+      "tags": { "omega": "18", "decision": "USE_MEMORY" }
     }
-  }
+  ]
 }</code></pre>
 </div>
-<p class="text-slate-500 text-sm">On ASK_USER / BLOCK the endpoint returns <code>{ "certified": false, "reason": "...", "decision": "...", "omega": ... }</code> &mdash; a state is only certifiable if it actually passed.</p>
+<p class="text-slate-500 text-sm">These are <em>export</em> endpoints: you pull the recent spans and forward them into your collector or your provider's trace intake. The pattern below is a small scheduled forwarder &mdash; the same shape for any backend that ingests Zipkin or Jaeger.</p>
 </section>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">Get a sample</h2>
-<p class="text-slate-600 leading-relaxed mb-4">Issue and verify a credential, or download a convergence proof, against the live API:</p>
-<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
-<pre class="text-slate-100"><code># Issue a credential
-curl -sS https://api.sgraal.com/v1/certify \
+<h2 class="text-2xl font-bold mb-3">Datadog</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Datadog's Agent accepts Zipkin spans on its trace intake port. Run a small forwarder (cron, Lambda, or a sidecar) that pulls the Sgraal export and posts it to the Agent:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-3 overflow-x-auto">
+<pre class="text-slate-100"><code># Pull Sgraal spans → forward to the Datadog Agent (Zipkin intake)
+curl -sS https://api.sgraal.com/v1/traces/export/zipkin \
   -H "Authorization: Bearer $SGRAAL_API_KEY" \
-  -H "Content-Type: application/json" -d @memory.json
-
-# Download a convergence proof PDF
-curl -sS https://api.sgraal.com/v1/proofs/convergence \
-  -H "Authorization: Bearer $SGRAAL_API_KEY" \
-  -H "Content-Type: application/json" -d @memory.json \
-  -o convergence_proof.pdf</code></pre>
+| curl -sS -X POST "http://localhost:8126/v0.4/traces" \
+  -H "Content-Type: application/json" --data-binary @-</code></pre>
 </div>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold">In Datadog:</span> the spans appear under service <code>sgraal-api</code>, operation <code>sgraal.preflight</code>. Facet on the <code>decision</code> tag to build a monitor that pages when <code>decision:BLOCK</code> appears, or a top-list of agents by <code>omega</code>.</p>
 </section>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">Revocation</h2>
-<p class="text-slate-600 leading-relaxed mb-4">A credential can outlive its truth &mdash; an agent is decommissioned, a state is superseded. Each tenant keeps a revocation list, and verification checks it automatically.</p>
-<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
-<pre class="text-slate-100"><code>GET /v1/credentials/revocation-list
-
-{
-  "credential_ids": ["cred_a1b2", "cred_c3d4"],
-  "count": 2,
-  "truncated": false
-}</code></pre>
+<h2 class="text-2xl font-bold mb-3">Grafana Tempo</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Tempo ingests via the OpenTelemetry Collector. Add a pipeline that reads the Sgraal Jaeger export and exports to Tempo's OTLP endpoint:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-3 overflow-x-auto">
+<pre class="text-slate-100"><code># otel-collector-config.yaml (sketch)
+receivers:
+  jaeger:
+    protocols: { thrift_http: { endpoint: 0.0.0.0:14268 } }
+exporters:
+  otlp/tempo:
+    endpoint: tempo:4317
+service:
+  pipelines:
+    traces:
+      receivers: [jaeger]
+      exporters: [otlp/tempo]</code></pre>
 </div>
-<p class="text-slate-500 text-sm">A revoked credential fails <code>POST /v1/certify/verify</code> even if its signature is otherwise valid &mdash; revocation is a first-class part of the verify path, not an afterthought.</p>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold">In Grafana:</span> query Tempo for <code>service.name = "sgraal-api"</code>, then drive a panel off the <code>decision</code> and <code>omega</code> span tags. Pairs naturally with the <a class="text-[#c9a962] hover:underline" href="/docs/insights">Insights</a> fields if you also scrape those.</p>
 </section>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">What this does not replace</h2>
+<h2 class="text-2xl font-bold mb-3">Honeycomb</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Honeycomb ingests OTLP. Point the same OpenTelemetry Collector pipeline at Honeycomb's endpoint with your API key:</p>
+<div class="bg-[#0B0F14] rounded-xl p-5 mb-3 overflow-x-auto">
+<pre class="text-slate-100"><code>exporters:
+  otlp/honeycomb:
+    endpoint: api.honeycomb.io:443
+    headers: { "x-honeycomb-team": "${HONEYCOMB_API_KEY}" }
+service:
+  pipelines:
+    traces:
+      receivers: [jaeger]
+      exporters: [otlp/honeycomb]</code></pre>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold">In Honeycomb:</span> the <code>sgraal.preflight</code> spans become queryable events &mdash; <code>BREAKDOWN</code> by <code>decision</code>, or <code>HEATMAP</code> the <code>omega</code> tag to see risk distribution over time.</p>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Why it lands well</h2>
+<p class="text-slate-600 leading-relaxed">Memory governance and observability are complementary, not competing: observability tells you <em>what happened</em> after an agent acted; Sgraal's verdict tells you <em>whether the memory was safe to act on</em> beforehand. Exporting the verdict as a span puts both on the same timeline &mdash; a <code>BLOCK</code> span sitting right before the latency spike it prevented.</p>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">What this does not do</h2>
 <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-4">
 <div>
-<h3 class="font-bold text-amber-800 mb-1">A third-party accreditation</h3>
-<p class="text-slate-700 text-sm">These artifacts prove what Sgraal computed and that it has not been tampered with. They are <em>not</em> an external accreditation of Sgraal itself &mdash; Sgraal itself holds no third-party accreditation. See the <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">threat model</a> for the honest framing.</p>
+<h3 class="font-bold text-amber-800 mb-1">Live OTLP push</h3>
+<p class="text-slate-700 text-sm">These are pull-based export endpoints returning recent spans in Zipkin / Jaeger format. A real-time OTLP push transport is not part of this endpoint &mdash; the forwarder pattern above is the supported integration. For near-real-time, run the forwarder on a short interval.</p>
 </div>
 <div>
-<h3 class="font-bold text-amber-800 mb-1">A guarantee of the underlying action</h3>
-<p class="text-slate-700 text-sm">A credential attests that a memory state passed preflight. Whether the action the agent then took was correct depends on factors outside the memory layer. The proof bounds memory risk; it does not underwrite outcomes.</p>
+<h3 class="font-bold text-amber-800 mb-1">Sampling / retention config</h3>
+<p class="text-slate-700 text-sm">The export returns recent decisions; long-term retention and sampling are governed by your APM, not Sgraal. Configure them in the collector or provider as you would for any trace source.</p>
 </div>
 </div>
 </section>
 
 <section class="mb-16 border-t border-slate-200 pt-8">
 <h2 class="text-2xl font-bold mb-2">Versioning</h2>
-<p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-24</span>. Status: <span class="font-semibold text-[#c9a962]">Live · doc-only</span> (endpoints in production).</p>
-<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/mvmem" class="text-[#c9a962] hover:underline">/docs/mvmem</a> &middot; <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">/docs/vaccination</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a> &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a></p>
+<p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-24</span>. Status: <span class="font-semibold text-[#c9a962]">Live · doc-only</span> (export endpoints in production).</p>
+<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/insights" class="text-[#c9a962] hover:underline">/docs/insights</a> &middot; <a href="/compatibility" class="text-[#c9a962] hover:underline">/compatibility</a> &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a></p>
 </section>
 
 </div>

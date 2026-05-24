@@ -26,13 +26,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal</title>
-<meta name="description" content="Four cryptographically verifiable artifacts: the MVMem Certificate, the Convergence Proof PDF, the W3C Verifiable Credential, and the tamper-evident audit-log hash chain. What each proves, and how anyone can check it.">
-<meta property="og:title" content="Proofs &amp; Certificates — cryptographically verifiable, externally checkable — Sgraal">
-<meta property="og:description" content="MVMem Certificate, Convergence Proof PDF, W3C Verifiable Credential, audit-log hash chain — what each proves and how to verify it.">
-<meta property="og:url" content="https://sgraal.com/docs/proofs">
+<title>Memory Vaccination — one agent attacked, the whole fleet immunizes — Sgraal</title>
+<meta name="description" content="When one agent is hit by a memory attack, Sgraal extracts the attack signature, encrypts it (AES-256-GCM), and immunizes the rest of the fleet — herd immunity for AI agent memory.">
+<meta property="og:title" content="Memory Vaccination — one agent attacked, the whole fleet immunizes — Sgraal">
+<meta property="og:description" content="Extract the attack signature from one compromised agent, immunize the whole fleet — herd immunity for AI agent memory.">
+<meta property="og:url" content="https://sgraal.com/docs/vaccination">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://sgraal.com/docs/proofs">
+<link rel="canonical" href="https://sgraal.com/docs/vaccination">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -126,116 +126,99 @@ pre code { font-size: 0.8125rem; }
 <main class="pt-40 pb-32 px-6">
 <div class="max-w-3xl mx-auto">
 
-<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Proofs &amp; Certificates · Live</p>
-<h1 class="text-4xl font-extrabold tracking-tight mb-4">Cryptographically verifiable. Externally checkable.</h1>
-<p class="text-slate-600 text-lg mb-12">A governance decision is only as useful as your ability to <em>prove</em> it later. Sgraal issues four artifacts you can hand to an auditor, a counterparty, or your future self &mdash; each cryptographically signed, each verifiable without taking Sgraal's word for it.</p>
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Memory Vaccination · Live</p>
+<h1 class="text-4xl font-extrabold tracking-tight mb-4">One agent is attacked. The whole fleet immunizes.</h1>
+<p class="text-slate-600 text-lg mb-10">When Sgraal's detection layers catch a memory attack on one agent, it doesn't just block that agent. It extracts the attack's <em>signature</em>, stores it encrypted, and uses it to recognise the same attack instantly across every other agent in the fleet. A first victim becomes the whole fleet's immunity.</p>
+
+<!-- Fleet-immunity propagation diagram -->
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-12">
+<svg viewBox="0 0 600 250" width="100%" role="img" aria-label="Diagram: an attack on one agent produces a signature that immunizes the rest of the fleet" style="max-width:600px;margin:0 auto;display:block">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 z" fill="#c9a962"/>
+    </marker>
+  </defs>
+  <!-- attacked agent -->
+  <circle cx="80" cy="70" r="26" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="80" y="75" text-anchor="middle" font-size="22" fill="#dc2626" font-weight="bold">!</text>
+  <text x="80" y="118" text-anchor="middle" font-size="11" fill="#475569">Agent A — attacked</text>
+  <!-- signature extraction -->
+  <line x1="110" y1="70" x2="225" y2="70" stroke="#c9a962" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="232" y="50" width="120" height="40" rx="8" fill="#fff7e6" stroke="#c9a962" stroke-width="2"/>
+  <text x="292" y="68" text-anchor="middle" font-size="11" fill="#92702a" font-weight="bold">Attack signature</text>
+  <text x="292" y="82" text-anchor="middle" font-size="9" fill="#a07d36">encrypted · AES-256-GCM</text>
+  <!-- propagation to fleet -->
+  <line x1="352" y1="70" x2="455" y2="50" stroke="#c9a962" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <line x1="352" y1="70" x2="455" y2="120" stroke="#c9a962" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <line x1="352" y1="70" x2="455" y2="190" stroke="#c9a962" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <!-- immunized fleet -->
+  <circle cx="490" cy="45" r="22" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <path d="M481,45 l6,6 l12,-13" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <circle cx="490" cy="120" r="22" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <path d="M481,120 l6,6 l12,-13" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <circle cx="490" cy="195" r="22" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <path d="M481,195 l6,6 l12,-13" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="530" y="124" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(90 530 124)">Fleet — immunized</text>
+</svg>
+<p class="text-center text-xs text-slate-500 mt-2">Detect once on Agent A &rarr; extract + encrypt the signature &rarr; the rest of the fleet recognises the same attack immediately.</p>
+</div>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-6">The four artifacts</h2>
-
-<!-- 1 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">1 · MVMem Certificate</h3><code class="text-xs text-slate-500">POST /v1/certify/mvmem</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a minimised memory subset preserves the original decision &mdash; the evidence behind a data-minimization claim (see <a class="text-[#c9a962] hover:underline" href="/docs/mvmem">/docs/mvmem</a>).</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the certificate is a Verifiable Credential; check it with <code>POST /v1/certify/verify</code>, which recomputes the signature in constant time and reports validity + expiry.</p>
-</div>
-
-<!-- 2 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">2 · Convergence Proof PDF</h3><code class="text-xs text-slate-500">POST /v1/proofs/convergence</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that an agent's healing trajectory is stable &mdash; a Lyapunov-stability argument over a worst-case heal, rendered as a multi-page PDF with the analytical proof, a visualisation, methodology, and a signature block.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> the PDF carries a signing-key fingerprint in its signature block, and the response headers (<code>X-Sgraal-Asymptotic-Stable</code>, <code>X-Sgraal-Monotonic-Decreasing</code>) restate the result. It is designed to drop into an FDA-style or internal-audit dossier.</p>
-</div>
-
-<!-- 3 -->
-<div class="border border-slate-200 rounded-xl p-6 mb-5">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">3 · W3C Verifiable Credential</h3><code class="text-xs text-slate-500">POST /v1/certify</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that a specific memory state passed preflight (USE_MEMORY / WARN) at a point in time, bound to the agent and domain.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> a standards-shaped W3C VC with a <code>SgraalProof2026</code> proof; <code>POST /v1/certify/verify</code> recomputes the proof value and also checks the revocation list (below).</p>
-</div>
-
-<!-- 4 -->
-<div class="border border-slate-200 rounded-xl p-6">
-<div class="flex items-center justify-between mb-2"><h3 class="text-xl font-bold">4 · Audit-log hash chain</h3><code class="text-xs text-slate-500">GET /v1/audit-log/chain-verify</code></div>
-<p class="text-slate-600 text-sm leading-relaxed mb-2"><span class="font-semibold text-slate-800">Proves:</span> that your decision history has not been altered &mdash; each audit entry is chained to the previous by hash, so any insertion, deletion, or edit breaks the chain.</p>
-<p class="text-slate-600 text-sm leading-relaxed"><span class="font-semibold text-slate-800">Verify:</span> <code>GET /v1/audit-log/chain-verify</code> walks the chain and reports the first break, if any. Tamper-evidence is a property of the structure, not a promise.</p>
-</div>
+<h2 class="text-2xl font-bold mb-3">The biological analogy</h2>
+<p class="text-slate-600 leading-relaxed mb-3">A vaccine works by teaching the immune system to recognise a pathogen's signature without having to survive the disease first. <strong>Herd immunity</strong> extends that protection across a population: once enough members carry the recognition, the pathogen can't spread.</p>
+<p class="text-slate-600 leading-relaxed">Sgraal's Memory Vaccination is the same idea for an agent fleet. The first agent to encounter a novel memory attack &mdash; an injection, a poisoning pattern, a cross-agent drift cascade &mdash; is where the &ldquo;infection&rdquo; is recognised. Sgraal turns that single detection into a reusable signature, and every other agent inherits the recognition without having to be attacked itself.</p>
 </section>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">A credential, up close</h2>
-<p class="text-slate-600 leading-relaxed mb-4">Issuing a credential runs a preflight first; on USE_MEMORY / WARN it returns a signed VC. Illustrative values shown.</p>
+<h2 class="text-2xl font-bold mb-3">How it works</h2>
+<ol class="text-slate-600 leading-relaxed list-decimal pl-6 space-y-2">
+<li><span class="font-semibold text-slate-800">Detect.</span> Sgraal's post-reconciliation detection layers flag a manipulated memory state on one agent (see <a class="text-[#c9a962] hover:underline" href="/protect">Protect</a>).</li>
+<li><span class="font-semibold text-slate-800">Extract.</span> The distinguishing pattern of that attack is distilled into a compact signature &mdash; not the underlying content, just the recognisable shape of the attack.</li>
+<li><span class="font-semibold text-slate-800">Encrypt at rest.</span> The signature is stored encrypted with <strong>AES-256-GCM</strong>. Signatures are protected both in transit and at rest; the recognition spreads, the raw attack material does not.</li>
+<li><span class="font-semibold text-slate-800">Immunize.</span> On subsequent preflights across the fleet, the stored signatures let Sgraal recognise the same attack class immediately &mdash; before it reaches a decision.</li>
+</ol>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">Fleet phase &mdash; for the modellers</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Memory attacks spread through a fleet the way an infection spreads through a population, so Sgraal models fleet memory health with an <strong>SIR-style</strong> (susceptible&ndash;infected&ndash;recovered) analog. A fleet sits in one of three phases:</p>
+<ul class="text-slate-600 leading-relaxed list-disc pl-6 space-y-2 mb-3">
+<li><span class="font-semibold text-slate-800">Sub-critical</span> &mdash; healthy memory dominates; an attack on one agent stays contained.</li>
+<li><span class="font-semibold text-slate-800">Critical</span> &mdash; the fleet is near the tipping point where a compromise can begin to cascade.</li>
+<li><span class="font-semibold text-slate-800">Super-critical</span> &mdash; conditions favour spread; vaccination and quarantine matter most here.</li>
+</ul>
+<p class="text-slate-600 leading-relaxed">Vaccination is what keeps a fleet sub-critical: each immunization removes susceptibility, the same way vaccination raises a population's herd-immunity threshold. The phase is computed per domain against a domain-specific critical threshold &mdash; surfaced via the fleet health-phase endpoint, with the calibrated thresholds kept server-side.</p>
+</section>
+
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-3">The observable surface</h2>
+<p class="text-slate-600 leading-relaxed mb-3">Vaccination happens automatically when a detection fires &mdash; there is no &ldquo;upload an attack&rdquo; endpoint. What you can observe and manage:</p>
 <div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
-<pre class="text-slate-100"><code>{
-  "certified": true,
-  "credential": {
-    "@context": ["https://www.w3.org/2018/credentials/v1"],
-    "type": ["VerifiableCredential", "SgraalMemoryCredential"],
-    "issuer": "https://api.sgraal.com",
-    "issuanceDate": "2026-05-24T09:12:04Z",
-    "credentialSubject": {
-      "agent_id": "support-bot-7",
-      "decision": "USE_MEMORY",
-      "omega": 18,
-      "scope": "memory-state",
-      "proof_hash": "sha256:9b8d...77c2",
-      "valid_for_seconds": 86400,
-      "domain": "customer_support"
-    },
-    "proof": {
-      "type": "SgraalProof2026",
-      "created": "2026-05-24T09:12:04Z",
-      "verificationMethod": "https://api.sgraal.com/.well-known/sgraal.json",
-      "proofValue": "..."
-    }
-  }
-}</code></pre>
+<pre class="text-slate-100"><code># List the vaccine signatures protecting a domain
+curl -sS "https://api.sgraal.com/v1/vaccines?domain=customer_support" \
+  -H "Authorization: Bearer $SGRAAL_API_KEY"
+
+{ "domain": "customer_support", "count": 3, "vaccines": [ /* tenant-scoped */ ] }
+
+# List agents currently flagged as compromised
+curl -sS https://api.sgraal.com/v1/compromised-agents \
+  -H "Authorization: Bearer $SGRAAL_API_KEY"
+
+{ "count": 1, "agents": ["agent-117"] }</code></pre>
 </div>
-<p class="text-slate-500 text-sm">On ASK_USER / BLOCK the endpoint returns <code>{ "certified": false, "reason": "...", "decision": "...", "omega": ... }</code> &mdash; a state is only certifiable if it actually passed.</p>
+<p class="text-slate-500 text-sm">Signatures are tenant-scoped: you see and manage your own fleet's immunity. A signature can be retired with <code>DELETE /v1/vaccines/{signature_id}</code>, and an agent cleared with <code>DELETE /v1/compromised-agents/{agent_id}</code>, once remediated.</p>
 </section>
 
 <section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">Get a sample</h2>
-<p class="text-slate-600 leading-relaxed mb-4">Issue and verify a credential, or download a convergence proof, against the live API:</p>
-<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
-<pre class="text-slate-100"><code># Issue a credential
-curl -sS https://api.sgraal.com/v1/certify \
-  -H "Authorization: Bearer $SGRAAL_API_KEY" \
-  -H "Content-Type: application/json" -d @memory.json
-
-# Download a convergence proof PDF
-curl -sS https://api.sgraal.com/v1/proofs/convergence \
-  -H "Authorization: Bearer $SGRAAL_API_KEY" \
-  -H "Content-Type: application/json" -d @memory.json \
-  -o convergence_proof.pdf</code></pre>
-</div>
-</section>
-
-<section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">Revocation</h2>
-<p class="text-slate-600 leading-relaxed mb-4">A credential can outlive its truth &mdash; an agent is decommissioned, a state is superseded. Each tenant keeps a revocation list, and verification checks it automatically.</p>
-<div class="bg-[#0B0F14] rounded-xl p-5 mb-4 overflow-x-auto">
-<pre class="text-slate-100"><code>GET /v1/credentials/revocation-list
-
-{
-  "credential_ids": ["cred_a1b2", "cred_c3d4"],
-  "count": 2,
-  "truncated": false
-}</code></pre>
-</div>
-<p class="text-slate-500 text-sm">A revoked credential fails <code>POST /v1/certify/verify</code> even if its signature is otherwise valid &mdash; revocation is a first-class part of the verify path, not an afterthought.</p>
-</section>
-
-<section class="mb-16">
-<h2 class="text-2xl font-bold mb-3">What this does not replace</h2>
+<h2 class="text-2xl font-bold mb-3">What this does not do</h2>
 <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-4">
 <div>
-<h3 class="font-bold text-amber-800 mb-1">A third-party accreditation</h3>
-<p class="text-slate-700 text-sm">These artifacts prove what Sgraal computed and that it has not been tampered with. They are <em>not</em> an external accreditation of Sgraal itself &mdash; Sgraal itself holds no third-party accreditation. See the <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">threat model</a> for the honest framing.</p>
+<h3 class="font-bold text-amber-800 mb-1">Cross-tenant sharing</h3>
+<p class="text-slate-700 text-sm">Vaccination immunizes <em>your</em> fleet from <em>your</em> own detections &mdash; signatures are tenant-scoped and encrypted per tenant. A cross-organisation immunity network (signatures shared across tenants with a verifiable trust model) is a separate, future capability, not what this endpoint does today.</p>
 </div>
 <div>
-<h3 class="font-bold text-amber-800 mb-1">A guarantee of the underlying action</h3>
-<p class="text-slate-700 text-sm">A credential attests that a memory state passed preflight. Whether the action the agent then took was correct depends on factors outside the memory layer. The proof bounds memory risk; it does not underwrite outcomes.</p>
+<h3 class="font-bold text-amber-800 mb-1">Catch a never-before-seen attack with zero cost</h3>
+<p class="text-slate-700 text-sm">The first agent still has to be detected by the standard detection layers &mdash; vaccination makes the <em>second and subsequent</em> encounters instant. Detection effectiveness to date is validated against synthetic adversarial corpora (memory injection and cross-agent drift); production calibration is pending paying-customer onboarding. See the <a class="text-[#c9a962] hover:underline" href="/docs/threat-model">threat model</a>.</p>
 </div>
 </div>
 </section>
@@ -243,7 +226,7 @@ curl -sS https://api.sgraal.com/v1/proofs/convergence \
 <section class="mb-16 border-t border-slate-200 pt-8">
 <h2 class="text-2xl font-bold mb-2">Versioning</h2>
 <p class="text-slate-600 text-sm mb-2">Last reviewed: <span class="font-mono">2026-05-24</span>. Status: <span class="font-semibold text-[#c9a962]">Live · doc-only</span> (endpoints in production).</p>
-<p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/mvmem" class="text-[#c9a962] hover:underline">/docs/mvmem</a> &middot; <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">/docs/vaccination</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a> &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a></p>
+<p class="text-slate-600 text-sm mt-4">Related: <a href="/protect" class="text-[#c9a962] hover:underline">/protect</a> &middot; <a href="/benchmark" class="text-[#c9a962] hover:underline">/benchmark</a> (memory-injection &amp; cross-agent drift defense) &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a> &middot; <a href="/docs/insights" class="text-[#c9a962] hover:underline">/docs/insights</a></p>
 </section>
 
 </div>
