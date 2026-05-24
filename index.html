@@ -411,7 +411,8 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
   <!-- Door 1: Developers -->
-  <a href="/developers" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
+  <div class="flex flex-col gap-2 h-full">
+  <a href="/developers" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg flex-1">
     <div class="w-12 h-12 bg-gold/10 group-hover:bg-gold/20 rounded-xl flex items-center justify-center mb-6 transition-all">
       <span class="material-symbols-outlined text-2xl text-gold">code</span>
     </div>
@@ -422,9 +423,12 @@
     <p class="text-on-surface-variant text-sm leading-relaxed mb-4">Drop-in safety for any AI agent memory. 5-line integration, 11 production-grade SDKs + 29 framework adapters, Apache 2.0. SafeMemory wrapper for Mem0 — code-level guard against poisoned memory.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">Read developer docs →</span>
   </a>
+  <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/insights" class="text-[#c9a962] hover:underline">Insights</a> &middot; <a href="/docs/counterfactual" class="text-[#c9a962] hover:underline">Counterfactual</a></p>
+  </div>
 
   <!-- Door 2: Platform / MLOps -->
-  <a href="/platform" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
+  <div class="flex flex-col gap-2 h-full">
+  <a href="/platform" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg flex-1">
     <div class="w-12 h-12 bg-gold/10 group-hover:bg-gold/20 rounded-xl flex items-center justify-center mb-6 transition-all">
       <span class="material-symbols-outlined text-2xl text-gold">hub</span>
     </div>
@@ -435,9 +439,12 @@
     <p class="text-on-surface-variant text-sm leading-relaxed mb-4">Run Sgraal at any scale. Hosted, self-hosted, or zero-dep edge mode. Plugin system, autonomous healing, 30-day degradation forecast.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">See platform features →</span>
   </a>
+  <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/integrations/opentelemetry" class="text-[#c9a962] hover:underline">OpenTelemetry integration</a></p>
+  </div>
 
   <!-- Door 3: Research -->
-  <a href="/research" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
+  <div class="flex flex-col gap-2 h-full">
+  <a href="/research" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg flex-1">
     <div class="w-12 h-12 bg-gold/10 group-hover:bg-gold/20 rounded-xl flex items-center justify-center mb-6 transition-all">
       <span class="material-symbols-outlined text-2xl text-gold">science</span>
     </div>
@@ -448,6 +455,8 @@
     <p class="text-on-surface-variant text-sm leading-relaxed mb-4">25 mathematical disciplines. 87 modules. Open R1–R3 adversarial corpus. Z3 SMT formal verification. Free academic tier.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">Read the paper →</span>
   </a>
+  <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/proofs" class="text-[#c9a962] hover:underline">Proofs &amp; Certificates</a></p>
+  </div>
 
   <!-- Door 4: Startups -->
   <a href="/startups" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
@@ -463,7 +472,8 @@
   </a>
 
   <!-- Door 5: Security / CISO -->
-  <a href="/protect" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
+  <div class="flex flex-col gap-2 h-full">
+  <a href="/protect" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg flex-1">
     <div class="w-12 h-12 bg-gold/10 group-hover:bg-gold/20 rounded-xl flex items-center justify-center mb-6 transition-all">
       <span class="material-symbols-outlined text-2xl text-gold">shield</span>
     </div>
@@ -474,9 +484,12 @@
     <p class="text-on-surface-variant text-sm leading-relaxed mb-4">6 detection layers. Fleet-wide vaccine propagation. Behavioral profiling per agent. Cryptographic forensic proofs. Built for CISOs.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">Read threat model →</span>
   </a>
+  <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">Memory Vaccination</a></p>
+  </div>
 
   <!-- Door 6: Compliance / DPO -->
-  <a href="/comply" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg">
+  <div class="flex flex-col gap-2 h-full">
+  <a href="/comply" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-2xl p-8 transition-all hover:shadow-lg flex-1">
     <div class="w-12 h-12 bg-gold/10 group-hover:bg-gold/20 rounded-xl flex items-center justify-center mb-6 transition-all">
       <span class="material-symbols-outlined text-2xl text-gold">verified_user</span>
     </div>
@@ -487,6 +500,8 @@
     <p class="text-on-surface-variant text-sm leading-relaxed mb-4">EU AI Act, GDPR, HIPAA, FDA 510(k), NIST AI RMF — mappable with one API call. W3C Verifiable Credentials. Auto-generated conformity declarations.</p>
     <span class="text-[#c9a962] font-semibold text-sm group-hover:underline">Generate a sample certificate →</span>
   </a>
+  <p class="text-xs text-slate-500 px-2 pb-1">Deep dive: <a href="/docs/mvmem" class="text-[#c9a962] hover:underline">Minimum Viable Memory</a></p>
+  </div>
 
 </div>
 

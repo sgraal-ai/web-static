@@ -275,6 +275,37 @@ pre { overflow-x: auto; }
       <p class="text-xs text-slate-400">All endpoints require <code class="text-[#c9a962]">Authorization: Bearer &lt;api_key&gt;</code></p>
     </section>
 
+    <section id="capabilities" class="mb-16 scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Capabilities &amp; guides</h2>
+      <p class="text-slate-600 mb-6">Deep-dive guides for specific Sgraal capabilities &mdash; each backed by a live endpoint.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs/insights" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">Insights</h3>
+          <p class="text-sm text-slate-600">One call returns an agent's full memory synthesis plus a plain-English summary.</p>
+        </a>
+        <a href="/docs/counterfactual" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">Counterfactual Navigator</h3>
+          <p class="text-sm text-slate-600">Not a block &mdash; a path forward: the smallest change that makes an unsafe action safe, verified.</p>
+        </a>
+        <a href="/docs/mvmem" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">Minimum Viable Memory</h3>
+          <p class="text-sm text-slate-600">The smallest decision-preserving subset of memory &mdash; data-minimization plus token-cost savings.</p>
+        </a>
+        <a href="/docs/proofs" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">Proofs &amp; Certificates</h3>
+          <p class="text-sm text-slate-600">Cryptographically verifiable artifacts: MVMem certificate, Convergence Proof PDF, W3C VC, audit-log hash chain.</p>
+        </a>
+        <a href="/docs/integrations/opentelemetry" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">OpenTelemetry integration</h3>
+          <p class="text-sm text-slate-600">Export Sgraal verdicts as spans into Datadog, Grafana Tempo, or Honeycomb.</p>
+        </a>
+        <a href="/docs/vaccination" class="block border border-slate-200 rounded-lg p-5 hover:border-[#c9a962] transition-colors">
+          <h3 class="font-bold mb-1">Memory Vaccination</h3>
+          <p class="text-sm text-slate-600">One agent is attacked, the whole fleet immunizes &mdash; herd immunity for agent memory.</p>
+        </a>
+      </div>
+    </section>
+
     <!-- Agent-readable: endpoint auth uses Authorization: Bearer -->
     <section id="quickstart" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-200">Quick Start — 5 minutes</h2>
