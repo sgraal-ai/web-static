@@ -276,7 +276,8 @@ pre { overflow-x: auto; }
           <th scope="col" class="text-left px-4 py-3 text-slate-500 text-xs uppercase">Description</th>
         </tr></thead>
         <tbody class="divide-y divide-slate-100 bg-white font-mono">
-          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/preflight</td><td class="px-4 py-3 font-sans text-slate-600">Score memory state, return decision + full analytics</td></tr>
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/check</td><td class="px-4 py-3 font-sans text-slate-600">Unmetered preview — plain strings in, safe/unsafe out. No quota, no audit log, no W3C VC.</td></tr>
+          <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/preflight</td><td class="px-4 py-3 font-sans text-slate-600">Metered audit — full metadata in, decision + full analytics out. Audit-logged, W3C VC issued.</td></tr>
           <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/preflight/batch</td><td class="px-4 py-3 font-sans text-slate-600">Batch preflight for up to 100 entries</td></tr>
           <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/heal</td><td class="px-4 py-3 font-sans text-slate-600">Heal a flagged memory entry</td></tr>
           <tr><td class="px-4 py-3 text-green-600">POST</td><td class="px-4 py-3">/v1/outcome</td><td class="px-4 py-3 font-sans text-slate-600">Close an outcome for learning feedback</td></tr>
@@ -284,6 +285,33 @@ pre { overflow-x: auto; }
         </tbody>
       </table>
       <p class="text-xs text-slate-400">All endpoints require <code class="text-[#c9a962]">Authorization: Bearer &lt;api_key&gt;</code></p>
+
+      <h3 class="text-lg font-bold mt-10 mb-4">When to use which endpoint</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-[#e5e7eb] rounded-xl p-5">
+          <h4 class="font-bold mb-2"><code class="text-sm text-[#c9a962]">/v1/check</code> &mdash; unmetered preview</h4>
+          <p class="text-slate-600 text-sm leading-relaxed mb-2">Plain strings in, plain-English verdict out. Unlimited across all tiers &mdash; no quota. Use for:</p>
+          <ul class="text-slate-600 text-sm leading-relaxed list-disc pl-5 space-y-1">
+            <li>Quickstart and experimentation (demo key <code class="text-xs bg-slate-100 px-1 rounded">sg_demo_playground</code>)</li>
+            <li>High-frequency agent-loop memory gating where audit evidence is not required</li>
+            <li>Internal-only agent workflows without compliance constraints</li>
+          </ul>
+        </div>
+        <div class="border border-[#e5e7eb] rounded-xl p-5">
+          <h4 class="font-bold mb-2"><code class="text-sm text-[#c9a962]">/v1/preflight</code> &mdash; metered audit</h4>
+          <p class="text-slate-600 text-sm leading-relaxed mb-2">Full memory metadata in, full analytics out. Counts toward your monthly tier quota. Use for:</p>
+          <ul class="text-slate-600 text-sm leading-relaxed list-disc pl-5 space-y-1">
+            <li>Production-grade decisions requiring an audit trail</li>
+            <li>Critical action checkpoints before irreversible operations</li>
+            <li>Any regulated context (HIPAA, GDPR, EU AI Act, FDA, NIST AI RMF)</li>
+            <li>When W3C Verifiable Credentials or incident-pipeline webhooks are required</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-slate-600 text-sm leading-relaxed mt-4"><strong>Architecture:</strong> both endpoints use the same internal scoring engine. The differences are side-effects and input richness, not scoring depth or speed: <code class="text-xs bg-slate-100 px-1 rounded">/v1/check</code> has no quota, no audit log, no W3C VC, no webhook, and accepts plain strings; <code class="text-xs bg-slate-100 px-1 rounded">/v1/preflight</code> is tier-quota-counted, audit-logged, issues a W3C VC, triggers webhooks, and accepts full memory metadata for context-aware scoring.</p>
+      <div class="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4">
+        <p class="text-sm text-amber-900 leading-relaxed"><strong>Important &mdash; compliance evidence:</strong> <code class="text-xs bg-amber-100 px-1 rounded">/v1/check</code> verdicts are <strong>not</strong> included in the audit trail and do <strong>not</strong> generate W3C Verifiable Credentials. For compliance-grade evidence (HIPAA, GDPR, EU AI Act, FDA 510(k), NIST AI RMF), use <code class="text-xs bg-amber-100 px-1 rounded">/v1/preflight</code>, which produces full audit-log entries and signed W3C VCs per verdict. The <code class="text-xs bg-amber-100 px-1 rounded">/v1/check</code> endpoint is suitable for experimentation and high-frequency agent gating only.</p>
+      </div>
     </section>
 
     <section id="capabilities" class="mb-16 scroll-mt-24">
@@ -582,7 +610,7 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
         </div>
         <div class="bg-[#f5f4f0] rounded-xl p-4">
           <p class="font-bold text-sm mb-1">Pro</p>
-          <p class="text-slate-500 text-xs">From app.sgraal.com. $0.001/call after 10K.</p>
+          <p class="text-slate-500 text-xs">From app.sgraal.com. Flat monthly plan, hard-capped at your tier — no per-call charges.</p>
         </div>
         <div class="bg-[#f5f4f0] rounded-xl p-4">
           <p class="font-bold text-sm mb-1">Enterprise</p>

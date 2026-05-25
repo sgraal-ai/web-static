@@ -181,7 +181,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 
 <section>
 <h2 class="text-2xl font-bold mb-4">3. Free Tier & Paid Plans</h2>
-<p class="text-slate-600 leading-relaxed mb-4">The free tier provides 10,000 decisions per month at no cost, no credit card required. Usage beyond 10,000 decisions per month is billed at $0.001 per decision. Enterprise plans are available with custom pricing. All billing is processed through Stripe and governed by Stripe's terms.</p>
+<p class="text-slate-600 leading-relaxed mb-4">The free tier provides 10,000 audited decisions per month (via /v1/preflight) at no cost, no credit card required. Paid plans (Pro, Team) include a fixed monthly /v1/preflight audit allowance for a flat subscription fee — there are no per-decision charges and no overage fees. When a plan reaches its monthly audit allowance, further /v1/preflight requests are paused (HTTP 429) until the next billing cycle or until you upgrade to a higher plan. The /v1/check preview endpoint is unlimited across all tiers and does not count toward the audit allowance; preview responses are not included in the audit trail and do not generate Verifiable Credentials. Enterprise plans are available with custom pricing and allowances. All billing is processed through Stripe and governed by Stripe's terms.</p>
 <p class="text-slate-600 leading-relaxed">We reserve the right to modify pricing with 30 days notice to registered users.</p>
 </section>
 

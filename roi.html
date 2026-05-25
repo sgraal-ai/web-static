@@ -412,9 +412,8 @@ function update() {
   const errorsPrevented = Math.round(errorsPerMonth * catchRate);
   const costWithout = errorsPerMonth * costPerError;
   
-  // Sgraal cost: $0.001/decision after 10K free
-  const billableDecisions = Math.max(0, decisions - 10000);
-  const sgraalCost = billableDecisions * 0.001;
+  // Sgraal cost: flat monthly subscription for the tier that covers this volume (Model A — no overage)
+  const sgraalCost = sgraalTierCost(decisions);
   
   const savings = (errorsPrevented * costPerError) - sgraalCost;
   const roiMultiple = sgraalCost > 0 ? Math.round(savings / sgraalCost) : '∞';
@@ -424,6 +423,14 @@ function update() {
   document.getElementById('sgraalCost').textContent = sgraalCost < 1 ? 'Free' : fmt(sgraalCost);
   document.getElementById('savings').textContent = fmt(Math.max(0, savings));
   document.getElementById('roi').textContent = `ROI: ${typeof roiMultiple === 'number' ? fmtNum(roiMultiple) + 'x' : roiMultiple}`;
+}
+
+// Model A: flat monthly subscription cost for the tier that covers this decision volume (no overage).
+function sgraalTierCost(decisions) {
+  if (decisions <= 10000) return 0;        // Free
+  if (decisions <= 250000) return 99;      // Pro $99/mo
+  if (decisions <= 2500000) return 499;    // Team $499/mo
+  return 2500;                             // Enterprise (from $2,500/mo)
 }
 
 update();
