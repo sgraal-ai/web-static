@@ -210,6 +210,13 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 </section>
 
+<!-- /v1/check compliance disclaimer (precision messaging 2026-05-26) -->
+<section class="px-8 py-6">
+  <div class="max-w-4xl mx-auto rounded-xl border border-amber-300 bg-amber-50 p-5">
+    <p class="text-sm text-amber-900 leading-relaxed"><strong>Important &mdash; compliance evidence:</strong> <code class="text-xs bg-amber-100 px-1 rounded">/v1/check</code> verdicts are <strong>not</strong> included in the audit trail and do <strong>not</strong> generate W3C Verifiable Credentials. For compliance-grade evidence (HIPAA, GDPR, EU AI Act, FDA 510(k), NIST AI RMF), use <code class="text-xs bg-amber-100 px-1 rounded">/v1/preflight</code>, which produces full audit-log entries and signed W3C VCs per verdict. The <code class="text-xs bg-amber-100 px-1 rounded">/v1/check</code> endpoint is suitable for experimentation and high-frequency agent gating only.</p>
+  </div>
+</section>
+
 <!-- Capability tiles (Tier 3 — Concept) -->
 <section class="py-20 px-6 bg-[#f5f4f0]">
 <head class="mb-12">
