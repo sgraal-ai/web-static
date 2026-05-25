@@ -128,7 +128,7 @@ pre code { font-size: 0.8125rem; }
 
 <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Insights API · Live</p>
 <h1 class="text-4xl font-extrabold tracking-tight mb-4">One call. The whole memory picture. Plain English.</h1>
-<p class="text-slate-600 text-lg mb-12"><code>GET /v1/insights</code> looks up an agent's most recent memory state, runs a lightweight preflight, and returns the full synthesis &mdash; forecast, monoculture risk, single-point-of-failure, healing ROI, calibration state, and the four-band decision &mdash; plus a natural-language <code>insight_summary</code> you can drop straight into a dashboard or an alert.</p>
+<p class="text-slate-600 text-lg mb-12"><code>GET /v1/insights</code> looks up an agent's most recent memory state, runs the same scoring engine as <code>/v1/preflight</code> (unmetered, no audit log) scoped to an insight view, and returns the full synthesis &mdash; forecast, monoculture risk, single-point-of-failure, healing ROI, calibration state, and the four-band decision &mdash; plus a natural-language <code>insight_summary</code> you can drop straight into a dashboard or an alert.</p>
 
 <section class="mb-16">
 <h2 class="text-2xl font-bold mb-3">What it does</h2>
