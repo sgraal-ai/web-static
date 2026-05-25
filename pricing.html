@@ -226,13 +226,14 @@
 <div class="bg-white border border-[#e5e7eb] rounded-2xl p-8 shadow-sm flex flex-col">
 <h3 class="text-lg font-bold mb-1">Free</h3>
 <div class="mb-4"><span class="text-4xl font-extrabold">$0</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-6">10,000 decisions/month</p>
+<p class="text-slate-500 text-sm mb-6">10,000 audited decisions/month (/v1/preflight)</p>
 <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
 <li>&#x2713; Basic preflight (USE_MEMORY / WARN / ASK_USER / BLOCK)</li>
 <li>&#x2713; 4 pillars: Time &middot; Identity &middot; Evidence &middot; Path</li>
 <li>&#x2713; 27 production integrations</li>
 <li>&#x2713; Community support</li>
 <li>&#x2713; 1 API key</li>
+<li class="text-slate-400 text-xs">Plus unlimited /v1/check preview — unmetered on every tier (no audit log)</li>
 </ul>
 <a href="/playground" class="block text-center bg-[#0B0F14] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#1a1f28] transition-all">Start free</a>
 <p class="text-xs text-slate-400 mt-3 text-center">No credit card required</p>
@@ -243,7 +244,7 @@
 <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#c9a962] text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
 <h3 class="text-lg font-bold mb-1">Pro</h3>
 <div class="mb-4"><span class="text-4xl font-extrabold">$99</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-2">250,000 decisions/month</p>
+<p class="text-slate-500 text-sm mb-2">250,000 audited decisions/month</p>
 <p class="text-xs text-[#c9a962] mb-6">Annual: $79/mo (save 20%)</p>
 <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
 <li>&#x2713; Everything in Free</li>
@@ -253,7 +254,7 @@
 <li>&#x2713; Webhook + SIEM export (CEF/LEEF)</li>
 <li>&#x2713; Email support</li>
 <li>&#x2713; Up to 10 agents</li>
-<li class="text-slate-400 text-xs">No overage — hard cap at 250,000/mo. Need more? Upgrade to Team.</li>
+<li class="text-slate-400 text-xs">Hard cap on /v1/preflight audits; /v1/check preview unmetered. Upgrade to Team for 2.5M.</li>
 </ul>
 <a href="https://app.sgraal.com" class="block text-center bg-[#c9a962] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">Start Pro</a>
 </div>
@@ -262,7 +263,7 @@
 <div class="bg-white border border-[#e5e7eb] rounded-2xl p-8 shadow-sm flex flex-col">
 <h3 class="text-lg font-bold mb-1">Team</h3>
 <div class="mb-4"><span class="text-4xl font-extrabold">$499</span><span class="text-slate-400 text-sm">/month</span></div>
-<p class="text-slate-500 text-sm mb-2">2,500,000 decisions/month</p>
+<p class="text-slate-500 text-sm mb-2">2,500,000 audited decisions/month</p>
 <p class="text-xs text-[#c9a962] mb-6">Annual: $399/mo (save 20%)</p>
 <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-1">
 <li>&#x2713; Everything in Pro</li>
@@ -272,7 +273,7 @@
 <li>&#x2713; Policy Engine (custom rules)</li>
 <li>&#x2713; SLA dashboard</li>
 <li>&#x2713; Priority support (Slack)</li>
-<li class="text-slate-400 text-xs">No overage — hard cap at 2,500,000/mo. Need more? Upgrade to Enterprise.</li>
+<li class="text-slate-400 text-xs">Hard cap on /v1/preflight audits; /v1/check preview unmetered. Upgrade to Enterprise.</li>
 </ul>
 <a href="https://app.sgraal.com" class="block text-center bg-[#0B0F14] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#1a1f28] transition-all">Start Team</a>
 </div>
@@ -302,6 +303,10 @@
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-8">
 <p class="text-slate-600 mb-4">Free tier: <strong>10,000 decisions</strong> = enough to protect a full production agent for a week.</p>
 <p class="text-slate-400 text-sm">All plans include: 6 detection layers &middot; 87-module scoring pipeline &middot; W3C PROV provenance &middot; CVSS-mapped attack surface &middot; A2A protocol support</p>
+</div>
+<div class="bg-white border border-[#e5e7eb] rounded-xl p-8 mt-6 text-left">
+<h3 class="font-bold text-[#0B0F14] mb-2">Two integration paths</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Sgraal offers two integration paths: an <strong>unmetered preview endpoint</strong> (<code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/check</code>) for frictionless experimentation and agent-loop gating &mdash; no quota, no audit log &mdash; and a <strong>metered audit endpoint</strong> (<code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/preflight</code>) for production-grade decisions with full audit trail, W3C Verifiable Credentials, and compliance evidence. Both run the same scoring engine; tier limits apply to <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/preflight</code> audits.</p>
 </div>
 </div>
 </section>
