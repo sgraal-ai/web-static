@@ -1113,7 +1113,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 </div>
 <div class="bg-gold/[0.05] rounded-xl p-6 border border-gold/20 mt-8">
 <div class="text-xs uppercase tracking-widest text-gold-dark font-bold mb-1">Estimated Monthly Savings</div>
-<div class="text-4xl font-black text-gold-dark" id="roi-result">$0.001,200</div>
+<div class="text-4xl font-black text-gold-dark" id="roi-result">$1,733,901</div>
 </div>
 </div>
 </div>
@@ -1154,10 +1154,18 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
         modal.classList.toggle('flex');
     }
 
+    // Model A: flat monthly subscription cost for the tier that covers this decision volume (no overage).
+    function sgraalTierCost(decisions) {
+        if (decisions <= 10000) return 0;        // Free
+        if (decisions <= 250000) return 99;      // Pro $99/mo
+        if (decisions <= 2500000) return 499;    // Team $499/mo
+        return 2500;                             // Enterprise (from $2,500/mo)
+    }
+
     function calculateROI() {
         const decisions = parseFloat(document.getElementById('roi-decisions').value) || 0;
         const errorCost = parseFloat(document.getElementById('roi-error-cost').value) || 0;
-        const savings = (decisions * 0.034 * 0.85 * errorCost) - (decisions * 0.001);
+        const savings = (decisions * 0.034 * 0.85 * errorCost) - sgraalTierCost(decisions);
         const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(savings);
         document.getElementById('roi-result').innerText = formatted;
     }
@@ -1165,6 +1173,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
     ['roi-decisions', 'roi-error-cost'].forEach(id => {
         document.getElementById(id).addEventListener('input', calculateROI);
     });
+    calculateROI();
 
     async function handleRegister(e) {
         e.preventDefault();
