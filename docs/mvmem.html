@@ -128,7 +128,8 @@ pre code { font-size: 0.8125rem; }
 
 <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Minimum Viable Memory · Live</p>
 <h1 class="text-4xl font-extrabold tracking-tight mb-4">Keep less. Decide the same.</h1>
-<p class="text-slate-600 text-lg mb-12"><code>POST /v1/mvmem</code> finds the smallest subset of an agent's memory that still produces the same decision &mdash; and tells you which entries are safe to drop. One result, two payoffs: <strong>data-minimization</strong> for privacy regulation, and a <strong>token-cost cut</strong> on every downstream model call.</p>
+<p class="text-slate-600 text-lg mb-3"><code>POST /v1/mvmem</code> finds the smallest subset of an agent's memory that still produces the same decision &mdash; and tells you which entries are safe to drop. One result, two payoffs: <strong>data-minimization</strong> for privacy regulation, and a <strong>token-cost cut</strong> on every downstream model call.</p>
+<p class="text-sm text-slate-500 mb-12 italic"><code>/v1/mvmem</code> is an unmetered analysis endpoint: it runs the same scoring engine as <code>/v1/preflight</code> internally, but does <strong>not</strong> count toward your monthly quota and does <strong>not</strong> write an audit-log entry.</p>
 
 <section class="mb-16">
 <h2 class="text-2xl font-bold mb-3">What it does</h2>
