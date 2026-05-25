@@ -70,7 +70,7 @@
     {
       "@type": "HowToStep",
       "name": "Make your first verdict call",
-      "text": "Call client.check() with agent_id and memory_state arguments"
+      "text": "Call client.preflight() with a memory_state list of entries"
     },
     {
       "@type": "HowToStep",
@@ -246,25 +246,27 @@
     </div>
 
 <pre id="qs-code-python" role="tabpanel" aria-labelledby="qs-tab-python" class="bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg"><span class="text-slate-500"># pip install sgraal</span>
-<span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> Sgraal
+<span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> SgraalClient
 
-client = Sgraal(api_key=<span class="text-emerald-300">"sg_demo_playground"</span>)
-verdict = client.check(agent_id=<span class="text-emerald-300">"my-agent"</span>, memory_state=[{<span class="text-emerald-300">"text"</span>: <span class="text-emerald-300">"user prefers email"</span>}])
-<span class="text-violet-300">print</span>(verdict.decision)  <span class="text-slate-500"># USE_MEMORY / WARN / ASK_USER / BLOCK</span></pre>
+client = SgraalClient(api_key=<span class="text-emerald-300">"sg_demo_playground"</span>)
+verdict = client.preflight(memory_state=[{<span class="text-emerald-300">"id"</span>: <span class="text-emerald-300">"mem1"</span>, <span class="text-emerald-300">"content"</span>: <span class="text-emerald-300">"user prefers email"</span>, <span class="text-emerald-300">"type"</span>: <span class="text-emerald-300">"preference"</span>}])
+<span class="text-violet-300">print</span>(verdict[<span class="text-emerald-300">"recommended_action"</span>])  <span class="text-slate-500"># USE_MEMORY / WARN / ASK_USER / BLOCK</span></pre>
 
-<pre id="qs-code-node" role="tabpanel" aria-labelledby="qs-tab-node" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg"><span class="text-slate-500">// npm install sgraal</span>
-<span class="text-violet-300">import</span> { Sgraal } <span class="text-violet-300">from</span> <span class="text-emerald-300">"sgraal"</span>;
+<pre id="qs-code-node" role="tabpanel" aria-labelledby="qs-tab-node" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg"><span class="text-slate-500">// Node 18+ — global fetch, no SDK package needed</span>
+<span class="text-violet-300">const</span> res = <span class="text-violet-300">await</span> fetch(<span class="text-emerald-300">"https://api.sgraal.com/v1/preflight"</span>, {
+  method: <span class="text-emerald-300">"POST"</span>,
+  headers: { <span class="text-emerald-300">"Authorization"</span>: <span class="text-emerald-300">"Bearer sg_demo_playground"</span>, <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
+  body: JSON.stringify({ memory_state: [{ id: <span class="text-emerald-300">"mem1"</span>, content: <span class="text-emerald-300">"user prefers email"</span>, type: <span class="text-emerald-300">"preference"</span> }] }),
+});
+<span class="text-violet-300">const</span> verdict = <span class="text-violet-300">await</span> res.json();
+console.log(verdict.recommended_action);  <span class="text-slate-500">// USE_MEMORY / WARN / ASK_USER / BLOCK</span></pre>
 
-<span class="text-violet-300">const</span> client = <span class="text-violet-300">new</span> Sgraal({ apiKey: <span class="text-emerald-300">"sg_demo_playground"</span> });
-<span class="text-violet-300">const</span> verdict = <span class="text-violet-300">await</span> client.check({ agentId: <span class="text-emerald-300">"my-agent"</span>, memoryState: [{ text: <span class="text-emerald-300">"user prefers email"</span> }] });
-console.log(verdict.decision);</pre>
-
-<pre id="qs-code-curl" role="tabpanel" aria-labelledby="qs-tab-curl" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg">curl -X POST https://api.sgraal.com/v1/check \
+<pre id="qs-code-curl" role="tabpanel" aria-labelledby="qs-tab-curl" class="hidden bg-[#0B0F14] text-slate-200 p-5 rounded-b-xl rounded-tr-xl text-sm font-mono overflow-x-auto leading-relaxed shadow-lg">curl -X POST https://api.sgraal.com/v1/preflight \
   -H <span class="text-emerald-300">"Authorization: Bearer sg_demo_playground"</span> \
   -H <span class="text-emerald-300">"Content-Type: application/json"</span> \
-  -d <span class="text-emerald-300">'{"agent_id": "my-agent", "memory_state": [{"text": "user prefers email"}]}'</span></pre>
+  -d <span class="text-emerald-300">'{"memory_state": [{"id": "mem1", "content": "user prefers email", "type": "preference"}]}'</span></pre>
 
-    <p class="text-xs text-slate-500 mt-3 text-center">Hit <code class="text-xs bg-[#faf9f6] px-1.5 py-0.5 rounded">POST /v1/check</code> on api.sgraal.com — the simple-door endpoint that returns a plain English verdict.</p>
+    <p class="text-xs text-slate-500 mt-3 text-center">Hit <code class="text-xs bg-[#faf9f6] px-1.5 py-0.5 rounded">POST /v1/preflight</code> on api.sgraal.com — the scoring endpoint that returns the four-band decision plus full analytics. For an unmetered plain-strings preview, see <code class="text-xs bg-[#faf9f6] px-1.5 py-0.5 rounded">POST /v1/check</code>.</p>
   </div>
 </section>
 
