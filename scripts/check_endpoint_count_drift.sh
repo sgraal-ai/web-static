@@ -54,6 +54,7 @@ PAGES=(
   "comply.html"
   "docs.html"
   "docs/api.html"
+  "docs/quickstart.html"
   "whitepaper.html"
   "benchmark.html"
   "pricing.html"
