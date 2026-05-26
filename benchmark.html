@@ -337,7 +337,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     </div>
     <div class="bg-[#f5f4f0] rounded-xl p-6">
       <h3 class="font-bold text-[#0B0F14] mb-2">Reliability Definition</h3>
-      <p>A memory entry is classified as "unreliable" if it receives omega_mem_final ≥ 31 (WARN threshold) on at least one preflight call. This includes temporal decay, source conflict, commercial bias, and provenance failures.</p>
+      <p>A memory entry is classified as "unreliable" if its final metric crosses the tenant's configured WARN threshold on at least one preflight call. See <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">/v1/research/constants</code> for your runtime-exposed canonical values. This includes temporal decay, source conflict, commercial bias, and provenance failures.</p>
     </div>
     <div class="bg-[#f5f4f0] rounded-xl p-6">
       <h3 class="font-bold text-[#0B0F14] mb-2">Scoring Models</h3>
