@@ -445,13 +445,12 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <div class="flex items-center gap-2 mb-3">
         <span class="material-symbols-outlined text-[#c9a962]">flip_to_back</span>
         <h4 class="font-bold text-base">Reverse Adversarial Generator</h4>
-        <span class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-          <span class="w-1 h-1 rounded-full bg-[#c9a962] mr-1 animate-pulse"></span>
-          Beta
+        <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+          Concept
         </span>
       </div>
-      <p class="text-slate-600 text-sm leading-relaxed mb-3">Generate adversarial inputs targeting your specific agent. The same matematikai engine (DirectLiNGAM + drift_detector + omega_mem) that detects attacks can be inverted to produce them — a red team service for your CISO.</p>
-      <p class="text-xs text-slate-500 italic border-l-2 border-[#c9a962]/30 pl-3">Status: core inversion works on test corpora. The customer-specific tuning (point the generator at your agent's actual production memory state distribution) is being shaped with design partners.</p>
+      <p class="text-slate-600 text-sm leading-relaxed mb-3">Generate adversarial inputs targeting your specific agent. The same mathematical engine (DirectLiNGAM + drift_detector + omega_mem) that detects attacks can be inverted to produce them — a red team service for your CISO.</p>
+      <p class="text-xs text-slate-500 italic border-l-2 border-amber-300 pl-3">Status: Concept. The <code class="text-xs bg-slate-100 px-1 rounded">/v1/redteam/run</code> endpoint currently returns placeholder resilience scores, not real adversarial-test results; the core inversion logic and customer-specific tuning are in development with design partners.</p>
     </div>
 
     <div class="bg-white border-2 border-[#c9a962]/40 rounded-xl p-6 hover:border-[#c9a962] transition-all">
@@ -504,7 +503,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       Honest disclosure
     </h4>
     <p class="text-slate-700 text-xs leading-relaxed mb-2"><strong>Today:</strong> 6 detection layers, fleet vaccine, behavioral profile, SSE streaming, twin entries, R12 + counterfactual.</p>
-    <p class="text-slate-700 text-xs leading-relaxed mb-2"><strong>Beta:</strong> Reverse Adversarial Generator, In-Decision Human Veto. Both work in test; production hardening is what design partners are shaping.</p>
+    <p class="text-slate-700 text-xs leading-relaxed mb-2"><strong>Beta:</strong> In-Decision Human Veto &mdash; SSE streaming is GA; the veto-callback handshake is in test. <strong>Concept:</strong> Reverse Adversarial Generator &mdash; the <code class="text-xs">/v1/redteam/run</code> endpoint returns placeholder resilience scores; real adversarial testing is on our security roadmap.</p>
     <p class="text-slate-700 text-xs leading-relaxed"><strong>Concept:</strong> Memory DNA forensics. Long-horizon direction.</p>
   </div>
 </div>
