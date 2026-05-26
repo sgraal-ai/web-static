@@ -81,7 +81,7 @@ pre code { background: transparent; padding: 0; color: inherit; }
 <li><strong>Free energy / M_energy</strong> — the formula (<code>F</code>, <code>elbo</code>, <code>kl_divergence</code>, <code>reconstruction</code>) is closed-form over your request payload plus the loaded scoring config.</li>
 <li><strong>The 10+1 omega components</strong> (<code>s_freshness</code>, <code>s_drift</code>, <code>s_provenance</code>, …, <code>r_importance</code>) — pure formulas over the per-entry inputs you send. (For example, <code>s_drift</code> is a fixed linear combination of <code>s_freshness</code> and <code>s_interference</code> with weights from the loaded config.) <code>s_recovery</code> uses the <code>healing_counter</code> you supply per entry, not internal state.</li>
 <li><strong>The base decision band</strong> — <code>omega_final &lt; t_warn → USE_MEMORY</code>, and so on. Thresholds come from the loaded <code>_CFG</code>, which is locked against post-import mutation.</li>
-<li><strong>Mahalanobis χ² threshold</strong> — Wilson–Hilferty closed-form approximation.</li>
+<li><strong>Mahalanobis χ² threshold</strong> — a closed-form approximation (no sampling, no randomness).</li>
 </ul>
 <p>In a freshly-restarted process, two back-to-back calls with the same payload return identical responses. We verified this empirically across 30 calls in the determinism audit (3 cases × 10 runs over 60s, zero drift in either omega or decision).</p>
 
@@ -132,7 +132,7 @@ Authorization: Bearer YOUR_KEY
 <p>To verify which config was loaded, fingerprint it:</p>
 <pre><code>GET /v1/research/constants
 Authorization: Bearer YOUR_KEY</code></pre>
-<p>The <code>cfg_checksum</code> field (a sha256 fingerprint of the loaded config) lets you compare against a known-good value. The <code>q_table_episodes</code> field shows the current Q-table state per domain.</p>
+<p>The <code>cfg_checksum</code> field (a cryptographic fingerprint of the loaded config) lets you compare against a known-good value. The <code>q_table_episodes</code> field shows the current Q-table state per domain.</p>
 
 <h2>What we cannot promise</h2>
 <ul>
