@@ -403,21 +403,9 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <!-- Compound Detection -->
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mb-10">
 <h3 class="font-bold text-[#0B0F14] mb-3">Compound Attack Detection</h3>
-<p class="text-slate-500 text-sm mb-4">When multiple attack vectors fire simultaneously, Sgraal computes a unified attack surface score.</p>
-<table class="w-full text-sm">
-<thead><tr class="border-b border-slate-200 text-left">
-<th class="py-2 text-slate-500 font-medium">Layers active</th>
-<th class="py-2 text-slate-500 font-medium">attack_surface_score</th>
-<th class="py-2 text-slate-500 font-medium">attack_surface_level</th>
-</tr></thead>
-<tbody class="font-mono text-[#0B0F14]">
-<tr class="border-b border-slate-100"><td class="py-2">1 layer SUSPICIOUS</td><td class="py-2 text-[#c9a962]">0.50</td><td class="py-2">MODERATE</td></tr>
-<tr class="border-b border-slate-100"><td class="py-2">2 layers SUSPICIOUS</td><td class="py-2 text-[#c9a962]">0.65</td><td class="py-2">HIGH</td></tr>
-<tr class="border-b border-slate-100"><td class="py-2">3 layers SUSPICIOUS</td><td class="py-2 text-[#c9a962]">0.70</td><td class="py-2">HIGH</td></tr>
-<tr class="border-b border-slate-100"><td class="py-2">1 layer MANIPULATED</td><td class="py-2 text-red-500">1.00</td><td class="py-2">CRITICAL</td></tr>
-<tr><td class="py-2">All 3 MANIPULATED</td><td class="py-2 text-red-500">1.40</td><td class="py-2">CRITICAL</td></tr>
-</tbody>
-</table>
+<p class="text-slate-500 text-sm mb-4">When multiple attack vectors fire simultaneously, Sgraal computes a unified attack surface score using a 4-layer weighted composition with decreasing emphasis on secondary signals. The more detection layers escalate (and the more severe each escalation), the higher the composite score and level.</p>
+<p class="text-slate-500 text-sm mb-2">Levels: <span class="font-mono text-[#0B0F14]">NONE</span> &middot; <span class="font-mono text-[#0B0F14]">LOW</span> &middot; <span class="font-mono text-[#0B0F14]">MODERATE</span> &middot; <span class="font-mono text-[#0B0F14]">HIGH</span> &middot; <span class="font-mono text-red-500">CRITICAL</span>.</p>
+<p class="text-slate-400 text-xs italic">Exact layer weights and level thresholds are per-tenant configurable via <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">SGRAAL_SCORING_CONFIG</code>.</p>
 </div>
 
 <div class="grid md:grid-cols-3 gap-6 text-center">
