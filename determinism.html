@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics — gated on cookie consent (loader injected by sub-sprint cookie-consent) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.sgraalLoadGA = function() {
+    if (window.sgraalGALoaded) return;
+    window.sgraalGALoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K7B978E0HF';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-K7B978E0HF');
+  };
+  try {
+    if (localStorage.getItem('sgraal_cookie_consent') === 'accepted') {
+      window.sgraalLoadGA();
+    }
+  } catch(e) {}
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<title>Determinism Guarantee — Sgraal</title>
+<meta name="description" content="Same input + same config checksum + cold Q-table produces the same Sgraal verdict, byte-for-byte. How to verify per-tenant determinism and get strict per-call replay reproducibility for audit and compliance.">
+<meta property="og:title" content="Determinism Guarantee — Sgraal">
+<meta property="og:description" content="Same input + same config checksum + cold Q-table → same omega and same recommended_action. Verify it, and how to get strict per-call reproducibility for forensic / replay / compliance work.">
+<meta property="og:url" content="https://sgraal.com/determinism">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://sgraal.com/determinism">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+body { font-family: 'Inter', sans-serif; background: #fff; color: #0B0F14; }
+h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85em; background: #f5f4f0; padding: 0.1em 0.4em; border-radius: 4px; }
+pre { background: #0B0F14; color: #e5e7eb; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; font-size: 0.8125rem; line-height: 1.6; }
+pre code { background: transparent; padding: 0; color: inherit; }
+.prose-block h2 { font-size: 1.6rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; }
+.prose-block h3 { font-size: 1.15rem; font-weight: 700; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+.prose-block p { color: #334155; line-height: 1.7; margin-bottom: 1rem; }
+.prose-block ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+.prose-block li { margin-bottom: 0.5rem; line-height: 1.6; }
+</style>
+<meta property="og:image" content="https://sgraal.com/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="USE_MEMORY · WARN · ASK_USER · BLOCK — the immune system for AI agent memory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgraal.com/og/og-default.png">
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-sm h-20">
+<div class="flex justify-between items-center max-w-5xl mx-auto px-6 h-full">
+<a class="text-2xl font-bold tracking-tighter text-[#101419]" href="/">Sgraal</a>
+<div class="flex items-center space-x-6 font-medium text-sm">
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/research">Research</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/security">Security</a>
+<a class="text-slate-600 hover:text-[#c9a962] transition-colors" href="/docs">Docs</a>
+</div>
+</div>
+</nav>
+
+<main class="max-w-3xl mx-auto px-6 pt-32 pb-24 prose-block">
+
+<p class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase mb-3">Trust &amp; Transparency</p>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Determinism Guarantee</h1>
+
+<p class="text-lg text-slate-600"><strong>One-line:</strong> Same input + same <code>cfg_checksum</code> + cold Q-table → same omega and same <code>recommended_action</code>, byte-for-byte. The narrative "deterministic decision boundary system" holds <strong>in the absence of feedback events</strong>.</p>
+
+<p>This page explains exactly what that qualification means, how to verify it for your tenant, and what to do if you need stronger guarantees for forensic / replay / compliance work.</p>
+
+<h2>What is deterministic by default</h2>
+<p>For any single <code>POST /v1/preflight</code> call, these components produce identical output for identical input within a single process:</p>
+<ul>
+<li><strong>Mahalanobis distance</strong> — the covariance matrix is computed from the entries in your request only. No rolling window, no cross-tenant population. Same <code>memory_state</code> → same Mahalanobis distance, always.</li>
+<li><strong>Free energy / M_energy</strong> — the formula (<code>F</code>, <code>elbo</code>, <code>kl_divergence</code>, <code>reconstruction</code>) is closed-form over your request payload plus the loaded scoring config.</li>
+<li><strong>The 10+1 omega components</strong> (<code>s_freshness</code>, <code>s_drift</code>, <code>s_provenance</code>, …, <code>r_importance</code>) — pure formulas over the per-entry inputs you send. (For example, <code>s_drift</code> is a fixed linear combination of <code>s_freshness</code> and <code>s_interference</code> with weights from the loaded config.) <code>s_recovery</code> uses the <code>healing_counter</code> you supply per entry, not internal state.</li>
+<li><strong>The base decision band</strong> — <code>omega_final &lt; t_warn → USE_MEMORY</code>, and so on. Thresholds come from the loaded <code>_CFG</code>, which is locked against post-import mutation.</li>
+<li><strong>Mahalanobis χ² threshold</strong> — Wilson–Hilferty closed-form approximation.</li>
+</ul>
+<p>In a freshly-restarted process, two back-to-back calls with the same payload return identical responses. We verified this empirically across 30 calls in the determinism audit (3 cases × 10 runs over 60s, zero drift in either omega or decision).</p>
+
+<h2>What can drift across calls (and why it usually doesn't)</h2>
+<p>Three subsystems can override <code>recommended_action</code> based on cross-call state. <strong>None of them mutate during a <code>/v1/preflight</code> call</strong> — they only evolve when external feedback events occur.</p>
+
+<h3>1. Q-table policy gradient override</h3>
+<ul>
+<li><strong>What:</strong> a per-domain reinforcement-learning Q-table that learns from <code>/v1/outcome</code> feedback.</li>
+<li><strong>Trigger to override:</strong> a minimum number of episodes for the called domain, a positive advantage above a configured threshold, and not in exploration mode.</li>
+<li><strong>Mutates when:</strong> you call <code>POST /v1/outcome</code> to close a case. Each outcome for that domain accrues one episode.</li>
+<li><strong>Cold-start protection:</strong> below the episode minimum for a domain, the override never fires — base scoring decides.</li>
+<li><strong>Where to verify:</strong> <code>GET /v1/research/constants</code> returns <code>q_table_episodes</code> per domain. If those are 0 for the domains you call, you're in the cold-start regime.</li>
+</ul>
+
+<h3>2. <code>te_history</code> backfill</h3>
+<ul>
+<li><strong>What:</strong> a rolling buffer of recent omega scores per <code>(tenant, domain)</code> that feeds the change-point and tail-risk detectors (CUSUM/EWMA, Page-Hinkley, jump-diffusion, Lévy flight).</li>
+<li><strong>Effect:</strong> detection layers can flag SUSPICIOUS based on score-history anomalies, which can upgrade <code>recommended_action</code>.</li>
+<li><strong>Mutates when:</strong> each <code>/v1/preflight</code> writes its omega to the bounded rolling buffer.</li>
+<li><strong>How to opt out:</strong> set <code>score_history</code> explicitly in your request and set <code>pg_override_disabled: true</code>. The system uses only your supplied history; no backfill.</li>
+</ul>
+
+<h3>3. Severity sticky floor</h3>
+<ul>
+<li><strong>What:</strong> if a previous call for the same <code>(tenant, agent_id)</code> returned ASK_USER or BLOCK with an elevated omega, the current call's decision is floored at that previous decision.</li>
+<li><strong>Effect:</strong> recovers from transient noise without flapping between safe/unsafe.</li>
+<li><strong>How to opt out:</strong> set <code>pg_override_disabled: true</code> to skip the previous-decision lookup.</li>
+</ul>
+
+<h3>Cosmetic-only drift (does not affect decisions)</h3>
+<p><code>free_energy.surprise</code> is normalized against a per-tenant, per-domain maximum that grows with your traffic. It affects warning <em>text</em> only — never <code>recommended_action</code> or <code>omega_mem_final</code>.</p>
+
+<h2>How to get strict per-call determinism</h2>
+<p>For audit, replay, regression-testing, or compliance (NIST AI RMF MEASURE-4.1) scenarios where you need bit-exact reproducibility:</p>
+<pre><code>POST /v1/preflight
+Authorization: Bearer YOUR_KEY
+
+{
+  "memory_state": [...],
+  "action_type": "irreversible",
+  "domain": "fintech",
+  "agent_id": "audit_run_2026_05_03",
+  "score_history": [],
+  "pg_override_disabled": true
+}</code></pre>
+<p>What <code>pg_override_disabled: true</code> does: skips the Q-table policy-gradient override, skips the <code>te_history</code> backfill (uses only your <code>score_history</code>), and skips the severity sticky-floor lookup. The response is then fully determined by <code>(memory_state, action_type, domain, score_history, agent_id, _CFG)</code>. Restart the process and replay the same request → same omega + same <code>recommended_action</code>.</p>
+<p>To verify which config was loaded, fingerprint it:</p>
+<pre><code>GET /v1/research/constants
+Authorization: Bearer YOUR_KEY</code></pre>
+<p>The <code>cfg_checksum</code> field (a sha256 fingerprint of the loaded config) lets you compare against a known-good value. The <code>q_table_episodes</code> field shows the current Q-table state per domain.</p>
+
+<h2>What we cannot promise</h2>
+<ul>
+<li><strong>Across process restarts with a different <code>SGRAAL_SCORING_CONFIG</code></strong> — a different config means a different <code>cfg_checksum</code> means different decisions. This is by design (production calibration evolves).</li>
+<li><strong>Across Sgraal version upgrades</strong> — formula changes can shift decision boundaries. We document major changes in the changelog and surface them via <code>cfg_checksum</code> differences.</li>
+<li><strong>For floating-point precision below ~1e-10</strong> — the <code>decision_trail</code> is byte-exact; raw component values may differ in their last decimal places across CPU architectures.</li>
+<li><strong>For requests that explicitly query mutable state</strong> — endpoints like <code>/v1/agent/{id}/behavioral-profile</code> are intentionally stateful and not in scope of this guarantee.</li>
+</ul>
+
+<h2>Compliance mappings</h2>
+<ul>
+<li><strong>NIST AI RMF MEASURE-4.1</strong> — <code>cfg_checksum</code> and <code>q_table_episodes</code> are evidence artifacts; include them in audit packages.</li>
+<li><strong>EU AI Act Article 13 (Transparency)</strong> — the determinism qualification is documented here and surfaced via the response. Customers can produce an audit trail showing same input → same output across replays.</li>
+<li><strong>GDPR Article 22 (automated decision-making)</strong> — per-call replay-determinism enables the "right to explanation": if a customer disputes a decision, you can replay the exact request and trace the <code>decision_trail</code>.</li>
+</ul>
+
+<h2>See also</h2>
+<ul>
+<li><code>GET /v1/research/constants</code> — config fingerprint + Q-table episode counts</li>
+<li><code>POST /v1/verify</code> — Z3 SMT verification of decision logic</li>
+<li><code>POST /v1/certify</code> — issue a SgraalProof2026 W3C Verifiable Credential for a specific decision</li>
+</ul>
+
+<p class="text-sm text-slate-400 mt-12">Questions on determinism for a compliance review? <a href="mailto:hello@sgraal.com" class="text-[#c9a962] hover:underline">hello@sgraal.com</a></p>
+
+</main>
+
+<footer class="border-t border-slate-100 py-10 text-center text-sm text-slate-400">
+<p>&copy; 2026 Sgraal &middot; <a href="/" class="hover:text-[#c9a962]">Home</a> &middot; <a href="/research" class="hover:text-[#c9a962]">Research</a> &middot; <a href="/security" class="hover:text-[#c9a962]">Security</a></p>
+</footer>
+
+</body>
+</html>
