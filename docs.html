@@ -487,7 +487,7 @@ console.log(result.recommended_action); // BLOCK</pre>
             <div><span class="text-[#c9a962]">timestamp_integrity</span> — VALID | SUSPICIOUS | MANIPULATED. Detects timestamp forgery: old decisions disguised as fresh.</div>
             <div><span class="text-[#c9a962]">identity_drift</span> — CLEAN | SUSPICIOUS | MANIPULATED. Detects gradual authority escalation across agent hops.</div>
             <div><span class="text-[#c9a962]">consensus_collapse</span> — CLEAN | SUSPICIOUS | MANIPULATED. Detects self-reinforcing false consensus from a single root source.</div>
-            <div><span class="text-[#c9a962]">attack_surface_score</span> — 0.0–1.40. Compound score when multiple layers fire. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</div>
+            <div><span class="text-[#c9a962]">attack_surface_score</span> — a compound score across detection layers, bounded and tier-labelled. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</div>
             <div><span class="text-[#c9a962]">detection_feedback_applied</span> — Boolean. True when detection results boosted scoring components (s_freshness, s_provenance, s_interference).</div>
           </div>
         </div>
@@ -498,6 +498,8 @@ console.log(result.recommended_action); // BLOCK</pre>
     <section id="memcube" class="mb-16 scroll-mt-24 bg-[#faf9f6] -mx-8 px-8 py-12 rounded-xl">
       <h2 class="text-2xl font-bold mb-2 text-[#0B0F14]">MemCube v4.1 — Memory Entry Schema</h2>
       <p class="text-[#374151] mb-6">The standardized format for AI agent memory entries. All Sgraal endpoints accept MemCube v4.1 formatted memory states.</p>
+
+      <p class="text-[#374151] text-sm mb-6 italic">Two version axes: <strong>v4.1</strong> is the field-set version of the schema (the additive set of fields supported, including the latest extensions). Responses return a <code class="text-xs font-mono text-[#c9a962]">memcube_version</code> field that reports the JSON-schema serialization version (e.g. <code class="text-xs font-mono text-[#c9a962]">"2.0.0"</code>) — this is the schema-contract version, not a downgrade of the field set. Both are correct; they refer to different things.</p>
 
       <h3 class="text-lg font-bold mb-3 text-[#0B0F14]">Required Fields</h3>
       <div class="overflow-x-auto mb-6">
@@ -590,7 +592,7 @@ console.log(result.recommended_action); // BLOCK</pre>
 pip install langchain-sgraal   <span style="color:#6b7280"># LangChain integration</span>
 pip install mem0-sgraal        <span style="color:#6b7280"># mem0 integration</span>
 pip install openai-sgraal      <span style="color:#6b7280"># OpenAI Agents SDK hook</span>
-pip install crewai-sgraal      <span style="color:#6b7280"># CrewAI memory guard</span>
+<span style="color:#6b7280"># CrewAI memory guard — coming soon, package not yet published</span>
 pip install autogen-sgraal     <span style="color:#6b7280"># AutoGen middleware</span>
 pip install sgraal-rag         <span style="color:#6b7280"># RAG pipeline filter</span>
 npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cursor + Windsurf</span></pre>
@@ -643,7 +645,7 @@ npm install @sgraal/mcp        <span style="color:#6b7280"># Claude Desktop + Cu
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">LangChain</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install langchain-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory validator</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">mem0</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install mem0-sgraal</code><p class="text-slate-500 text-xs">Preflight hook for mem0 memories</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">OpenAI Agents SDK</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install openai-sgraal</code><p class="text-slate-500 text-xs">Preflight hook for message history</p></div>
-        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">CrewAI</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install crewai-sgraal</code><p class="text-slate-500 text-xs">Drop-in memory guard for CrewAI agents</p></div>
+        <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">CrewAI <span class="inline-block ml-1 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-slate-200 text-slate-600">Coming soon</span></p><p class="text-slate-500 text-xs">Drop-in memory guard for CrewAI agents — package not yet published; coming soon.</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">AutoGen</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install autogen-sgraal</code><p class="text-slate-500 text-xs">Context validation middleware for AutoGen</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">RAG Filter</p><code class="text-xs font-mono text-[#c9a962] block mb-1">pip install sgraal-rag</code><p class="text-slate-500 text-xs">Pipeline filter for LangChain and LlamaIndex</p></div>
         <div class="bg-[#f5f4f0] rounded-xl p-5"><p class="font-bold text-sm mb-1">MCP Server</p><code class="text-xs font-mono text-[#c9a962] block mb-1">npm install @sgraal/mcp</code><p class="text-slate-500 text-xs">Claude Desktop, Cursor, Windsurf</p></div>
