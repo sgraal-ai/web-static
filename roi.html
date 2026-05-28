@@ -231,7 +231,7 @@ input[type=number] { outline: none; }
     <!-- Error rate assumption -->
     <div class="bg-white rounded-xl p-4 border border-[#c9a962]/20">
       <p class="text-xs text-slate-500 leading-relaxed">
-        Based on industry data: <strong>34% of agent memories are unreliable</strong>.
+        Based on our adversarial corpus testing: <strong>34% of memories show reliability issues</strong>.
         Sgraal catches ~94% of memory errors before they cause downstream damage.
       </p>
       <p class="text-xs text-slate-500 italic mt-2">These figures reflect synthetic R12/R14 corpus performance; production calibration is pending paying-customer onboarding.</p>
@@ -406,7 +406,7 @@ function update() {
   document.getElementById('agentsVal').textContent = agents;
 
   // Calculations
-  const errorRate = 0.34; // 34% of memories unreliable
+  const errorRate = 0.34; // 34% of memories show reliability issues (from our adversarial corpus testing)
   const catchRate = 0.94; // Sgraal catches 94%
   const errorsPerMonth = Math.round(decisions * errorRate);
   const errorsPrevented = Math.round(errorsPerMonth * catchRate);
