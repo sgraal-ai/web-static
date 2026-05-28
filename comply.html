@@ -195,7 +195,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </h1>
 <p class="text-red-500 font-semibold text-sm mb-4">If you cannot prove compliance, you are not compliant.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
-  EU AI Act Art. 13 &middot; GDPR Art. 5(1)(c) &middot; FDA 510(k) &middot; NIST AI RMF — all mappable with one API call. Full audit trail. W3C Verifiable Credentials.
+  EU AI Act Articles 9, 12, 13, 14, 17 &middot; GDPR Art. 5(1)(c) &middot; FDA 510(k) &middot; NIST AI RMF — all mappable with one API call. Full audit trail. W3C Verifiable Credentials.
 </p>
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">Want to know what Sgraal does <em>not</em> claim? Read the <a href="/docs/threat-model" class="text-[#c9a962] hover:underline font-semibold">threat model</a> — including the explicit non-certification disclosure.</p>
 
@@ -238,7 +238,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <p class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4">With Sgraal</p>
       <ul class="space-y-3 text-slate-700 text-sm">
         <li>&rarr; Every decision checked against EU AI Act / GDPR / HIPAA in real time</li>
-        <li>&rarr; Non-compliant + irreversible = automatic BLOCK</li>
+        <li>&rarr; Non-compliant + irreversible = Sgraal returns BLOCK</li>
         <li>&rarr; Full cryptographic audit trail recorded</li>
         <li>&rarr; Compliance report generated in seconds, not months</li>
       </ul>
@@ -255,7 +255,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">1</div>
 <div class="relative z-10 pt-4">
 <h3 class="text-xl font-bold mb-4">Every decision is compliance-checked in real time</h3>
-<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Compliance profile evaluated on every preflight. Non-compliant + irreversible = automatic BLOCK.</p>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Compliance profile evaluated on every preflight. Non-compliant + irreversible = Sgraal returns BLOCK.</p>
 </div>
 </div>
 <div class="relative">
@@ -442,8 +442,8 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <span class="material-symbols-outlined text-[#c9a962]">gavel</span>
 </div>
 <h3 class="text-xl font-bold mb-3">Compliance Engine</h3>
-<p class="text-slate-600 text-sm leading-relaxed">4 built-in profiles: EU AI Act (Article 9, 12, 13), GDPR, FDA 510(k), HIPAA. Non-compliant + irreversible = automatic BLOCK.</p>
-<p class="text-xs italic text-slate-500 mt-2">Non-compliant actions never execute. Compliance is enforced, not just logged.</p>
+<p class="text-slate-600 text-sm leading-relaxed">4 built-in profiles: EU AI Act (Articles 9, 12, 13, 14, 17), GDPR, FDA 510(k), HIPAA. Non-compliant + irreversible = Sgraal returns BLOCK.</p>
+<p class="text-xs italic text-slate-500 mt-2">Non-compliant actions are flagged before execution. Sgraal returns a BLOCK verdict; runtime enforcement remains the integrator's responsibility — consistent with the verdict-layer scope of every Sgraal endpoint.</p>
 </div>
 <div class="md:col-span-3 bg-[#f5f4f0] p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all">
 <div class="bg-[#c9a962]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
