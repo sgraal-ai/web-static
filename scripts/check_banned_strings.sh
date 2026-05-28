@@ -83,7 +83,9 @@ ALLOWLIST=(
   # Line number updated 2026-05-22 og:image sub-sprint (+6 from cookie-banner's 164,
   # was 151 pre-banner, 120 in 1c-era). Updated 2026-05-23 canonical/og:url
   # completeness sub-sprint: +2 (canonical + og:url injected after <title>).
-  "security.html:172"
+  # Updated 2026-05-28 Phase 6 JSON-LD sub-sprint: +16 (JSON-LD block inserted
+  # before </head>; was 172).
+  "security.html:188"
   # The /startups page documents the three procurement blockers AI
   # startups hit when selling to enterprise. Blocker #3 quotes the
   # questions enterprise procurement actually asks: "What's your SOC 2
