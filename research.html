@@ -378,7 +378,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
 </div>
 
 <p class="text-center text-slate-500 text-sm mt-10">
-  Full module listing at <a href="https://github.com/sgraal-ai/core/tree/main/scoring_engine" target="_blank" rel="noopener noreferrer" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core/scoring_engine</a> · 87 modules · 12,000+ LOC of pure mathematics
+  Full module listing at <a href="https://github.com/sgraal-ai/core/tree/main/scoring_engine" target="_blank" rel="noopener noreferrer" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core/scoring_engine</a> · 87 modules · 11,000+ LOC of pure mathematics
 </p>
 
 </div>
@@ -483,7 +483,7 @@ python3 compare.py --baseline sgraal \
 
 <p><strong>2. Formal verification before merge.</strong> Three healing policy properties (monotonicity, idempotency, bounded drift) are encoded as Z3 SMT formulas and verified before any merge that touches healing logic. The <code class="text-xs bg-white px-1.5 py-0.5 rounded">api/main.py</code> healing path is gated on this check.</p>
 
-<p><strong>3. Transparency over claim.</strong> Every scoring constant exposed via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged. (Endpoint available to licensed customers via a full API key.)</p>
+<p><strong>3. Transparency over claim.</strong> Scoring engine configuration is available to licensed customers via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged.</p>
 
 <p><strong>4. Published failures.</strong> We document the 8 R12 PARKED cases (CC-004/007/008/009/010/011, PA-002/009) with full case description and our reasoning for not chasing 60/60 at all costs. Published failures keep the benchmark honest — and the philosophy of "safety-bias narrative is the right framing" is itself an artifact of multi-AI consensus from 2026-04-20.</p>
 
@@ -646,7 +646,6 @@ python3 compare.py --baseline sgraal \
 <ul class="space-y-2 text-on-surface-variant text-xs">
 <li><a class="hover:text-gold transition-colors" href="/security">Security</a></li>
 <li><a class="hover:text-gold transition-colors" href="/privacy">Privacy</a></li>
-<li><a class="hover:text-gold transition-colors" href="#" onclick="event.preventDefault(); window.sgraalCookieReshow && window.sgraalCookieReshow();">Cookie preferences</a></li>
 <li><a class="hover:text-gold transition-colors" href="/terms">Terms</a></li>
 <li><span class="text-slate-400">DPA <em>(Concept)</em></span></li>
 </ul>
