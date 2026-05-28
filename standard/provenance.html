@@ -167,7 +167,7 @@
 <div class="max-w-4xl mx-auto">
 <h2 class="text-2xl font-extrabold mb-4">Overview</h2>
 <p class="text-slate-600 mb-6">In multi-agent systems, memory passes through multiple agents before being acted upon. Each hop can modify, summarize, or reinterpret the original data. Without provenance tracking, there is no way to verify the chain of custody.</p>
-<p class="text-slate-600 mb-8">The <code class="text-[#c9a962]">provenance_chain</code> field in MemCube v3 provides an ordered list of agent identifiers that touched a memory entry, from its origin to the current holder.</p>
+<p class="text-slate-600 mb-8">The <code class="text-[#c9a962]">provenance_chain</code> field in MemCube v4.1 provides an ordered list of agent identifiers that touched a memory entry, from its origin to the current holder.</p>
 
 <h2 class="text-2xl font-extrabold mb-4">The provenance_chain field</h2>
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm mb-8">
@@ -182,7 +182,7 @@
   <span class="text-[#c9a962] font-bold">"provenance_chain": ["agent-planner-01", "agent-summarizer-03", "agent-executor-07"]</span>
 }</pre>
 </div>
-<p class="text-slate-500 text-sm mb-8">Optional field in MemCube v3. Default: empty list <code class="text-[#c9a962]">[]</code>. When absent, provenance detection is skipped (returns CLEAN).</p>
+<p class="text-slate-500 text-sm mb-8">Optional field in MemCube v4.1. Default: empty list <code class="text-[#c9a962]">[]</code>. When absent, provenance detection is skipped (returns CLEAN).</p>
 </div>
 </section>
 

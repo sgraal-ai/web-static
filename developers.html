@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>For Developers — Sgraal</title>
-<meta name="description" content="Drop-in safety for any AI agent memory. 11 production-grade SDKs + 29 framework adapters. Sgraal Proxy migrates Mem0 with one env var (Zep, Letta in progress). Apache 2.0 SDK. 5-line integration.">
+<meta name="description" content="Drop-in safety for any AI agent memory. Native integration for major agent stacks + community adapters. Apache 2.0 SDK. 5-line integration. Sgraal Proxy (Coming).">
 <meta property="og:title" content="For Developers — Sgraal">
-<meta property="og:description" content="Drop-in safety for any AI agent memory. 11 production-grade SDKs + 29 framework adapters. Sgraal Proxy migrates Mem0 with one env var (Zep, Letta in progress). Apache 2.0 SDK.">
+<meta property="og:description" content="Drop-in safety for any AI agent memory. Native integration for major agent stacks + community adapters. Sgraal Proxy (Coming). Apache 2.0 SDK.">
 <meta property="og:url" content="https://sgraal.com/developers">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
 </h1>
 
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
-  11 production-grade SDKs + 29 framework adapters. Apache 2.0 SDK on GitHub. <strong>Sgraal Proxy</strong> migrates your Mem0 agents with one env var change (Zep, Letta in progress). Real-time preflight before every action.
+  Native integration for major agent stacks + community adapters. Apache 2.0 SDK on GitHub. <strong>Sgraal Proxy (Coming):</strong> drop-in migration path for Mem0, Zep, Letta — in active design. Real-time preflight before every action.
 </p>
 
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
@@ -240,8 +240,8 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   <a href="/playground" class="inline-flex items-center border-2 border-[#c9a962] text-[#c9a962] px-8 py-4 rounded-lg font-bold text-base hover:bg-[#c9a962]/5 transition-all">
     Try in playground →
   </a>
-  <a href="#proxy" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
-    Migrate from Mem0/Zep →
+  <a href="mailto:hello@sgraal.com?subject=Sgraal%20Proxy%20-%20early%20interest" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
+    Sgraal Proxy (Coming) →
   </a>
 </div>
 
@@ -260,10 +260,10 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
 <div class="max-w-6xl mx-auto">
 
 <div class="text-center mb-12">
-  <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">⭐ Featured · Drop-in migration</span>
+  <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">Concept · Coming</span>
   <h2 class="text-4xl font-bold tracking-tight mb-4">Sgraal Proxy</h2>
   <p class="text-slate-600 text-lg max-w-2xl mx-auto">
-    Migrate a Mem0 agent in 30 seconds — one env var, zero code change. Zep and Letta in progress.
+    Intended drop-in migration path for Mem0, Zep, Letta — in active design. The proxy.sgraal.com endpoint is not yet available; the example below shows the intended integration pattern.
   </p>
 </div>
 
@@ -273,9 +273,8 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   <div class="bg-[#c9a962]/20 w-12 h-12 rounded-lg flex items-center justify-center">
     <span class="text-[#c9a962] text-2xl font-bold">⇄</span>
   </div>
-  <span class="inline-flex items-center bg-white border-2 border-[#c9a962] text-[#c9a962] text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-    <span class="w-2 h-2 rounded-full bg-[#c9a962] mr-2 animate-pulse"></span>
-    Beta · In Development
+  <span class="inline-flex items-center bg-slate-100 text-slate-500 text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+    Concept · Coming
   </span>
 </div>
 
@@ -290,15 +289,15 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
       Same pattern for Zep (<code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">ZEP_URL=...</code>), Letta, and other memory backends. The proxy passes through everything Sgraal doesn't need to block.
     </p>
 
-    <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg mb-6">
-      <p class="text-amber-900 text-sm leading-relaxed">
-        <strong>Beta status:</strong> Sgraal Proxy is in active development. Mem0 path is most mature. Zep and Letta paths are in progress. Early access customers shape the roadmap — request access via the form on the right.
+    <div class="bg-slate-50 border-l-4 border-slate-300 p-4 rounded-r-lg mb-6">
+      <p class="text-slate-700 text-sm leading-relaxed">
+        <strong>Concept · Coming:</strong> Sgraal Proxy is in active design. The code example above shows the intended integration pattern; the <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">proxy.sgraal.com</code> endpoint is not yet available. Early-interest sign-ups shape the roadmap — register via the link on the right.
       </p>
     </div>
 
     <div class="flex flex-wrap gap-3">
-      <a href="mailto:earlyaccess@sgraal.com?subject=Sgraal%20Proxy%20-%20Early%20Access" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
-        Request early access →
+      <a href="mailto:hello@sgraal.com?subject=Sgraal%20Proxy%20-%20early%20interest" class="inline-flex items-center bg-[#c9a962] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-lg transition-all">
+        Register early interest →
       </a>
       <a href="/docs" class="inline-flex items-center text-[#c9a962] hover:underline px-3 py-2.5 font-bold text-sm">
         Read the Proxy docs →
@@ -485,7 +484,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">CrewAI</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">crewai-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install crewai-sgraal</p>
@@ -501,7 +500,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">LlamaIndex</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">llamaindex-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install llamaindex-sgraal</p>
@@ -509,7 +508,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Haystack</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">haystack-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install haystack-sgraal</p>
@@ -517,7 +516,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Semantic Kernel</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">semantic-kernel-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install semantic-kernel-sgraal</p>
@@ -541,7 +540,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Memvid</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">memvid-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install memvid-sgraal</p>
@@ -549,7 +548,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Mnemos</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">mnemos-sgraal</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">pip install mnemos-sgraal</p>
@@ -597,7 +596,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Go</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">github.com/sgraal-ai/go</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">go get github.com/sgraal-ai/go</p>
@@ -605,7 +604,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Java</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">ai.sgraal:sgraal-java</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">Maven / Gradle</p>
@@ -613,7 +612,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">C# / .NET</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">Sgraal.Sdk</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">dotnet add package Sgraal.Sdk</p>
@@ -621,7 +620,7 @@ function showTab(ev, id) {
 <a href="/compatibility" class="group bg-white border border-slate-200 hover:border-[#c9a962] rounded-xl p-5 transition-all">
   <div class="flex items-center justify-between mb-2">
     <h3 class="font-bold text-sm">Rust</h3>
-    <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Live</span>
+    <span class="inline-flex items-center bg-slate-100 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">Coming</span>
   </div>
   <p class="text-slate-500 text-xs font-mono mb-1 truncate">sgraal-rs</p>
   <p class="text-slate-400 text-[10px] font-mono truncate">cargo add sgraal-rs</p>

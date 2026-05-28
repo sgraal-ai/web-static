@@ -183,11 +183,10 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="max-w-4xl mx-auto text-center">
 <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-6">PROTECT</span>
 <h1 class="text-5xl md:text-7xl font-extrabold text-[#0B0F14] tracking-tighter mb-8 leading-[1.1]">
-  Your agent can be manipulated through memory.<br/>Sgraal stops that before it happens.
+  Your agent can be manipulated through memory.<br/>Sgraal flags it before it happens, with a recorded verdict.
 </h1>
-<p class="text-red-500 font-semibold text-sm mb-2">And you won't see it happen.</p>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-  Memory poisoning, prompt injection, and tampering are blocked before they affect agent actions.
+  Memory poisoning, prompt injection, and tampering are flagged before they affect agent actions — Sgraal returns a verdict (USE_MEMORY · WARN · ASK_USER · BLOCK) and a cryptographic audit trail.
 </p>
 <a href="https://app.sgraal.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
   Get API Key <span class="material-symbols-outlined ml-2">arrow_forward</span>
@@ -267,8 +266,8 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <h3 class="text-xl font-bold mb-3">Write-time Protection</h3>
 <p class="text-slate-600 leading-relaxed text-sm">Write firewall: blocks poisoned data before storage — prevention not detection. Configure namespace rules and review violations via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/rules</code> and <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/firewall/violations</code>. Sleeper detector: proactive scan for dormant trigger conditions.</p>
-<p class="text-xs italic text-slate-500 mt-3">Never store poisoned memory. Ever.</p>
-<p class="text-xs italic text-slate-500 mt-2">Most tools detect after storage. Sgraal blocks before it ever enters memory.</p>
+<p class="text-xs italic text-slate-500 mt-3">Block high-risk memory before storage; ongoing action-time detection catches what slips through.</p>
+<p class="text-xs italic text-slate-500 mt-2">Sgraal can block before storage via the write firewall, in addition to action-time preflight. Synthetic adversarial corpora; production calibration pending paying-customer onboarding.</p>
 <p class="text-xs text-slate-500 mt-3">Write-time filtering is one of Sgraal's protection layers. The primary mode is action-time preflight — <a href="/memory-ecosystem-map" class="text-[#c9a962] font-semibold hover:underline">see the full memory stack &rarr;</a></p>
 </div>
 <div class="md:col-span-2 bg-[#f5f4f0] p-8 rounded-xl hover:border-[#c9a962]/20 border border-transparent transition-all">
@@ -333,13 +332,14 @@ print(preflight.recommended_action)    # BLOCK</pre>
 <div class="bg-[#c9a962]/10 w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-6">
 <span class="material-symbols-outlined text-[#c9a962] text-3xl">vaccines</span>
 </div>
-<h2 class="text-4xl font-bold tracking-tight mb-6">Fleet-Wide Immunity in Under 1 Second</h2>
-<p class="text-lg text-slate-600 leading-relaxed">When one agent detects an attack, Sgraal extracts the attack signature and immunizes every agent in your fleet &mdash; automatically, in under a second. No manual intervention. No configuration. One agent attacked, all agents protected.</p>
+<div class="inline-flex items-center bg-white border border-[#c9a962] text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">Beta</div>
+<h2 class="text-4xl font-bold tracking-tight mb-6">Fleet-Wide Immunity (Beta)</h2>
+<p class="text-lg text-slate-600 leading-relaxed">When one agent detects an attack, Sgraal extracts the attack signature and propagates it across your fleet. <strong>In-tenant propagation is near-instant;</strong> cross-fleet propagation is in active development &mdash; see <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">Memory Vaccination</a> for the current production scope.</p>
 </div>
 <div class="grid md:grid-cols-3 gap-8 mb-12">
 <div class="bg-white p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all text-center">
-<div class="text-3xl font-extrabold text-[#c9a962] mb-2">&lt; 1s</div>
-<div class="text-sm text-slate-500">Immunization time</div>
+<div class="text-3xl font-extrabold text-[#c9a962] mb-2">Near-instant</div>
+<div class="text-sm text-slate-500">In-tenant immunization (Beta)</div>
 </div>
 <div class="bg-white p-8 rounded-xl border border-transparent hover:border-[#c9a962]/20 transition-all text-center">
 <div class="text-3xl font-extrabold text-[#c9a962] mb-2">O(1)</div>
