@@ -188,7 +188,7 @@
 </div>
 </div>
 <div class="bg-white border-l-4 border-[#c9a962] rounded-r-xl p-6 shadow-sm">
-<p class="text-slate-600 text-sm">87 sequential scoring modules evaluated per preflight call. Pipeline includes Weibull freshness decay, 5-method drift ensemble, sheaf cohomology, Shapley attribution, Z3 formal verification, and 4 post-reconciliation detection layers. All modules execute in a single synchronous pass.</p>
+<p class="text-slate-600 text-sm"><strong>Two-layer profile.</strong> The figures above are the <strong>HTTP response time</strong> — what the calling agent waits for. The <strong>full 87-module analytics pipeline</strong> (Weibull freshness decay, 5-method drift ensemble, sheaf cohomology, Shapley attribution, Z3 formal verification, and the 4 post-reconciliation detection layers) has a full-profile time of <strong>~3,500ms</strong>, returned in the <code class="text-[#c9a962]">pipeline_ms</code> field of every preflight response. See <a href="/latency" class="text-[#c9a962] hover:underline">/latency</a> for the complete two-layer breakdown.</p>
 </div>
 <p class="text-xs text-slate-500 italic mt-6 text-center">Measured against R12/R14 adversarial benchmarks. Production calibration pending paying-customer onboarding.</p>
 </div>
@@ -218,7 +218,7 @@
 </div>
 <div class="mt-10 bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
 <h3 class="font-bold mb-2">Compound Attack Surface Score</h3>
-<p class="text-slate-500 text-sm">When multiple detection layers fire simultaneously, Sgraal computes a unified attack surface score: <code class="text-[#c9a962]">r1 + 0.3&times;r2 + 0.1&times;r3 + 0.05&times;r4</code>. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</p>
+<p class="text-slate-500 text-sm">When multiple detection layers fire simultaneously, Sgraal computes a unified compound attack-surface score across the detection layers, bounded and tier-labelled. Levels: NONE, LOW, MODERATE, HIGH, CRITICAL.</p>
 </div>
 </div>
 </section>
