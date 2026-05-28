@@ -50,7 +50,16 @@ from typing import Iterable
 
 KEYWORDS_RE = re.compile(
     r"\b(omega|omega_mem|USE_MEMORY|WARN|ASK_USER|BLOCK|threshold|"
-    r"lambda|weibull|injection|poisoning|replay|tamper|sleeper|drift)\b"
+    r"lambda|weibull|injection|poisoning|replay|tamper|sleeper|drift|"
+    # 2026-05-28: closes the PR #81 / IP-WP-1 gap (whitepaper.html exposed
+    # `r1 + 0.3×r2 + 0.1×r3 + 0.05×r4` with no keyword from the original
+    # set — the attack_surface coefficient family was uncovered).
+    # The existing 3+-decimal-in-5-line-window requirement still applies,
+    # so qualitative public text ("compound attack-surface score, tier-
+    # labelled. Levels: NONE/LOW/...") does NOT fire (no decimals); only
+    # actual numeric leaks (β-coefficients, multiplier values, weight
+    # tables) trigger.
+    r"attack_surface|attack|compound|coefficient|multiplier|surface)\b"
     r"|Ω|λ",
     re.IGNORECASE,
 )
