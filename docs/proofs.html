@@ -123,7 +123,53 @@ pre code { font-size: 0.8125rem; }
 </div>
 </nav>
 
-<main class="pt-40 pb-32 px-6">
+<div class="flex pt-20 min-h-screen">
+
+  <aside class="hidden lg:block w-64 shrink-0 border-r border-slate-200 h-screen sticky top-20 overflow-y-auto py-8 px-6">
+    <div class="space-y-6">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Getting Started</p>
+        <nav class="space-y-1">
+          <a href="/docs#quickstart" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Quick Start (5 min)</a>
+          <a href="/docs#concepts" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Core Concepts</a>
+          <a href="/docs#memcube" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MemCube v4.1 Schema</a>
+          <a href="/docs#smrs" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SMRS v1.0 Score</a>
+          <a href="/docs#sdks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">SDK Quick Reference</a>
+          <a href="/docs#auth" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Authentication</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Integrations</p>
+        <nav class="space-y-1">
+          <a href="/docs#mcp" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">MCP (Claude / Cursor)</a>
+          <a href="/docs#sdks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">All SDKs</a>
+          <a href="/docs#webhooks" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Webhooks</a>
+          <a href="/docs#compliance" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Compliance Profiles</a>
+          <a href="/docs#rate-limits" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Rate Limits</a>
+          <a href="/docs#errors" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Error Codes</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Capabilities</p>
+        <nav class="space-y-1">
+          <a href="/docs/insights" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Insights</a>
+          <a href="/docs/counterfactual" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Counterfactual Navigator</a>
+          <a href="/docs/mvmem" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Minimum Viable Memory</a>
+          <a href="/docs/proofs" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Proofs &amp; Certificates</a>
+          <a href="/docs/integrations/opentelemetry" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">OpenTelemetry</a>
+          <a href="/docs/vaccination" class="block text-sm text-slate-600 hover:text-[#c9a962] py-1 transition-colors">Memory Vaccination</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Reference</p>
+        <nav class="space-y-1">
+          <a href="/docs/api" class="block text-sm font-semibold text-[#c9a962] py-1">API Reference (359 endpoints) &rarr;</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 max-w-3xl mx-auto pt-8 pb-32 px-6">
 <div class="max-w-3xl mx-auto">
 
 <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-3">Proofs &amp; Certificates · Live</p>
@@ -246,6 +292,7 @@ curl -sS https://api.sgraal.com/v1/proofs/convergence \
 <p class="text-slate-600 text-sm mt-4">Related: <a href="/docs/mvmem" class="text-[#c9a962] hover:underline">/docs/mvmem</a> &middot; <a href="/docs/vaccination" class="text-[#c9a962] hover:underline">/docs/vaccination</a> &middot; <a href="/security" class="text-[#c9a962] hover:underline">/security</a> &middot; <a href="/docs/api" class="text-[#c9a962] hover:underline">/docs/api</a></p>
 </section>
 
+</div>
 </div>
 </main>
 
