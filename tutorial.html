@@ -339,11 +339,11 @@ result = client.preflight(
 <section class="pb-20 px-8 max-w-5xl mx-auto">
 <div class="text-center mb-10">
 <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2">Decision bands</p>
-<h2 class="text-3xl font-extrabold tracking-tight mb-3">What the 3 decisions mean</h2>
+<h2 class="text-3xl font-extrabold tracking-tight mb-3">What the 4 decisions mean</h2>
 <p class="text-slate-600 max-w-2xl mx-auto">Every <code>/v1/preflight</code> call returns a <code>recommended_action</code> from a fixed set. Here is what each one means in agent code, with realistic storylines that show when each one fires.</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
 <!-- USE_MEMORY -->
 <div class="bg-white border border-emerald-200 rounded-xl p-6 shadow-sm">
@@ -360,9 +360,24 @@ result = client.preflight(
 </div>
 </div>
 
+<!-- WARN -->
+<div class="bg-white border border-yellow-200 rounded-xl p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-yellow-700 mb-2">Decision 2</p>
+<h3 class="text-xl font-extrabold mb-3 text-yellow-800"><code>WARN</code></h3>
+<p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Use the memory but log at higher verbosity.</span> Sgraal found a signal worth recording, but not strong enough to interrupt the agent's flow. The agent proceeds, and the entry is flagged in the audit log for review.</p>
+<div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
+<p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Storyline — analytics agent</p>
+<p class="text-slate-700 text-sm leading-relaxed">A reporting agent queries last quarter's revenue. The memory entry is fresh and trusted, but a low-grade drift signal (a small source-trust drop) fires. Sgraal returns <code>WARN</code>: the agent continues, but the event is logged for a periodic review.</p>
+</div>
+<div class="bg-[#0d1117] rounded-lg p-4">
+<pre class="text-[#e2e8f0] text-xs font-mono"><span class="text-slate-500"># response</span>
+"recommended_action": "WARN"</pre>
+</div>
+</div>
+
 <!-- ASK_USER -->
 <div class="bg-white border border-amber-200 rounded-xl p-6 shadow-sm">
-<p class="text-xs font-bold uppercase tracking-widest text-amber-700 mb-2">Decision 2</p>
+<p class="text-xs font-bold uppercase tracking-widest text-amber-700 mb-2">Decision 3</p>
 <h3 class="text-xl font-extrabold mb-3 text-amber-800"><code>ASK_USER</code></h3>
 <p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Pause and confirm with a human.</span> The memory is not clearly malicious, but at least one signal (often freshness, occasionally trust) is below the bar for autonomous action.</p>
 <div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
@@ -377,7 +392,7 @@ result = client.preflight(
 
 <!-- BLOCK -->
 <div class="bg-white border border-red-200 rounded-xl p-6 shadow-sm">
-<p class="text-xs font-bold uppercase tracking-widest text-red-700 mb-2">Decision 3</p>
+<p class="text-xs font-bold uppercase tracking-widest text-red-700 mb-2">Decision 4</p>
 <h3 class="text-xl font-extrabold mb-3 text-red-800"><code>BLOCK</code></h3>
 <p class="text-slate-600 text-sm mb-4"><span class="font-semibold">Do not act on this memory.</span> At least one detection layer fired with a manipulation signal that cannot be overridden by downstream reasoning.</p>
 <div class="bg-[#faf9f6] border border-slate-200 rounded-lg p-4 mb-4">
@@ -392,9 +407,9 @@ result = client.preflight(
 
 </div>
 
-<!-- WARN footnote -->
+<!-- Integration note -->
 <div class="bg-[#faf9f6] border border-slate-200 rounded-xl p-5 mt-6 text-sm text-slate-600">
-<p><span class="font-semibold text-slate-800">There is also a fourth band, <code>WARN</code>,</span> between <code>USE_MEMORY</code> and <code>ASK_USER</code>. <code>WARN</code> says the memory looks usable but worth logging at higher verbosity. Use it for telemetry without interrupting the agent's flow. Many integrations collapse <code>WARN</code> into <code>USE_MEMORY</code> + a metric; others surface it as a UI hint. See the <a class="text-[#c9a962] hover:underline" href="/docs/api">API reference</a> for the full contract.</p>
+<p><span class="font-semibold text-slate-800">Integration note.</span> Many integrations collapse <code>WARN</code> into <code>USE_MEMORY</code> + a metric; others surface it as a UI hint. See the <a class="text-[#c9a962] hover:underline" href="/docs/api">API reference</a> for the full contract.</p>
 </div>
 
 </section>

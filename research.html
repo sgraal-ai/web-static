@@ -204,9 +204,6 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   <a href="https://github.com/sgraal-ai/core/tree/main/tests/corpus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#0B0F14] text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-black transition-all">
     Benchmark on GitHub <span class="material-symbols-outlined ml-2">north_east</span>
   </a>
-  <a href="/determinism" class="inline-flex items-center text-slate-600 hover:text-[#c9a962] px-4 py-4 font-semibold text-sm transition-all">
-    Determinism audit →
-  </a>
 </div>
 
 </div>
@@ -486,7 +483,7 @@ python3 compare.py --baseline sgraal \
 
 <p><strong>2. Formal verification before merge.</strong> Three healing policy properties (monotonicity, idempotency, bounded drift) are encoded as Z3 SMT formulas and verified before any merge that touches healing logic. The <code class="text-xs bg-white px-1.5 py-0.5 rounded">api/main.py</code> healing path is gated on this check.</p>
 
-<p><strong>3. Transparency over claim.</strong> Every scoring constant exposed via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged. The full determinism audit doc lives at <a href="/determinism" class="text-[#c9a962] hover:underline">/determinism</a>.</p>
+<p><strong>3. Transparency over claim.</strong> Every scoring constant exposed via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged. (Endpoint available to licensed customers via a full API key.)</p>
 
 <p><strong>4. Published failures.</strong> We document the 8 R12 PARKED cases (CC-004/007/008/009/010/011, PA-002/009) with full case description and our reasoning for not chasing 60/60 at all costs. Published failures keep the benchmark honest — and the philosophy of "safety-bias narrative is the right framing" is itself an artifact of multi-AI consensus from 2026-04-20.</p>
 
