@@ -1,0 +1,66 @@
+name: Navbar + footer drift check
+
+# Locks in the byte-identical footer + top-navbar state achieved by:
+#   - Phase 8a (#89) homepage footer cleanup
+#   - Phase 8b (#90) site-wide footer harmonization (44/44 e53145718d76)
+#   - Phase 8c-audit (#91) header verified 44/44 (395430f8631b)
+#
+# Any future PR that drifts the footer or top-navbar on ANY of the 44
+# web-static .html files will FAIL this gate, forcing either:
+#   (a) revert of the unintentional change, OR
+#   (b) intentional update of scripts/canonical_hashes.json in the SAME
+#       PR, with an explicit hash-change note in the PR description.
+#
+# Mode policy — STRICT on both PR + push-to-main (no soak window — the
+# canonical state is already established and verified). This mirrors the
+# IP-leak-check pattern; differs from endpoint-count-drift which has a
+# WARN-on-PR phase, because for footer/navbar drift there is no
+# advisory-only intermediate state — either the page matches canonical
+# or it doesn't.
+#
+# Canonical script: scripts/check_navbar_footer_drift.py
+# Policy file:      scripts/canonical_hashes.json
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_navbar_footer_drift.py'
+      - 'scripts/canonical_hashes.json'
+      - '.github/workflows/navbar-footer-drift-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/check_navbar_footer_drift.py'
+      - 'scripts/canonical_hashes.json'
+      - '.github/workflows/navbar-footer-drift-check.yml'
+  workflow_dispatch:
+
+jobs:
+  check-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Navbar + footer drift check (STRICT on PR)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run navbar + footer drift check
+        run: python3 scripts/check_navbar_footer_drift.py
+
+  check-main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    name: Navbar + footer drift check (main / dispatch — STRICT)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run navbar + footer drift check
+        run: python3 scripts/check_navbar_footer_drift.py
