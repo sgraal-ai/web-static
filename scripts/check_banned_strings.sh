@@ -34,7 +34,16 @@
 #   - After 1a nav rollout (2026-05-19): threat-model:246/247, cvss:169,
 #     security:120, startups:203 (newly added in 1c)
 #   - After 1f tier-aware nav rollout (2026-05-21): threat-model:277/278,
-#     cvss:200, security:151, startups:234 (current)
+#     cvss:200, security:151, startups:234
+#   - After 1c cookie-consent catch-up + 1f og:image sub-sprint (2026-05-22):
+#     threat-model:290/291 → 296/297, cvss:218 → 225, security:164 → 188,
+#     startups:247 → 253 (og:image rollout injected 6 meta tags near top of
+#     every GA-instrumented page; standard/ og:url completeness was +1 more
+#     on cvss; security canonical/og:url was +2 + Phase 6 JSON-LD was +16).
+#   - 2026-05-30 audit (B2 drift audit) — re-verified every entry's cited
+#     line still contains a banned pattern. Result: 5/5 allowlist entries
+#     CURRENT, 0 drift. Gate output: "PASS: 0 banned-string hits outside
+#     allowlist." See PR body for the per-entry audit table.
 # Line shifts come from canonical nav expansion (more Tier 2/3 entries added).
 #
 # Behavior:
