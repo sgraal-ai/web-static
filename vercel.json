@@ -4,6 +4,9 @@
   "rewrites": [
     { "source": "/customers", "destination": "/case-studies" }
   ],
+  "redirects": [
+    { "source": "/signup", "destination": "https://app.sgraal.com/account", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
