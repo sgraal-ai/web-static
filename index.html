@@ -264,11 +264,11 @@
 <form id="register-form" class="flex items-center gap-3 max-w-md" onsubmit="return handleRegister(event)">
 <input type="email" id="register-email" placeholder="you@company.com" required
   class="flex-1 bg-white border border-black/[0.12] rounded-xl px-4 py-3 text-sm font-body text-obsidian placeholder:text-on-surface-variant/50 focus:outline-none focus:border-gold transition-colors" />
-<button type="submit" id="register-btn" class="bg-gold text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-[#b8973f] transition-all whitespace-nowrap">Get API Key</button>
+<button type="submit" id="register-btn" class="bg-gold text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-[#b8973f] transition-all whitespace-nowrap">Start free trial</button>
 </form>
 <p id="register-error" class="hidden mt-2 text-sm" style="color:#e24b4a"></p>
 <p id="register-success" class="hidden mt-2 font-semibold" style="color:#c9a962;font-size:16px"></p>
-<span class="text-[12px] text-on-surface-variant px-1 mt-2 inline-block">30-day Try Free · 1,000 decisions · No credit card required</span>
+<span class="text-[12px] text-on-surface-variant px-1 mt-2 inline-block">30 days · 1,000 decisions · No credit card required</span>
 </div>
 <div class="flex flex-wrap gap-6 items-center text-sm font-medium">
 <a class="text-gold hover:underline transition-colors" href="/benchmark">See benchmark -&gt;</a>
@@ -1208,7 +1208,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
         } catch (err) {
             errEl.textContent = err.message || 'Something went wrong. Please try again.';
             errEl.classList.remove('hidden');
-            btn.textContent = 'Get API Key';
+            btn.textContent = 'Start free trial';
             btn.disabled = false;
         }
         return false;
