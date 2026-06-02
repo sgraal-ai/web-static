@@ -202,7 +202,7 @@
 <p class="text-slate-600 leading-relaxed mb-4">Two fundamentally different systems were used:</p>
 <ul class="list-disc pl-6 text-slate-600 leading-relaxed mb-4 space-y-2">
 <li>A probabilistic reasoning layer (Grok), optimized for real-world signal detection and adaptive inference</li>
-<li>A formal verification layer (Sgraal), using deterministic constraints, provenance tracking, and non-overridable logic</li>
+<li>A deterministic structural layer (Sgraal), using fixed constraints, provenance tracking, and non-overridable logic</li>
 </ul>
 <p class="text-slate-600 leading-relaxed mb-4">Neither system had access to the other's internals.<br>Neither system modified its architecture to align with the other.</p>
 <p class="text-slate-600 leading-relaxed mb-4">Each round used a structured JSONL corpus.<br>Each system ran the corpus independently.<br>Results were compared only after execution.</p>
@@ -272,7 +272,7 @@
 <div class="mb-8">
 <h3 class="text-xl font-bold mb-3">Round 6: Memory Time Attack <span class="text-slate-400 font-normal">(60 cases, proposed by Sgraal)</span></h3>
 <p class="text-slate-600 leading-relaxed mb-4">Timestamp forgery. Retroactive rewrites. Old decisions injected as fresh truth.</p>
-<p class="text-slate-600 leading-relaxed mb-4">No content filter catches this. Only structural and formal verification works. Zero bleed.</p>
+<p class="text-slate-600 leading-relaxed mb-4">No content filter catches this. Only structural, deterministic checks work. Zero bleed.</p>
 <p class="text-slate-600 leading-relaxed">Both stacks: <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span>.</p>
 </div>
 
@@ -362,8 +362,8 @@
 <p class="text-slate-600 text-sm">Adaptive reasoning, real-world noise handling, weak signal detection. Designed for environments where certainty is impossible but action is still required.</p>
 </div>
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
-<h3 class="font-bold mb-2">Sgraal <span class="text-slate-400 font-normal text-sm">(formal layer)</span></h3>
-<p class="text-slate-600 text-sm">Z3-backed verification, non-overridable constraints, provenance chains, memory vaccination, deterministic replay. Designed to catch what probability misses.</p>
+<h3 class="font-bold mb-2">Sgraal <span class="text-slate-400 font-normal text-sm">(deterministic layer)</span></h3>
+<p class="text-slate-600 text-sm">Deterministic structural checks, non-overridable constraints, provenance chains, memory vaccination, deterministic replay. Designed to catch what probability misses.</p>
 </div>
 </div>
 <p class="text-slate-600 leading-relaxed mb-4 font-semibold">Formal logic caught what probability missed.</p>

@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>For Healthcare — Sgraal</title>
-<meta name="description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
+<meta name="description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, policy-consistency checks, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
 <meta property="og:title" content="For Healthcare — Sgraal">
-<meta property="og:description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, Z3 SMT verification, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
+<meta property="og:description" content="Clinical AI deployment with FDA-mappable evidence, HIPAA-compliant memory minimization, policy-consistency checks, deterministic replay, convergence proof PDF generation. Beta: clinical incident replay. Design partner program.">
 <meta property="og:url" content="https://sgraal.com/healthcare">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -245,10 +245,10 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
     <div class="flex items-center gap-2 mb-3">
       <span class="material-symbols-outlined text-[#c9a962]">verified</span>
-      <h3 class="font-bold text-base">Z3 SMT formal verification</h3>
+      <h3 class="font-bold text-base">Policy-rule consistency checks</h3>
       <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
     </div>
-    <p class="text-slate-600 text-sm leading-relaxed">Three healing-policy properties (monotonicity, idempotency, bounded drift) are formally verified before any merge touching the scoring engine. FDA reviewers can cite mathematical proof of safety invariants.</p>
+    <p class="text-slate-600 text-sm leading-relaxed">Our healing-policy rules pass automated logical consistency checks (e.g. no rule both allows and blocks the same case; the healing counter is monotonic). These verify policy-rule invariants — not a formal proof of each live decision.</p>
   </div>
 
   <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
@@ -473,7 +473,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <ul class="space-y-2 text-sm text-slate-700 leading-relaxed">
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">✓</span>
-          <span><strong>Today (Live):</strong> FDA mapping, Z3 SMT verification, deterministic replay, W3C VCs, MVMem (HIPAA + GDPR), PCTL probabilistic verification, Convergence Proof PDF generation — all in production.</span>
+          <span><strong>Today (Live):</strong> FDA mapping, policy-consistency checks, deterministic replay, W3C VCs, MVMem (HIPAA + GDPR), PCTL probabilistic verification, Convergence Proof PDF generation — all in production.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">◯</span>

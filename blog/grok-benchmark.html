@@ -217,7 +217,7 @@
 <section>
 <h2 class="text-2xl font-bold text-[#0B0F14] mb-3">Why the Gap?</h2>
 <p>Grok uses probabilistic fusion with multi-agent consensus — fast, adaptive, and effective for most cases. It achieved F1 = 0.98 on the sponsored drift corpus, with 2 false negatives on the subtle drift round.</p>
-<p>Sgraal uses a different approach: 87 scoring modules feeding into Z3 formal verification. Every decision comes with <code class="text-[#c9a962]">overridable: false</code> and a proof hash. The formal layer catches what probabilistic systems miss — specifically in boundary cases where confidence is high but the underlying fact is fabricated.</p>
+<p>Sgraal uses a different approach: 87 scoring modules plus deterministic structural checks and non-overridable detection layers. Every decision comes with <code class="text-[#c9a962]">overridable: false</code> and a proof hash. These deterministic checks catch what probabilistic systems miss — specifically in boundary cases where confidence is high but the underlying fact is fabricated.</p>
 <p class="bg-[#faf9f6] border-l-4 border-[#c9a962] p-4 rounded-r-xl italic text-[#0B0F14]">Confidence does not equal truth. A high-trust, low-conflict, recently-updated memory entry can still be completely fabricated.</p>
 </section>
 
