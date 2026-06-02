@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>For AI Researchers — Sgraal</title>
-<meta name="description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, formal verification, free research tier.">
+<meta name="description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, policy-consistency checks, free research tier.">
 <meta property="og:title" content="For AI Researchers — Sgraal">
-<meta property="og:description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, formal verification.">
+<meta property="og:description" content="The mathematical foundations of AI memory governance. 25 disciplines, 87 modules, open R1-R3 adversarial corpus, policy-consistency checks.">
 <meta property="og:url" content="https://sgraal.com/research">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -211,7 +211,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
 </h1>
 
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
-  25 mathematical disciplines. 87 scoring modules. 614 adversarial test cases. Z3 SMT formal verification. Apache 2.0 SDK and open R1–R3 corpus. Sgraal is free for academic research.
+  25 mathematical disciplines. 87 scoring modules. 614 adversarial test cases. Automated policy-consistency checks. Apache 2.0 SDK and open R1–R3 corpus. Sgraal is free for academic research.
 </p>
 
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
@@ -301,8 +301,8 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   <p class="text-xs text-slate-500">control theory</p>
 </div>
 <div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
-  <p class="font-bold text-sm text-[#0B0F14] mb-1">Z3 SMT</p>
-  <p class="text-xs text-slate-500">formal verification</p>
+  <p class="font-bold text-sm text-[#0B0F14] mb-1">Policy checks</p>
+  <p class="text-xs text-slate-500">logical consistency</p>
 </div>
 <div class="bg-white border border-slate-200 rounded-lg p-4 hover:border-[#c9a962] transition-all">
   <p class="font-bold text-sm text-[#0B0F14] mb-1">Persistent homology</p>
@@ -502,7 +502,7 @@ python3 compare.py --baseline sgraal \
 
 <p><strong>1. Five-AI adversarial consensus.</strong> Every non-trivial scoring patch is reviewed by five independent LLMs (Gemini, DeepSeek, Qwen, Grok, ChatGPT) as adversarial reviewers. We adopt patches only when at least three of five identify the same failure mode and agree on the fix shape. The #739c BWDT (Belief-Weighted Drift Tolerance) patch is the canonical example.</p>
 
-<p><strong>2. Formal verification before merge.</strong> Three healing policy properties (monotonicity, idempotency, bounded drift) are encoded as Z3 SMT formulas and verified before any merge that touches healing logic. The <code class="text-xs bg-white px-1.5 py-0.5 rounded">api/main.py</code> healing path is gated on this check.</p>
+<p><strong>2. Policy-rule consistency checks.</strong> Our healing-policy rules are checked for logical consistency (e.g. no rule both allows and blocks the same case; the healing counter is monotonic) — encoded as SMT-style constraints. These verify the policy invariants, not each live decision; in production they run as logical checks (the SMT solver is optional).</p>
 
 <p><strong>3. Transparency over claim.</strong> Scoring engine configuration is available to licensed customers via <code class="text-xs bg-white px-1.5 py-0.5 rounded">/v1/research/constants</code> with a config checksum (SHA-256 of all calibration values) — your auditor can verify the model that ruled on your compliance was itself unchanged.</p>
 
