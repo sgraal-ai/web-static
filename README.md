@@ -16,7 +16,7 @@ Sgraal is a production AI agent memory governance API. It returns `USE_MEMORY` /
 Built for AI engineers who need:
 
 - **GDPR Article 5(1)(c) data minimization** with W3C Verifiable Credential proof
-- **FDA-style Lyapunov stability proofs** for clinical / regulated AI agents
+- **FDA-style Lyapunov stability analyses** for clinical / regulated AI agents
 - **Drop-in Mem0 / Zep / Letta compatibility** — one environment-variable migration
 - **Production-grade governance** — 2,981 tests, 86 scoring modules, 1,347+ heal actions shipped
 
