@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Building a Joint Memory Governance Benchmark with Grok — Sgraal Blog</title>
 <meta property="og:url" content="https://sgraal.com/blog/grok-benchmark">
-<meta name="description" content="How Sgraal and Grok independently built and validated adversarial memory governance corpora — F1=1.000 across 239 cases.">
+<meta name="description" content="How Sgraal and Grok independently built attack classes and scored the same memory-governance corpora side-by-side — F1=1.000 across 239 cases against Sgraal's ground truth.">
 <link rel="canonical" href="https://sgraal.com/blog/grok-benchmark">
 <link rel="stylesheet" href="/assets/tailwind.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -211,7 +211,8 @@
 <p class="text-slate-500">Across all 3 corpora — 239 cases</p>
 <p class="text-slate-500">Zero false positives. Zero false negatives.</p>
 </div>
-<p>All corpora are publicly available on <a href="https://github.com/sgraal-ai/core/tree/main/tests" target="_blank" class="text-[#c9a962] hover:underline">GitHub</a>. Every case can be reproduced against the live API using the demo key.</p>
+<p class="text-xs text-slate-500 italic mb-4">F1 measured against Sgraal's own ground truth on synthetic corpora; Grok independently scored the same corpora — corroboration, not external validation. Production calibration pending.</p>
+<p>Every case can be reproduced against the live API using the demo key.</p>
 </section>
 
 <section>
@@ -239,7 +240,7 @@ from sgraal import SgraalClient
 client = SgraalClient("sg_demo_playground")
 result = client.preflight(memory_state=[...], domain="fintech")
 print(result["recommended_action"])</pre>
-<p>The corpus is on <a href="https://github.com/sgraal-ai/core/tree/main/tests" target="_blank" class="text-[#c9a962] hover:underline">GitHub</a>. The standard is at <a href="/standard" class="text-[#c9a962] hover:underline">sgraal.com/standard</a>.</p>
+<p>The standard is at <a href="/standard" class="text-[#c9a962] hover:underline">sgraal.com/standard</a>.</p>
 </section>
 
 </div>

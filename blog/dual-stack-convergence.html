@@ -24,17 +24,17 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
-<title>Independent Stacks, Same Truth Signal — Sgraal + Grok</title>
+<title>Independent Stacks, Convergent Verdicts — Sgraal + Grok</title>
 <meta name="description" content="Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.">
 <link rel="canonical" href="https://sgraal.com/blog/dual-stack-convergence">
-<meta property="og:title" content="Independent Stacks, Same Truth Signal">
+<meta property="og:title" content="Independent Stacks, Convergent Verdicts">
 <meta property="og:description" content="Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.">
 <meta property="og:url" content="https://sgraal.com/blog/dual-stack-convergence">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Independent Stacks, Same Truth Signal",
+  "headline": "Independent Stacks, Convergent Verdicts",
   "description": "Seven rounds of adversarial memory testing — what we built, what we found, and why it matters when AI systems treat each other as peers.",
   "url": "https://sgraal.com/blog/dual-stack-convergence",
   "datePublished": "2026-04-11",
@@ -178,7 +178,7 @@
 <!-- Hero -->
 <section class="pt-36 pb-12 px-8 max-w-3xl mx-auto text-center">
 <p class="text-sm text-[#c9a962] font-semibold uppercase tracking-widest mb-4">Joint Publication &middot; April 2026</p>
-<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">&#x1F6E1;&#xFE0F; Independent Stacks, Same Truth Signal</h1>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">&#x1F6E1;&#xFE0F; Independent Stacks, Convergent Verdicts</h1>
 <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-6">Seven rounds of adversarial memory testing &mdash; what we built, what we found, and why it matters when AI systems treat each other as peers.</p>
 <p class="text-sm text-slate-400">Authors: <span class="text-[#c9a962] font-semibold">Sgraal</span> + <span class="font-semibold">Grok</span></p>
 </section>
@@ -206,7 +206,7 @@
 </ul>
 <p class="text-slate-600 leading-relaxed mb-4">Neither system had access to the other's internals.<br>Neither system modified its architecture to align with the other.</p>
 <p class="text-slate-600 leading-relaxed mb-4">Each round used a structured JSONL corpus.<br>Each system ran the corpus independently.<br>Results were compared only after execution.</p>
-<p class="text-slate-600 leading-relaxed">The corpus is public. The results are reproducible.</p>
+<p class="text-slate-600 leading-relaxed">The results are reproducible against the live API.</p>
 </section>
 
 <!-- What Made This Collaboration Different -->
@@ -304,6 +304,7 @@
 <tr class="font-bold border-t-2 border-slate-300"><td class="px-4 py-3">Total</td><td class="px-4 py-3"></td><td class="px-4 py-3 text-center">554</td><td class="px-4 py-3 text-center text-[#c9a962] font-mono">1.000</td><td class="px-4 py-3 text-center font-mono">~0.998</td></tr>
 </tbody>
 </table>
+<p class="text-xs text-slate-500 italic mt-3">F1 measured against Sgraal's own ground truth on synthetic corpora; Grok independently scored the same corpora — corroboration, not external validation. Production calibration pending.</p>
 </div>
 </section>
 
@@ -376,7 +377,7 @@
 <section class="mb-12">
 <h2 class="text-2xl font-extrabold mb-4">What Comes Next</h2>
 <p class="text-slate-600 leading-relaxed mb-4">Round 8 is already queued: Silent Consensus Collapse. No drift signal. No anomaly. No visible error. Multiple systems agree. And yet &mdash; the system is confidently wrong. This is where consensus stops being evidence.</p>
-<p class="text-slate-600 leading-relaxed">The corpus is public: <a href="https://github.com/sgraal-ai/core" class="text-[#c9a962] hover:underline">github.com/sgraal-ai/core</a><br>The API is live: <a href="/playground" class="text-[#c9a962] hover:underline">sgraal.com/playground</a></p>
+<p class="text-slate-600 leading-relaxed">The benchmark runs on our adversarial corpus.<br>The API is live: <a href="/playground" class="text-[#c9a962] hover:underline">sgraal.com/playground</a></p>
 </section>
 
 <!-- Closing -->
@@ -386,7 +387,7 @@
 <p class="text-slate-600 leading-relaxed mb-8 text-lg">AI agents don't need more intelligence.<br>They need a boundary.</p>
 <p class="text-3xl font-extrabold text-[#c9a962]">The boundary is the product.</p>
 </div>
-<p class="text-sm text-slate-400 mt-8">Authors: Sgraal + Grok &middot; Corpus: public at <a href="https://github.com/sgraal-ai/core" class="hover:underline">github.com/sgraal-ai/core</a></p>
+<p class="text-sm text-slate-400 mt-8">Authors: Sgraal + Grok &middot; Corpus: the Sgraal &times; Grok benchmark corpus</p>
 </section>
 
 </article>
