@@ -27,7 +27,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Memory Reliability Benchmark — Sgraal</title>
-<meta name="description" content="Memory reliability benchmark — 614 adversarial cases across 11 attack rounds. Open R1-R3 corpus (239 cases) on GitHub. R12 held-out blind eval at 52/60.">
+<meta name="description" content="Memory reliability benchmark — 614 adversarial cases across 11 attack rounds. Open R1-R3 corpus (239 cases) on GitHub. R12 held-out blind eval at 51/60.">
 <link rel="canonical" href="https://sgraal.com/benchmark">
 <meta property="og:url" content="https://sgraal.com/benchmark">
 <link rel="stylesheet" href="/assets/tailwind.css"/>
@@ -183,9 +183,10 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   </div>
   <div class="flex justify-center gap-8 flex-wrap text-sm text-slate-500 mt-4">
     <span>✓ 2,900+ test scenarios</span>
-    <span>✓ 0 false negatives on R12/R14 corpus</span>
+    <span>✓ 0 false negatives on R12 structured-provenance attacks (12/12); 26/27 R12 BLOCK coverage</span>
     <span>✓ 4 domains analyzed</span>
   </div>
+  <p class="text-slate-400 text-xs mt-3 max-w-2xl mx-auto">The single miss is a semantic-only laundering case — outside the deterministic layer's scope, addressed by the planned semantic layer.</p>
 </div>
 </section>
 
