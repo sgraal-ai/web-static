@@ -431,8 +431,8 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   </div>
 
   <div class="border-l-4 border-[#c9a962] pl-6 py-1">
-    <h3 class="font-bold text-lg mb-2">15ms p50 latency</h3>
-    <p class="text-slate-600 text-sm leading-relaxed">Sgraal preflight runs in 15ms median (sub-ms edge mode). Doesn't add perceivable latency to your product. Your users won't notice.</p>
+    <h3 class="font-bold text-lg mb-2">~280ms p50 single-request compute</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">Sgraal preflight returns in ~280ms median single-request compute, measured on production. Best placed at action checkpoints rather than on every inner-loop token; latency scales with worker count.</p>
   </div>
 
   <div class="border-l-4 border-[#c9a962] pl-6 py-1">

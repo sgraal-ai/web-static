@@ -196,7 +196,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
 </p>
 
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
-  Sgraal already runs in production with 15ms p50, 99.95% uptime, and zero-dep edge mode for air-gapped deployments.
+  Sgraal already runs in production with ~280ms p50 single-request compute (measured) and zero-dep edge mode for air-gapped deployments.
 </p>
 
 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -238,7 +238,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
       <h3 class="text-xl font-bold">Hosted</h3>
     </div>
     <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-4">sgraal.com · default</p>
-    <p class="text-slate-600 text-sm leading-relaxed mb-5">~15ms p50 latency. Full 87-module engine, fleet vaccine corpus, per-tenant calibration, Q-learning per-domain. No infra to manage.</p>
+    <p class="text-slate-600 text-sm leading-relaxed mb-5">~280ms p50 single-request compute (measured). Full 87-module engine, fleet vaccine corpus, per-tenant calibration, Q-learning per-domain. No infra to manage.</p>
     <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Quickstart</p>
 <pre class="bg-[#0B0F14] text-slate-300 p-4 rounded-lg text-xs overflow-x-auto mb-4"><span class="text-violet-300">from</span> sgraal <span class="text-violet-300">import</span> SgraalClient
 client = <span class="text-emerald-300">SgraalClient</span>(<span class="text-[#c9a962]">"sg_live_..."</span>)
@@ -435,7 +435,7 @@ result = <span class="text-emerald-300">edge_preflight</span>(
 <section class="py-24 px-6 bg-[#0B0F14] text-white text-center border-t border-white/10">
 <div class="max-w-3xl mx-auto">
 <h2 class="text-4xl md:text-5xl font-bold mb-6">Three modes. One engine. Your stack.</h2>
-<p class="text-slate-300 text-lg mb-10">15ms p50 hosted. Sub-ms p99 edge. Air-gapped self-host. Same wire format, same decision contract.</p>
+<p class="text-slate-300 text-lg mb-10">~280ms p50 hosted single-request compute (measured). Sub-ms p99 edge. Air-gapped self-host. Same wire format, same decision contract.</p>
 
 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
   <a href="mailto:hello@sgraal.com?subject=Platform%20team%20call" class="inline-flex items-center bg-white text-[#0B0F14] px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">

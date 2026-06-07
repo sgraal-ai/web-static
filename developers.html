@@ -411,7 +411,7 @@ result = client.preflight(
 </div>
 
 <p class="text-center text-slate-500 text-sm mt-6">
-  Returns one of <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">USE_MEMORY</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">WARN</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">ASK_USER</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">BLOCK</code> in ~15ms.
+  Returns one of <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">USE_MEMORY</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">WARN</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">ASK_USER</code> / <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">BLOCK</code> in ~280ms single-request compute (measured on production).
 </p>
 
 </div>
@@ -779,7 +779,7 @@ function showTab(ev, id) {
 
 <div class="inline-flex items-center bg-white/10 border border-white/20 rounded-xl px-4 py-3">
   <code class="text-white font-mono text-sm mr-4">pip install sgraal</code>
-  <span class="text-slate-400 text-xs">· Apache 2.0 · ~15ms preflight</span>
+  <span class="text-slate-400 text-xs">· Apache 2.0 · ~280ms preflight compute (measured)</span>
 </div>
 
 </div>

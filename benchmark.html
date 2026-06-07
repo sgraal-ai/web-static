@@ -295,18 +295,18 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 
   <div class="grid md:grid-cols-3 gap-6 mb-12">
     <div class="bg-white rounded-xl p-8 text-center">
-      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">12ms</div>
-      <div class="font-bold text-slate-700 mb-1">p50 latency</div>
-      <div class="text-slate-400 text-sm">Median response time</div>
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~280ms</div>
+      <div class="font-bold text-slate-700 mb-1">p50 single-request compute</div>
+      <div class="text-slate-400 text-sm">Measured on production (Railway), server-side pipeline_ms; dry-run, N=50</div>
     </div>
     <div class="bg-white rounded-xl p-8 text-center">
-      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">23ms</div>
-      <div class="font-bold text-slate-700 mb-1">p95 latency</div>
-      <div class="text-slate-400 text-sm">95th percentile</div>
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~325ms</div>
+      <div class="font-bold text-slate-700 mb-1">p95 single-request compute</div>
+      <div class="text-slate-400 text-sm">95th percentile (measured, prod)</div>
     </div>
     <div class="bg-white rounded-xl p-8 text-center">
-      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">41ms</div>
-      <div class="font-bold text-slate-700 mb-1">p99 latency</div>
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~395ms</div>
+      <div class="font-bold text-slate-700 mb-1">p99 single-request compute</div>
       <div class="text-slate-400 text-sm">99th percentile</div>
     </div>
   </div>
@@ -371,7 +371,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 4: Real-world Propagation</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">90 cases · 4 attack vectors: injection mid-chain, drift amplification, RAG poisoning, API drift</p>
 <p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span></p>
-<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">F1 = 1.000 · &lt;180ms · blast radius &lt;2%</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">F1 = 1.000 · &lt;2% multi-hop propagation (Grok R4 corpus — not a cross-tenant containment guarantee)</span></p>
 </div>
 
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
