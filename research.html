@@ -500,7 +500,7 @@ python3 compare.py --baseline sgraal \
 
 <div class="space-y-6 text-slate-700 leading-relaxed">
 
-<p><strong>1. Five-AI adversarial consensus.</strong> Every non-trivial scoring patch is reviewed by five independent LLMs (Gemini, DeepSeek, Qwen, Grok, ChatGPT) as adversarial reviewers. We adopt patches only when at least three of five identify the same failure mode and agree on the fix shape. The #739c BWDT (Belief-Weighted Drift Tolerance) patch is the canonical example.</p>
+<p><strong>1. Five-AI adversarial consensus.</strong> Every non-trivial scoring patch is reviewed by five LLMs from separate vendors (Gemini, DeepSeek, Qwen, Grok, ChatGPT) as adversarial reviewers — convergent review under shared training priors, not independent verification. We adopt patches only when at least three of five identify the same failure mode and agree on the fix shape. The #739c BWDT (Belief-Weighted Drift Tolerance) patch is the canonical example.</p>
 
 <p><strong>2. Policy-rule consistency checks.</strong> Our healing-policy rules are checked for logical consistency (e.g. no rule both allows and blocks the same case; the healing counter is monotonic) — encoded as SMT-style constraints. These verify the policy invariants, not each live decision; in production they run as logical checks (the SMT solver is optional).</p>
 
