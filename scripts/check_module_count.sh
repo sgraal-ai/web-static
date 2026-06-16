@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # check_module_count.sh — fail if hardcoded scoring-module counts in
 # public HTML copy reference legacy/intermediate values rather than the
-# current source-of-truth (87 modules in core/scoring_engine/*.py — post
-# core#32 input_integrity.py addition; bumped from 86 via web-static#1101).
+# current source-of-truth (85 modules in core/scoring_engine/*.py = 88 .py
+# − 3 infra; reconciled from 87 in Phase-C P2b after the 2 A3.7-retired
+# modules. Core now reports a LIVE count via _SCORING_MODULE_COUNT).
 #
 # Background: see research#19 C5 finding (Tier-3 drift class), research#31
 # §4 (codebase ground truth, baseline 86 modules), core#38 (README sync
@@ -45,7 +46,12 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-SOURCE_OF_TRUTH="${SOURCE_OF_TRUTH:-87}"
+# [Phase-C P2b/P2a-followup, 2026-06-16] Canonical count is now 85:
+# scoring_engine/*.py (88) − 3 infra = 85. The prior 87 missed the 2 A3.7-retired
+# modules (homology_torsion + cohomological_gradient); core now reports a LIVE
+# count (_SCORING_MODULE_COUNT in api/main.py) = 85. Patterns flag the stale
+# 83/86/87 values; 85 is the source-of-truth.
+SOURCE_OF_TRUTH="${SOURCE_OF_TRUTH:-85}"
 STRICT_MODE="${STRICT_MODE:-0}"
 
 # Patterns are ERE (extended regex). \b is word-boundary to prevent false
@@ -54,12 +60,12 @@ PATTERNS=(
   "\b83 module\b"
   "\b83-module\b"
   "\b83 modules\b"
-  "\b85 module\b"
-  "\b85-module\b"
-  "\b85 modules\b"
   "\b86 module\b"
   "\b86-module\b"
   "\b86 modules\b"
+  "\b87 module\b"
+  "\b87-module\b"
+  "\b87 modules\b"
 )
 
 # Allowlist: file:line pairs that are OK to contain a banned legacy count.
