@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Open Core — Sgraal</title>
-<meta name="description" content="What's open, what's hosted. The Sgraal SDK, Proxy, and Edge mode are Apache 2.0 open source. The 87-module scoring engine and your tenant calibration stay on sgraal.com.">
+<meta name="description" content="What's open, what's hosted. The Sgraal SDK, Proxy, and Edge mode are Apache 2.0 open source. The 85-module scoring engine and your tenant calibration stay on sgraal.com.">
 <meta property="og:title" content="Open Core — Sgraal">
-<meta property="og:description" content="What's open, what's hosted. The Sgraal SDK, Proxy, and Edge mode are Apache 2.0 open source. The 87-module scoring engine and your tenant calibration stay on sgraal.com.">
+<meta property="og:description" content="What's open, what's hosted. The Sgraal SDK, Proxy, and Edge mode are Apache 2.0 open source. The 85-module scoring engine and your tenant calibration stay on sgraal.com.">
 <meta property="og:url" content="https://sgraal.com/open-source">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -193,7 +193,7 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
 </h1>
 
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
-  Sgraal is <strong>open core</strong>. The SDK, Proxy, and Edge mode are Apache 2.0 open source. The 87-module scoring engine, fleet vaccine corpus <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-1 py-0.5 rounded">Beta</span>, and per-tenant calibration stay on sgraal.com.
+  Sgraal is <strong>open core</strong>. The SDK, Proxy, and Edge mode are Apache 2.0 open source. The 85-module scoring engine, fleet vaccine corpus <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-1 py-0.5 rounded">Beta</span>, and per-tenant calibration stay on sgraal.com.
 </p>
 
 <p class="text-slate-500 text-sm max-w-2xl mx-auto mb-10">
@@ -329,8 +329,8 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
     <div class="space-y-5">
 
       <div class="border-l-2 border-[#c9a962] pl-4">
-        <h4 class="font-bold text-sm text-white mb-1">87-module scoring engine</h4>
-        <p class="text-slate-400 text-sm leading-relaxed">Full production pipeline: Weibull decay, drift ensemble, persistent homology, policy-consistency checks, attack-surface detection. The fallback SDK gives you Weibull-only scoring; the hosted engine runs all 87 modules.</p>
+        <h4 class="font-bold text-sm text-white mb-1">85-module scoring engine</h4>
+        <p class="text-slate-400 text-sm leading-relaxed">Full production pipeline: Weibull decay, drift ensemble, persistent homology, policy-consistency checks, attack-surface detection. The fallback SDK gives you Weibull-only scoring; the hosted engine runs all 85 modules.</p>
       </div>
 
       <div class="border-l-2 border-[#c9a962] pl-4">
@@ -350,7 +350,7 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
 
       <div class="border-l-2 border-[#c9a962] pl-4">
         <h4 class="font-bold text-sm text-white mb-1">R12 adversarial corpus</h4>
-        <p class="text-slate-400 text-sm leading-relaxed">60 hard cases held back. We test every release against them and publish results (51/60 current). The corpus stays private to keep the benchmark honest — vendor claims of "100% on R12" must come from blind evaluation, not memorisation.</p>
+        <p class="text-slate-400 text-sm leading-relaxed">60 hard cases held back. We test every release against them and publish results (current: every structurally-detectable attack flagged; low-evidence signals routed to ASK_USER / human review rather than terminal BLOCK by design; 2 residual content-forgery-class misses). The corpus stays private to keep the benchmark honest — vendor claims of "100% on R12" must come from blind evaluation, not memorisation.</p>
       </div>
 
       <div class="border-l-2 border-[#c9a962] pl-4">
@@ -440,9 +440,9 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; }
 
 <p>The honest answer: full open source for a security product creates a perverse incentive.</p>
 
-<p>If we open-sourced the 87-module scoring engine and the R12 adversarial corpus, attackers would have the same source code we use to detect them. Worse, they would have our calibration values, our fleet vaccine signatures, and the exact regex thresholds we use to flag manipulation. Every public commit would be a manual for evasion.</p>
+<p>If we open-sourced the 85-module scoring engine and the R12 adversarial corpus, attackers would have the same source code we use to detect them. Worse, they would have our calibration values, our fleet vaccine signatures, and the exact regex thresholds we use to flag manipulation. Every public commit would be a manual for evasion.</p>
 
-<p>So we split the system. The <strong>interface is open</strong> — SDK, Proxy, Edge mode, OpenAPI spec, MCP server, R1–R3 corpus. Anyone can audit the wire format, fork the SDK, run the early benchmarks, and integrate with their stack without permission. <strong>The engine is hosted</strong> — the 87-module scoring pipeline, the R12 corpus, the fleet vaccine database, and your tenant's calibration. We run it; you call it.</p>
+<p>So we split the system. The <strong>interface is open</strong> — SDK, Proxy, Edge mode, OpenAPI spec, MCP server, R1–R3 corpus. Anyone can audit the wire format, fork the SDK, run the early benchmarks, and integrate with their stack without permission. <strong>The engine is hosted</strong> — the 85-module scoring pipeline, the R12 corpus, the fleet vaccine database, and your tenant's calibration. We run it; you call it.</p>
 
 <p>This is the same pattern that works for MongoDB, Elastic, HashiCorp, Confluent, and most of the durable open-core companies in infrastructure. The OSS layer is genuinely useful on its own (you can self-host Sgraal's edge mode in an air-gapped DoD environment if you want). The commercial layer powers the things only a hosted service can do well: cross-tenant threat propagation, real-time calibration, signed compliance certificates.</p>
 

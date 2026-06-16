@@ -263,7 +263,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <ul class="text-slate-600 text-sm space-y-1 ml-4 list-disc">
 <li><code class="font-mono text-[#c9a962]">input_hash</code> — SHA-256 of the input</li>
 <li><code class="font-mono text-[#c9a962]">proof_version</code> — v1</li>
-<li><code class="font-mono text-[#c9a962]">deterministic: true</code> — same input always produces same decision</li>
+<li><code class="font-mono text-[#c9a962]">deterministic: true</code> — same memory state returns the same verdict, in the absence of feedback events that update internal learning state (see <a href="/docs/determinism.md" class="text-[#c9a962] hover:underline">/docs/determinism.md</a>)</li>
 <li><code class="font-mono text-[#c9a962]">reproducible: true</code> — audit trail for every agent action</li>
 </ul>
 </section>
@@ -297,7 +297,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <!-- #916 Bit-identical replay enterprise framing -->
 <section>
 <h2 class="text-2xl font-bold mb-4">Bit-identical replay for legal admissibility</h2>
-<p class="text-slate-700 mb-4">Every Sgraal decision can be replayed bit-identically months or years later, given the same input and the same scoring configuration. This is not a marketing claim — it is a measured property of the production scoring engine, validated by audit and exposed via the public API.</p>
+<p class="text-slate-700 mb-4">Every Sgraal verdict can be replayed byte-identically months or years later, given the same input and the same scoring configuration — in the absence of feedback events that update internal learning state (qualified below). This is not a marketing claim — it is a measured property of the production scoring engine, validated by audit and exposed via the public API.</p>
 
 <div class="grid md:grid-cols-2 gap-4 mb-6">
 <div class="bg-[#f5f4f0] rounded-xl p-6">
@@ -306,7 +306,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </div>
 <div class="bg-[#f5f4f0] rounded-xl p-6">
 <h3 class="font-bold mb-2">Why it matters for regulated industries</h3>
-<p class="text-sm text-slate-700">Fintech, medical, legal, and defense customers face regulators who can subpoena the basis for any automated decision. Without bit-identical replay, "the model said no" is unfalsifiable. With it, every decision is a reproducible experiment.</p>
+<p class="text-sm text-slate-700">Fintech, medical, legal, and defense customers face regulators who can subpoena the basis for any automated decision. Without byte-identical verdict replay, "the model said no" is unfalsifiable. With it, every decision is a reproducible experiment.</p>
 </div>
 </div>
 
