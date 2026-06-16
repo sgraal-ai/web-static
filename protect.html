@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Protect — Sgraal</title>
-<meta name="description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect poisoning, manipulation, and drift before the action executes.">
+<meta name="description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect forged provenance, tampering, and identity drift before the action executes.">
 <meta property="og:title" content="Protect — Sgraal">
-<meta property="og:description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect poisoning, manipulation, and drift before the action executes.">
+<meta property="og:description" content="Sgraal blocks unsafe actions on AI agent memory. Action-time preflight validation. Detect forged provenance, tampering, and identity drift before the action executes.">
 <meta property="og:url" content="https://sgraal.com/protect">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -181,7 +181,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   Your agent can be manipulated through memory.<br/>Sgraal flags it before it happens, with a recorded verdict.
 </h1>
 <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-  Memory poisoning, prompt injection, and tampering are flagged before they affect agent actions — Sgraal returns a verdict (USE_MEMORY · WARN · ASK_USER · BLOCK) and a cryptographic audit trail.
+  Forged provenance, tampered timestamps, identity drift, and contradicting memories are caught before they reach an agent action — Sgraal returns a verdict (USE_MEMORY · WARN · ASK_USER · BLOCK) and a cryptographic audit trail. It's a <a href="/docs/threat-model" class="text-[#c9a962] hover:underline">structural integrity gate</a>, not a content fact-checker.
 </p>
 <a href="https://app.sgraal.com/account" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#c9a962] text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all">
   Start free trial <span class="material-symbols-outlined ml-2">arrow_forward</span>
@@ -221,14 +221,14 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">1</div>
 <div class="relative z-10 pt-4">
 <h3 class="text-xl font-bold mb-4">Every memory-driven action is validated before execution</h3>
-<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Sgraal's preflight gate intercepts every action that depends on memory. Sleeper patterns, injection signatures, and source anomalies are flagged before the action runs. Write-time filtering is also available via <code class="text-xs bg-slate-100 px-1 rounded">/v1/firewall/*</code>.</p>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Sgraal's preflight gate intercepts every action that depends on memory. Forged provenance, source anomalies, and timestamp inconsistencies are flagged before the action runs. Write-time filtering is also available via <code class="text-xs bg-slate-100 px-1 rounded">/v1/firewall/*</code>.</p>
 </div>
 </div>
 <div class="relative">
 <div class="text-6xl font-black text-[#c9a962]/20 absolute -top-8 -left-4">2</div>
 <div class="relative z-10 pt-4">
 <h3 class="text-xl font-bold mb-4">Every read is scanned for threats</h3>
-<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Poisoning detection, hallucination risk, tamper verification (Merkle hash), and circuit breaker on repeated high-risk patterns.</p>
+<p class="text-slate-600 leading-relaxed font-mono text-sm bg-white p-4 rounded-lg border border-[#e0e2ea]/50">Tamper verification (Merkle hash), structural integrity checks, and circuit breaker on repeated high-risk patterns.</p>
 </div>
 </div>
 <div class="relative">
@@ -293,8 +293,8 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <button class="flex-1 py-4 text-sm font-bold text-gold border-b-2 border-gold transition-all">Write Firewall</button>
 </div>
 <div class="p-8">
-<h3 class="text-xl font-bold mb-4 text-obsidian">Write Firewall + Poisoning Detection</h3>
-<p class="text-on-surface-variant mb-6 text-sm">Block poisoned memory at write time. Detect tampering at read time.</p>
+<h3 class="text-xl font-bold mb-4 text-obsidian">Write-Time Integrity Gate</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Check memory structure and provenance at write time; detect tampering and forgery at read time.</p>
 <pre class="bg-code-bg p-6 rounded-lg text-sm font-mono text-obsidian leading-relaxed"># Store with write firewall — blocks before storage
 result = client.store(
     content="User account balance: $50,000",
