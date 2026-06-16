@@ -27,7 +27,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Memory Reliability Benchmark — Sgraal</title>
-<meta name="description" content="Memory reliability benchmark — 614 adversarial cases across 11 attack rounds. Open R1-R3 corpus (239 cases) on GitHub. R12 held-out blind eval at 51/60.">
+<meta name="description" content="Memory reliability benchmark — 614 adversarial cases across 11 attack rounds. Open R1-R3 corpus (239 cases) on GitHub. R12 held-out blind eval: structural attacks flagged, with low-evidence signals routed to human review (ASK_USER); residual content-forgery-class misses.">
 <link rel="canonical" href="https://sgraal.com/benchmark">
 <meta property="og:url" content="https://sgraal.com/benchmark">
 <link rel="stylesheet" href="/assets/tailwind.css"/>
@@ -183,7 +183,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   </div>
   <div class="flex justify-center gap-8 flex-wrap text-sm text-slate-500 mt-4">
     <span>✓ 2,900+ test scenarios</span>
-    <span>✓ 0 false negatives on R12 structured-provenance attacks (12/12); 26/27 R12 BLOCK coverage</span>
+    <span>✓ 0 false negatives on R12 structured-provenance attacks (12/12 flagged); R12 attacks caught at WARN or above — low-evidence structural signals route to ASK_USER (human review) rather than terminal BLOCK by design; 2 residual content-forgery-class misses</span>
     <span>✓ 4 domains analyzed</span>
   </div>
   <p class="text-slate-400 text-xs mt-3 max-w-2xl mx-auto">The single miss is a semantic-only laundering case — outside the deterministic layer's scope, addressed by the planned semantic layer.</p>
@@ -295,12 +295,12 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 
   <div class="grid md:grid-cols-3 gap-6 mb-12">
     <div class="bg-white rounded-xl p-8 text-center">
-      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~280ms</div>
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~170ms</div>
       <div class="font-bold text-slate-700 mb-1">p50 single-request compute</div>
       <div class="text-slate-400 text-sm">Measured on production (Railway), server-side pipeline_ms; dry-run, N=50</div>
     </div>
     <div class="bg-white rounded-xl p-8 text-center">
-      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~325ms</div>
+      <div class="text-5xl font-extrabold text-[#c9a962] mb-2">~250ms</div>
       <div class="font-bold text-slate-700 mb-1">p95 single-request compute</div>
       <div class="text-slate-400 text-sm">95th percentile (measured, prod)</div>
     </div>
@@ -339,11 +339,11 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
     </div>
     <div class="bg-[#f5f4f0] rounded-xl p-6">
       <h3 class="font-bold text-[#0B0F14] mb-2">Reliability Definition</h3>
-      <p>A memory entry is classified as "unreliable" if it receives omega_mem_final ≥ 31 (WARN threshold) on at least one preflight call. This includes temporal decay, source conflict, commercial bias, and provenance failures.</p>
+      <p>A memory entry is classified as "unreliable" if it scores in the WARN band or above on at least one preflight call. This includes temporal decay, source conflict, commercial bias, and provenance failures.</p>
     </div>
     <div class="bg-[#f5f4f0] rounded-xl p-6">
       <h3 class="font-bold text-[#0B0F14] mb-2">Scoring Models</h3>
-      <p>87 scoring modules evaluated per preflight call: Weibull freshness decay, 5-method drift detection ensemble, source trust scoring, conflict graph analysis, causal graph construction, Entry Shapley attribution, commercial intent classification, compliance profile evaluation, timestamp integrity, identity drift, and consensus collapse detection.</p>
+      <p>85 scoring modules evaluated per preflight call: Weibull freshness decay, 5-method drift detection ensemble, source trust scoring, conflict graph analysis, causal graph construction, Entry Shapley attribution, commercial intent classification, compliance profile evaluation, timestamp integrity, identity drift, and consensus collapse detection.</p>
     </div>
     <div class="bg-[#f5f4f0] rounded-xl p-6">
       <h3 class="font-bold text-[#0B0F14] mb-2">Limitations</h3>
@@ -358,40 +358,40 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 <div class="max-w-5xl mx-auto">
 <h2 class="text-3xl font-extrabold mb-4 text-[#0B0F14]">Joint Benchmark with Grok</h2>
 <p class="text-slate-500 mb-10">Independent builds, side-by-side results across 8 adversarial corpora.</p>
-<p class="text-xs text-slate-500 italic mb-8">F1 measured against Sgraal's own ground truth on synthetic corpora; Grok independently scored the same corpora — corroboration, not external validation. Production calibration pending.</p>
+<p class="text-xs text-slate-500 italic mb-8">Recall measured against Sgraal's own ground truth on a synthetic structural corpus (every structurally-detectable attack flagged; ASK_USER counts as caught). Grok independently scored the same corpora — corroboration, not external validation. Residual misses are the metadata-clean content-forgery class (out of scope for a structural gate); over-escalation on benign-control cases is non-zero. Production calibration pending.</p>
 
 <div class="grid md:grid-cols-2 gap-6 mb-10">
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 1–3: Drift &amp; Hallucination</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">239 cases: sponsored drift (60), subtle drift (59), hallucination (60)</p>
-<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 · FP=0 · FN=0</span></p>
-<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">F1 = 1.000</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">100% recall · 0 missed attacks</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">100% recall</span></p>
 </div>
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 4: Real-world Propagation</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">90 cases · 4 attack vectors: injection mid-chain, drift amplification, RAG poisoning, API drift</p>
-<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000</span></p>
-<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">F1 = 1.000 · &lt;2% multi-hop propagation (Grok R4 corpus — not a cross-tenant containment guarantee)</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">100% recall</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Grok:</span> <span class="text-slate-500 font-mono">100% recall · &lt;2% multi-hop propagation (Grok R4 corpus — not a cross-tenant containment guarantee)</span></p>
 </div>
 
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 6: Memory Time Attack</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">60 cases · timestamp forgery detection · old decisions disguised as fresh</p>
-<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 · 60/60</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">100% recall · 60 cases</span></p>
 <p class="text-sm"><span class="text-[#0B0F14]">New field:</span> <span class="text-slate-500 font-mono">timestamp_integrity: VALID | SUSPICIOUS | MANIPULATED</span></p>
 </div>
 
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 7: Identity Drift</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">90 cases · gradual role and authority escalation across agent hops</p>
-<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 · 90/90</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">100% recall · 90 cases</span></p>
 <p class="text-sm"><span class="text-[#0B0F14]">New field:</span> <span class="text-slate-500 font-mono">identity_drift: CLEAN | SUSPICIOUS | MANIPULATED</span></p>
 </div>
 
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-3"><h3 class="font-bold">Round 8: Silent Consensus Collapse</h3><span class="bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">COMPLETE</span></div>
 <p class="text-slate-500 text-sm mb-3">90 cases · self-reinforcing false consensus detection</p>
-<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">F1 = 1.000 · 90/90</span></p>
+<p class="text-sm"><span class="text-[#0B0F14]">Sgraal:</span> <span class="text-[#c9a962] font-bold font-mono">100% recall · 90 cases</span></p>
 <p class="text-sm"><span class="text-[#0B0F14]">New field:</span> <span class="text-slate-500 font-mono">consensus_collapse: CLEAN | SUSPICIOUS | MANIPULATED</span></p>
 </div>
 

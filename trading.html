@@ -248,7 +248,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <h3 class="font-bold text-base">Deterministic replay</h3>
       <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
     </div>
-    <p class="text-slate-600 text-sm leading-relaxed"><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">pg_override_disabled</code> + <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">cfg_checksum</code> mode produces bit-perfect replay of any historical decision. Regulator audit, internal compliance review, post-incident root cause — all reconstructable.</p>
+    <p class="text-slate-600 text-sm leading-relaxed"><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">pg_override_disabled</code> + <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">cfg_checksum</code> mode (the opt-in flag that disables the cross-call learning surface) produces byte-identical replay of any historical verdict for strict per-call reproducibility. Regulator audit, internal compliance review, post-incident root cause — all reconstructable.</p>
   </div>
 
   <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">

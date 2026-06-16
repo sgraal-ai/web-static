@@ -171,11 +171,11 @@
 <h2 class="text-3xl font-extrabold mb-10">Latency Profile</h2>
 <div class="grid md:grid-cols-4 gap-6 mb-10">
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
-<p class="text-4xl font-extrabold text-[#c9a962]">~280ms</p>
+<p class="text-4xl font-extrabold text-[#c9a962]">~170ms</p>
 <p class="text-slate-500 text-sm mt-2">p50 single-request compute</p>
 </div>
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
-<p class="text-4xl font-extrabold text-[#c9a962]">~325ms</p>
+<p class="text-4xl font-extrabold text-[#c9a962]">~250ms</p>
 <p class="text-slate-500 text-sm mt-2">p95 single-request compute</p>
 </div>
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
@@ -188,7 +188,7 @@
 </div>
 </div>
 <div class="bg-white border-l-4 border-[#c9a962] rounded-r-xl p-6 shadow-sm">
-<p class="text-slate-600 text-sm"><strong>Single-request compute.</strong> The figures above are the deterministic preflight gate's <strong>single-request compute time</strong> for the full 87-module decision path (Weibull freshness decay, 5-method drift ensemble, sheaf cohomology, Shapley attribution, policy-consistency checks, and the 4 post-reconciliation detection layers), read from the <code class="text-[#c9a962]">pipeline_ms</code> field of each preflight response. The fast-path (detection short-circuit) and the full-decision path are <strong>indistinguishable</strong> at this resolution — the short-circuit gives no measurable speedup. Network round-trip adds client-dependent transit on top.</p>
+<p class="text-slate-600 text-sm"><strong>Single-request compute.</strong> The figures above are the deterministic preflight gate's <strong>single-request compute time</strong> for the full 85-module decision path (Weibull freshness decay, 5-method drift ensemble, sheaf cohomology, Shapley attribution, policy-consistency checks, and the 4 post-reconciliation detection layers), read from the <code class="text-[#c9a962]">pipeline_ms</code> field of each preflight response. The fast-path (detection short-circuit) and the full-decision path are <strong>indistinguishable</strong> at this resolution — the short-circuit gives no measurable speedup. Network round-trip adds client-dependent transit on top.</p>
 </div>
 <p class="text-xs text-slate-500 italic mt-6 text-center">Measured on production (Railway EU-West) via the server-side <code>pipeline_ms</code> timer; demo-key dry-run (excludes Redis/persistence), warmed, N=50/path. Under-load throughput is single-process and scales with workers (not yet benchmarked). Production calibration pending paying-customer onboarding.</p>
 </div>
@@ -238,7 +238,7 @@
 </div>
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <h3 class="font-bold mb-2">Deterministic Scoring</h3>
-<p class="text-slate-500 text-sm">Same input produces same output, every time, on any machine. SHA256-seeded stochastic modules. Hysteresis suppresses jitter &lt; 3.0.</p>
+<p class="text-slate-500 text-sm">The same memory state returns the same verdict, byte-identical — in the absence of feedback events that update internal learning state. SHA256-seeded stochastic modules; strict per-call replay is available via an opt-in flag that disables the cross-call learning surface. See <a href="/docs/determinism.md" class="text-[#c9a962] hover:underline">/docs/determinism.md</a> for the full contract, including floating-point precision bounds.</p>
 </div>
 <div class="bg-white border border-[#e5e7eb] rounded-xl p-6 shadow-sm">
 <h3 class="font-bold mb-2">Zero-downtime Deploy</h3>

@@ -26,7 +26,7 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Latency &amp; Performance — Sgraal</title>
 <meta property="og:url" content="https://sgraal.com/latency">
-<meta name="description" content="Determinism and latency of the Sgraal preflight gate — formally verified, byte-identical verdicts (N=1,200 zero drift); ~280ms p50 single-request compute, measured.">
+<meta name="description" content="Determinism and latency of the Sgraal preflight gate — formally verified, byte-identical verdicts (N=1,200 zero drift); ~170ms p50 single-request compute, measured.">
 <link rel="canonical" href="https://sgraal.com/latency">
 <link rel="stylesheet" href="/assets/tailwind.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -160,7 +160,7 @@
 
 <section class="pt-36 pb-20 px-8 max-w-5xl mx-auto text-center">
 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Determinism first, then latency</h1>
-<p class="text-lg text-slate-500 max-w-2xl mx-auto">The Sgraal preflight gate is <strong>deterministic and formally verified</strong> (Z3 SMT). The honest cost of running real formal verification inside the gate is <strong>~280ms p50 single-request compute</strong> — measured on production, not asserted. In exchange you get a byte-identical, reproducible verdict (<strong>N=1,200 runs, zero drift</strong>) — something an LLM-judge cannot give at any speed.</p>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">The Sgraal preflight gate is <strong>deterministic and formally verified</strong> (Z3 SMT). The honest cost of running real formal verification inside the gate is <strong>~170ms p50 single-request compute</strong> — measured on production, not asserted. In exchange you get a byte-identical, reproducible verdict (<strong>N=1,200 runs, zero drift</strong>) — something an LLM-judge cannot give at any speed.</p>
 </section>
 
 <section class="py-20 px-8 bg-[#faf9f6]">
@@ -168,11 +168,11 @@
 <h2 class="text-3xl font-extrabold mb-10">Preflight Gate Latency</h2>
 <div class="grid md:grid-cols-4 gap-6 mb-10">
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
-<p class="text-4xl font-extrabold text-[#c9a962]">~280ms</p>
+<p class="text-4xl font-extrabold text-[#c9a962]">~170ms</p>
 <p class="text-slate-500 text-sm mt-2">p50 single-request compute</p>
 </div>
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
-<p class="text-4xl font-extrabold text-[#c9a962]">~325ms</p>
+<p class="text-4xl font-extrabold text-[#c9a962]">~250ms</p>
 <p class="text-slate-500 text-sm mt-2">p95 single-request compute</p>
 </div>
 <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e5e7eb] text-center">
@@ -184,7 +184,7 @@
 <p class="text-slate-500 text-sm mt-2">samples / path · prod</p>
 </div>
 </div>
-<p class="text-xs text-slate-500 italic mt-6 text-center">Measured on production (Railway EU-West) via the server-side <code>pipeline_ms</code> timer — single-request compute for the full 87-module decision path; demo-key dry-run (excludes Redis/persistence), warmed, N=50/path. Fast-path (detection short-circuit) and full-decision are indistinguishable at this resolution. Network round-trip adds client-dependent transit. Production calibration pending paying-customer onboarding.</p>
+<p class="text-xs text-slate-500 italic mt-6 text-center">Measured on production (Railway EU-West) via the server-side <code>pipeline_ms</code> timer — single-request compute for the full 85-module decision path; demo-key dry-run (excludes Redis/persistence), warmed, N=50/path. Fast-path (detection short-circuit) and full-decision are indistinguishable at this resolution. Network round-trip adds client-dependent transit. Production calibration pending paying-customer onboarding.</p>
 </div>
 </section>
 
@@ -193,8 +193,8 @@
 <h2 class="text-3xl font-extrabold mb-6">What pipeline_ms measures</h2>
 <div class="grid md:grid-cols-2 gap-6 mb-10">
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
-<h3 class="font-bold mb-2">Single-request compute (~280ms p50)</h3>
-<p class="text-slate-500 text-sm">The deterministic preflight gate runs the full 87-module decision path and returns the verdict. The compute time is reported in the <code class="text-[#c9a962]">pipeline_ms</code> field of every preflight response. Your agent waits for this plus network transit.</p>
+<h3 class="font-bold mb-2">Single-request compute (~170ms p50)</h3>
+<p class="text-slate-500 text-sm">The deterministic preflight gate runs the full 85-module decision path and returns the verdict. The compute time is reported in the <code class="text-[#c9a962]">pipeline_ms</code> field of every preflight response. Your agent waits for this plus network transit.</p>
 </div>
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
 <h3 class="font-bold mb-2">No fast/slow split</h3>
@@ -203,13 +203,13 @@
 </div>
 
 <h2 class="text-2xl font-extrabold mb-6">Per-module breakdown</h2>
-<p class="text-slate-500 text-sm mb-10">A per-layer profile (scoring engine vs detection vs analytics) is <strong>not yet published</strong> — only the end-to-end <code class="text-[#c9a962]">pipeline_ms</code> total (~280ms p50) is measured. The compact response profile (<code class="text-[#c9a962]">response_profile: "compact"</code>) skips heavy analytics modules but has <strong>not been separately benchmarked</strong>; treat any lower figure as unverified until measured.</p>
+<p class="text-slate-500 text-sm mb-10">A per-layer profile (scoring engine vs detection vs analytics) is <strong>not yet published</strong> — only the end-to-end <code class="text-[#c9a962]">pipeline_ms</code> total (~170ms p50) is measured. The compact response profile (<code class="text-[#c9a962]">response_profile: "compact"</code>) skips heavy analytics modules but has <strong>not been separately benchmarked</strong>; treat any lower figure as unverified until measured.</p>
 
 <h2 class="text-2xl font-extrabold mb-6">Optimization Tips</h2>
 <div class="space-y-4 mb-10">
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
 <h3 class="font-bold mb-2">Place preflight at action checkpoints</h3>
-<p class="text-slate-500 text-sm">At ~280ms single-request compute, the metered <code class="text-[#c9a962]">/v1/preflight</code> is best at critical action checkpoints rather than on every inner-loop token. Throughput is single-process and scales with worker count (not yet benchmarked).</p>
+<p class="text-slate-500 text-sm">At ~170ms single-request compute, the metered <code class="text-[#c9a962]">/v1/preflight</code> is best at critical action checkpoints rather than on every inner-loop token. Throughput is single-process and scales with worker count (not yet benchmarked).</p>
 </div>
 <div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
 <h3 class="font-bold mb-2">Auto-profile selection</h3>
