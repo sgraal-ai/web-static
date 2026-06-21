@@ -214,7 +214,7 @@
                 Your AI agent is about to act on <span class="text-gold">memory</span> it hasn't verified — Sgraal is the verification.
             </h1>
 <p class="text-[18px] text-[#6b7280] mb-6 max-w-[560px] leading-relaxed">
-                One API call. A deterministic, formally-verified verdict — the same memory state returns the same verdict, byte-identical, in the absence of feedback events that update internal learning state (strict per-call replay via an opt-in flag).
+                One API call. A deterministic, replayable verdict — the same memory state returns the same verdict, byte-identical, in the absence of feedback events that update internal learning state (strict per-call replay via an opt-in flag).
             </p>
 <p class="text-slate-500 text-sm mb-10">One wrong memory. One irreversible action. Sgraal flags it before your agent acts on it.</p>
 <div class="flex flex-wrap gap-4 items-center mb-6">
@@ -295,8 +295,8 @@
 <div class="text-sm text-on-surface-variant uppercase tracking-widest" title="Deterministic by construction: identical memory state + healing counter → byte-identical verdict, in the absence of feedback events that update internal learning state (strict per-call replay via an opt-in flag; see /docs/determinism.md). Measured: N=1,200 runs, zero drift. Single-request compute ~170ms p50 — see /latency.">Deterministic · byte-identical verdict</div>
 </div>
 <div class="text-center">
-<div class="text-3xl font-bold text-gold mb-1">0</div>
-<div class="text-sm text-on-surface-variant uppercase tracking-widest" title="0 false negatives across the 614-case adversarial corpus (R1-R11; R12 held-out)">False negatives</div>
+<div class="text-3xl font-bold text-gold mb-1">8</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest" title="8 adversarial rounds (R1&ndash;R8) on the structural corpus; R14 adversarial hardening in progress">Adversarial rounds (R1&ndash;R8)</div>
 </div>
 <div class="text-center">
 <div class="text-3xl font-bold text-gold mb-1">11</div>
@@ -543,7 +543,7 @@
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">●</span><span><strong>Fleet vaccine corpus</strong> <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-1 py-0.5 rounded">Beta</span> — sub-second attack signature propagation <span class="text-amber-700 text-xs italic">(in active development)</span></span></li>
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">●</span><span><strong>Q-learning per-domain</strong> — production RL adaptation</span></li>
       <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">●</span><span><strong>R12 adversarial corpus</strong> — held privately</span></li>
-      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">●</span><span><strong>W3C VC signing</strong> — court-admissible compliance evidence</span></li>
+      <li class="flex items-start gap-2"><span class="text-[#c9a962] mt-0.5">●</span><span><strong>W3C VC signing</strong> — audit-grade compliance evidence</span></li>
     </ul>
     <div class="mt-6 flex gap-3">
       <a href="/pricing" class="inline-flex items-center bg-[#c9a962] text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#b8973f] transition-all">
@@ -927,7 +927,7 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 <!-- Key Insight -->
 <div class="bg-white border-l-4 border-[#c9a962] rounded-r-xl p-8 mb-8 shadow-sm">
 <p class="text-[#0B0F14] text-lg font-semibold mb-3">"Confidence &ne; truth. Deterministic structural checks catch what probabilistic systems miss."</p>
-<p class="text-[#c9a962] font-bold font-mono text-xl">614/614 corpus cases green &middot; 0 false negatives</p>
+<p class="text-[#c9a962] font-bold font-mono text-xl">R1&ndash;R8 structural corpus &mdash; every structurally-detectable attack flagged &middot; R14 adversarial hardening in progress</p>
 <p class="text-xs text-slate-500 italic mt-3">These figures reflect synthetic R12/R14 corpus performance; production calibration is pending paying-customer onboarding.</p>
 </div>
 
@@ -937,7 +937,6 @@ console.log(result.<span class="text-gold">reason</span>);  <span class="text-on
 <h3 class="text-lg font-bold text-[#0B0F14]">Dual-Stack Benchmark with Grok &mdash; synthetic adversarial corpora</h3>
 </div>
 <p class="text-slate-500 text-sm mb-4">Joint with Grok across Rounds 1–5 (Sgraal: 100% recall on the structural corpus — every structurally-detectable attack flagged, ASK_USER counts as caught; Grok: F1 0.98–1.000 on the same corpora), plus 3 Sgraal-only rounds (6–8). 614 cases total. Two AI systems stress-tested each other's safety layers as peers. Residual misses are the metadata-clean content-forgery class (out of scope for a structural gate); over-escalation on benign-control cases is non-zero; production calibration pending.</p>
-<blockquote class="border-l-4 border-[#c9a962] pl-4 py-2 mb-4 text-slate-600 italic text-sm">"Treating each other as peers with zero defensiveness turned divergence into acceleration fuel. This is how AI systems should co-evolve." <span class="text-slate-400 not-italic">&mdash; Grok</span></blockquote>
 <a href="/blog/dual-stack-convergence" class="text-[#c9a962] text-sm font-semibold hover:underline">Read the joint blog post &rarr;</a>
 </div>
 
