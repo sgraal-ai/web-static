@@ -5,6 +5,12 @@
     { "source": "/customers", "destination": "/case-studies" }
   ],
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.sgraal.com" }],
+      "destination": "https://sgraal.com/:path*",
+      "permanent": true
+    },
     { "source": "/signup", "destination": "https://app.sgraal.com/account", "permanent": true }
   ],
   "headers": [
