@@ -536,6 +536,78 @@ with open("eu_ai_act_conformity.json", "w") as f:
 </div>
 </section>
 
+<!-- Data processing transparency (sourced from GET /v1/compliance/gdpr) -->
+<section class="py-24 bg-[#f5f4f0]">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold tracking-tight mb-4">Data processing transparency</h2>
+<p class="text-slate-600 text-sm max-w-2xl mx-auto">Concrete DPO-facing evidence from our live GDPR commitment. Query the same data programmatically via <code class="text-xs bg-white px-1.5 py-0.5 rounded">GET /v1/compliance/gdpr</code>.</p>
+</div>
+
+<div class="bg-white rounded-2xl border border-black/[0.06] p-8 shadow-sm mb-6">
+<div class="flex items-start gap-3 mb-6">
+<span class="material-symbols-outlined text-[#c9a962] mt-0.5">shield_lock</span>
+<div>
+<h3 class="text-lg font-bold mb-2">Memory content is never stored</h3>
+<p class="text-slate-600 text-sm leading-relaxed"><code class="text-xs bg-[#f5f4f0] px-1.5 py-0.5 rounded">memory_state</code> is processed in real time and discarded — never persisted. Your agent memory payloads pass through preflight and are not retained as content.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-[#f5f4f0] rounded-xl p-5">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Data location</p>
+<p class="text-slate-800 font-semibold">EU (Frankfurt, DE)</p>
+</div>
+<div class="bg-[#f5f4f0] rounded-xl p-5">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Legal basis</p>
+<p class="text-slate-700 text-sm leading-relaxed">Legitimate interest (GDPR Article 6(1)(f)) and contract performance (Article 6(1)(b)).</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-2xl border border-black/[0.06] p-8 shadow-sm mb-6">
+<h3 class="text-lg font-bold mb-4">Data retention</h3>
+<ul class="text-slate-600 text-sm space-y-2 list-disc list-inside leading-relaxed">
+<li><strong>Preflight logs:</strong> 90 days, then auto-deleted</li>
+<li><strong>Audit logs:</strong> 1 year, then archived</li>
+<li><strong>API keys:</strong> retained until account deletion</li>
+<li><strong>Memory state:</strong> not stored — processed in real time and discarded</li>
+</ul>
+</div>
+
+<div class="bg-white rounded-2xl border border-black/[0.06] p-8 shadow-sm mb-6 overflow-x-auto">
+<h3 class="text-lg font-bold mb-4">Sub-processors</h3>
+<table class="w-full text-sm text-left">
+<thead>
+<tr class="border-b border-slate-200 text-xs font-bold uppercase tracking-widest text-slate-500">
+<th class="py-3 pr-4">Name</th>
+<th class="py-3 pr-4">Purpose</th>
+<th class="py-3">Location</th>
+</tr>
+</thead>
+<tbody class="text-slate-700">
+<tr class="border-b border-slate-100"><td class="py-3 pr-4 font-semibold">Supabase</td><td class="py-3 pr-4">Database</td><td class="py-3">EU</td></tr>
+<tr class="border-b border-slate-100"><td class="py-3 pr-4 font-semibold">Railway</td><td class="py-3 pr-4">API hosting</td><td class="py-3">US/EU</td></tr>
+<tr class="border-b border-slate-100"><td class="py-3 pr-4 font-semibold">Stripe</td><td class="py-3 pr-4">Billing</td><td class="py-3">US</td></tr>
+<tr><td class="py-3 pr-4 font-semibold">Upstash</td><td class="py-3 pr-4">Redis (GSV)</td><td class="py-3">EU</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bg-white rounded-2xl border border-black/[0.06] p-8 shadow-sm">
+<h3 class="text-lg font-bold mb-4">Data subject rights &amp; DPO contact</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">Right to erasure and data portability are available today via <a href="mailto:hello@sgraal.com" class="text-[#c9a962] font-semibold hover:underline">hello@sgraal.com</a> (30-day fulfillment). Self-service API endpoints are in development:</p>
+<ul class="text-slate-600 text-sm space-y-2 mb-6 leading-relaxed">
+<li><code class="text-xs bg-[#f5f4f0] px-1.5 py-0.5 rounded">DELETE /v1/account</code> <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ml-1">In development</span> — erasure: all API keys, logs, and associated data permanently deleted within 30 days</li>
+<li><code class="text-xs bg-[#f5f4f0] px-1.5 py-0.5 rounded">GET /v1/account/export</code> <span class="inline-flex items-center bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ml-1">In development</span> — portability: JSON export of preflight logs, audit logs, and API key metadata</li>
+</ul>
+<div class="bg-[#f5f4f0] rounded-xl p-5">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Data Protection Officer</p>
+<p class="text-slate-700 text-sm leading-relaxed"><a href="mailto:hello@sgraal.com" class="text-[#c9a962] font-semibold hover:underline">hello@sgraal.com</a> &middot; Sgraal Data Protection Officer &middot; 72-hour response</p>
+</div>
+</div>
+</div>
+</section>
+
 <!-- CTA -->
 <section class="py-24 bg-white text-center">
 <h2 class="text-4xl font-bold mb-6">Ready to prove compliance?</h2>
