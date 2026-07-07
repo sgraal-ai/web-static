@@ -1,14 +1,14 @@
 {
   "_comment": "Policy file for the navbar+footer drift gate. Edit ONLY when intentionally changing the canonical block; reference the protocol in scripts/check_navbar_footer_drift.py and CONTRIBUTING-style hash-update notes in PR descriptions.",
   "footer_block": {
-    "canonical_md5": "e53145718d76aaf59107604f5a4e38ff",
+    "canonical_md5": "d33cb06348a24a8aae265ccad8590e9e",
     "extraction_regex": "<footer.*?</footer>",
     "regex_flags": "DOTALL",
     "verified_pages": 44,
     "established_phase": "8b",
     "established_pr": 90,
     "established_date": "2026-05-28",
-    "last_updated_date": "2026-05-28",
+    "last_updated_date": "2026-07-07",
     "update_protocol": "When intentionally changing the footer, update canonical_md5 here in the same PR. PR description must explicitly note: 'footer canonical hash changed XXXX -> YYYY'. Without this note, the drift gate will block the merge."
   },
   "header_navbar_block": {
