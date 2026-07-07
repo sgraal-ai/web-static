@@ -228,19 +228,34 @@ input[type=number] { outline: none; }
       </div>
     </div>
 
-    <!-- Error rate assumption -->
+    <!-- Illustrative example assumptions (user-adjustable) -->
     <div class="bg-white rounded-xl p-4 border border-[#c9a962]/20">
-      <p class="text-xs text-slate-500 leading-relaxed">
-        Based on our adversarial corpus testing: <strong>34% of memories show reliability issues</strong>.
-        Sgraal catches ~94% of memory errors before they cause downstream damage.
+      <p class="text-xs text-slate-500 leading-relaxed mb-4">
+        <strong>Example assumptions</strong> — adjust these for your own workload. The defaults below are illustrative starting placeholders, not measured Sgraal results.
       </p>
-      <p class="text-xs text-slate-500 italic mt-2">These figures reflect synthetic R12/R14 corpus performance; production calibration is pending paying-customer onboarding.</p>
+      <div class="mb-4">
+        <div class="flex justify-between items-center mb-2">
+          <label class="text-sm font-semibold text-slate-700">Memory reliability risk (%)</label>
+          <span id="errorRateVal" class="text-[#c9a962] font-bold font-mono">34%</span>
+        </div>
+        <input type="range" id="errorRate" min="0" max="100" step="1" value="34"
+          oninput="update()" class="w-full"/>
+      </div>
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label class="text-sm font-semibold text-slate-700">Errors caught before downstream damage (%)</label>
+          <span id="catchRateVal" class="text-[#c9a962] font-bold font-mono">94%</span>
+        </div>
+        <input type="range" id="catchRate" min="0" max="100" step="1" value="94"
+          oninput="update()" class="w-full"/>
+      </div>
     </div>
   </div>
 
   <!-- Results -->
   <div class="space-y-4">
     <h2 class="text-xl font-bold">Your ROI with Sgraal</h2>
+    <p class="text-xs text-slate-500">Illustrative estimate from your inputs and example assumptions above — not a measured or guaranteed outcome.</p>
 
     <div class="bg-[#f5f4f0] rounded-2xl p-6">
       <p class="text-sm text-slate-500 mb-1">Errors prevented / month</p>
@@ -402,9 +417,11 @@ function update() {
   document.getElementById('costVal').textContent = '$' + fmtNum(costPerError);
   document.getElementById('agentsVal').textContent = agents;
 
-  // Calculations
-  const errorRate = 0.34; // 34% of memories show reliability issues (from our adversarial corpus testing)
-  const catchRate = 0.94; // Sgraal catches 94%
+  // Illustrative example defaults — user-adjustable via sliders above; not measured figures
+  const errorRate = parseInt(document.getElementById('errorRate').value, 10) / 100;
+  const catchRate = parseInt(document.getElementById('catchRate').value, 10) / 100;
+  document.getElementById('errorRateVal').textContent = document.getElementById('errorRate').value + '%';
+  document.getElementById('catchRateVal').textContent = document.getElementById('catchRate').value + '%';
   const errorsPerMonth = Math.round(decisions * errorRate);
   const errorsPrevented = Math.round(errorsPerMonth * catchRate);
   const costWithout = errorsPerMonth * costPerError;

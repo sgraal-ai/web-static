@@ -421,7 +421,8 @@ async function handleRegister(e) {
 <input class="w-full bg-surface-container border border-black/[0.12] rounded-lg text-obsidian focus:border-gold focus:ring-gold/20" id="roi-error-cost" type="number" value="1200"/>
 </div>
 <div class="bg-gold/[0.05] rounded-xl p-6 border border-gold/20 mt-8">
-<div class="text-xs uppercase tracking-widest text-gold-dark font-bold mb-1">Estimated Monthly Savings</div>
+<div class="text-xs uppercase tracking-widest text-gold-dark font-bold mb-1">Illustrative monthly savings</div>
+<p class="text-xs text-on-surface-variant mb-2">Example output from the default inputs above — adjust your numbers; not a measured or guaranteed result.</p>
 <div class="text-4xl font-black text-gold-dark" id="roi-result">$1,733,901</div>
 </div>
 </div>
@@ -474,7 +475,10 @@ async function handleRegister(e) {
     function calculateROI() {
         const decisions = parseFloat(document.getElementById('roi-decisions').value) || 0;
         const errorCost = parseFloat(document.getElementById('roi-error-cost').value) || 0;
-        const savings = (decisions * 0.034 * 0.85 * errorCost) - sgraalTierCost(decisions);
+        // Illustrative example defaults (3.4% reliability risk × 85% catch rate) — not measured
+        const EXAMPLE_ERROR_RATE = 0.034;
+        const EXAMPLE_CATCH_RATE = 0.85;
+        const savings = (decisions * EXAMPLE_ERROR_RATE * EXAMPLE_CATCH_RATE * errorCost) - sgraalTierCost(decisions);
         const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(savings);
         document.getElementById('roi-result').innerText = formatted;
     }
