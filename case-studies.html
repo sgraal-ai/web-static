@@ -378,7 +378,7 @@
 <li>• <code>WARN</code> verdicts → human review queue (does not block execution)</li>
 <li>• <code>BLOCK</code> verdicts → halt execution immediately, raise on-call</li>
 </ul>
-<p class="text-slate-600 text-sm leading-relaxed"><strong>Architecture:</strong> Edge mode (offline scoring) deployed alongside the execution agent for sub-millisecond latency on the hot path; periodic sync to the hosted Sgraal calibration service. The Sgraal verdict score is recorded as a field in the per-trade explainability log alongside risk-management metadata.</p>
+<p class="text-slate-600 text-sm leading-relaxed"><strong>Architecture:</strong> Edge mode (offline scoring) deployed alongside the execution agent for in-process scoring on the hot path (no network hop); periodic sync to the hosted Sgraal calibration service. The Sgraal verdict score is recorded as a field in the per-trade explainability log alongside risk-management metadata.</p>
 </div>
 
 <div>

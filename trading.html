@@ -27,9 +27,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <title>For Trading — Sgraal</title>
-<meta name="description" content="AI trading agent safety: edge mode sub-ms latency, deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
+<meta name="description" content="AI trading agent safety: edge mode in-process (no network hop), deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
 <meta property="og:title" content="For Trading — Sgraal">
-<meta property="og:description" content="AI trading agent safety: edge mode sub-ms latency, deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
+<meta property="og:description" content="AI trading agent safety: edge mode in-process (no network hop), deterministic replay for audit, Subjective Logic multi-source fusion, signed memory passports. Beta: Memory Time Machine and compliance officer hooks. NDA-channel design partners.">
 <meta property="og:url" content="https://sgraal.com/trading">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -192,7 +192,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
 </h1>
 
 <p class="text-slate-600 text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
-  Trading agents need deterministic replay of every executed trade, sub-millisecond decision latency, and an audit trail that survives regulator review. The cost of a memory-poisoning incident in production is measured in basis points, not engineer-hours.
+  Trading agents need deterministic replay of every executed trade, in-process decision scoring with no network round-trip, and an audit trail that survives regulator review. The cost of a memory-poisoning incident in production is measured in basis points, not engineer-hours.
 </p>
 
 <p class="text-slate-600 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -236,10 +236,10 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
   <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
     <div class="flex items-center gap-2 mb-3">
       <span class="material-symbols-outlined text-[#c9a962]">bolt</span>
-      <h3 class="font-bold text-base">Edge mode (sub-ms p99)</h3>
+      <h3 class="font-bold text-base">Edge mode (in-process)</h3>
       <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
     </div>
-    <p class="text-slate-600 text-sm leading-relaxed">Zero-dependency in-process scoring. Runs in the same process as the trading agent. Sub-millisecond p99 latency. No network call between the agent and the safety check. Air-gappable for isolated dealing rooms.</p>
+    <p class="text-slate-600 text-sm leading-relaxed">Zero-dependency in-process scoring. Runs in the same process as the trading agent. No network call between the agent and the safety check — scoring runs in the same process. Air-gappable for isolated dealing rooms.</p>
   </div>
 
   <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-[#c9a962]/40 transition-all">
@@ -421,7 +421,7 @@ h1,h2,h3 { font-family: 'Manrope', sans-serif; }
       <ul class="space-y-2 text-sm text-slate-700 leading-relaxed">
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">✓</span>
-          <span><strong>Today (Live):</strong> Edge mode (sub-ms p99), deterministic replay, Subjective Logic fusion, signed memory passports, /v1/predict/degradation — all production.</span>
+          <span><strong>Today (Live):</strong> Edge mode (in-process, no network hop), deterministic replay, Subjective Logic fusion, signed memory passports, /v1/predict/degradation — all production.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-[#c9a962] font-bold mt-0.5">◯</span>

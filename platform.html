@@ -223,7 +223,7 @@ pre { font-size: 0.8125rem; line-height: 1.6; }
   <span class="text-[#c9a962] font-bold tracking-[0.2em] text-xs uppercase block mb-3">Three deployment modes</span>
   <h2 class="text-4xl font-bold tracking-tight mb-4">Pick the deployment that fits your topology.</h2>
   <p class="text-slate-600 text-lg max-w-2xl mx-auto">
-    Hosted for most teams. Self-hosted for regulated sectors. Edge mode for air-gapped, classified, or sub-millisecond latency budgets.
+    Hosted for most teams. Self-hosted for regulated sectors. Edge mode for air-gapped, classified, or ultra-low-latency (in-process, no network hop) workloads.
   </p>
 </div>
 
@@ -273,13 +273,13 @@ helm install sgraal sgraal/sgraal \
       </div>
       <h3 class="text-xl font-bold">Edge mode</h3>
     </div>
-    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-4">in-process · zero-dep · sub-ms</p>
+    <p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-4">in-process · zero-dep · no network hop</p>
     <p class="text-slate-600 text-sm leading-relaxed mb-5">Runs inside your Python process. Zero dependencies — no <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">numpy</code>, no <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">requests</code>. For air-gapped, classified envs, or trading desks that can't take ~15ms. Subprocess-isolated tests prove zero network leak.</p>
     <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Quickstart</p>
 <pre class="bg-[#0B0F14] text-slate-300 p-4 rounded-lg text-xs overflow-x-auto mb-4"><span class="text-violet-300">from</span> sgraal.edge <span class="text-violet-300">import</span> edge_preflight
 result = <span class="text-emerald-300">edge_preflight</span>(
     memory_state, domain=<span class="text-[#c9a962]">"fintech"</span>)
-<span class="text-slate-500"># &lt; 1ms p99, no network</span></pre>
+<span class="text-slate-500"># in-process, no network</span></pre>
     <a href="/open-source" class="text-[#c9a962] font-bold text-sm hover:underline">See the cut line →</a>
   </div>
 
@@ -347,7 +347,7 @@ result = <span class="text-emerald-300">edge_preflight</span>(
   <div class="bg-[#f5f4f0] border border-transparent hover:border-[#c9a962]/30 rounded-xl p-7 transition-all">
     <div class="flex items-center gap-2 mb-3">
       <span class="material-symbols-outlined text-[#c9a962]">bolt</span>
-      <h3 class="font-bold text-lg">Edge mode (sub-ms p99)</h3>
+      <h3 class="font-bold text-lg">Edge mode (in-process)</h3>
       <span class="inline-flex items-center bg-[#c9a962]/15 text-[#c9a962] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Live</span>
     </div>
     <p class="text-slate-600 text-sm leading-relaxed">Zero-dep in-process scoring with per-type thresholds (identity, policy, semantic, preference, episodic, shared_workflow, tool_state). Sufficient for many production deployments without calling sgraal.com. For workloads requiring fleet-wide vaccine signatures or cross-tenant analytics, use the hosted or self-hosted mode.</p>
@@ -435,7 +435,7 @@ result = <span class="text-emerald-300">edge_preflight</span>(
 <section class="py-24 px-6 bg-[#0B0F14] text-white text-center border-t border-white/10">
 <div class="max-w-3xl mx-auto">
 <h2 class="text-4xl md:text-5xl font-bold mb-6">Three modes. One engine. Your stack.</h2>
-<p class="text-slate-300 text-lg mb-10">~280ms p50 hosted single-request compute (measured). Sub-ms p99 edge. Air-gapped self-host. Same wire format, same decision contract.</p>
+<p class="text-slate-300 text-lg mb-10">~280ms p50 hosted single-request compute (measured). In-process edge (no network round-trip). Air-gapped self-host. Same wire format, same decision contract.</p>
 
 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
   <a href="mailto:hello@sgraal.com?subject=Platform%20team%20call" class="inline-flex items-center bg-white text-[#0B0F14] px-8 py-4 rounded-lg font-bold text-base hover:shadow-xl transition-all">
