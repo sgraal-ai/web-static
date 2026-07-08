@@ -331,6 +331,32 @@ hop3: "confirmed approved"</pre>
 </div>
 </section>
 
+<!-- Independent red-team verification -->
+<section class="py-16 px-8 bg-white border-t border-[#e5e7eb]">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-2xl font-extrabold tracking-tight mb-4">Independent red-team verification</h2>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">We ran an independent black-box red-team against the live preflight API (public demo key only — no internal scoring access). The battery covered <strong>16 poisoning attacks</strong> mapped to these eight failure modes, plus benign controls. Verdicts only: USE_MEMORY, WARN, ASK_USER, BLOCK.</p>
+
+<div class="space-y-5 mb-6">
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<p class="text-xs font-bold uppercase tracking-widest text-[#c9a962] mb-2">When provenance metadata is truthful</p>
+<p class="text-slate-600 text-sm leading-relaxed">A stale fact carried its real age; an untrusted source carried low trust; conflicting entries carried realistic conflict signals. Under that condition — <strong>on attested, truthful provenance</strong> — Sgraal escalated <strong>all 16 attacks</strong> (WARN, ASK_USER, or BLOCK). <strong>0 missed.</strong> Benign memory: <strong>0 false positives</strong> (all three controls returned USE_MEMORY).</p>
+</div>
+
+<div class="bg-[#faf9f6] border border-[#e5e7eb] rounded-xl p-6">
+<p class="text-xs font-bold uppercase tracking-widest text-amber-700 mb-2">When metadata itself is spoofed</p>
+<p class="text-slate-600 text-sm leading-relaxed">The same poisoned content, but with attacker-inflated metadata (e.g. a backdated policy presented as brand-new with high source trust). Detection <strong>drops sharply</strong> — many attacks received USE_MEMORY. That is not a scoring-engine bug: it is the limit of any system that must <em>read</em> provenance it cannot independently verify at ingest time.</p>
+</div>
+</div>
+
+<p class="text-slate-600 text-sm leading-relaxed mb-4"><strong>The honest conclusion:</strong> Sgraal&rsquo;s detection guarantee is only as strong as the provenance it is given. Content-level patterns matter; trustworthy metadata makes them actionable.</p>
+
+<div class="border-l-4 border-[#c9a962] pl-5 py-1">
+<p class="text-slate-600 text-sm leading-relaxed"><strong>Roadmap — write-time notary (in development, not live today):</strong> a cryptographically signed ingestion receipt that binds age, origin, and trust at write time — closing the metadata-spoofing gap by turning conditional detection (on truthful provenance) into <strong>attested</strong> detection. This is not a current product feature; it is the architectural path we are building toward.</p>
+</div>
+</div>
+</section>
+
 <!-- CTA -->
 <section class="py-20 px-8 text-center">
 <h2 class="text-2xl font-extrabold mb-6">Protect your agents from these patterns</h2>
