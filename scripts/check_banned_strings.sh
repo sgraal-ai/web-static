@@ -105,6 +105,18 @@ ALLOWLIST=(
   # Line number updated 2026-05-22 og:image sub-sprint (+6 from cookie-banner's 247,
   # was 234 pre-banner, 203 in 1c-era).
   "startups.html:253"
+  # Negated "guaranteed" — claim-honesty disclaimer ("not ... guaranteed"),
+  # added in claim-honesty cleanup (roi #122). The word is disclaimed, not
+  # asserted; \bGuaranteed\b cannot distinguish negated vs asserted use.
+  "index.html:1079"
+  # Negated "guaranteed" — claim-honesty disclaimer ("not ... guaranteed"),
+  # added in claim-honesty cleanup (roi #122). The word is disclaimed, not
+  # asserted; \bGuaranteed\b cannot distinguish negated vs asserted use.
+  "roi.html:258"
+  # Negated "guaranteed" — claim-honesty disclaimer ("not ... guaranteed"),
+  # added in claim-honesty cleanup (roi #122). The word is disclaimed, not
+  # asserted; \bGuaranteed\b cannot distinguish negated vs asserted use.
+  "signup.html:425"
 )
 
 is_allowlisted() {
