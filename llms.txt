@@ -1,0 +1,25 @@
+# Sgraal
+
+> The immune system for AI agent memory — a deterministic preflight verdict before your agent acts on unverified memory.
+
+Sgraal is a deterministic, non-LLM preflight gate for AI agent memory. Before your agent acts on stored memory, Sgraal returns a verdict — USE_MEMORY, WARN, ASK_USER, or BLOCK — plus an omega reliability score. It catches poisoned, stale, or conflicting memory before irreversible actions.
+
+## Docs
+
+- [Quickstart](https://sgraal.com/docs/quickstart): First memory verdict in under 60 seconds (Python, Node.js, or cURL)
+- [API Reference](https://sgraal.com/docs/api): REST endpoint reference for preflight and compliance
+- [For Developers](https://sgraal.com/developers): SDKs, MCP server, and framework integrations
+
+## Key capabilities
+
+- **Preflight verdicts**: Deterministic USE_MEMORY / WARN / ASK_USER / BLOCK decisions with omega score (`POST /v1/preflight` for audit-grade evidence; `POST /v1/check` for high-frequency gating)
+- **Compliance endpoints** (curlable, live): `GET https://api.sgraal.com/v1/compliance/gdpr`, `GET https://api.sgraal.com/v1/compliance/eu-ai-act/report`, `GET https://api.sgraal.com/v1/compliance/eu-ai-act/declaration`, `GET https://api.sgraal.com/v1/compliance/nist-ai-rmf`
+- **MCP server**: [@sgraal/mcp](https://www.npmjs.com/package/@sgraal/mcp) on npm — Claude Desktop, LangGraph, any MCP client
+- **SDKs**: Python (`pip install sgraal`), TypeScript (`@sgraal/sdk`) — see [developers page](https://sgraal.com/developers)
+
+## Integration
+
+- MCP: `npm install @sgraal/mcp`
+- Compliance overview: [sgraal.com/comply](https://sgraal.com/comply)
+- Developer hub: [sgraal.com/developers](https://sgraal.com/developers)
+- Documentation: [sgraal.com/docs](https://sgraal.com/docs)

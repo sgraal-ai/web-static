@@ -12,3 +12,5 @@ Disallow: /404
 Disallow: /500
 
 Sitemap: https://sgraal.com/sitemap.xml
+
+# LLM/agent site guide: https://sgraal.com/llms.txt
